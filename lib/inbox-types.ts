@@ -26,7 +26,7 @@ export type Submission =
       kind: "blocker";
       project: string;
       body: string;
-      blockedBy?: string;
+      waitingOn?: string;
     })
   | (SubmissionBase & {
       kind: "decision";
