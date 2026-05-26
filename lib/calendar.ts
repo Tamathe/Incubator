@@ -151,7 +151,7 @@ export function buildIcsCalendar(events: IcsEvent[]): string {
 
 // ─── Domain mapping ───────────────────────────────────────────────────────
 
-/** Parse "2026-05-29" + a Friday Date (for tz) into start/end at noon–1pm. */
+/** Parse an ISO date string into local-time start (noon) and end (1pm) Dates. */
 function fridayNoonRange(isoDate: string): { start: Date; end: Date } {
   const [y, m, d] = isoDate.split("-").map(Number);
   const start = new Date(y, m - 1, d, 12, 0, 0, 0);
