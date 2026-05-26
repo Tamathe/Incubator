@@ -6,6 +6,7 @@ import DotGrid from "@/components/DotGrid";
 import Countdown from "@/components/Countdown";
 import RsvpForm from "@/components/RsvpForm";
 import SubscribeForm from "@/components/SubscribeForm";
+import PitchForm from "@/components/PitchForm";
 
 export const metadata = {
   title: "Get involved · AI Incubator",
@@ -145,7 +146,7 @@ export default function JoinPage() {
               <span>③ What you&apos;d build first</span>
             </div>
             <Link
-              href="/pitch"
+              href="#pitch"
               className="cta"
               style={{
                 color: "var(--accent)",
@@ -190,8 +191,8 @@ export default function JoinPage() {
               RSVP for the next meeting.
             </h2>
             <p className="body" style={{ marginTop: 18, maxWidth: "36ch" }}>
-              Tell us a bit about yourself and we&apos;ll send you the Teams
-              link and that week&apos;s agenda.
+              See you Friday. The Teams link is in the weekly listserv — opt in
+              below if you&apos;re not on it yet.
             </p>
 
             <div
@@ -216,6 +217,53 @@ export default function JoinPage() {
           </div>
 
           <RsvpForm />
+        </div>
+      </section>
+
+      {/* ───── Pitch form ───── */}
+      <section className="section container" id="pitch">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1.4fr",
+            gap: "calc(64px * var(--d))",
+            alignItems: "start",
+          }}
+        >
+          <div>
+            <div className="section-label">
+              <span className="idx">PITCH</span>{" "}
+              <span>Bring a problem to the group</span>
+            </div>
+            <h2 className="h1" style={{ maxWidth: "14ch" }}>
+              Pitch a project.
+            </h2>
+            <p className="body" style={{ marginTop: 18, maxWidth: "36ch" }}>
+              Sixty seconds at a Friday meeting works too. If you&apos;d rather
+              write it down first, this form gives the group a structured one-pager
+              to read before you arrive.
+            </p>
+            <div
+              style={{
+                marginTop: 28,
+                padding: 18,
+                background: "var(--surface-2)",
+                borderRadius: 12,
+                fontFamily: "var(--mono)",
+                fontSize: 12,
+                color: "var(--ink-3)",
+                lineHeight: 1.7,
+              }}
+            >
+              <div style={{ color: "var(--ink)", marginBottom: 6 }}>
+                A GOOD PITCH ANSWERS
+              </div>
+              <div>① The problem</div>
+              <div>② Who it affects</div>
+              <div>③ What you&apos;d build first</div>
+            </div>
+          </div>
+          <PitchForm />
         </div>
       </section>
 
