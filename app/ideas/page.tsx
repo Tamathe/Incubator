@@ -4,6 +4,7 @@ import DotGrid from "@/components/DotGrid";
 import { content } from "@/content/site";
 import IdeasMap from "@/components/IdeasMap";
 import IdeasGrid from "@/components/IdeasGrid";
+import IdeasCountChip from "@/components/IdeasCountChip";
 
 export const metadata = {
   title: "Ideas · AI Incubator",
@@ -32,6 +33,9 @@ export default function IdeasPage() {
             What people in the group are thinking about. Some are seeds, some are
             pitches. Add yours.
           </p>
+          <div style={{ marginTop: 20 }}>
+            <IdeasCountChip />
+          </div>
         </div>
       </header>
 
