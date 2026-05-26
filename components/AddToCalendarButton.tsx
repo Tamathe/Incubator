@@ -17,7 +17,7 @@ export default function AddToCalendarButton({ meeting, indexOnDate }: Props) {
     const event = meetingToIcsEvent(meeting, indexOnDate);
     const ics = buildIcsEvent(event);
     downloadIcs(
-      `aiincubator-${meeting.date}-${meeting.kind}.ics`,
+      `aiincubator-${meeting.date}-${meeting.kind}-${indexOnDate}.ics`,
       ics
     );
   }
