@@ -18,13 +18,19 @@ const COMMITMENT_ORDER: Record<string, number> = {
   curious: 2,
 };
 
+type LoadState = "loading" | "ready" | "disabled";
+
 export default function IdeasGrid() {
   const [ideas, setIdeas] = useState<Idea[]>([]);
+  const [state, setState] = useState<LoadState>("loading");
   const [selected, setSelected] = useState<Idea | null>(null);
   const [intakeOpen, setIntakeOpen] = useState(false);
 
   useEffect(() => {
-    if (!supabase) return;
+    if (!supabase) {
+      setState("disabled");
+      return;
+    }
     (async () => {
       const { data } = await supabase
         .from("ideas_public")
@@ -32,8 +38,43 @@ export default function IdeasGrid() {
         .in("status", ["pending", "approved"])
         .order("created_at", { ascending: false });
       setIdeas((data ?? []).map(parseIdeaRow));
+      setState("ready");
     })();
   }, []);
+
+  useEffect(() => {
+    if (!supabase) return;
+    const channel = supabase
+      .channel("ideas-grid-inserts")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "ideas" },
+        async (payload) => {
+          const id = (payload.new as { id?: string }).id;
+          if (!id) return;
+          const { data } = await supabase!
+            .from("ideas_public")
+            .select("*")
+            .eq("id", id)
+            .single();
+          if (!data) return;
+          const parsed = parseIdeaRow(data);
+          setIdeas((prev) => (prev.some((i) => i.id === parsed.id) ? prev : [parsed, ...prev]));
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase!.removeChannel(channel);
+    };
+  }, []);
+
+  if (state === "disabled") {
+    return (
+      <div className="container ideas-grid-wrap" style={{ color: "var(--ink-3)" }}>
+        Ideas page is not configured yet (missing Supabase env vars).
+      </div>
+    );
+  }
 
   return (
     <div className="container ideas-grid-wrap">
