@@ -295,3 +295,39 @@ function applyToCollection<T extends { id: string }>(
   items[idx] = next as T;
   return true;
 }
+
+/**
+ * Return all blockers that have NOT been resolved, newest-created first.
+ * Used by /open-problems and the homepage "What's on the table" section.
+ */
+export function deriveActiveBlockers(content: SiteContent): Blocker[] {
+  return content.blockers
+    .filter((b) => !b.resolved)
+    .slice()
+    .sort((a, b) => (a.created < b.created ? 1 : a.created > b.created ? -1 : 0));
+}
+
+/**
+ * Return decisions queued for a specific session date (ISO yyyy-mm-dd).
+ * If sessionDateIso is omitted, returns all queued decisions, newest-created first.
+ */
+export function deriveDecisionsForSession(
+  content: SiteContent,
+  sessionDateIso?: string
+): Decision[] {
+  const queued = content.decisions.filter((d) => d.status === "queued");
+  const filtered = sessionDateIso
+    ? queued.filter((d) => d.forSession === sessionDateIso)
+    : queued;
+  return filtered
+    .slice()
+    .sort((a, b) => (a.created < b.created ? 1 : a.created > b.created ? -1 : 0));
+}
+
+/**
+ * Return all projects in kickoff status that have an `open` collaborator-call line.
+ * Used by /open-problems "Looking for collaborators" section.
+ */
+export function deriveOpenCalls(content: SiteContent): Project[] {
+  return content.projects.filter((p) => p.status === "kickoff" && !!p.open);
+}
