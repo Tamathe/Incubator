@@ -84,8 +84,12 @@ export interface Blocker {
   /** project id */
   project: string;
   body: string;
-  /** free text — e.g. "KCR legal" */
-  blockedBy?: string;
+  /**
+   * What's needed to unstick — process, document, approval, or capability.
+   * NEVER name an individual. Use roles, departments, processes, artifacts.
+   * Examples: "DSA legal review", "IRB approval", "Baseline communication rubric"
+   */
+  waitingOn?: string;
   /** ISO date */
   created: string;
   /** ISO date when no longer blocking */
@@ -349,14 +353,14 @@ export const content: SiteContent = {
       id: "ahead-dsa-review",
       project: "ahead",
       body: "DSA stuck in KCR legal review",
-      blockedBy: "KCR legal",
+      waitingOn: "DSA legal review",
       created: "2026-05-16",
     },
     {
       id: "vc-rubric-template",
       project: "virtual-clinic",
       body: "Need a baseline communication rubric to anchor scenarios",
-      blockedBy: "Sim center",
+      waitingOn: "Baseline communication rubric",
       created: "2026-05-19",
     },
   ],

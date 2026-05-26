@@ -114,7 +114,7 @@ export function deriveActivityLog(content: SiteContent): DerivedLogEntry[] {
     out.push({
       date: b.created,
       project: proj,
-      note: `Blocker: ${b.body}${b.blockedBy ? ` (${b.blockedBy})` : ""}`,
+      note: `Blocker: ${b.body}${b.waitingOn ? ` (${b.waitingOn})` : ""}`,
       kind: "blocker-opened",
       id: `blocker-${b.id}-opened`,
     });
