@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import * as d3 from "d3-force";
 import { supabase } from "@/lib/supabase";
 import {
   type Idea,
@@ -55,6 +56,51 @@ export default function IdeasMap() {
     return () => ro.disconnect();
   }, []);
 
+  type Pos = { x: number; y: number; vx?: number; vy?: number };
+  const [positions, setPositions] = useState<Record<string, Pos>>({});
+
+  useEffect(() => {
+    if (state !== "ready" || ideas.length === 0) return;
+
+    const nodes = ideas.map((idea) => {
+      const c = themeToCluster(idea.theme);
+      return {
+        id: idea.id,
+        theme: idea.theme,
+        x: c.x * size.w,
+        y: c.y * size.h,
+      } as d3.SimulationNodeDatum & { id: string; theme: string };
+    });
+
+    const sim = d3
+      .forceSimulation(nodes)
+      .force(
+        "x",
+        d3.forceX<typeof nodes[0]>((d) => themeToCluster(d.theme as any).x * size.w).strength(0.08),
+      )
+      .force(
+        "y",
+        d3.forceY<typeof nodes[0]>((d) => themeToCluster(d.theme as any).y * size.h).strength(0.08),
+      )
+      .force(
+        "collide",
+        d3.forceCollide<typeof nodes[0]>((d) => {
+          const idea = ideas.find((i) => i.id === d.id)!;
+          return commitmentToVisual(idea.commitment).radius + 6;
+        }),
+      )
+      .alphaDecay(0.05)
+      .on("tick", () => {
+        const next: Record<string, Pos> = {};
+        for (const n of nodes) next[n.id] = { x: n.x ?? 0, y: n.y ?? 0 };
+        setPositions(next);
+      });
+
+    return () => {
+      sim.stop();
+    };
+  }, [ideas, state, size.w, size.h]);
+
   if (state === "disabled") {
     return (
       <div className="ideas-map container" style={{ color: "var(--ink-3)", padding: 40 }}>
@@ -94,17 +140,12 @@ export default function IdeasMap() {
 
           {/* Nodes */}
           {ideas.map((idea) => {
-            const c = themeToCluster(idea.theme);
-            // Deterministic jitter so re-renders don't shuffle nodes.
-            const jitterX = ((hash(idea.id) % 100) - 50) * 1.2;
-            const jitterY = ((hash(idea.id + "y") % 100) - 50) * 1.2;
+            const pos = positions[idea.id];
+            if (!pos) return null;
             const v = commitmentToVisual(idea.commitment);
             const isPending = idea.status === "pending";
             return (
-              <g
-                key={idea.id}
-                transform={`translate(${c.x * size.w + jitterX}, ${c.y * size.h + jitterY})`}
-              >
+              <g key={idea.id} transform={`translate(${pos.x}, ${pos.y})`}>
                 {v.halo && (
                   <circle
                     r={v.radius + 4}
@@ -131,9 +172,3 @@ export default function IdeasMap() {
   );
 }
 
-// Tiny string hash for deterministic per-id jitter.
-function hash(s: string): number {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
