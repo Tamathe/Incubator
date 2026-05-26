@@ -87,6 +87,32 @@ export default function IdeasMap() {
     return () => ro.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!supabase) return;
+    const channel = supabase
+      .channel("ideas-inserts")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "ideas" },
+        async (payload) => {
+          const id = (payload.new as { id?: string }).id;
+          if (!id) return;
+          const { data } = await supabase!
+            .from("ideas_public")
+            .select("*")
+            .eq("id", id)
+            .single();
+          if (!data) return;
+          const parsed = parseIdeaRow(data);
+          setIdeas((prev) => (prev.some((i) => i.id === parsed.id) ? prev : [parsed, ...prev]));
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase!.removeChannel(channel);
+    };
+  }, []);
+
   type Pos = { x: number; y: number; vx?: number; vy?: number };
   const [positions, setPositions] = useState<Record<string, Pos>>({});
 
