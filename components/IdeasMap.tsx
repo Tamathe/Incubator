@@ -5,7 +5,10 @@ import * as d3 from "d3-force";
 import { supabase } from "@/lib/supabase";
 import {
   type Idea,
+  type IdeaTheme,
+  type IdeaCommitment,
   THEME_LABELS,
+  COMMITMENT_LABELS,
   themeToCluster,
   commitmentToVisual,
   parseIdeaRow,
@@ -21,6 +24,29 @@ export default function IdeasMap() {
   const [size, setSize] = useState({ w: 1000, h: 600 });
   const [selected, setSelected] = useState<Idea | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [themeFilter, setThemeFilter] = useState<Set<IdeaTheme>>(new Set());
+  const [commitmentFilter, setCommitmentFilter] = useState<Set<IdeaCommitment>>(new Set());
+
+  function toggleTheme(t: IdeaTheme) {
+    setThemeFilter((prev) => {
+      const next = new Set(prev);
+      next.has(t) ? next.delete(t) : next.add(t);
+      return next;
+    });
+  }
+  function toggleCommitment(c: IdeaCommitment) {
+    setCommitmentFilter((prev) => {
+      const next = new Set(prev);
+      next.has(c) ? next.delete(c) : next.add(c);
+      return next;
+    });
+  }
+
+  function isFilteredOut(idea: Idea): boolean {
+    if (themeFilter.size > 0 && !themeFilter.has(idea.theme)) return true;
+    if (commitmentFilter.size > 0 && !commitmentFilter.has(idea.commitment)) return true;
+    return false;
+  }
 
   useEffect(() => {
     if (!supabase) {
@@ -124,6 +150,31 @@ export default function IdeasMap() {
         <div className="ideas-state">No ideas yet — be the first.</div>
       )}
       {state === "ready" && ideas.length > 0 && (
+        <>
+        <div className="ideas-filter-strip">
+          <div className="ideas-filter-group">
+            {(Object.keys(THEME_LABELS) as IdeaTheme[]).map((t) => (
+              <button
+                key={t}
+                className={`filter-chip ${themeFilter.has(t) ? "active" : ""}`}
+                onClick={() => toggleTheme(t)}
+              >
+                {THEME_LABELS[t]}
+              </button>
+            ))}
+          </div>
+          <div className="ideas-filter-group">
+            {(["curious", "exploring", "committed"] as IdeaCommitment[]).map((c) => (
+              <button
+                key={c}
+                className={`filter-chip ${commitmentFilter.has(c) ? "active" : ""}`}
+                onClick={() => toggleCommitment(c)}
+              >
+                {COMMITMENT_LABELS[c]}
+              </button>
+            ))}
+          </div>
+        </div>
         <svg className="ideas-canvas" viewBox={`0 0 ${size.w} ${size.h}`}>
           {/* Cluster labels */}
           {Object.entries(THEME_LABELS).map(([key, label]) => {
@@ -152,6 +203,7 @@ export default function IdeasMap() {
                 key={idea.id}
                 className={`idea-node ${hovered === idea.id ? "is-hovered" : ""}`}
                 transform={`translate(${pos.x}, ${pos.y})`}
+                opacity={isFilteredOut(idea) ? 0.1 : 1}
                 onMouseEnter={() => setHovered(idea.id)}
                 onMouseLeave={() => setHovered((h) => (h === idea.id ? null : h))}
                 onClick={() => setSelected(idea)}
@@ -183,6 +235,7 @@ export default function IdeasMap() {
             );
           })}
         </svg>
+        </>
       )}
       <IdeaDetailPanel idea={selected} onClose={() => setSelected(null)} />
     </div>

@@ -1915,3 +1915,16 @@ html[data-theme="dark"] .chip.kind-demo {
     to { transform: translateY(0); }
   }
 }
+
+/* ── Ideas filter strip ─────────────────────────────────────────── */
+.ideas-filter-strip {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  gap: 24px;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+.ideas-filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
