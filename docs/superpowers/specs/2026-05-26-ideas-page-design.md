@@ -226,7 +226,7 @@ Single `createClient(...)` call with `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC
 
 ### `lib/ideas.ts`
 
-Pure utilities: `themeToCluster(theme) → {x, y}`, `commitmentToVisual(commitment) → {radius, opacity, halo}`, `parseIdeaRow(row) → Idea`. Vitest-tested.
+Pure utilities: `themeToCluster(theme) → {x, y}`, `commitmentToVisual(commitment) → {radius, opacity, halo}`, `parseIdeaRow(row) → Idea`. Type-checked via `tsc`; behavior verified at integration points.
 
 ### `components/Nav.tsx` (modified)
 
@@ -243,10 +243,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
 ## Testing
 
-Consistent with the rest of the site, no automated UI tests. Two exceptions:
+Consistent with the rest of the site, no automated tests. Verification per task uses `npx tsc --noEmit` for types and `npm run build` for the full pipeline. One special check:
 
-1. **`lib/ideas.ts`** — Vitest file covering `themeToCluster`, `commitmentToVisual`, `parseIdeaRow`. Pure functions, cheap, easy to break.
-2. **RLS policies** — verified manually after Supabase setup using the SQL editor: confirm anon cannot read PII columns, confirm anon cannot insert with `status != 'pending'`, confirm honeypot is rejected.
+- **RLS policies** — verified manually after Supabase setup using the SQL editor: confirm anon cannot read PII columns, confirm anon cannot insert with `status != 'pending'`, confirm honeypot is rejected.
 
 ### Manual QA checklist
 
