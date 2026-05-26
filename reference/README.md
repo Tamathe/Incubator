@@ -56,7 +56,7 @@ The schema:
       "status": "active|building|kickoff|paused",  // controls visual treatment
       "stage": "Pilot",                // free text shown in status chip
       "area": "Med-Ed",                // free text shown as mono label
-      "leads": "Bernard · Colson · Thé",  // free text
+      "leads": "Trauma · Med-Ed · Founder",  // free text
       "summary": "1–2 plain sentences. No rhetoric.",
       "anchors": ["string", ...],      // bullet items inside the card and hover-reveal
       "open": "Looking for ... .",      // ONLY for status: kickoff — replaces anchors
@@ -65,11 +65,11 @@ The schema:
   ],
 
   "log": [                              // Activity feed, NEWEST FIRST
-    { "date": "2026-05-22", "project": "Markey", "note": "Kickoff — Pam Hull committed" }
+    { "date": "2026-05-22", "project": "Markey", "note": "Kickoff — Oncology lead committed" }
   ],
 
   "leads": [                            // Faculty/collaborator block
-    { "initials": "TT", "name": "Tama Thé, MD", "role": "Founder · EM", "areas": ["Med-Ed", "Pop Health"] }
+    { "initials": "F1", "name": "Founder, MD", "role": "Emergency Medicine", "areas": ["Med-Ed", "Pop Health"] }
   ]
 }
 ```
@@ -235,6 +235,6 @@ assets/
 The JSON block in `site/index.html` carries the **current real content** as of May 2026. Use it as the canonical source when porting:
 
 - **Active projects**: Socratic Tutor (UKCOM Foundations AI tutor), KY-AHEAD ($475K state-funded cancer-screening outreach), NCIPP (K-2 teacher PD platform)
-- **Just kicked off**: DROME (whole-blood drone delivery, Bernard + Bailey), Virtual Clinic (AI patient sims, Hall + Ayers), Markey HPV/Pap patient ed (Hull + Canedo)
-- **Leads**: Tama Thé, Andrew Bernard, Pamela Hull, Alan Hall, Sean Bailey, Bin Huang
+- **Just kicked off**: DROME (whole-blood drone delivery, Trauma + Aerospace leads), Virtual Clinic (AI patient sims, Curriculum + Sim leads), Markey HPV/Pap patient ed (Oncology + Patient Ed leads)
+- **Leads**: Founder (MD · EM), Trauma Chief (MD), Oncology Lead (PhD · Markey), Curriculum Dean (MD), Aerospace Lead (PhD), Data Linkage POC (PhD · KCR)
 - **Meeting**: Fridays at noon in Microsoft Teams

@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-25
 **Status:** Approved, ready for implementation plan
-**Author:** Tama Thé (via brainstorm w/ Claude)
+**Author:** Group lead (via brainstorm w/ Claude)
 
 ## Goal
 
@@ -66,7 +66,7 @@ export interface ActionItem {
   id: string;                  // stable slug
   project: string;             // project id from projects[]
   owner: string;               // initials (matches Lead.initials) or freeform
-  body: string;                // "Send DSA draft to Bin"
+  body: string;                // "Send DSA draft to KCR data POC"
   created: string;             // ISO date
   due?: string;                // ISO date
   status: ActionStatus;
@@ -77,7 +77,7 @@ export interface Blocker {
   id: string;
   project: string;             // project id
   body: string;                // "Awaiting DSA review"
-  blockedBy?: string;          // "Bin Huang" — free text, optional
+  blockedBy?: string;          // "KCR legal" — free text, optional
   created: string;
   resolved?: string;           // ISO date when no longer blocking
 }
@@ -194,7 +194,7 @@ Thresholds adjustable in `lib/derive.ts`. Color values use existing CSS tokens (
 These are content-only or attribute-only additions to existing elements:
 
 1. **Footer "last updated" link** — wrap the existing date span in an `<a>` pointing at the GitHub commits view for `content/site.ts`. No new pixels.
-2. **Footer curator line** — add `Last curated by Tama · [date]` immediately below the existing footer-bottom row. Single new content line.
+2. **Footer curator line** — add `Last curated by the group lead · [date]` immediately below the existing footer-bottom row. Single new content line.
 3. **Footer changelog link** (optional, discoverable) — small link in the existing Explore column: `Changelog →`.
 
 ## `/changelog` page
@@ -258,7 +258,7 @@ No new test framework. Validation matches the existing build pipeline:
 - [ ] Project card hover reveal includes open actions when present.
 - [ ] Project card top strip shows staleness label.
 - [ ] Footer "last updated" links to GitHub commits view.
-- [ ] Footer includes "Last curated by Tama · [date]" line.
+- [ ] Footer includes "Last curated by the group lead · [date]" line.
 - [ ] `/changelog` page exists, week-grouped, generated from `git log`.
 - [ ] Seeded test data demonstrates all surfaces working.
 - [ ] All builds clean; no regressions in dark mode, light mode, mobile, or desktop.
