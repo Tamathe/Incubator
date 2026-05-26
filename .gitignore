@@ -27,3 +27,9 @@ Thumbs.db
 
 # generated at build time by scripts/build-changelog.mjs
 app/changelog/data.json
+
+# prisma generated client
+app/generated/
+
+# vitest
+coverage/
