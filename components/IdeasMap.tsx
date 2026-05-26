@@ -14,6 +14,7 @@ import {
   parseIdeaRow,
 } from "@/lib/ideas";
 import IdeaDetailPanel from "./IdeaDetailPanel";
+import IdeaIntakeDrawer from "./IdeaIntakeDrawer";
 
 type LoadState = "loading" | "ready" | "error" | "disabled";
 
@@ -26,6 +27,7 @@ export default function IdeasMap() {
   const [hovered, setHovered] = useState<string | null>(null);
   const [themeFilter, setThemeFilter] = useState<Set<IdeaTheme>>(new Set());
   const [commitmentFilter, setCommitmentFilter] = useState<Set<IdeaCommitment>>(new Set());
+  const [intakeOpen, setIntakeOpen] = useState(false);
 
   function toggleTheme(t: IdeaTheme) {
     setThemeFilter((prev) => {
@@ -140,6 +142,9 @@ export default function IdeasMap() {
 
   return (
     <div ref={containerRef} className="ideas-map container">
+      <button className="add-idea-pill" onClick={() => setIntakeOpen(true)}>
+        + Add your idea
+      </button>
       {state === "loading" && <div className="ideas-state">Loading…</div>}
       {state === "error" && (
         <div className="ideas-state ideas-state--error">
@@ -238,6 +243,11 @@ export default function IdeasMap() {
         </>
       )}
       <IdeaDetailPanel idea={selected} onClose={() => setSelected(null)} />
+      <IdeaIntakeDrawer
+        open={intakeOpen}
+        onClose={() => setIntakeOpen(false)}
+        onSubmitted={() => { /* refetch lands in Task 11 */ }}
+      />
     </div>
   );
 }

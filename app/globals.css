@@ -1928,3 +1928,79 @@ html[data-theme="dark"] .chip.kind-demo {
   flex-wrap: wrap;
 }
 .ideas-filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ── Add idea pill ─────────────────────────────── */
+.add-idea-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 51, 160, 0.2);
+  transition: transform 120ms var(--ease);
+}
+.add-idea-pill:hover { transform: translateY(-1px); }
+
+/* ── Idea intake drawer ────────────────────────── */
+.idea-drawer {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 480px;
+  max-width: 100vw;
+  height: calc(100vh - 80px);
+  background: var(--bg-elev);
+  border-left: 1px solid var(--line);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  z-index: 60;
+  animation: idea-panel-slide 200ms var(--ease);
+}
+.idea-drawer-head { padding: 24px 24px 16px; border-bottom: 1px solid var(--line); position: relative; }
+.idea-drawer-title { font-size: 22px; font-weight: 700; line-height: 1.2; margin: 8px 0 0; }
+.idea-drawer-body {
+  padding: 16px 24px 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+}
+.idea-drawer-toggle {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  padding: 0;
+}
+.idea-drawer-optional { display: flex; flex-direction: column; gap: 18px; }
+.idea-drawer-error {
+  color: var(--alert);
+  font-size: 13px;
+  background: rgba(185, 28, 28, 0.06);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+@media (max-width: 767px) {
+  .idea-drawer {
+    top: auto; bottom: 0; right: 0; left: 0;
+    width: 100vw; height: 90vh;
+    border-left: none; border-top: 1px solid var(--line);
+    animation: idea-panel-slide-up 200ms var(--ease);
+  }
+}
