@@ -7,6 +7,11 @@ import type {
   ProjectStatus,
   SiteContent,
 } from "@/content/site";
+import type {
+  AppliedUpdate,
+  InboxData,
+  UpdateField,
+} from "@/lib/inbox-types";
 import { nextSession } from "@/lib/session";
 
 /**
@@ -211,4 +216,82 @@ export function stalenessLabel(
   if (d >= rules.alert) return { text: `STALE ${d}d`, level: "alert" };
   if (d >= rules.warn)  return { text: `STALE ${d}d`, level: "warn" };
   return { text: `${d}d`, level: "muted" };
+}
+
+/**
+ * Merge curator-approved inbox items into a SiteContent. Returns a fresh
+ * SiteContent — does not mutate the input. content/site.ts always wins
+ * on id collisions; updates apply in chronological order of appliedAt.
+ *
+ * Unknown update targetIds are silently dropped (defensive — already
+ * filtered upstream at build time).
+ */
+export function mergeInbox(content: SiteContent, inbox: InboxData): SiteContent {
+  const existingActionIds = new Set(content.actions.map((a) => a.id));
+  const existingBlockerIds = new Set(content.blockers.map((b) => b.id));
+  const existingDecisionIds = new Set(content.decisions.map((d) => d.id));
+
+  const mergedActions = [...content.actions];
+  for (const a of inbox.actions) {
+    if (existingActionIds.has(a.id)) {
+      process.stderr.write(
+        `[mergeInbox] duplicate action id "${a.id}" — content/site.ts wins, inbox dropped.\n`
+      );
+      continue;
+    }
+    mergedActions.push(a);
+  }
+
+  const mergedBlockers = [...content.blockers];
+  for (const b of inbox.blockers) {
+    if (existingBlockerIds.has(b.id)) {
+      process.stderr.write(
+        `[mergeInbox] duplicate blocker id "${b.id}" — content/site.ts wins, inbox dropped.\n`
+      );
+      continue;
+    }
+    mergedBlockers.push(b);
+  }
+
+  const mergedDecisions = [...content.decisions];
+  for (const d of inbox.decisions) {
+    if (existingDecisionIds.has(d.id)) {
+      process.stderr.write(
+        `[mergeInbox] duplicate decision id "${d.id}" — content/site.ts wins, inbox dropped.\n`
+      );
+      continue;
+    }
+    mergedDecisions.push(d);
+  }
+
+  const sortedUpdates = [...inbox.updates].sort((a, b) =>
+    a.appliedAt < b.appliedAt ? -1 : a.appliedAt > b.appliedAt ? 1 : 0
+  );
+
+  for (const u of sortedUpdates) {
+    if (!applyToCollection(mergedActions, u)) {
+      if (!applyToCollection(mergedBlockers, u)) {
+        applyToCollection(mergedDecisions, u);
+      }
+    }
+  }
+
+  return {
+    ...content,
+    actions: mergedActions,
+    blockers: mergedBlockers,
+    decisions: mergedDecisions,
+  };
+}
+
+function applyToCollection<T extends { id: string }>(
+  items: T[],
+  update: AppliedUpdate
+): boolean {
+  const idx = items.findIndex((x) => x.id === update.targetId);
+  if (idx === -1) return false;
+  const next = { ...items[idx] } as Record<string, unknown>;
+  next[update.field as UpdateField] = update.value;
+  items[idx] = next as T;
+  return true;
 }
