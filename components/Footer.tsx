@@ -70,7 +70,7 @@ export default function Footer() {
           </span>
         </div>
         <div className="foot-curator">
-          Last curated by Tama · {lastUpdated}
+          Last curated by the group lead · {lastUpdated}
         </div>
       </div>
     </footer>

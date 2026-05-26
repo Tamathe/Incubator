@@ -84,7 +84,7 @@ export interface Blocker {
   /** project id */
   project: string;
   body: string;
-  /** free text — e.g. "Bin Huang" */
+  /** free text — e.g. "KCR legal" */
   blockedBy?: string;
   /** ISO date */
   created: string;
@@ -131,9 +131,9 @@ export const content: SiteContent = {
     hour: 12,
     minute: 0,
     venue: "Microsoft Teams",
-    teamsUrl: "#teams-link",
+    teamsUrl: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzZhMTNiNjYtODcwNy00MjBhLTg3MmQtNmZhNDU4MGVlMjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222b30530b-69b6-4457-b818-481cb53d42ae%22%2c%22Oid%22%3a%22e5e67874-0b35-4528-b862-6b2d1a6b1fc2%22%7d",
     agenda: [
-      "DROME — Bernard & Bailey on initial scope",
+      "DROME — Trauma & Aerospace leads on initial scope",
       "KY-AHEAD — KCR data-linkage status",
       "Open pitches (~15 min)",
     ],
@@ -145,7 +145,7 @@ export const content: SiteContent = {
       status: "active",
       stage: "Pilot",
       area: "Med-Ed",
-      leads: "Bernard · Colson · Thé",
+      leads: "Trauma · Med-Ed · Founder",
       summary:
         "AI tutor trained on the UKCOM Foundations curriculum. Generates USMLE-style cases and tracks where students get stuck.",
       anchors: [
@@ -162,7 +162,7 @@ export const content: SiteContent = {
       status: "active",
       stage: "Phase 1 — data linkage",
       area: "Population Health",
-      leads: "Thé · Huang (KCR)",
+      leads: "Founder · KCR data POC",
       summary:
         "Identifies Medicaid patients overdue for colorectal, cervical, and lung cancer screening, then uses AI-assisted outreach to bring them in for care.",
       anchors: [
@@ -180,7 +180,7 @@ export const content: SiteContent = {
       status: "building",
       stage: "Phase 2 shipped",
       area: "Ed-Tech",
-      leads: "Thé",
+      leads: "Founder",
       summary:
         "Prototype of a professional-development platform for K–2 teachers. Role-specific views for Teacher, Coach, Admin, and Family.",
       anchors: [
@@ -198,7 +198,7 @@ export const content: SiteContent = {
       status: "kickoff",
       stage: "Just kicked off",
       area: "Trauma · Aerospace",
-      leads: "Bernard · Bailey",
+      leads: "Trauma · Aerospace co-leads",
       summary:
         "Drone-based delivery of whole blood for rural and emergency trauma care.",
       open:
@@ -212,7 +212,7 @@ export const content: SiteContent = {
       status: "kickoff",
       stage: "Just kicked off",
       area: "Med-Ed",
-      leads: "Hall · Ayers",
+      leads: "Curriculum · Sim co-leads",
       summary:
         "AI-simulated patients for communication-skills training in health-professions education.",
       open:
@@ -226,7 +226,7 @@ export const content: SiteContent = {
       status: "kickoff",
       stage: "Just kicked off",
       area: "Oncology · Patient Ed",
-      leads: "Hull · Canedo",
+      leads: "Oncology · Patient Ed co-leads",
       summary:
         "AI chatbot that explains abnormal HPV and Pap results to patients, to support timely follow-up such as colposcopy.",
       open:
@@ -235,28 +235,28 @@ export const content: SiteContent = {
     },
   ],
   log: [
-    { date: "2026-05-22", project: "Markey · HPV/Pap", note: "Kickoff — Pam Hull & Jose Canedo committed" },
-    { date: "2026-05-20", project: "DROME",            note: "Andrew Bernard & Sean Bailey aligned on co-lead structure" },
-    { date: "2026-05-18", project: "Virtual Clinic",   note: "Alan Hall & Clint Ayers signed on" },
-    { date: "2026-05-15", project: "KY-AHEAD",         note: "KCR/Markey kickoff — DSA path opened with Bin Huang" },
+    { date: "2026-05-22", project: "Markey · HPV/Pap", note: "Kickoff — Oncology & Patient Ed leads committed" },
+    { date: "2026-05-20", project: "DROME",            note: "Trauma & Aerospace leads aligned on co-lead structure" },
+    { date: "2026-05-18", project: "Virtual Clinic",   note: "Curriculum & Sim leads signed on" },
+    { date: "2026-05-15", project: "KY-AHEAD",         note: "KCR/Markey kickoff — DSA path opened with KCR data POC" },
     { date: "2026-05-10", project: "Socratic Tutor",   note: "v1.4 reasoning-trace pass — 300+ sessions logged" },
     { date: "2026-05-02", project: "NCIPP",            note: "Phase 2 shipped — 15 screens, 4 roles, live on Render" },
     { date: "2026-04-13", project: "KY-AHEAD",         note: "CHFS kickoff — $475K SUP grant signed" },
   ],
   leads: [
-    { initials: "TT", name: "Tama Thé, MD",       role: "Founder · Emergency Medicine",                areas: ["Med-Ed", "Population Health"] },
-    { initials: "AB", name: "Andrew Bernard, MD", role: "Chief of Trauma Surgery",                     areas: ["Trauma", "Med-Ed"] },
-    { initials: "PH", name: "Pamela Hull, PhD",   role: "Associate Director · Markey / Chandler",      areas: ["Oncology", "Patient Ed"] },
-    { initials: "AH", name: "Alan Hall, MD",      role: "Assistant Dean · Curriculum Integration",     areas: ["Med-Ed", "Sim"] },
-    { initials: "SB", name: "Sean Bailey, PhD",   role: "Aerospace Engineering",                       areas: ["Aerospace", "Logistics"] },
-    { initials: "BH", name: "Bin Huang, PhD",     role: "Kentucky Cancer Registry · Data linkage POC", areas: ["Data", "Oncology"] },
+    { initials: "F1", name: "Founder, MD",            role: "Emergency Medicine",                          areas: ["Med-Ed", "Population Health"] },
+    { initials: "T1", name: "Trauma Chief, MD",       role: "Trauma Surgery",                              areas: ["Trauma", "Med-Ed"] },
+    { initials: "O1", name: "Oncology Lead, PhD",     role: "Markey / Chandler",                           areas: ["Oncology", "Patient Ed"] },
+    { initials: "C1", name: "Curriculum Dean, MD",    role: "UKCOM Curriculum Integration",                areas: ["Med-Ed", "Sim"] },
+    { initials: "A1", name: "Aerospace Lead, PhD",    role: "Aerospace Engineering",                       areas: ["Aerospace", "Logistics"] },
+    { initials: "D1", name: "Data Linkage POC, PhD",  role: "Kentucky Cancer Registry",                    areas: ["Data", "Oncology"] },
   ],
   actions: [
     {
       id: "ahead-dsa-draft",
       project: "ahead",
-      owner: "TT",
-      body: "Send DSA draft to Bin Huang",
+      owner: "F1",
+      body: "Send DSA draft to KCR data POC",
       created: "2026-05-23",
       due: "2026-05-29",
       status: "open",
@@ -264,7 +264,7 @@ export const content: SiteContent = {
     {
       id: "ahead-irb-path",
       project: "ahead",
-      owner: "TT",
+      owner: "F1",
       body: "Confirm IRB protocol path with Markey",
       created: "2026-05-20",
       status: "open",
@@ -272,7 +272,7 @@ export const content: SiteContent = {
     {
       id: "drome-faa-call",
       project: "drome",
-      owner: "SB",
+      owner: "A1",
       body: "Schedule FAA exploratory call",
       created: "2026-05-22",
       due: "2026-06-02",
@@ -281,15 +281,15 @@ export const content: SiteContent = {
     {
       id: "drome-ems-intro",
       project: "drome",
-      owner: "AB",
-      body: "Intro Bernard ↔ regional EMS director",
+      owner: "T1",
+      body: "Intro trauma chief ↔ regional EMS director",
       created: "2026-05-24",
       status: "open",
     },
     {
       id: "tutor-v14-analytics",
       project: "socratic-tutor",
-      owner: "TT",
+      owner: "F1",
       body: "Pull v1.4 stuck-step heatmap",
       created: "2026-05-18",
       due: "2026-05-30",
@@ -298,8 +298,8 @@ export const content: SiteContent = {
     {
       id: "markey-hpv-draft",
       project: "markey-hpv",
-      owner: "PH",
-      body: "First content draft for Canedo review",
+      owner: "O1",
+      body: "First content draft for patient-ed review",
       created: "2026-05-24",
       due: "2026-06-05",
       status: "open",
@@ -307,7 +307,7 @@ export const content: SiteContent = {
     {
       id: "vc-rubric-intake",
       project: "virtual-clinic",
-      owner: "AH",
+      owner: "C1",
       body: "Collect existing OSCE rubrics from Sim center",
       created: "2026-05-19",
       status: "open",
@@ -315,7 +315,7 @@ export const content: SiteContent = {
     {
       id: "ncipp-render-handoff",
       project: "ncipp",
-      owner: "TT",
+      owner: "F1",
       body: "Write Render deploy runbook",
       created: "2026-05-12",
       status: "done",

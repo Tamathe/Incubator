@@ -8,6 +8,7 @@ import ProjectCard from "@/components/ProjectCard";
 import KickoffCard from "@/components/KickoffCard";
 import PersonCard from "@/components/PersonCard";
 import LogList from "@/components/LogList";
+import PitchSection from "@/components/PitchSection";
 import CTABanner from "@/components/CTABanner";
 import Logo from "@/components/Logo";
 import { fmtIsoDate } from "@/lib/session";
@@ -180,6 +181,9 @@ export default function HomePage() {
         </div>
         <LogList />
       </section>
+
+      {/* ───── Pitch a project ───── */}
+      <PitchSection />
 
       {/* ───── CTA banner ───── */}
       <CTABanner />

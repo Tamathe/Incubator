@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -23,7 +24,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can faculty be involved?",
-    a: "Yes. Most projects have a faculty PI or clinical sponsor. Email Dr. Thé to discuss seeding or sponsoring a project.",
+    a: "Yes. Most projects have a faculty PI or clinical sponsor. Email the group lead to discuss seeding or sponsoring a project.",
   },
   {
     q: "Is this for credit?",
@@ -35,7 +36,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Who funds this?",
-    a: "Funding comes from CCTS pilot funds, the Zwischenberger–Rounsavall Innovation Award, faculty seed money, and a $475K SUP grant from the KY Cabinet for Health and Family Services. Active applications include Macy and Precision Medicine grants.",
+    a: "Funding comes from CCTS pilot funds, an Innovation Award, faculty seed money, and a $475K SUP grant from the KY Cabinet for Health and Family Services. Active applications include Macy and Precision Medicine grants.",
   },
 ];
 
@@ -143,8 +144,8 @@ export default function JoinPage() {
               <span>② Who it affects</span>
               <span>③ What you&apos;d build first</span>
             </div>
-            <a
-              href="#rsvp"
+            <Link
+              href="/pitch"
               className="cta"
               style={{
                 color: "var(--accent)",
@@ -152,8 +153,8 @@ export default function JoinPage() {
                   "color-mix(in oklab, var(--bg) 20%, transparent)",
               }}
             >
-              Submit a pitch <span>→</span>
-            </a>
+              Start an AI-guided intake <span>→</span>
+            </Link>
           </div>
 
           <div className="join-card">
@@ -280,9 +281,9 @@ export default function JoinPage() {
                 incubator@uky.edu
               </a>
               <br />
-              partnerships · tama@uky.edu
+              partnerships · partnerships@uky.edu
               <br />
-              press · graham.hill@uky.edu
+              press · press@uky.edu
             </p>
           </div>
           <div className="card">
