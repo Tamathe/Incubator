@@ -159,7 +159,7 @@ function fridayNoonRange(isoDate: string): { start: Date; end: Date } {
   return { start, end };
 }
 
-const KIND_LABEL: Record<MeetingSession["kind"], string> = {
+export const KIND_LABEL: Record<MeetingSession["kind"], string> = {
   pitch: "Pitch",
   demo: "Demo",
   presentation: "Presentation",

@@ -1,16 +1,14 @@
-import { content, type MeetingSession } from "@/content/site";
-import { upcomingFridays, toIsoDate, meetingsForDate } from "@/lib/calendar";
+import { content } from "@/content/site";
+import {
+  KIND_LABEL,
+  meetingsForDate,
+  toIsoDate,
+  upcomingFridays,
+} from "@/lib/calendar";
 import AddToCalendarButton from "@/components/AddToCalendarButton";
 import SubscribeAllButton from "@/components/SubscribeAllButton";
 
 const HORIZON = 8;
-const KIND_LABEL: Record<MeetingSession["kind"], string> = {
-  pitch: "Pitch",
-  demo: "Demo",
-  presentation: "Presentation",
-  roundtable: "Roundtable",
-  cancelled: "Cancelled",
-};
 
 function fmtDate(d: Date) {
   const weekday = d.toLocaleDateString("en-US", { weekday: "short" });
