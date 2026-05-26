@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 export default defineConfig({
   test: {
     environment: "node",
-    include: ["lib/**/*.test.ts", "app/api/**/*.test.ts"],
+    include: ["lib/**/*.test.ts", "app/api/**/*.test.ts", "tests/**/*.test.ts"],
     setupFiles: ["./vitest.setup.ts"],
   },
   resolve: {
