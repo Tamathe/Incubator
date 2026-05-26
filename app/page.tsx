@@ -2,14 +2,15 @@ import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DotGrid from "@/components/DotGrid";
-import Countdown from "@/components/Countdown";
 import RightNowBar from "@/components/RightNowBar";
 import ProjectCard from "@/components/ProjectCard";
 import KickoffCard from "@/components/KickoffCard";
 import PersonCard from "@/components/PersonCard";
 import LogList from "@/components/LogList";
+import OnTheTableSection from "@/components/OnTheTableSection";
 import PitchSection from "@/components/PitchSection";
 import CTABanner from "@/components/CTABanner";
+import PartnersStrip from "@/components/PartnersStrip";
 import Logo from "@/components/Logo";
 import { fmtIsoDate } from "@/lib/session";
 
@@ -38,20 +39,10 @@ export default function HomePage() {
               height={542}
             />
 
-            <div className="hero-meta">
-              <span className="chip live">
-                <span>{content.cohort}</span>
-              </span>
-              <span className="countdown">
-                <span className="label">Next meeting in</span>
-                <Countdown variant="short" />
-              </span>
-            </div>
-
             <h1 className="h-display">
               A working group at the
               <br />
-              <em>UK College of Medicine</em>.
+              <em>University of Kentucky</em>.
             </h1>
 
             <p className="lead" style={{ marginTop: 28 }}>
@@ -77,9 +68,6 @@ export default function HomePage() {
 
       {/* ───── Active projects ───── */}
       <section className="section container" id="projects">
-        <div className="section-label">
-          <span className="idx">01</span> <span>Active projects</span>
-        </div>
         <div className="section-head">
           <h2 className="h1" style={{ maxWidth: "18ch" }}>
             Current projects.
@@ -106,9 +94,6 @@ export default function HomePage() {
 
       {/* ───── How it works ───── */}
       <section className="section container">
-        <div className="section-label">
-          <span className="idx">02</span> <span>How it works</span>
-        </div>
         <h2
           className="h1"
           style={{
@@ -150,9 +135,6 @@ export default function HomePage() {
 
       {/* ───── Faculty leads ───── */}
       <section className="section container" id="team">
-        <div className="section-label">
-          <span className="idx">03</span> <span>People</span>
-        </div>
         <div className="section-head">
           <h2 className="h1" style={{ maxWidth: "16ch" }}>
             Faculty and collaborators.
@@ -170,9 +152,6 @@ export default function HomePage() {
 
       {/* ───── Activity log ───── */}
       <section className="section container" id="log">
-        <div className="section-label">
-          <span className="idx">04</span> <span>Activity log</span>
-        </div>
         <div className="section-head">
           <h2 className="h1" style={{ maxWidth: "22ch" }}>
             Recent updates.
@@ -182,11 +161,17 @@ export default function HomePage() {
         <LogList />
       </section>
 
+      {/* ───── What's on the table ───── */}
+      <OnTheTableSection />
+
       {/* ───── Pitch a project ───── */}
       <PitchSection />
 
       {/* ───── CTA banner ───── */}
       <CTABanner />
+
+      {/* ───── Partners ───── */}
+      <PartnersStrip />
 
       <Footer />
     </>
