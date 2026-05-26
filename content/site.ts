@@ -14,6 +14,9 @@
  *   actions[]   Open / closed action items per project.
  *   blockers[]  Active / resolved blockers per project.
  *   decisions[] Queued / decided decisions per session.
+ *   outcomes[]  Grants, papers, products, students, media, talks. /outcomes.
+ *   partners[]  Real institutional relationships. Sponsors strip on homepage.
+ *   artifacts[] Working products with public URLs. /built.
  * ─────────────────────────────────────────────────────────────────────
  */
 
@@ -114,6 +117,54 @@ export interface Decision {
   decidedAt?: string;
 }
 
+export type OutcomeKind = "grant" | "paper" | "product" | "student" | "media" | "talk";
+
+export interface Outcome {
+  id: string;
+  kind: OutcomeKind;
+  /** Optional — links to a project in projects[] */
+  project?: string;
+  title: string;
+  /** Free-text. Grants: "$475K". Students: "8 trained". Papers: leave blank. */
+  value?: string;
+  /** ISO date */
+  date: string;
+  /** Optional public link */
+  link?: string;
+  /** Optional one-sentence context */
+  note?: string;
+}
+
+export interface Partner {
+  id: string;
+  /** Public name */
+  name: string;
+  /** "Funder", "Data partner", "Clinical partner", "Home institution" */
+  role: string;
+  /** Optional — for project-specific partnerships */
+  project?: string;
+  /** Public-facing one-sentence relationship summary */
+  note?: string;
+  /** Optional path under public/ for logo image */
+  logo?: string;
+}
+
+export type ArtifactKind = "live-demo" | "prototype" | "repo" | "paper" | "deck";
+
+export interface Artifact {
+  id: string;
+  /** project id from projects[] */
+  project: string;
+  name: string;
+  /** Public URL — required */
+  url: string;
+  kind: ArtifactKind;
+  /** Optional path under public/ for a thumbnail */
+  thumb?: string;
+  /** Short one-liner shown under the card title */
+  note?: string;
+}
+
 export type SessionKind =
   | "pitch"
   | "demo"
@@ -146,6 +197,9 @@ export interface SiteContent {
   actions: ActionItem[];
   blockers: Blocker[];
   decisions: Decision[];
+  outcomes: Outcome[];
+  partners: Partner[];
+  artifacts: Artifact[];
   meetings: MeetingSession[];
 }
 
@@ -389,6 +443,73 @@ export const content: SiteContent = {
       status: "decided",
       outcome: "Hold Phase 3 — focus on cohort schools first",
       decidedAt: "2026-05-15",
+    },
+  ],
+  outcomes: [
+    {
+      id: "ahead-chfs-grant-2026",
+      kind: "grant",
+      project: "ahead",
+      title: "CHFS SUP grant · KY-AHEAD launch",
+      value: "$475K",
+      date: "2026-04-13",
+      note: "Funded the data-linkage phase. Kentucky Cabinet for Health & Family Services.",
+    },
+    {
+      id: "ncipp-phase2",
+      kind: "product",
+      project: "ncipp",
+      title: "NCIPP Phase 2 — 15 screens across 4 roles",
+      date: "2026-05-02",
+      link: "https://ncipp-prototype.onrender.com",
+      note: "Teacher · Coach · Admin · Family role views shipped.",
+    },
+    {
+      id: "socratic-tutor-v14",
+      kind: "product",
+      project: "socratic-tutor",
+      title: "Socratic Tutor v1.4 — reasoning-trace pass",
+      value: "300+ sessions",
+      date: "2026-05-10",
+      note: "Pilot inside UKCOM Foundations curriculum.",
+    },
+  ],
+  partners: [
+    {
+      id: "chfs",
+      name: "KY Cabinet for Health & Family Services",
+      role: "Funder",
+      project: "ahead",
+      note: "Funded KY-AHEAD Phase 1 via the SUP grant.",
+    },
+    {
+      id: "kcr",
+      name: "Kentucky Cancer Registry",
+      role: "Data partner",
+      project: "ahead",
+      note: "Patient identification and data linkage.",
+    },
+    {
+      id: "markey",
+      name: "Markey Cancer Center",
+      role: "Clinical partner",
+      note: "Oncology projects — KY-AHEAD and Patient Ed.",
+    },
+    {
+      id: "ukcom",
+      name: "UK College of Medicine",
+      role: "Home institution",
+      note: "The working group lives here.",
+    },
+  ],
+  artifacts: [
+    {
+      id: "ncipp-render",
+      project: "ncipp",
+      name: "NCIPP Phase 2 prototype",
+      url: "https://ncipp-prototype.onrender.com",
+      kind: "live-demo",
+      note: "React + Babel-standalone · no build step. Four role-specific views.",
     },
   ],
   meetings: [
