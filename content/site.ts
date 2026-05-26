@@ -110,6 +110,28 @@ export interface Decision {
   decidedAt?: string;
 }
 
+export type SessionKind =
+  | "pitch"
+  | "demo"
+  | "presentation"
+  | "roundtable"
+  | "open"
+  | "canceled";
+
+export interface MeetingSession {
+  /** ISO Friday date, e.g. "2026-05-29". */
+  date: string;
+  kind: SessionKind;
+  /** Short headline. */
+  title: string;
+  /** 1–2 sentence summary. */
+  blurb?: string;
+  /** Freeform presenters line, e.g. "Bernard · Bailey". */
+  presenters?: string;
+  /** Optional link to projects[] by id. */
+  projectId?: string;
+}
+
 export interface SiteContent {
   /** ISO date */
   lastUpdated: string;
@@ -121,6 +143,7 @@ export interface SiteContent {
   actions: ActionItem[];
   blockers: Blocker[];
   decisions: Decision[];
+  meetings: MeetingSession[];
 }
 
 export const content: SiteContent = {
@@ -363,6 +386,44 @@ export const content: SiteContent = {
       status: "decided",
       outcome: "Hold Phase 3 — focus on cohort schools first",
       decidedAt: "2026-05-15",
+    },
+  ],
+  meetings: [
+    {
+      date: "2026-05-29",
+      kind: "pitch",
+      title: "DROME — initial scope",
+      blurb: "Bernard & Bailey on EMS workflow and the FAA path.",
+      presenters: "Bernard · Bailey",
+      projectId: "drome",
+    },
+    {
+      date: "2026-05-29",
+      kind: "presentation",
+      title: "KY-AHEAD data linkage update",
+      blurb: "Where the KCR DSA stands.",
+      presenters: "Thé · Huang",
+      projectId: "ahead",
+    },
+    {
+      date: "2026-06-05",
+      kind: "roundtable",
+      title: "Cohort check-in",
+      blurb: "Three minutes per active project.",
+    },
+    {
+      date: "2026-06-12",
+      kind: "demo",
+      title: "NCIPP Phase 2 walkthrough",
+      blurb: "Live tour of the 15-screen prototype.",
+      presenters: "Thé",
+      projectId: "ncipp",
+    },
+    {
+      date: "2026-06-26",
+      kind: "canceled",
+      title: "No meeting — holiday",
+      blurb: "Group is off this week.",
     },
   ],
 };
