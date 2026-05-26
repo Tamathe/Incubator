@@ -19,7 +19,7 @@ export default function PitchSection() {
   return (
     <section className="section container" id="pitch">
       <div className="section-label">
-        <span className="idx">05</span> <span>Pitch a project</span>
+        <span className="idx">06</span> <span>Pitch a project</span>
       </div>
 
       <div className="pitch-section-grid">
