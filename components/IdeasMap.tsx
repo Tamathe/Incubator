@@ -246,7 +246,7 @@ export default function IdeasMap() {
       <IdeaIntakeDrawer
         open={intakeOpen}
         onClose={() => setIntakeOpen(false)}
-        onSubmitted={() => { /* refetch lands in Task 11 */ }}
+        onInsert={(row) => setIdeas((prev) => [parseIdeaRow(row), ...prev])}
       />
     </div>
   );

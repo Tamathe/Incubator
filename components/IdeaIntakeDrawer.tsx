@@ -8,11 +8,12 @@ import {
   COMMITMENT_LABELS,
   isUkEmail,
 } from "@/lib/ideas";
+import { supabase } from "@/lib/supabase";
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  onSubmitted: () => void;
+  onInsert: (row: Record<string, unknown>) => void;
 }
 
 const LOOKING_FOR_OPTIONS = [
@@ -33,7 +34,7 @@ const ROLE_OPTIONS = [
   "Community partner",
 ];
 
-export default function IdeaIntakeDrawer({ open, onClose, onSubmitted }: Props) {
+export default function IdeaIntakeDrawer({ open, onClose, onInsert }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -72,14 +73,36 @@ export default function IdeaIntakeDrawer({ open, onClose, onSubmitted }: Props) 
       setError("Pick a theme and a commitment level.");
       return;
     }
+    if (!supabase) {
+      setError("Submissions are temporarily unavailable.");
+      return;
+    }
     setSubmitting(true);
-    // Real submit lands in the next task.
+    const { data, error: dbError } = await supabase
+      .from("ideas")
+      .insert({
+        title: title.trim(),
+        theme,
+        commitment,
+        problem: problem.trim(),
+        affects: affects.trim() || null,
+        build_first: buildFirst.trim() || null,
+        looking_for: Array.from(lookingFor),
+        submitter_name: name.trim(),
+        submitter_email: email.trim(),
+        submitter_role: role.trim() || null,
+        honeypot: honeypot,
+      })
+      .select("id, created_at, status, title, theme, commitment, problem, affects, build_first, looking_for, submitter_name, submitter_role")
+      .single();
     setSubmitting(false);
+    if (dbError || !data) {
+      setError("Couldn't submit — please try again.");
+      return;
+    }
+    onInsert(data as Record<string, unknown>);
     setSubmitted(true);
-    setTimeout(() => {
-      onSubmitted();
-      onClose();
-    }, 1500);
+    setTimeout(onClose, 1500);
   }
 
   return (
