@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-accent="blue" data-density="default">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects · AI Incubator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="../assets/logo.png" alt="" />
+      <span>AI Incubator</span>
+      <span class="pipe">/</span>
+      <span class="tag">University of Kentucky</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="index.html#team">Team</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="join.html" class="btn primary sm">Join Friday <span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───── Projects hero ───── -->
+<header class="projects-hero container" style="position:relative; overflow:hidden;">
+  <div class="dotgrid"></div>
+  <div style="position:relative; z-index:2;">
+    <div class="eyebrow" style="margin-bottom: 14px;">Projects · Spring 2026</div>
+    <h1 class="h-display" style="max-width: 22ch;">
+      Current projects.
+    </h1>
+    <p class="lead" style="margin-top: 28px;">
+      Projects span clinical care, medical education, and public health. Each is led by a member of the group. Use the filters to narrow by status or area.
+    </p>
+  </div>
+</header>
+
+<!-- ───── Filter / stats ───── -->
+<section class="container">
+  <div class="projects-filter">
+    <div class="group">
+      <span class="lbl">Status</span>
+      <button class="filter-chip active">All · 14</button>
+      <button class="filter-chip">Active · 6</button>
+      <button class="filter-chip">Pilot</button>
+      <button class="filter-chip">Manuscript</button>
+      <button class="filter-chip">On hold</button>
+    </div>
+    <div class="group" style="margin-left: auto;">
+      <span class="lbl">Area</span>
+      <button class="filter-chip">Med-Ed</button>
+      <button class="filter-chip">Imaging</button>
+      <button class="filter-chip">EM</button>
+      <button class="filter-chip">Public Health</button>
+      <button class="filter-chip">Pediatrics</button>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Grid ───── -->
+<section class="container" style="padding-bottom: calc(80px * var(--d));">
+  <div class="proj-grid big">
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Active · Pilot</span>
+        <span class="area mono">Med-Ed</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <rect x="14" y="18" rx="6" width="170" height="14" fill="var(--ink)" opacity="0.85"/>
+          <rect x="14" y="38" rx="4" width="120" height="6" fill="var(--ink-3)" opacity="0.45"/>
+          <rect x="14" y="68" rx="6" width="200" height="14" fill="var(--accent)" opacity="0.85"/>
+          <rect x="14" y="88" rx="4" width="160" height="6" fill="var(--ink-3)" opacity="0.45"/>
+          <rect x="14" y="100" rx="4" width="92" height="6" fill="var(--ink-3)" opacity="0.45"/>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Socratic Tutor</div>
+          <div class="lead-by">Bernard · Colson · Thé</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Med-Ed · v1.4</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Socratic Tutor</h3>
+          <p class="desc" style="margin-top:10px;">USMLE-style case generation, reasoning traces, and gap analysis — modeled on the UKCOM Foundations curriculum. Now piloting with MS1/MS2 classes.</p>
+        </div>
+        <div>
+          <div class="meta"><span>300+ sessions</span><span>100+ Qs</span><span>KYnsHIP '25</span></div>
+          <a style="margin-top:10px;">Read case study <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">IRB · Patent</span>
+        <span class="area mono">Imaging</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <g transform="translate(120 70)">
+            <circle r="50" fill="none" stroke="var(--ink-3)" stroke-width="0.6" stroke-dasharray="3 4" opacity="0.6"/>
+            <circle r="36" fill="none" stroke="var(--accent)" stroke-width="0.8" opacity="0.7"/>
+            <circle r="20" fill="var(--accent)" opacity="0.6"/>
+            <g stroke="var(--ink-3)" stroke-width="0.5" opacity="0.6">
+              <line x1="-60" y1="0" x2="60" y2="0"/>
+              <line x1="0" y1="-54" x2="0" y2="54"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">PrecisionView™</div>
+          <div class="lead-by">Colson · Ballard · Wong · Wen</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Imaging · Patent</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">PrecisionView™</h3>
+          <p class="desc" style="margin-top:10px;">LiDAR + ML for real-time tissue-volume measurement during surgery. App. No. 63/729,569 · IRB #98719.</p>
+        </div>
+        <div>
+          <div class="meta"><span>$33K Zwischenberger</span><span>Scanning Q2 '26</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Building</span>
+        <span class="area mono">Emergency Med</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <g font-family="Geist Mono, monospace" font-size="9" fill="var(--ink-3)">
+            <text x="16" y="26">EN  ────────▸  EN</text>
+            <text x="16" y="48">EN  ────────▸  ES</text>
+            <text x="16" y="70">EN  ────────▸  SO</text>
+            <text x="16" y="92">EN  ────────▸  VI</text>
+            <text x="16" y="114">EN  ────────▸  ZH</text>
+          </g>
+          <circle cx="200" cy="118" r="4" fill="var(--accent)"/>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Discharge Translator</div>
+          <div class="lead-by">Thé · Bernard</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">EM · Spec</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Discharge Translator</h3>
+          <p class="desc" style="margin-top:10px;">Auto-translates discharge instructions into plain language across 5 target languages. Epic integration in scope.</p>
+        </div>
+        <div>
+          <div class="meta"><span>20% non-English patients</span><span>Epic LLM access pending</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Active</span>
+        <span class="area mono">Med-Ed</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <rect x="16" y="20" rx="3" width="34" height="100" fill="var(--accent)" opacity="0.85"/>
+          <rect x="58" y="50" rx="3" width="34" height="70" fill="var(--accent)" opacity="0.6"/>
+          <rect x="100" y="34" rx="3" width="34" height="86" fill="var(--accent)" opacity="0.7"/>
+          <rect x="142" y="62" rx="3" width="34" height="58" fill="var(--accent)" opacity="0.5"/>
+          <rect x="184" y="44" rx="3" width="34" height="76" fill="var(--accent)" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">AI-Powered Eval Summaries</div>
+          <div class="lead-by">Thé · Seay · Booher</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Med-Ed · Launching</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">AI-Powered Eval Summaries</h3>
+          <p class="desc" style="margin-top:10px;">Aggregates rotation evaluations into actionable feedback. Comparing LLM summaries to faculty for accuracy (IRB #103093).</p>
+        </div>
+        <div>
+          <div class="meta"><span>KYnsHIP '25</span><span>Data collection live</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Manuscript</span>
+        <span class="area mono">Public Health</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <g fill="var(--accent)" opacity="0.75">
+            <rect x="22" y="28" width="22" height="22" rx="2"/>
+            <rect x="48" y="28" width="22" height="22" rx="2" opacity="0.4"/>
+            <rect x="74" y="28" width="22" height="22" rx="2" opacity="0.6"/>
+            <rect x="22" y="54" width="22" height="22" rx="2" opacity="0.8"/>
+            <rect x="48" y="54" width="22" height="22" rx="2"/>
+            <rect x="74" y="54" width="22" height="22" rx="2" opacity="0.3"/>
+            <rect x="100" y="54" width="22" height="22" rx="2" opacity="0.5"/>
+            <rect x="48" y="80" width="22" height="22" rx="2" opacity="0.7"/>
+            <rect x="74" y="80" width="22" height="22" rx="2" opacity="0.5"/>
+            <rect x="100" y="80" width="22" height="22" rx="2" opacity="0.4"/>
+            <rect x="126" y="80" width="22" height="22" rx="2" opacity="0.6"/>
+            <rect x="100" y="28" width="22" height="22" rx="2" opacity="0.3"/>
+          </g>
+          <text x="160" y="36" font-family="Geist Mono, monospace" font-size="9" fill="var(--ink-3)">120 counties</text>
+          <text x="160" y="50" font-family="Geist Mono, monospace" font-size="9" fill="var(--ink-3)">5 metrics</text>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Health Disparities in KY</div>
+          <div class="lead-by">Hargis · Miller · Desai et al.</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Public Health · Drafting</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Health Disparities in Appalachian KY</h3>
+          <p class="desc" style="margin-top:10px;">County-level disparity mapping across 120 KY counties. CCTS Spring poster, Public Health Showcase, podcast. Now drafting for J. Appalachian Health.</p>
+        </div>
+        <div>
+          <div class="meta"><span>CCTS '25</span><span>Manuscript Q3</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Design</span>
+        <span class="area mono">Student Life</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <g transform="translate(20 24)">
+            <rect width="120" height="22" rx="11" fill="var(--ink)" opacity="0.85"/>
+            <rect x="14" y="8" width="80" height="6" rx="3" fill="var(--bg)" opacity="0.9"/>
+          </g>
+          <g transform="translate(60 60)">
+            <rect width="140" height="22" rx="11" fill="var(--surface-2)" stroke="var(--line)"/>
+            <rect x="14" y="8" width="90" height="6" rx="3" fill="var(--ink-3)" opacity="0.45"/>
+          </g>
+          <g transform="translate(20 96)">
+            <rect width="100" height="22" rx="11" fill="var(--ink)" opacity="0.85"/>
+            <rect x="14" y="8" width="60" height="6" rx="3" fill="var(--bg)" opacity="0.9"/>
+          </g>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Mentoring Chatbot</div>
+          <div class="lead-by">Ballard</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Student Life · Design</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Mentoring Chatbot</h3>
+          <p class="desc" style="margin-top:10px;">Weekly check-ins for students. Scripted on mentor input, customizable tone, surfaces patterns mentors should know about.</p>
+        </div>
+        <div>
+          <div class="meta"><span>Scripted flows in review</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">IRB</span>
+        <span class="area mono">Ultrasound</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <path d="M 30 110 Q 50 60 80 80 T 130 90 T 180 70 T 220 90" stroke="var(--accent)" stroke-width="1.4" fill="none" opacity="0.85"/>
+          <path d="M 30 100 Q 50 80 80 90 T 130 100 T 180 84 T 220 96" stroke="var(--ink-3)" stroke-width="0.8" fill="none" opacity="0.5"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="var(--ink-3)">
+            <text x="16" y="26">AI-FAST · #98245</text>
+          </g>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">AI-FAST Ultrasound</div>
+          <div class="lead-by">Hill · Thé</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Ultrasound · IRB</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">AI-FAST Ultrasound</h3>
+          <p class="desc" style="margin-top:10px;">Evaluating AI-guided FAST exams in the ED. IRB #98245 (Oct '24 – Oct '25).</p>
+        </div>
+        <div>
+          <div class="meta"><span>Phase 1 data analysis</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip live">Scoping</span>
+        <span class="area mono">Ophthalmology</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <circle cx="120" cy="70" r="46" fill="var(--accent)" opacity="0.15"/>
+          <circle cx="120" cy="70" r="36" fill="var(--accent)" opacity="0.25"/>
+          <circle cx="120" cy="70" r="22" fill="var(--accent)" opacity="0.45"/>
+          <circle cx="120" cy="70" r="10" fill="var(--ink)"/>
+          <g stroke="var(--accent)" stroke-width="0.6" fill="none" opacity="0.7">
+            <path d="M 120 24 C 124 38, 128 44, 138 50"/>
+            <path d="M 120 24 C 116 38, 112 44, 102 50"/>
+          </g>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Automated Fundoscopy</div>
+          <div class="lead-by">Optho collab (Jan '26)</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Imaging · Scoping</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Automated Fundoscopy</h3>
+          <p class="desc" style="margin-top:10px;">Screening retinopathy at the point of care. New collab with the Department of Ophthalmology.</p>
+        </div>
+        <div>
+          <div class="meta"><span>Looking for two MS leads</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="top">
+        <span class="chip paused">On hold</span>
+        <span class="area mono">Pediatrics</span>
+      </div>
+      <div class="visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="none">
+          <g stroke="var(--ink-3)" stroke-width="0.8" fill="none" opacity="0.5">
+            <path d="M 16 70 L 36 70 L 42 50 L 50 90 L 58 40 L 66 100 L 74 70 L 224 70" />
+          </g>
+          <text x="16" y="26" font-family="Geist Mono, monospace" font-size="9" fill="var(--ink-3)">ambient · awaiting FHIR</text>
+        </svg>
+      </div>
+      <div class="title-row">
+        <div>
+          <div class="title">Ambient Listening, NICU</div>
+          <div class="lead-by">Ballard</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div>
+          <div class="chip" style="color:var(--bg); border-color: color-mix(in oklab, var(--bg) 30%, transparent);">Pediatrics · Paused</div>
+          <h3 class="h3" style="color:var(--bg); margin-top:14px;">Ambient Listening, NICU</h3>
+          <p class="desc" style="margin-top:10px;">Auto-summarizing NICU rounds with consent. On hold pending Epic + FHIR access.</p>
+        </div>
+        <div>
+          <div class="meta"><span>Unblocking est. Q3</span></div>
+          <a style="margin-top:10px;">Read more <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 32px;">
+    <a class="btn lg" href="#">Load 5 more projects <span class="arrow">↓</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="nav-brand" href="index.html" style="margin-bottom: 14px;">
+          <img src="../assets/logo.png" alt="" />
+          <span>AI Incubator</span>
+        </a>
+        <p class="body" style="max-width: 36ch; font-size: 14px; margin-top: 10px;">A weekly working group at the University of Kentucky. AI projects in healthcare and education.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#publications">Publications</a></li>
+          <li><a href="join.html">Get involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:incubator@uky.edu">incubator@uky.edu</a></li>
+          <li><a href="#">Weekly listserv →</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Listserv</h4>
+        <p class="small" style="margin-bottom: 10px;">Weekly updates from the group.</p>
+        <form class="field" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="name@uky.edu" />
+          <button class="btn primary sm" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 · AI Incubator @ University of Kentucky</span>
+      <span>v1.0 · aiincubator.uky.edu</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

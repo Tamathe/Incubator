@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env
+.env*.local
+.vercel
+
+# os
+.DS_Store
+Thumbs.db
+.superpowers/
+
+# generated at build time by scripts/build-changelog.mjs
+app/changelog/data.json

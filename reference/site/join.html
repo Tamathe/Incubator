@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-accent="blue" data-density="default">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get involved · AI Incubator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <img src="../assets/logo.png" alt="" />
+      <span>AI Incubator</span>
+      <span class="pipe">/</span>
+      <span class="tag">University of Kentucky</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="projects.html">Projects</a>
+      <a href="index.html#team">Team</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="join.html" class="btn primary sm active">Join Friday <span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───── Join hero ───── -->
+<header class="join-hero container">
+  <div class="dotgrid"></div>
+  <div style="position:relative; z-index:2;">
+    <div class="hero-meta">
+      <span class="chip live"><span>Open to new members</span></span>
+      <span class="countdown">
+        <span class="label">Next meeting in</span>
+        <span class="units" data-countdown="short"></span>
+      </span>
+    </div>
+
+    <h1 class="h-display" style="max-width: 18ch;">
+      How to join <em>the group.</em>
+    </h1>
+
+    <p class="lead" style="margin-top: 28px;">
+      Anyone is welcome. The group meets Fridays at noon in Microsoft Teams. If you have a project to pitch, see Path 02 below.
+    </p>
+  </div>
+</header>
+
+<!-- ───── Three paths ───── -->
+<section class="container" style="padding-bottom: calc(40px * var(--d));">
+  <div class="join-paths">
+    <div class="join-card">
+      <div class="num">PATH 01</div>
+      <div>
+        <h2 class="h2">Attend a meeting</h2>
+        <p class="body" style="margin-top: 10px;">Fridays at noon in Microsoft Teams. RSVP is optional. The link is in the listserv.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; font-family: var(--mono); font-size: 12px; color: var(--ink-3);">
+        <span>Friday · 12:00 pm</span>
+        <span>Microsoft Teams</span>
+        <span>Typically around 30 attendees</span>
+      </div>
+      <a href="#rsvp" class="cta">RSVP for this Friday <span>→</span></a>
+    </div>
+
+    <div class="join-card" style="background: var(--ink); color: var(--bg); border-color: var(--ink);">
+      <div class="num" style="color: var(--accent);">PATH 02</div>
+      <div>
+        <h2 class="h2" style="color: var(--bg);">Pitch a project</h2>
+        <p class="body" style="color: color-mix(in oklab, var(--bg) 75%, transparent); margin-top: 10px;">Around sixty seconds, with or without a slide. The group helps scope the idea down and pairs you with collaborators.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; font-family: var(--mono); font-size: 12px; color: color-mix(in oklab, var(--bg) 55%, transparent);">
+        <span>① The problem</span>
+        <span>② Who it affects</span>
+        <span>③ What you'd build first</span>
+      </div>
+      <a href="#pitch" class="cta" style="color: var(--accent); border-top-color: color-mix(in oklab, var(--bg) 20%, transparent);">Submit a pitch <span>→</span></a>
+    </div>
+
+    <div class="join-card">
+      <div class="num">PATH 03</div>
+      <div>
+        <h2 class="h2">Stay in the loop</h2>
+        <p class="body" style="margin-top: 10px;">Weekly digest of group activity. Sent Mondays.</p>
+      </div>
+      <form class="field" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Subscribed ✓';">
+        <input type="email" placeholder="name@uky.edu" />
+        <button class="btn primary sm" type="submit">Subscribe</button>
+      </form>
+      <div class="small">~50 subscribers</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── RSVP form ───── -->
+<section class="section container" id="rsvp">
+  <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: calc(64px * var(--d)); align-items: start;">
+    <div>
+      <div class="section-label"><span class="idx">RSVP</span> <span>Friday's meeting</span></div>
+      <h2 class="h1" style="max-width: 14ch;">RSVP for the next meeting.</h2>
+      <p class="body" style="margin-top: 18px; max-width: 36ch;">Tell us a bit about yourself and we'll send you the Teams link and that week's agenda.</p>
+
+      <div style="margin-top: 28px; padding: 18px; background: var(--surface-2); border-radius: 12px; font-family: var(--mono); font-size: 12px; color: var(--ink-3); line-height: 1.7;">
+        <div style="color: var(--ink); margin-bottom: 6px;">THIS WEEK · Cohort 03</div>
+        <div>· Project demos (10 min each)</div>
+        <div>· Working session on KY-AHEAD data linkage</div>
+        <div>· Open pitches for spring projects</div>
+        <div>· Office hours w/ Dr. Thé · 1–2 pm</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 32px;">
+      <form onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Confirmed ✓'; this.querySelector('button[type=submit]').classList.remove('primary'); this.querySelector('button[type=submit]').style.background='var(--signal)'; this.querySelector('button[type=submit]').style.color='var(--bg)'; this.querySelector('button[type=submit]').style.borderColor='var(--signal)';">
+        <div style="display: grid; gap: 18px;">
+          <div>
+            <label class="eyebrow" style="display:block; margin-bottom: 8px;">Your name</label>
+            <div class="field" style="border-radius: 10px; padding-left: 16px;"><input placeholder="First Last" required /></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px;">
+            <div>
+              <label class="eyebrow" style="display:block; margin-bottom: 8px;">UK email</label>
+              <div class="field" style="border-radius: 10px; padding-left: 16px;"><input type="email" placeholder="name@uky.edu" required /></div>
+            </div>
+            <div>
+              <label class="eyebrow" style="display:block; margin-bottom: 8px;">Role</label>
+              <div class="field" style="border-radius: 10px; padding-left: 16px;">
+                <input list="roles" placeholder="Student / Faculty / Other" />
+                <datalist id="roles">
+                  <option>Undergrad student</option>
+                  <option>Graduate / Medical student</option>
+                  <option>Resident / Fellow</option>
+                  <option>Faculty</option>
+                  <option>Staff</option>
+                  <option>Community partner</option>
+                </datalist>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="eyebrow" style="display:block; margin-bottom: 8px;">What brings you in?</label>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <label class="filter-chip"><input type="checkbox" hidden /> Curious about the group</label>
+              <label class="filter-chip"><input type="checkbox" hidden /> Have a problem to pitch</label>
+              <label class="filter-chip"><input type="checkbox" hidden /> Want to join a team</label>
+              <label class="filter-chip"><input type="checkbox" hidden /> Looking to collaborate (faculty)</label>
+              <label class="filter-chip"><input type="checkbox" hidden /> Bringing a colleague</label>
+            </div>
+          </div>
+          <div>
+            <label class="eyebrow" style="display:block; margin-bottom: 8px;">Anything else? <span style="color:var(--ink-4); text-transform:none; letter-spacing:0;">(optional)</span></label>
+            <textarea rows="3" style="width: 100%; resize: vertical; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--ink); outline:none;" placeholder="What you're working on, what you'd like help with, what you can contribute."></textarea>
+          </div>
+          <div style="display:flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-3);">
+            <input type="checkbox" id="ls" checked style="accent-color: var(--accent);" />
+            <label for="ls">Add me to the weekly listserv</label>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button type="submit" class="btn primary lg">RSVP for Friday <span class="arrow">→</span></button>
+            <span class="small">We'll never share your email.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FAQ ───── -->
+<section class="section container">
+  <div class="section-label"><span class="idx">FAQ</span> <span>Common questions</span></div>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="q">Do I need to know how to code?</div>
+      <div class="a">No. About half of attendees don't code. Projects also need clinical input, design, writing, project management, and literature review.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Am I too junior? Too senior?</div>
+      <div class="a">Anyone from undergrads to attendings is welcome. People contribute based on their availability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Can faculty be involved?</div>
+      <div class="a">Yes. Most projects have a faculty PI or clinical sponsor. Email Dr. Thé to discuss seeding or sponsoring a project.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Is this for credit?</div>
+      <div class="a">Not by default. Students have used projects as scholarly concentrations, capstones, and thesis work. We can help with the paperwork.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">What happens to the work?</div>
+      <div class="a">Projects have produced IRB-approved studies, posters, papers, pilots, and patents. Every current project began as a pitch at a Friday meeting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Who funds this?</div>
+      <div class="a">Funding comes from CCTS pilot funds, the Zwischenberger–Rounsavall Innovation Award, faculty seed money, and a $475K SUP grant from the KY Cabinet for Health and Family Services. Active applications include Macy and Precision Medicine grants.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Contact strip ───── -->
+<section class="section container" style="padding-bottom: calc(80px * var(--d));">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;">
+    <div class="card">
+      <div class="eyebrow">Meeting</div>
+      <h3 class="h3" style="margin-top: 8px;">Fridays at noon</h3>
+      <p class="body" style="margin-top: 6px; font-size: 14px;">Microsoft Teams<br/>Friday · 12:00 pm<br/>Link in the weekly listserv</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Email</div>
+      <h3 class="h3" style="margin-top: 8px;">Reach the group</h3>
+      <p class="mono" style="margin-top: 6px; font-size: 13px; color: var(--ink-2); line-height: 1.7;">
+        general · <a href="mailto:incubator@uky.edu" style="color:var(--accent);">incubator@uky.edu</a><br/>
+        partnerships · tama@uky.edu<br/>
+        press · graham.hill@uky.edu
+      </p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Other channels</div>
+      <h3 class="h3" style="margin-top: 8px;">Online</h3>
+      <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+        <a href="#" class="chip" style="font-size: 12px;">GitHub →</a>
+        <a href="#" class="chip" style="font-size: 12px;">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="nav-brand" href="index.html" style="margin-bottom: 14px;">
+          <img src="../assets/logo.png" alt="" />
+          <span>AI Incubator</span>
+        </a>
+        <p class="body" style="max-width: 36ch; font-size: 14px; margin-top: 10px;">A weekly working group at the University of Kentucky. AI projects in healthcare and education.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#log">Activity log</a></li>
+          <li><a href="join.html">Get involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:incubator@uky.edu">incubator@uky.edu</a></li>
+          <li><a href="#">Weekly listserv →</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Listserv</h4>
+        <p class="small" style="margin-bottom: 10px;">Weekly updates from the group.</p>
+        <form class="field" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="name@uky.edu" />
+          <button class="btn primary sm" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 · AI Incubator @ University of Kentucky</span>
+      <span>v1.0 · aiincubator.uky.edu</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<style>
+  /* keep filter-chip checkboxes interactive */
+  .filter-chip { user-select: none; }
+  .filter-chip input:checked ~ * { color: var(--bg); }
+  label.filter-chip:has(input:checked) { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+</style>
+</body>
+</html>
