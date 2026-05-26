@@ -10,6 +10,7 @@ import {
   commitmentToVisual,
   parseIdeaRow,
 } from "@/lib/ideas";
+import IdeaDetailPanel from "./IdeaDetailPanel";
 
 type LoadState = "loading" | "ready" | "error" | "disabled";
 
@@ -18,6 +19,8 @@ export default function IdeasMap() {
   const [state, setState] = useState<LoadState>("loading");
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1000, h: 600 });
+  const [selected, setSelected] = useState<Idea | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   useEffect(() => {
     if (!supabase) {
@@ -145,7 +148,15 @@ export default function IdeasMap() {
             const v = commitmentToVisual(idea.commitment);
             const isPending = idea.status === "pending";
             return (
-              <g key={idea.id} transform={`translate(${pos.x}, ${pos.y})`}>
+              <g
+                key={idea.id}
+                className={`idea-node ${hovered === idea.id ? "is-hovered" : ""}`}
+                transform={`translate(${pos.x}, ${pos.y})`}
+                onMouseEnter={() => setHovered(idea.id)}
+                onMouseLeave={() => setHovered((h) => (h === idea.id ? null : h))}
+                onClick={() => setSelected(idea)}
+                style={{ cursor: "pointer" }}
+              >
                 {v.halo && (
                   <circle
                     r={v.radius + 4}
@@ -163,11 +174,17 @@ export default function IdeasMap() {
                   strokeDasharray={isPending ? "3 3" : undefined}
                   strokeWidth={isPending ? 1 : 0}
                 />
+                {hovered === idea.id && (
+                  <text y={-(v.radius + 10)} textAnchor="middle" className="idea-node-tip">
+                    {idea.title}
+                  </text>
+                )}
               </g>
             );
           })}
         </svg>
       )}
+      <IdeaDetailPanel idea={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }
