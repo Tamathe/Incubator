@@ -1731,6 +1731,9 @@ html[data-theme="dark"] .tweaks-panel { box-shadow: 0 24px 60px -20px rgba(0,0,0
   border-color: var(--line);
   text-decoration: line-through;
 }
+html[data-theme="dark"] .chip.kind-demo {
+  color: var(--ink);
+}
 
 /* ── Upcoming sessions section ─────────────────────────── */
 
@@ -1749,7 +1752,7 @@ html[data-theme="dark"] .tweaks-panel { box-shadow: 0 24px 60px -20px rgba(0,0,0
 .upcoming-day:last-child {
   border-bottom: 1px solid var(--line);
 }
-.upcoming-day.is-canceled .upcoming-rows {
+.upcoming-day.is-cancelled .upcoming-rows {
   opacity: 0.6;
 }
 .upcoming-date {
