@@ -1815,3 +1815,12 @@ html[data-theme="dark"] .chip.kind-demo {
   justify-content: flex-end;
   margin-top: 16px;
 }
+
+/* ── /ideas page surface switch ─────────────────── */
+.ideas-surface-mobile { display: none; }
+@media (max-width: 767px) {
+  .ideas-surface-desktop { display: none; }
+  .ideas-surface-mobile { display: block; }
+}
+
+.ideas-hero { padding-top: 80px; padding-bottom: 40px; }
