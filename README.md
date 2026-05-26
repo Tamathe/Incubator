@@ -9,10 +9,10 @@ Friday meeting, recent activity, and how to get involved.
 ## Stack
 
 - **Next.js 15** App Router with React 19, TypeScript strict mode
-- **Static export** (`output: 'export'`) — the build produces `out/`, plain
-  HTML/CSS/JS deployable anywhere (Vercel, Netlify, GitHub Pages, S3, Render)
-- **No backend.** Forms confirm inline. See "Loose ends" for wiring options.
-- **No CMS.** Content is a single TypeScript file: [`content/site.ts`](content/site.ts).
+- **Dynamic deployment** on Vercel (formerly static export)
+- **Neon Postgres** via Prisma 7 + PrismaPg adapter
+- **`/admin` dashboard** (password-protected) for subscribers, RSVPs, pitches
+- **No CMS yet.** Site content still in `content/site.ts` (Stage 2 will migrate this)
 
 The original HTML/CSS/JS design prototype lives in [`reference/`](reference/)
 and is the source of truth for visual fidelity. The CSS in `app/globals.css` is
@@ -63,27 +63,38 @@ Requires Node 20+.
 ```bash
 npm install
 npm run dev          # http://localhost:3000
-npm run build        # static export → out/
-npm run preview      # serve the built output locally
+npm run build        # production build (.next/)
+npm run start        # serve the production build locally
 ```
 
 Type check: `npx tsc --noEmit`
 
 ## Deploying
 
-The build produces a fully static `out/` directory.
+Dynamic Next.js on Vercel.
 
-### Vercel (recommended)
-1. Push this folder to a GitHub repo.
-2. Import the repo at [vercel.com/new](https://vercel.com/new).
-3. Framework preset: **Next.js**. No other config needed — `next.config.mjs`
-   already enables static export.
-4. Point `aiincubator.uky.edu` at the Vercel project's domain.
+### Required env vars
 
-### Netlify / Render / GitHub Pages / any static host
-1. `npm run build`
-2. Upload the contents of `out/` to your host.
-3. SPA fallback is not needed — every route is a real `.html` file.
+| Var | Value |
+|---|---|
+| `DATABASE_URL` | Neon **pooled** connection string |
+| `DIRECT_URL` | Neon **direct** connection string (used by migrations) |
+| `JWT_SECRET` | 32+ random chars; `openssl rand -hex 32` |
+| `ADMIN_PASSWORD_HASH` | bcrypt hash from `node scripts/hash-password.mjs` |
+
+### One-time setup
+
+1. Provision a Neon project; copy both connection strings.
+2. Locally: `cp prisma/.env.example .env.local`, fill in the values.
+3. Run the initial migration: `npx prisma migrate deploy` (or `npm run db:deploy`).
+4. Generate the client: `npm run db:generate`.
+5. Generate an admin password hash: `node scripts/hash-password.mjs`.
+6. Paste all four vars into Vercel's project Environment Variables.
+7. Push to `master` — Vercel deploys.
+
+### Smoke test
+
+After deploy, run through [`docs/admin-smoke-test.md`](docs/admin-smoke-test.md).
 
 ## Project structure
 
@@ -133,16 +144,13 @@ These are real gaps. None blocks deploy.
 
 1. **`session.teamsUrl` is a placeholder** (`#teams-link`). Replace in
    `content/site.ts` with the real Microsoft Teams join URL.
-2. **Subscribe + RSVP forms are no-op.** Wire to your chosen infra:
-   - Listserv: Buttondown, Beehiiv, MailerLite, or a Cloudflare Worker forwarding
-     to UK ITS distribution lists. The submit handler is in
-     `components/SubscribeForm.tsx` and `components/RsvpForm.tsx`.
-   - RSVP: at minimum forward to `incubator@uky.edu` via Formspark/Formspree/
-     Cloudflare Worker; ideally write to a small store (Notion, Airtable,
-     Supabase) so the team can see who's coming Friday.
-3. **No CMS / agent integration yet.** Build a GitHub Action that:
+2. **Subscribe + RSVP forms are wired** in Stage 1. Submissions land in
+   Neon Postgres and surface in the password-protected `/admin` dashboard
+   (overview, subscribers, RSVPs, pitches with CSV export and status flow).
+3. **No CMS / agent integration yet.** Stage 2 will migrate `content/site.ts`
+   into the database and build a GitHub Action that:
    a) accepts the Friday transcript (file upload or webhook),
-   b) calls Claude/GPT to generate a diff against `content/site.ts`,
+   b) calls Claude/GPT to generate a diff,
    c) opens a PR for human review.
 4. **Speaker/lead photos** — currently initials in avatar circles. If real
    headshots are added, swap the `.avatar` element in
