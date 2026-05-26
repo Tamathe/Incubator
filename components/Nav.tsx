@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 
-type NavKey = "overview" | "projects" | "ideas" | "team" | "activity" | "join";
+type NavKey = "overview" | "projects" | "ideas" | "team" | "activity" | "open-problems" | "join";
 
 interface NavProps {
   active?: NavKey;
