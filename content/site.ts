@@ -115,8 +115,7 @@ export type SessionKind =
   | "demo"
   | "presentation"
   | "roundtable"
-  | "open"
-  | "canceled";
+  | "cancelled";
 
 export interface MeetingSession {
   /** ISO Friday date, e.g. "2026-05-29". */
@@ -421,7 +420,7 @@ export const content: SiteContent = {
     },
     {
       date: "2026-06-26",
-      kind: "canceled",
+      kind: "cancelled",
       title: "No meeting — holiday",
       blurb: "Group is off this week.",
     },
