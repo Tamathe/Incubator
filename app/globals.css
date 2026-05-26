@@ -1690,3 +1690,125 @@ html[data-theme="dark"] .tweaks-panel { box-shadow: 0 24px 60px -20px rgba(0,0,0
   .pitch-input-row .btn { width: 100%; justify-content: center; }
 }
 
+/* ── Session kind chips ─────────────────────────────────── */
+
+.chip.kind {
+  text-transform: uppercase;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.chip.kind-pitch {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.chip.kind-demo {
+  background: var(--signal);
+  color: var(--bg);
+  border-color: var(--signal);
+}
+.chip.kind-presentation {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.chip.kind-roundtable {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+.chip.kind-open {
+  background: var(--surface-2);
+  color: var(--ink-3);
+  border-color: var(--line);
+}
+.chip.kind-cancelled {
+  background: transparent;
+  color: var(--ink-4);
+  border-color: var(--line);
+  text-decoration: line-through;
+}
+
+/* ── Upcoming sessions section ─────────────────────────── */
+
+.upcoming {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.upcoming-day {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.upcoming-day:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.upcoming-day.is-canceled .upcoming-rows {
+  opacity: 0.6;
+}
+.upcoming-date {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-2);
+  padding-top: 2px;
+}
+.upcoming-date .weekday {
+  display: block;
+  color: var(--ink-4);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.upcoming-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.upcoming-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.upcoming-row .row-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.upcoming-row .row-title {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+}
+.upcoming-row .row-blurb {
+  font-size: 14px;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+.upcoming-row .row-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.upcoming-row .row-presenters {
+  font-family: var(--mono);
+}
+.upcoming-row .row-open-cta {
+  color: var(--accent);
+  font-weight: 500;
+}
+.upcoming-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
