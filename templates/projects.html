@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow">Project directory</p>
+        <h1>Find a project you can actually join</h1>
+        <p>AI Incubator projects span medical education, surgery, clinical decision support, public health, mentorship, and translational research.</p>
+        <div class="proof-row">
+            <span class="proof-chip"><strong>Active</strong> teams</span>
+            <span class="proof-chip"><strong>New</strong> pitches</span>
+            <span class="proof-chip"><strong>IRB</strong> guidance</span>
+            <span class="proof-chip"><strong>Publication</strong> pathways</span>
+        </div>
+    </div>
+</section>
+
+<section class="section section-tight">
+    <div class="container">
+        <div class="section-header align-left header-with-action">
+            <div>
+                <p class="eyebrow">Featured</p>
+                <h2>High-momentum projects</h2>
+                <p>These projects already have teams, institutional traction, or clear next steps for new contributors.</p>
+            </div>
+            <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Project%20Interest" class="btn btn-primary">Ask where you fit</a>
+        </div>
+        <div class="project-directory featured-directory">
+            <article class="project-card">
+                <img src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="Poster presentation for Innovators in Medicine">
+                <div class="project-card-body">
+                    <div class="status-row">
+                        <span class="status-badge green">IRB approved</span>
+                        <span class="status-badge gold">Patent filed</span>
+                    </div>
+                    <h3>PrecisionView: Breast Tissue Volume Estimation</h3>
+                    <p>LiDAR-based intraoperative volume measurement using machine learning for plastic surgery research.</p>
+                    <dl class="project-meta">
+                        <div><dt>Lead</dt><dd>Hunter Colson with Tama Thé, Yuan Wen, Hubie Ballard, Mattie Lewis</dd></div>
+                        <div><dt>Needs</dt><dd>clinical workflow, data collection, validation, writing</dd></div>
+                    </dl>
+                    <a href="mailto:Tama.The@uky.edu?subject=PrecisionView%20project%20interest" class="project-link">Join this project &rarr;</a>
+                </div>
+            </article>
+            <article class="project-card">
+                <img src="{{ url_for('static', filename='images/20250305_120428.jpg') }}" alt="Healthcare simulation center session">
+                <div class="project-card-body">
+                    <div class="status-row">
+                        <span class="status-badge green">MVP in development</span>
+                        <span class="status-badge blue">LLM + RAG</span>
+                    </div>
+                    <h3>Socratic Tutor</h3>
+                    <p>Personalized medical learning using retrieval, LangChain, question generation, and long-term knowledge retention.</p>
+                    <dl class="project-meta">
+                        <div><dt>Lead</dt><dd>Matthew Bernard and Hunter Colson</dd></div>
+                        <div><dt>Needs</dt><dd>content review, evaluation design, UX, learner testing</dd></div>
+                    </dl>
+                    <a href="mailto:Tama.The@uky.edu?subject=Socratic%20Tutor%20project%20interest" class="project-link">Join this project &rarr;</a>
+                </div>
+            </article>
+            <article class="project-card">
+                <img src="{{ url_for('static', filename='images/20250424_181424.jpg') }}" alt="AI Incubator networking event">
+                <div class="project-card-body">
+                    <div class="status-row">
+                        <span class="status-badge blue">Medical education</span>
+                        <span class="status-badge neutral">AAMC demo</span>
+                    </div>
+                    <h3>AI-Powered Clinical Evaluation Summaries</h3>
+                    <p>AI-assisted synthesis of clinical evaluations into strengths, weaknesses, and actionable student feedback.</p>
+                    <dl class="project-meta">
+                        <div><dt>Lead</dt><dd>Tama Thé, Lucy Seay, Harrison Booher, John Ragsdale, Alan Hall, Selena Thé</dd></div>
+                        <div><dt>Needs</dt><dd>evaluation research, rubric design, writing, validation</dd></div>
+                    </dl>
+                    <a href="mailto:Tama.The@uky.edu?subject=Clinical%20Evaluation%20Summaries%20interest" class="project-link">Join this project &rarr;</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Active projects</p>
+            <h2>Open workstreams</h2>
+            <p>Use these cards as a starting map. The best way to join is to email with the project name and the kind of contribution you want to make.</p>
+        </div>
+        <div class="compact-project-grid">
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge green">IRB approved</span><span class="status-badge blue">Emergency medicine</span></div>
+                <h3>AI-Assisted Ultrasound FAST Exam</h3>
+                <p>Evaluating AI-guided FAST exams in the Emergency Department.</p>
+                <p class="needs"><strong>Needs:</strong> data collection, clinical validation, analysis</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge blue">Public health</span><span class="status-badge neutral">Manuscript</span></div>
+                <h3>Health Disparities in Kentucky</h3>
+                <p>Analyzing physician availability, poverty, region, and Appalachian county health outcomes.</p>
+                <p class="needs"><strong>Needs:</strong> writing, visualization, data interpretation</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge blue">Student support</span><span class="status-badge neutral">Prototype</span></div>
+                <h3>Mentoring Chatbot</h3>
+                <p>Weekly check-ins and structured reflection designed to strengthen student mentorship.</p>
+                <p class="needs"><strong>Needs:</strong> conversation design, pilot testing, faculty feedback</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge green">IRB approved</span><span class="status-badge blue">Survey research</span></div>
+                <h3>AI in Medical Education Survey</h3>
+                <p>Student and faculty perspectives on AI use, comfort, habits, and educational applications.</p>
+                <p class="needs"><strong>Needs:</strong> analysis, manuscript writing, dissemination</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge blue">Clinical reasoning</span><span class="status-badge neutral">Simulation</span></div>
+                <h3>Med-ED Chatbots</h3>
+                <p>Simulation tools for decision-making capacity and patient-facing discharge instruction support.</p>
+                <p class="needs"><strong>Needs:</strong> validation, clinical scenarios, safety review</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge blue">Outreach</span><span class="status-badge gold">Media</span></div>
+                <h3>Speakership and Dissemination</h3>
+                <p>Videos, talks, podcasts, and social content that make AI work visible across UK.</p>
+                <p class="needs"><strong>Needs:</strong> video, audio, editing, design, writing</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="two-column-section">
+            <div>
+                <p class="eyebrow">Fresh ideas</p>
+                <h2>New pitches</h2>
+                <p>These ideas are early enough that a motivated contributor can shape the direction.</p>
+            </div>
+            <div class="stack-list">
+                <article>
+                    <span class="status-badge neutral">Seeking collaborators</span>
+                    <h3>Automated Fundoscopy</h3>
+                    <p>AI-powered ophthalmic screening and diagnosis project seeking clinical and technical collaborators.</p>
+                </article>
+                <article>
+                    <span class="status-badge neutral">Initial discussions</span>
+                    <h3>AI Teaching Tools Collaboration</h3>
+                    <p>Medical education tools inspired by Socratic Tutor and classroom AI workflows.</p>
+                </article>
+                <article>
+                    <span class="status-badge neutral">New pitch</span>
+                    <h3>Urology Tumor Board</h3>
+                    <p>AI support for tumor board preparation, discussion, and decision-support workflows.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-contrast">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Shipped and paused</p>
+            <h2>Completed work and projects waiting for the right push</h2>
+        </div>
+        <div class="compact-project-grid">
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge green">Completed</span><span class="status-badge blue">Medical education</span></div>
+                <h3>UKCOM Foundations Tutor and Question Writer</h3>
+                <p>Custom GPT-4o tutor trained on Foundations materials and Step 1 guidelines, with 300+ tutoring conversations and 100+ custom practice questions.</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge neutral">Paused</span><span class="status-badge blue">NICU</span></div>
+                <h3>Ambient Listening in NICU</h3>
+                <p>Clinical rounds recording and analysis awaiting additional technical input and workflow alignment.</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge neutral">Paused</span><span class="status-badge blue">EMS</span></div>
+                <h3>NOVA: EMS Summaries for Complex Patients</h3>
+                <p>Patient-specific AI-generated information for EMS providers awaiting EHR data access pathways.</p>
+            </article>
+            <article class="compact-project">
+                <div class="status-row"><span class="status-badge neutral">Paused</span><span class="status-badge blue">Synthetic data</span></div>
+                <h3>Synthetic EHRs for Disease Prediction</h3>
+                <p>Synthetic EHR workstream for chronic disease prediction awaiting dataset access and validation planning.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">Start here</p>
+            <h2>Tell us what you want to build.</h2>
+            <p>Email your interests, skills, and one project that caught your eye. We will point you toward the right team or meeting.</p>
+        </div>
+        <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Project%20Interest" class="btn btn-inverse">Email project interest</a>
+    </div>
+</section>
+{% endblock %}

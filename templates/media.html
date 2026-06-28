@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}Media{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow">Media and visibility</p>
+        <h1>Proof that the work is moving</h1>
+        <p>Photos, presentations, podcasts, and outreach from the AI Incubator community.</p>
+    </div>
+</section>
+
+<section class="section section-tight">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Featured media</p>
+            <h2>Stories worth sharing</h2>
+            <p>Use this page as a lightweight press kit for people who want to understand what the group is doing.</p>
+        </div>
+        <div class="media-feature-grid">
+            <article class="media-feature">
+                <img src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="AI Incubator poster presentation">
+                <div>
+                    <span class="status-badge blue">Video</span>
+                    <h3>Innovators in Medicine advertisement</h3>
+                    <p>AAMC video featuring an AI Incubator segment. Source note: segment begins at 4:20.</p>
+                </div>
+            </article>
+            <article class="media-feature">
+                <img src="{{ url_for('static', filename='images/20250424_181424.jpg') }}" alt="AI Incubator members networking">
+                <div>
+                    <span class="status-badge gold">Podcast</span>
+                    <h3>Health Disparities in Kentucky</h3>
+                    <p>Discussion featuring Emma Hargis and Tama Thé on public health, rural Kentucky, and AI-enabled analysis.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header">
+            <p class="eyebrow">Photo gallery</p>
+            <h2>Community in action</h2>
+            <p>Meetings, presentations, networking, and service show the range of the AI Incubator community.</p>
+        </div>
+        <div class="media-photo-grid">
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_1943.jpg') }}" alt="AI Incubator group in lecture hall">
+                <figcaption>Weekly project studio</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/20250305_120428.jpg') }}" alt="Healthcare simulation center session">
+                <figcaption>Healthcare simulation center session</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="Poster presentation">
+                <figcaption>Innovators in Medicine poster presentation</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3261.jpg') }}" alt="Community service group">
+                <figcaption>Community service</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/20250424_181424.jpg') }}" alt="Networking event">
+                <figcaption>Cross-campus networking</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3536.jpg') }}" alt="Team volunteer event">
+                <figcaption>Team volunteer event</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3045.jpeg') }}" alt="Meeting group photo">
+                <figcaption>Meeting group photo</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3900.jpg') }}" alt="Community event">
+                <figcaption>Community event</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3757.jpg') }}" alt="Team gathering">
+                <figcaption>Team gathering</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/20250424_183833.jpg') }}" alt="Networking session">
+                <figcaption>Networking session</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3230.jpg') }}" alt="Team activity">
+                <figcaption>Team activity</figcaption>
+            </figure>
+            <figure class="media-photo-item">
+                <img src="{{ url_for('static', filename='images/IMG_3167.jpg') }}" alt="Group event">
+                <figcaption>Group event</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="two-column-section">
+            <div>
+                <p class="eyebrow">Recent talks</p>
+                <h2>Presentation-ready work</h2>
+                <p>The Incubator's strongest media story is the steady movement from meeting conversations to public presentations.</p>
+            </div>
+            <div class="timeline-list">
+                <article>
+                    <span>Feb 2026</span>
+                    <h3>AAMC Digital Demonstration: AI Clinical Evaluations</h3>
+                    <p>Tama Thé, Lucy Seay, Harrison Booher, and collaborators presented AI-powered clinical evaluation summaries.</p>
+                </article>
+                <article>
+                    <span>Feb 2026</span>
+                    <h3>AAMC Digital Demonstration: Socratic Tutor</h3>
+                    <p>Matthew Bernard, Hunter Colson, Tama Thé, and Hubie Ballard presented the AI-driven tutor project.</p>
+                </article>
+                <article>
+                    <span>Apr 2025</span>
+                    <h3>KYnsHIP and CCTS presentations</h3>
+                    <p>Members presented work on AI patient simulation, Socratic tutoring, emergency medicine evaluations, and Appalachian health disparities.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-contrast">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Build the signal</p>
+            <h2>Join the media and dissemination team</h2>
+            <p>Help turn active projects into videos, podcasts, visual explainers, meeting recaps, and project showcases.</p>
+        </div>
+        <div class="benefit-grid three-up">
+            <article class="benefit-card">
+                <span class="card-kicker">Video</span>
+                <h3>Record and edit demos</h3>
+                <p>Capture presentations, prototype walkthroughs, and member stories in a format people can share.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Audio</span>
+                <h3>Produce conversations</h3>
+                <p>Interview project leads, faculty advisors, and students about what they are building and learning.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Design</span>
+                <h3>Make work visible</h3>
+                <p>Create polished visuals for posters, social posts, presentations, and project explainers.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">Have something to share?</p>
+            <h2>Present your work at the AI Incubator.</h2>
+            <p>We welcome project updates, demos, research talks, workshops, and honest work-in-progress sessions.</p>
+        </div>
+        <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Presentation%20Interest" class="btn btn-inverse">Pitch a session</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow">About the Incubator</p>
+        <h1>A practical home for AI builders in medicine</h1>
+        <p>Part community, part research pipeline, part project studio: the AI Incubator helps people at UK move from curiosity to useful work.</p>
+    </div>
+</section>
+
+<section class="section section-tight">
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/IMG_1943.jpg') }}" alt="AI Incubator team meeting" class="wide-photo">
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Mission</p>
+            <h2>AI should be something students and clinicians can build with, not just hear about.</h2>
+            <p>The AI Incubator exists to make artificial intelligence accessible, useful, and accountable in healthcare and medical education. Members learn by joining real projects, shaping new ideas, and working through the research steps that make AI work credible.</p>
+        </div>
+        <div class="benefit-grid three-up">
+            <article class="benefit-card">
+                <span class="card-kicker">Purpose</span>
+                <h3>Turn ideas into work</h3>
+                <p>Weekly meetings create a regular rhythm for pitching, refining, staffing, and advancing projects.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Vision</span>
+                <h3>Make AI capability local</h3>
+                <p>Students and faculty across UK can build AI fluency by working on problems that matter here.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Values</span>
+                <h3>Impact over novelty</h3>
+                <p>The group emphasizes collaboration, accessibility, ethical research, and patient-centered outcomes.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="two-column-section">
+            <div>
+                <p class="eyebrow">How it works</p>
+                <h2>A weekly project studio</h2>
+                <p>Members can show up with any level of AI experience. The key is curiosity and willingness to build, write, test, or help organize the work.</p>
+            </div>
+            <div class="timeline-list">
+                <article>
+                    <span>01</span>
+                    <h3>Attend and listen</h3>
+                    <p>Hear project updates, learn the landscape, and see where your interests connect.</p>
+                </article>
+                <article>
+                    <span>02</span>
+                    <h3>Join or pitch</h3>
+                    <p>Attach to an active project or bring your own idea for feedback and team formation.</p>
+                </article>
+                <article>
+                    <span>03</span>
+                    <h3>Build toward evidence</h3>
+                    <p>Move through prototypes, IRBs, validation, presentations, manuscripts, and funding opportunities.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">People</p>
+            <h2>Core contributors</h2>
+            <p>The Incubator is powered by students, faculty, clinicians, and collaborators who keep projects moving.</p>
+        </div>
+        <div class="team-grid">
+            <article class="team-card">
+                <div class="team-avatar">TT</div>
+                <h3>Tama Thé</h3>
+                <p class="team-role">AI Incubator lead</p>
+                <p>Leads and coordinates projects including clinical evaluation summaries, Med-ED chatbots, dissemination, and research collaboration.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">HB</div>
+                <h3>Dr. Hubie Ballard</h3>
+                <p class="team-role">Faculty advisor</p>
+                <p>Chair of the AI in Education Subcommittee and contributor to mentoring, ambient listening, and education projects.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">HC</div>
+                <h3>Hunter Colson</h3>
+                <p class="team-role">Student developer and project lead</p>
+                <p>Leads PrecisionView and contributes to Socratic Tutor, 3D mapping, and surgical AI work.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">MB</div>
+                <h3>Matthew Bernard</h3>
+                <p class="team-role">Student developer and project lead</p>
+                <p>Leads Socratic Tutor development and contributes to trauma prediction and perioperative LLM projects.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">GH</div>
+                <h3>Graham Hill</h3>
+                <p class="team-role">Survey research lead</p>
+                <p>Leads the AI in Medical Education survey study and helps build member directory infrastructure.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">EH</div>
+                <h3>Emma Hargis</h3>
+                <p class="team-role">Public health research lead</p>
+                <p>Leads the Health Disparities in Kentucky project and related manuscript development.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">LS</div>
+                <h3>Lucy Seay</h3>
+                <p class="team-role">Clinical education contributor</p>
+                <p>Contributes to AI-powered clinical evaluation summaries and AAMC presentation work.</p>
+            </article>
+            <article class="team-card">
+                <div class="team-avatar">ML</div>
+                <h3>Mattie Lewis</h3>
+                <p class="team-role">Research and funding contributor</p>
+                <p>Supports PrecisionView and student organization funding and communications work.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Faculty and partners</p>
+            <h2>Advisors and institutional collaborators</h2>
+        </div>
+        <div class="compact-project-grid">
+            <article class="compact-project">
+                <h3>Alan Hall</h3>
+                <p>Faculty collaborator on AI in medical education survey work and AI-powered clinical evaluation summaries.</p>
+            </article>
+            <article class="compact-project">
+                <h3>John Ragsdale</h3>
+                <p>Faculty collaborator on AI-powered clinical evaluation summaries.</p>
+            </article>
+            <article class="compact-project">
+                <h3>Yuan Wen</h3>
+                <p>Collaborator on PrecisionView and AI-assisted ultrasound FAST exam projects.</p>
+            </article>
+            <article class="compact-project">
+                <h3>CAAI</h3>
+                <p>Center for Applied AI partner supporting technical architecture, validation discussions, and hosting pathways.</p>
+            </article>
+            <article class="compact-project">
+                <h3>FOMO / MedForward</h3>
+                <p>Future of Medicine Organization and student-led conference partner focused on AI, LLMs, genomics, and future practice.</p>
+            </article>
+            <article class="compact-project">
+                <h3>CCTS</h3>
+                <p>Center for Clinical and Translational Science support for methodology, presentations, and research development.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="two-column-section">
+            <div>
+                <p class="eyebrow">Timeline</p>
+                <h2>The project pipeline is maturing</h2>
+                <p>The Incubator has grown from early experiments into a visible student-faculty research and innovation community.</p>
+            </div>
+            <div class="timeline-list">
+                <article>
+                    <span>2026</span>
+                    <h3>Expanding impact</h3>
+                    <p>$1.1M precision education grant submitted, AAMC presentations completed, 15+ active projects, multiple IRBs, and PrecisionView IP progress.</p>
+                </article>
+                <article>
+                    <span>2025</span>
+                    <h3>Research milestones</h3>
+                    <p>Conference presentations at KYnsHIP, CCTS, and ECLS Foundations, plus deployment of the UKCOM Foundations Tutor.</p>
+                </article>
+                <article>
+                    <span>2024</span>
+                    <h3>Foundation building</h3>
+                    <p>Early IRB approvals, Socratic Tutor development, RAG architecture work, and partnership development with CAAI.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">Join the next chapter</p>
+            <h2>There is room for builders, writers, clinicians, designers, and beginners.</h2>
+            <p>If you are curious about AI in medicine, there is probably a useful role for you.</p>
+        </div>
+        <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List" class="btn btn-inverse">Join the mailing list</a>
+    </div>
+</section>
+{% endblock %}

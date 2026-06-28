@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Join{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <p class="eyebrow">Get involved</p>
+        <h1>Join the AI Incubator</h1>
+        <p>Send a short note with your affiliation, interests, and the kind of project you want to explore. We will help you find the right next step.</p>
+        <div class="hero-actions center-actions">
+            <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List&body=Hi%20Tama,%0A%0AI%20would%20like%20to%20join%20the%20AI%20Incubator%20mailing%20list.%20My%20affiliation%20is:%0A%0AMy%20AI%20or%20project%20interests%20are:%0A" class="btn btn-primary">Email us to join</a>
+            <a href="{{ url_for('projects') }}" class="btn btn-secondary dark">Explore projects first</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-tight">
+    <div class="container">
+        <div class="join-layout">
+            <section class="join-panel">
+                <p class="eyebrow">Fastest path</p>
+                <h2>Send one email</h2>
+                <p>Use the button below and include your name, UK affiliation, interests, and whether you want to join an existing project, pitch an idea, present, or help with media.</p>
+                <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List&body=Hi%20Tama,%0A%0AI%20would%20like%20to%20join%20the%20AI%20Incubator%20mailing%20list.%20My%20affiliation%20is:%0A%0AMy%20AI%20or%20project%20interests%20are:%0A" class="btn btn-primary">Open email draft</a>
+            </section>
+            <section class="contact-details-panel">
+                <h2>Details</h2>
+                <div class="contact-detail">
+                    <span>Location</span>
+                    <p>University of Kentucky College of Medicine, Lexington, KY</p>
+                </div>
+                <div class="contact-detail">
+                    <span>Meeting rhythm</span>
+                    <p>Weekly project studio. Current room, time, and calendar details are shared through the mailing list.</p>
+                </div>
+                <div class="contact-detail">
+                    <span>Email</span>
+                    <p><a href="mailto:Tama.The@uky.edu">Tama.The@uky.edu</a></p>
+                </div>
+                <div class="contact-detail">
+                    <span>Best fit for</span>
+                    <p>Students, residents, fellows, faculty, staff, researchers, designers, writers, and builders interested in AI for medicine.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Ways in</p>
+            <h2>Choose your first move</h2>
+            <p>You do not need to know exactly what you want to build before showing up.</p>
+        </div>
+        <div class="benefit-grid">
+            <article class="benefit-card">
+                <span class="card-kicker">Attend</span>
+                <h3>Come to a meeting</h3>
+                <p>Listen to updates, meet project leads, and learn where your interests connect.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Join</span>
+                <h3>Attach to a project</h3>
+                <p>Contribute coding, writing, clinical perspective, evaluation, data work, or project management.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Pitch</span>
+                <h3>Bring your own idea</h3>
+                <p>Use the group to pressure-test the problem, find collaborators, and map the next step.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Present</span>
+                <h3>Share work in progress</h3>
+                <p>Lead a demo, teach a tool, share a clinical problem, or ask for feedback before a conference.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Media</span>
+                <h3>Make the work visible</h3>
+                <p>Help record talks, edit videos, design visuals, or tell the story of active projects.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">Mentor</span>
+                <h3>Help others learn</h3>
+                <p>Faculty and experienced members can guide project design, research methods, and responsible AI practice.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="two-column-section">
+            <div>
+                <p class="eyebrow">FAQ</p>
+                <h2>Common questions</h2>
+                <p>The Incubator is designed to be welcoming without watering down the work.</p>
+            </div>
+            <div class="stack-list">
+                <article>
+                    <h3>Do I need AI experience?</h3>
+                    <p>No. Many members start with curiosity and learn through projects. There are roles for beginners and advanced builders.</p>
+                </article>
+                <article>
+                    <h3>Do I have to be in the College of Medicine?</h3>
+                    <p>No. The group welcomes collaborators from Medicine, Engineering, Public Health, Arts and Sciences, and other UK units.</p>
+                </article>
+                <article>
+                    <h3>Can I get authorship or research credit?</h3>
+                    <p>Active contributors can be included on presentations, publications, IRB protocols, and other scholarly outputs when their contribution supports it.</p>
+                </article>
+                <article>
+                    <h3>What if I only have a rough idea?</h3>
+                    <p>That is a good reason to come. The group can help turn a rough idea into a research question, prototype plan, or team pitch.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">Ready?</p>
+            <h2>Tell us who you are and what you want to build.</h2>
+            <p>A short email is enough to get started.</p>
+        </div>
+        <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List" class="btn btn-inverse">Email us to join</a>
+    </div>
+</section>
+{% endblock %}

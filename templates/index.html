@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+{% block title %}Build Real AI in Medicine{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-copy">
+            <p class="eyebrow">Innovators in Medicine | University of Kentucky</p>
+            <h1>Build real AI in medicine at UK</h1>
+            <p class="hero-description">The AI Incubator is a weekly project studio where students, clinicians, researchers, and builders turn ideas into prototypes, IRB-backed studies, presentations, grants, and publications.</p>
+            <div class="hero-actions">
+                <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List" class="btn btn-primary">Join the mailing list</a>
+                <a href="{{ url_for('projects') }}" class="btn btn-secondary">Explore active projects</a>
+            </div>
+            <div class="proof-row" aria-label="AI Incubator proof points">
+                <span class="proof-chip"><strong>15+</strong> active projects</span>
+                <span class="proof-chip"><strong>4</strong> approved IRBs</span>
+                <span class="proof-chip"><strong>$1.1M</strong> grant submitted</span>
+                <span class="proof-chip"><strong>Weekly</strong> project studio</span>
+            </div>
+        </div>
+        <div class="hero-visual" aria-label="AI Incubator community photos">
+            <img class="hero-photo hero-photo-large" src="{{ url_for('static', filename='images/IMG_1943.jpg') }}" alt="AI Incubator group in a lecture hall">
+            <img class="hero-photo hero-photo-small top" src="{{ url_for('static', filename='images/20250305_120428.jpg') }}" alt="AI Incubator session at the UK Healthcare Simulation Center">
+            <img class="hero-photo hero-photo-small bottom" src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="AI Incubator members presenting a poster">
+            <div class="hero-caption">
+                <span>Not just a discussion group</span>
+                <strong>Projects are moving from pitch to prototype to presentation.</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-tight">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Why people show up</p>
+            <h2>What members get</h2>
+            <p>Students and faculty come for practical momentum: teams, mentorship, research structure, and a place to learn AI by building useful things.</p>
+        </div>
+        <div class="benefit-grid">
+            <article class="benefit-card">
+                <span class="card-kicker">01</span>
+                <h3>Join active projects</h3>
+                <p>Step into work already moving through prototypes, IRBs, abstracts, posters, and manuscripts.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">02</span>
+                <h3>Pitch your own idea</h3>
+                <p>Bring a clinical, education, or research problem and use the group to sharpen it into a buildable project.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">03</span>
+                <h3>Learn by building</h3>
+                <p>Work with RAG pipelines, LLM apps, data projects, clinical workflows, and evaluation plans in context.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">04</span>
+                <h3>Get research support</h3>
+                <p>Find guidance on IRB submissions, grants, validation, conference abstracts, and publication strategy.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">05</span>
+                <h3>Build a portfolio</h3>
+                <p>Turn curiosity into visible output: demos, talks, posters, authorship, funding, and leadership.</p>
+            </article>
+            <article class="benefit-card">
+                <span class="card-kicker">06</span>
+                <h3>Cross disciplines</h3>
+                <p>Connect Medicine, Engineering, Public Health, CAAI, and other UK groups around practical AI work.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-contrast">
+    <div class="container">
+        <div class="section-header align-left header-with-action">
+            <div>
+                <p class="eyebrow">Active work</p>
+                <h2>Featured projects</h2>
+                <p>These are the kinds of projects members can join, learn from, or use as a model for their own pitch.</p>
+            </div>
+            <a href="{{ url_for('projects') }}" class="text-link">View all projects &rarr;</a>
+        </div>
+        <div class="project-feature-grid">
+            <article class="project-feature">
+                <img src="{{ url_for('static', filename='images/20250305_120428.jpg') }}" alt="Students attending a healthcare simulation center session">
+                <div class="project-feature-content">
+                    <div class="status-row">
+                        <span class="status-badge green">MVP in development</span>
+                        <span class="status-badge blue">LLM + RAG</span>
+                    </div>
+                    <h3>Socratic Tutor</h3>
+                    <p>Personalized medical learning with retrieval, question generation, and long-term retention.</p>
+                    <a href="{{ url_for('projects') }}" class="project-link">See project details &rarr;</a>
+                </div>
+            </article>
+            <article class="project-feature">
+                <img src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="AI Incubator poster presentation">
+                <div class="project-feature-content">
+                    <div class="status-row">
+                        <span class="status-badge gold">Patent filed</span>
+                        <span class="status-badge green">IRB approved</span>
+                    </div>
+                    <h3>PrecisionView</h3>
+                    <p>LiDAR-based intraoperative volume measurement for plastic surgery research.</p>
+                    <a href="{{ url_for('projects') }}" class="project-link">See project details &rarr;</a>
+                </div>
+            </article>
+            <article class="project-feature">
+                <img src="{{ url_for('static', filename='images/20250424_181424.jpg') }}" alt="AI Incubator networking event">
+                <div class="project-feature-content">
+                    <div class="status-row">
+                        <span class="status-badge blue">Clinical education</span>
+                        <span class="status-badge neutral">Evaluation AI</span>
+                    </div>
+                    <h3>Clinical Evaluation Summaries</h3>
+                    <p>AI-assisted summaries that turn clinical evaluations into specific, actionable student feedback.</p>
+                    <a href="{{ url_for('projects') }}" class="project-link">See project details &rarr;</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header align-left">
+            <p class="eyebrow">Recent wins</p>
+            <h2>Momentum people can see</h2>
+            <p>The Incubator is not just a discussion group. Members are building tools, filing IRBs, presenting nationally, and moving projects toward publication and deployment.</p>
+        </div>
+        <div class="wins-grid">
+            <article class="win-item">
+                <span>$33K</span>
+                <h3>Awarded for surgical research and education</h3>
+                <p>Zwischenberger-Rounsavall Innovation in Surgical Research and Education Award supporting PrecisionView work.</p>
+            </article>
+            <article class="win-item">
+                <span>300+</span>
+                <h3>AI tutoring conversations</h3>
+                <p>UKCOM Foundations Tutor deployed with custom practice questions for early medical learners.</p>
+            </article>
+            <article class="win-item">
+                <span>AAMC</span>
+                <h3>Digital demonstrations</h3>
+                <p>AI clinical evaluation summaries and Socratic Tutor presented at AAMC Emerging Technologies.</p>
+            </article>
+            <article class="win-item">
+                <span>IRB</span>
+                <h3>Research pipeline moving</h3>
+                <p>Multiple AI-in-medicine projects have reached IRB approval, data collection, or manuscript development.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header">
+            <p class="eyebrow">Community</p>
+            <h2>Real rooms, real people, real work</h2>
+            <p>Meetings, simulation center sessions, poster presentations, service, and cross-campus networking all feed the project pipeline.</p>
+        </div>
+        <div class="photo-gallery">
+            <figure class="gallery-item gallery-large">
+                <img src="{{ url_for('static', filename='images/IMG_1943.jpg') }}" alt="AI Incubator members in a lecture hall">
+                <figcaption>Weekly project meetings</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="{{ url_for('static', filename='images/20250305_120428.jpg') }}" alt="AI Incubator at simulation center">
+                <figcaption>Simulation center sessions</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="{{ url_for('static', filename='images/IMG_3911.jpg') }}" alt="AI Incubator poster presentation">
+                <figcaption>Poster presentations</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="{{ url_for('static', filename='images/IMG_3261.jpg') }}" alt="AI Incubator volunteer group">
+                <figcaption>Community work</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="{{ url_for('static', filename='images/20250424_181424.jpg') }}" alt="AI Incubator networking event">
+                <figcaption>Cross-campus networking</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-inner">
+        <div>
+            <p class="eyebrow">Get in the room</p>
+            <h2>Bring an idea. Join a team. Learn by building.</h2>
+            <p>Send a short note with your affiliation and interests, and we will help you find the right next step.</p>
+        </div>
+        <a href="mailto:Tama.The@uky.edu?subject=AI%20Incubator%20Mailing%20List" class="btn btn-inverse">Email us to join</a>
+    </div>
+</section>
+{% endblock %}
