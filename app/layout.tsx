@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "AI Incubator @ University of Kentucky",
   description:
-    "The working surface of the AI Incubator at the University of Kentucky. We meet every Friday at noon in Microsoft Teams. Bring a problem, leave with collaborators.",
+    "A weekly AI project studio at the University of Kentucky where students, faculty, staff, researchers, and builders turn ideas into prototypes, studies, grants, and publications.",
 };
 
 // Inline script: apply persisted theme/accent/density BEFORE first paint to avoid flash.

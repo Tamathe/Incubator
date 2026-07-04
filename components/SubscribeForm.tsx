@@ -7,15 +7,30 @@ interface Props {
   source?: string;
 }
 
+type SubscribeState =
+  | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "done" }
+  | { kind: "error"; mailtoHref: string };
+
+function buildSubscribeEmail(email: string) {
+  return `mailto:incubator@uky.edu?subject=${encodeURIComponent(
+    "Join the AI Incubator listserv",
+  )}&body=${encodeURIComponent(
+    `Please add ${email} to the AI Incubator listserv.`,
+  )}`;
+}
+
 export default function SubscribeForm({ source = "footer" }: Props) {
-  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [state, setState] = useState<SubscribeState>({ kind: "idle" });
   const [email, setEmail] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setState("sending");
+    setState({ kind: "sending" });
     const formData = new FormData(e.currentTarget);
     const honeypot = formData.get("website");
+    const mailtoHref = buildSubscribeEmail(email);
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
@@ -23,13 +38,13 @@ export default function SubscribeForm({ source = "footer" }: Props) {
         body: JSON.stringify({ email, source, website: honeypot ?? "" }),
       });
       if (!res.ok && res.status !== 204) {
-        setState("error");
+        setState({ kind: "error", mailtoHref });
         return;
       }
-      setState("done");
+      setState({ kind: "done" });
       setEmail("");
     } catch {
-      setState("error");
+      setState({ kind: "error", mailtoHref });
     }
   }
 
@@ -41,7 +56,7 @@ export default function SubscribeForm({ source = "footer" }: Props) {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        disabled={state === "sending" || state === "done"}
+        disabled={state.kind === "sending" || state.kind === "done"}
       />
       <input
         type="text"
@@ -51,12 +66,23 @@ export default function SubscribeForm({ source = "footer" }: Props) {
         aria-hidden="true"
         style={{ display: "none" }}
       />
-      <button className="btn primary sm" type="submit" disabled={state === "sending"}>
-        {state === "done" ? "Sent ✓" : state === "sending" ? "Sending…" : "Subscribe"}
+      <button
+        className="btn primary sm"
+        type="submit"
+        disabled={state.kind === "sending"}
+      >
+        {state.kind === "done"
+          ? "Sent"
+          : state.kind === "sending"
+            ? "Sending..."
+            : "Subscribe"}
       </button>
-      {state === "error" && (
-        <span className="small" style={{ color: "var(--danger, #c0392b)", marginLeft: 8 }}>
-          Something went wrong. Try again.
+      {state.kind === "error" && (
+        <span
+          className="small"
+          style={{ color: "var(--danger, #c0392b)", marginLeft: 8 }}
+        >
+          Could not save. <a href={state.mailtoHref}>Email us instead</a>.
         </span>
       )}
     </form>

@@ -27,8 +27,12 @@ export async function POST(req: Request) {
   }
 
   const hash = process.env.ADMIN_PASSWORD_HASH;
-  if (!hash) {
-    return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
+  const secret = process.env.JWT_SECRET;
+  if (!hash || !secret || secret.length < 32) {
+    return NextResponse.json(
+      { error: "Admin login is not configured yet." },
+      { status: 503 },
+    );
   }
   const ok = await bcrypt.compare(parsed.data.password, hash);
   if (!ok) {

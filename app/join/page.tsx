@@ -17,15 +17,15 @@ export const metadata = {
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Do I need to know how to code?",
-    a: "No. About half of attendees don't code. Projects also need clinical input, design, writing, project management, and literature review.",
+    a: "No. About half of attendees don't code. Projects also need domain expertise, design, writing, project management, evaluation, and literature review.",
   },
   {
     q: "Am I too junior? Too senior?",
-    a: "Anyone from undergrads to attendings is welcome. People contribute based on their availability.",
+    a: "Anyone from undergrads to senior faculty and staff is welcome. People contribute based on their availability.",
   },
   {
     q: "Can faculty be involved?",
-    a: "Yes. Most projects have a faculty PI or clinical sponsor. Email the group lead to discuss seeding or sponsoring a project.",
+    a: "Yes. Many projects need a faculty PI, project sponsor, or operational partner. Email the group lead to discuss seeding or sponsoring a project.",
   },
   {
     q: "Is this for credit?",
@@ -37,7 +37,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Who funds this?",
-    a: "Funding comes from CCTS pilot funds, an Innovation Award, faculty seed money, and a $475K SUP grant from the KY Cabinet for Health and Family Services. Active applications include Macy and Precision Medicine grants.",
+    a: "Funding comes from campus seed support, pilot awards, project grants, and partner contributions. The group also helps teams shape external applications.",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function JoinPage() {
             >
               <span>Friday · 12:00 pm</span>
               <span>{content.session.venue}</span>
-              <span>Typically around 30 attendees</span>
+              <span>Open to students, faculty, and staff</span>
             </div>
             <a href="#rsvp" className="cta">
               RSVP for this Friday <span>→</span>
@@ -154,7 +154,7 @@ export default function JoinPage() {
                   "color-mix(in oklab, var(--bg) 20%, transparent)",
               }}
             >
-              Start an AI-guided intake <span>→</span>
+              Start a structured pitch <span>→</span>
             </Link>
           </div>
 
@@ -167,21 +167,14 @@ export default function JoinPage() {
               </p>
             </div>
             <SubscribeForm />
-            <div className="small">~50 subscribers</div>
+            <div className="small">Monday digest, no noise.</div>
           </div>
         </div>
       </section>
 
       {/* ───── RSVP form ───── */}
       <section className="section container" id="rsvp">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: "calc(64px * var(--d))",
-            alignItems: "start",
-          }}
-        >
+        <div className="join-section-grid">
           <div>
             <div className="section-label">
               <span className="idx">RSVP</span>{" "}
@@ -222,14 +215,7 @@ export default function JoinPage() {
 
       {/* ───── Pitch form ───── */}
       <section className="section container" id="pitch">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: "calc(64px * var(--d))",
-            alignItems: "start",
-          }}
-        >
+        <div className="join-section-grid">
           <div>
             <div className="section-label">
               <span className="idx">PITCH</span>{" "}
@@ -287,13 +273,7 @@ export default function JoinPage() {
         className="section container"
         style={{ paddingBottom: "calc(80px * var(--d))" }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: 24,
-          }}
-        >
+        <div className="join-contact-grid">
           <div className="card">
             <div className="eyebrow">Meeting</div>
             <h3 className="h3" style={{ marginTop: 8 }}>
@@ -329,9 +309,9 @@ export default function JoinPage() {
                 incubator@uky.edu
               </a>
               <br />
-              partnerships · partnerships@uky.edu
+              pitches · send a short note with your idea
               <br />
-              press · press@uky.edu
+              partners · tell us what you want to build
             </p>
           </div>
           <div className="card">
@@ -357,11 +337,11 @@ export default function JoinPage() {
                 GitHub →
               </a>
               <a
-                href="#"
+                href="mailto:incubator@uky.edu?subject=AI%20Incubator%20connection"
                 className="chip"
                 style={{ fontSize: 12 }}
               >
-                LinkedIn →
+                Email →
               </a>
             </div>
           </div>

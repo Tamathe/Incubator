@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
 import { subscribeSchema } from "@/lib/schemas";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
@@ -29,7 +28,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
+  if (!process.env.DATABASE_URL) {
+    return NextResponse.json(
+      { error: "Subscribe database is not configured" },
+      { status: 503 },
+    );
+  }
+
   try {
+    const { prisma } = await import("@/lib/prisma");
     await prisma.subscriber.upsert({
       where: { email: parsed.data.email },
       create: {

@@ -213,7 +213,7 @@ export const content: SiteContent = {
     venue: "Microsoft Teams",
     teamsUrl: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzZhMTNiNjYtODcwNy00MjBhLTg3MmQtNmZhNDU4MGVlMjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222b30530b-69b6-4457-b818-481cb53d42ae%22%2c%22Oid%22%3a%22e5e67874-0b35-4528-b862-6b2d1a6b1fc2%22%7d",
     agenda: [
-      "DROME — Trauma & Aerospace leads on initial scope",
+      "DRONE — Trauma & Aerospace leads on initial scope",
       "KY-AHEAD — KCR data-linkage status",
       "Open pitches (~15 min)",
     ],
@@ -272,8 +272,8 @@ export const content: SiteContent = {
       updated: "2026-05-02",
     },
     {
-      id: "drome",
-      name: "DROME",
+      id: "drone",
+      name: "DRONE",
       tagline: "Whole Blood Drone Delivery in Rural Kentucky",
       status: "kickoff",
       stage: "Just kicked off",
@@ -316,7 +316,7 @@ export const content: SiteContent = {
   ],
   log: [
     { date: "2026-05-22", project: "Markey · HPV/Pap", note: "Kickoff — Oncology & Patient Ed leads committed" },
-    { date: "2026-05-20", project: "DROME",            note: "Trauma & Aerospace leads aligned on co-lead structure" },
+    { date: "2026-05-20", project: "DRONE",            note: "Trauma & Aerospace leads aligned on co-lead structure" },
     { date: "2026-05-18", project: "Virtual Clinic",   note: "Curriculum & Sim leads signed on" },
     { date: "2026-05-15", project: "KY-AHEAD",         note: "KCR/Markey kickoff — DSA path opened with KCR data POC" },
     { date: "2026-05-10", project: "Socratic Tutor",   note: "v1.4 reasoning-trace pass — 300+ sessions logged" },
@@ -350,8 +350,8 @@ export const content: SiteContent = {
       status: "open",
     },
     {
-      id: "drome-faa-call",
-      project: "drome",
+      id: "drone-faa-call",
+      project: "drone",
       owner: "A1",
       body: "Schedule FAA exploratory call",
       created: "2026-05-22",
@@ -359,8 +359,8 @@ export const content: SiteContent = {
       status: "open",
     },
     {
-      id: "drome-ems-intro",
-      project: "drome",
+      id: "drone-ems-intro",
+      project: "drone",
       owner: "T1",
       body: "Intro trauma chief ↔ regional EMS director",
       created: "2026-05-24",
@@ -516,10 +516,10 @@ export const content: SiteContent = {
     {
       date: "2026-05-29",
       kind: "pitch",
-      title: "DROME — initial scope",
+      title: "DRONE — initial scope",
       blurb: "Bernard & Bailey on EMS workflow and the FAA path.",
       presenters: "Bernard · Bailey",
-      projectId: "drome",
+      projectId: "drone",
     },
     {
       date: "2026-05-29",

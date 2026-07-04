@@ -78,7 +78,7 @@ export default function ProjectsFilteredList({
               </button>
             ))}
           </div>
-          <div className="group" style={{ marginLeft: "auto" }}>
+          <div className="group group-area">
             <span className="lbl">Area</span>
             <button
               className={`filter-chip ${areaFilter === null ? "active" : ""}`}

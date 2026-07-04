@@ -26,6 +26,7 @@ async function post(body: unknown, headers: Record<string, string> = {}) {
 }
 
 beforeEach(() => {
+  process.env.DATABASE_URL = "postgresql://test:test@localhost:5432/test";
   rsvpCreateMock.mockReset();
   subscriberUpsertMock.mockReset();
   rsvpCreateMock.mockResolvedValue({});
@@ -70,5 +71,22 @@ describe("POST /api/rsvp", () => {
   it("returns 400 on validation failure", async () => {
     const res = await post({ ...valid, email: "bad" });
     expect(res.status).toBe(400);
+  });
+
+  it("returns 503 when the database is not configured", async () => {
+    const previousDatabaseUrl = process.env.DATABASE_URL;
+    delete process.env.DATABASE_URL;
+    try {
+      const res = await post(valid, { "x-forwarded-for": "7.7.7.7" });
+      expect(res.status).toBe(503);
+      expect(rsvpCreateMock).not.toHaveBeenCalled();
+      expect(subscriberUpsertMock).not.toHaveBeenCalled();
+    } finally {
+      if (previousDatabaseUrl === undefined) {
+        delete process.env.DATABASE_URL;
+      } else {
+        process.env.DATABASE_URL = previousDatabaseUrl;
+      }
+    }
   });
 });

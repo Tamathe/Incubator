@@ -25,12 +25,12 @@ export default function ProjectsPage() {
             Projects · {content.cohort.replace(/^Cohort\s+\d+\s+·\s+/, "")}
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            Current projects.
+            Current work.
           </h1>
           <p className="lead" style={{ marginTop: 28 }}>
-            Projects span clinical care, medical education, and public health.
-            Each is led by a member of the group. Use the filters to narrow by
-            status or area.
+            Active builds, new pitches, and open collaboration paths across
+            teaching, research, operations, student life, community work, and
+            technical teams. Use the filters to find where your energy fits.
           </p>
         </div>
       </header>

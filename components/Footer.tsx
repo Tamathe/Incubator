@@ -30,16 +30,16 @@ export default function Footer() {
               className="body"
               style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
             >
-              A weekly working group at the University of Kentucky. AI projects in
-              healthcare and education.
+              A weekly project studio for the University of Kentucky. AI projects
+              across campus.
             </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/#team">Team</Link></li>
-              <li><Link href="/#log">Activity log</Link></li>
+              <li><Link href="/#team">Ways in</Link></li>
+              <li><Link href="/ideas">Ideas map</Link></li>
               <li><Link href="/changelog">Changelog</Link></li>
               <li><Link href="/join">Get involved</Link></li>
             </ul>

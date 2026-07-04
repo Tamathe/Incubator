@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
 import { rsvpSchema } from "@/lib/schemas";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { nextSession } from "@/lib/session";
@@ -31,7 +30,15 @@ export async function POST(req: Request) {
 
   const meetingDate = nextSession();
 
+  if (!process.env.DATABASE_URL) {
+    return NextResponse.json(
+      { error: "RSVP database is not configured" },
+      { status: 503 },
+    );
+  }
+
   try {
+    const { prisma } = await import("@/lib/prisma");
     await prisma.rsvp.create({
       data: {
         name: parsed.data.name,

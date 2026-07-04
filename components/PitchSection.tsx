@@ -3,15 +3,15 @@ import Link from "next/link";
 const PREVIEW: { role: "assistant" | "user"; text: string }[] = [
   {
     role: "assistant",
-    text: "Welcome. I'll help you turn your idea into a tight pitch — about ten minutes. To start: what's the problem you'd like to work on?",
+    text: "Start with the problem. What is stuck, slow, confusing, or newly possible?",
   },
   {
     role: "user",
-    text: "Patients on chemo can't easily track which symptoms started when. Their oncologists end up reconstructing it from memory at every visit.",
+    text: "Students cannot find the right campus resources when deadlines are close. They end up piecing together advice from old emails and web pages.",
   },
   {
     role: "assistant",
-    text: "Concrete. Whose pain is sharpest there — patients trying to remember, or clinicians piecing it together at the visit?",
+    text: "Good. Now name who feels that pain most sharply, and what the smallest useful prototype would do first.",
   },
 ];
 
@@ -28,18 +28,24 @@ export default function PitchSection() {
             Have an idea? <em>Bring it.</em>
           </h2>
           <p className="body" style={{ marginTop: 18, maxWidth: "44ch" }}>
-            Talk it through with our intake. It walks you through five quick
-            areas — the problem, who it affects, what you&apos;d build first,
-            who you&apos;d need, and a bit about you. Takes about ten minutes.
-            The group lead reads every one and gets back within a few days.
+            Write the sharp version of the idea: the problem, who it affects,
+            and the smallest useful build. Takes about five minutes. The group
+            lead reads every one and gets back within a few days.
           </p>
           <p className="small" style={{ marginTop: 14, maxWidth: "44ch" }}>
-            You&apos;re talking with Claude, scoped to help you pitch. Nothing
-            you say is stored beyond the email we send to triage.
+            If the project queue is unavailable, the form gives you a
+            ready-to-send email draft so the pitch still gets to a human.
           </p>
-          <div style={{ display: "flex", gap: 10, marginTop: 28, flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 10,
+              marginTop: 28,
+              flexWrap: "wrap",
+            }}
+          >
             <Link href="/pitch" className="btn primary lg">
-              Start a pitch <span className="arrow">→</span>
+              Start a pitch <span className="arrow">-&gt;</span>
             </Link>
             <a href="mailto:incubator@uky.edu" className="btn lg">
               Or email us
@@ -50,14 +56,17 @@ export default function PitchSection() {
         <div className="pitch-preview" aria-hidden="true">
           <div className="pitch-preview-head mono">
             <span className="pitch-preview-dot" />
-            Intake · live
+            Intake live
           </div>
-          {PREVIEW.map((m, i) => (
-            <div className={`pitch-preview-msg pitch-preview-msg--${m.role}`} key={i}>
-              {m.role === "assistant" && (
+          {PREVIEW.map((message, i) => (
+            <div
+              className={`pitch-preview-msg pitch-preview-msg--${message.role}`}
+              key={i}
+            >
+              {message.role === "assistant" && (
                 <div className="pitch-preview-from mono">Intake</div>
               )}
-              <div className="pitch-preview-body">{m.text}</div>
+              <div className="pitch-preview-body">{message.text}</div>
             </div>
           ))}
           <div className="pitch-preview-msg pitch-preview-msg--assistant pitch-preview-msg--ghost">

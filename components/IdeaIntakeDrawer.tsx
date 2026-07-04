@@ -17,7 +17,7 @@ interface Props {
 }
 
 const LOOKING_FOR_OPTIONS = [
-  "Clinician",
+  "Subject expert",
   "Coder",
   "Designer",
   "Writer",
@@ -26,12 +26,13 @@ const LOOKING_FOR_OPTIONS = [
 ];
 
 const ROLE_OPTIONS = [
-  "Undergrad student",
-  "Graduate / Medical student",
-  "Resident / Fellow",
+  "Undergraduate student",
+  "Graduate student",
   "Faculty",
   "Staff",
+  "Researcher",
   "Community partner",
+  "Campus leader",
 ];
 
 export default function IdeaIntakeDrawer({ open, onClose, onInsert }: Props) {

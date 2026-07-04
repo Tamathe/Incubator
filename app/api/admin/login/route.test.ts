@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 beforeEach(() => {
   vi.resetModules();
   process.env.JWT_SECRET = "test-secret-must-be-at-least-32-characters-long";
+  delete process.env.ADMIN_PASSWORD_HASH;
 });
 
 async function postLogin(body: unknown) {
@@ -37,5 +38,20 @@ describe("POST /api/admin/login", () => {
     process.env.ADMIN_PASSWORD_HASH = await bcrypt.hash("x", 4);
     const res = await postLogin({});
     expect(res.status).toBe(400);
+  });
+
+  it("returns 503 when admin auth is not configured", async () => {
+    const res = await postLogin({ password: "anything" });
+    expect(res.status).toBe(503);
+    await expect(res.json()).resolves.toMatchObject({
+      error: "Admin login is not configured yet.",
+    });
+  });
+
+  it("returns 503 when JWT secret is missing", async () => {
+    process.env.ADMIN_PASSWORD_HASH = await bcrypt.hash("x", 4);
+    delete process.env.JWT_SECRET;
+    const res = await postLogin({ password: "x" });
+    expect(res.status).toBe(503);
   });
 });

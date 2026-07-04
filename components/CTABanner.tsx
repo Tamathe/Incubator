@@ -14,9 +14,9 @@ export default function CTABanner() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <span className="eyebrow">Friday at noon</span>
           <h2 style={{ marginTop: 14 }}>
-            Join the next
+            Bring an idea.
             <br />
-            <span className="accent">meeting.</span>
+            <span className="accent">Build with us.</span>
           </h2>
         </div>
         <div
@@ -40,8 +40,11 @@ export default function CTABanner() {
             <a href={session.teamsUrl} className="btn primary lg">
               Join this Friday <span className="arrow">→</span>
             </a>
-            <a href="#" className="btn lg btn-cta-secondary">
-              Add to calendar
+            <a
+              href="mailto:incubator@uky.edu?subject=AI%20Incubator%20mailing%20list"
+              className="btn lg btn-cta-secondary"
+            >
+              Email us to join
             </a>
           </div>
         </div>

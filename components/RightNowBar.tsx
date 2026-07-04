@@ -46,8 +46,8 @@ export default function RightNowBar() {
               </li>
             ))}
           </ul>
-          <a className="rn-more" href="#log">
-            Full activity log <span className="arrow">→</span>
+          <a className="rn-more" href="/projects">
+            View project board <span className="arrow">→</span>
           </a>
         </div>
       </div>
