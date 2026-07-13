@@ -1,0 +1,132 @@
+import { describe, it, expect } from "vitest";
+import {
+  subscribeSchema,
+  rsvpSchema,
+  pitchSchema,
+  loginSchema,
+} from "./schemas";
+
+describe("subscribeSchema", () => {
+  it("accepts a valid email", () => {
+    const r = subscribeSchema.parse({ email: "Foo@UKY.edu" });
+    expect(r.email).toBe("foo@uky.edu");
+  });
+
+  it("rejects malformed email", () => {
+    expect(() => subscribeSchema.parse({ email: "nope" })).toThrow();
+  });
+
+  it("rejects oversize email", () => {
+    const long = "a".repeat(250) + "@uky.edu";
+    expect(() => subscribeSchema.parse({ email: long })).toThrow();
+  });
+
+  it("accepts optional source", () => {
+    const r = subscribeSchema.parse({ email: "x@uky.edu", source: "footer" });
+    expect(r.source).toBe("footer");
+  });
+
+  it("drops honeypot 'website' from output (it lives at the route level)", () => {
+    expect(() =>
+      subscribeSchema.parse({ email: "x@uky.edu", website: "bot" }),
+    ).toThrow();
+  });
+});
+
+describe("rsvpSchema", () => {
+  it("accepts a complete RSVP", () => {
+    const r = rsvpSchema.parse({
+      name: "Tama Thé",
+      email: "tama@uky.edu",
+      role: "Faculty",
+      motivations: ["Curious about the group"],
+      note: "Excited",
+      joinListserv: true,
+    });
+    expect(r.email).toBe("tama@uky.edu");
+    expect(r.motivations).toHaveLength(1);
+  });
+
+  it("trims name and note", () => {
+    const r = rsvpSchema.parse({
+      name: "  Tama  ",
+      email: "t@uky.edu",
+      motivations: [],
+      joinListserv: false,
+      note: "  hi  ",
+    });
+    expect(r.name).toBe("Tama");
+    expect(r.note).toBe("hi");
+  });
+
+  it("caps motivations at 10", () => {
+    const motivations = Array(11).fill("x");
+    expect(() =>
+      rsvpSchema.parse({
+        name: "X",
+        email: "x@uky.edu",
+        motivations,
+        joinListserv: false,
+      }),
+    ).toThrow();
+  });
+
+  it("requires non-empty name", () => {
+    expect(() =>
+      rsvpSchema.parse({
+        name: "",
+        email: "x@uky.edu",
+        motivations: [],
+        joinListserv: false,
+      }),
+    ).toThrow();
+  });
+});
+
+describe("pitchSchema", () => {
+  it("accepts a complete pitch", () => {
+    const r = pitchSchema.parse({
+      submitterName: "X",
+      submitterEmail: "x@uky.edu",
+      problem: "Problem text",
+      affected: "Affected group",
+      firstBuild: "Build idea",
+    });
+    expect(r.problem).toBe("Problem text");
+  });
+
+  it("requires all three structured fields", () => {
+    expect(() =>
+      pitchSchema.parse({
+        submitterName: "X",
+        submitterEmail: "x@uky.edu",
+        problem: "",
+        affected: "Group",
+        firstBuild: "Build",
+      }),
+    ).toThrow();
+  });
+
+  it("caps problem at 2000 chars", () => {
+    expect(() =>
+      pitchSchema.parse({
+        submitterName: "X",
+        submitterEmail: "x@uky.edu",
+        problem: "a".repeat(2001),
+        affected: "Group",
+        firstBuild: "Build",
+      }),
+    ).toThrow();
+  });
+});
+
+describe("loginSchema", () => {
+  it("accepts a string password", () => {
+    const r = loginSchema.parse({ password: "hunter2hunter2" });
+    expect(r.password).toBe("hunter2hunter2");
+  });
+
+  it("rejects missing password", () => {
+    expect(() => loginSchema.parse({})).toThrow();
+  });
+});

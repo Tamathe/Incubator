@@ -1,0 +1,6 @@
+# Local source footage. Only the edited web assets under public/media are deployed.
+/Media/
+
+# Local design and agent reference material.
+.claude/
+reference/
