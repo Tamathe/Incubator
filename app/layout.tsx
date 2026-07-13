@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description:
     "An open Friday community where University of Kentucky students, faculty, and staff learn AI together across disciplines.",
   openGraph: {
-    title: "This is where UK learns AI together.",
+    title: "Learn to work with AI, together at UK.",
     description:
-      "Every Friday at noon. Open to students, faculty, and staff from every discipline.",
+      "Every Friday at noon, students, faculty, and staff from across campus gather to solve problems and learn to use AI.",
     type: "website",
     siteName: "AI Incubator @ University of Kentucky",
     images: [
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "This is where UK learns AI together.",
+    title: "Learn to work with AI, together at UK.",
     description:
-      "Every Friday at noon. Open to students, faculty, and staff from every discipline.",
+      "Every Friday at noon, students, faculty, and staff from across campus gather to solve problems and learn to use AI.",
     images: ["/media/incubator-primary.jpg"],
   },
 };

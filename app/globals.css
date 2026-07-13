@@ -2850,7 +2850,7 @@ html[data-theme="dark"] .chip.kind-demo {
 .studio-hero-foot span:first-child { border-left: 0; }
 
 .studio-manifesto {
-  padding-top: 126px;
+  padding: 126px 0;
   background: #070707;
   color: #ffffff;
   border-top: 1px solid #252525;
@@ -2884,37 +2884,6 @@ html[data-theme="dark"] .chip.kind-demo {
   letter-spacing: 0;
   color: rgba(255, 255, 255, 0.7);
 }
-.studio-discipline-rail {
-  margin-top: 96px;
-  overflow: hidden;
-  border-top: 1px solid #2b2b2b;
-  border-bottom: 1px solid #2b2b2b;
-}
-.studio-discipline-track {
-  width: max-content;
-  display: flex;
-  animation: studio-discipline-scroll 42s linear infinite;
-}
-.studio-discipline-track > div { display: flex; }
-.studio-discipline-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: 32px;
-  padding: 28px 20px;
-  font-size: 26px;
-  line-height: 1;
-  font-weight: 560;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-.studio-discipline-track span::after {
-  content: "/";
-  color: #82b3ff;
-}
-@keyframes studio-discipline-scroll {
-  to { transform: translateX(-50%); }
-}
-
 .studio-reel {
   position: relative;
   height: 390svh;
@@ -3647,6 +3616,7 @@ html[data-theme="dark"] .chip.kind-demo {
   .studio-friday,
   .studio-community,
   .studio-final { padding-top: 88px; }
+  .studio-manifesto { padding-bottom: 88px; }
   .studio-manifesto h2,
   .studio-builds-intro h2,
   .studio-community-head h2,
@@ -3654,8 +3624,6 @@ html[data-theme="dark"] .chip.kind-demo {
   .studio-manifesto-grid > div > p,
   .studio-builds-intro > div > p,
   .studio-friday-intro { margin-top: 22px; font-size: 18px; }
-  .studio-discipline-rail { margin-top: 66px; }
-  .studio-discipline-track span { padding: 22px 16px; font-size: 21px; }
   .studio-build-gallery {
     grid-template-columns: 1fr;
     gap: 66px;
@@ -3780,7 +3748,6 @@ html[data-theme="dark"] .chip.kind-demo {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .studio-discipline-track { animation: none; }
   .studio-community-grid img,
   .studio-button { transition: none; }
   .studio-reel {

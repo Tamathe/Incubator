@@ -58,19 +58,6 @@ const FRIDAY_MODES = [
   },
 ];
 
-const DISCIPLINES = [
-  "Medicine",
-  "Engineering",
-  "Education",
-  "Design",
-  "Agriculture",
-  "Humanities",
-  "Business",
-  "Public Health",
-  "Nursing",
-  "Communication",
-];
-
 function getFeaturedStories() {
   return FEATURED_STORIES.flatMap((story) => {
     const project = content.projects.find((item) => item.id === story.id);
@@ -103,15 +90,14 @@ export default function HomePage() {
           <div className="studio-hero-content">
             <div className="studio-hero-intro">
               <p className="studio-kicker">University of Kentucky</p>
-              <h1>This is where UK learns AI together.</h1>
+              <h1>Learn to work with AI, together at UK.</h1>
             </div>
 
             <div className="studio-hero-copy">
               <p className="studio-hero-lead">
-                Every Friday at noon, students, faculty, and staff meet on Teams
-                to share projects, demonstrate tools, learn new skills, and ask
-                questions. Anyone can attend. You do not need a project or coding
-                background.
+                Every Friday at noon, students, faculty, and staff from across
+                campus gather to solve problems and learn to use AI. The meeting
+                is completely open. No coding background or project required.
               </p>
 
               <div className="studio-hero-actions">
@@ -140,32 +126,17 @@ export default function HomePage() {
 
         <section className="studio-manifesto" aria-labelledby="manifesto-title">
           <div className="studio-shell studio-manifesto-grid">
-            <p className="studio-section-index">Across campus</p>
+            <p className="studio-section-index">The premise</p>
             <div>
               <h2 id="manifesto-title">
-                AI needs every field.
+                AI is changing every field.
               </h2>
               <p>
-                Students, faculty, and staff bring knowledge of patients,
-                classrooms, communities, systems, language, ethics, and design.
-                On Fridays, they compare how AI is being used in their fields
-                and discuss the questions it raises.
+                Useful AI work needs people who understand patients, classrooms,
+                communities, systems, language, ethics, and design. On Fridays,
+                they bring that knowledge together to solve problems and learn
+                from one another.
               </p>
-            </div>
-          </div>
-
-          <div className="studio-discipline-rail" aria-label="Disciplines welcome at the Incubator">
-            <div className="studio-discipline-track">
-              <div>
-                {DISCIPLINES.map((discipline) => (
-                  <span key={discipline}>{discipline}</span>
-                ))}
-              </div>
-              <div aria-hidden="true">
-                {DISCIPLINES.map((discipline) => (
-                  <span key={discipline}>{discipline}</span>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -174,14 +145,15 @@ export default function HomePage() {
 
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
-            <p className="studio-section-index">Three flagship builds</p>
+            <p className="studio-section-index">Current work</p>
             <div>
               <h2 id="builds-title">
-                Cancer screening. Rural vision. Trauma logistics.
+                What learning together can become.
               </h2>
               <p>
-                Faculty, students, clinicians, engineers, and community
-                partners are working on these projects now.
+                These are three projects underway now. People across UK can
+                bring a question, add their expertise, and help shape what gets
+                built next.
               </p>
             </div>
           </div>
