@@ -1,2 +1,38 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env
+.env*.local
 .vercel
-__pycache__/
+
+# os
+.DS_Store
+Thumbs.db
+.superpowers/
+
+# local raw source media (published site assets live under public/media)
+/Media/
+
+# generated at build time by scripts/build-changelog.mjs
+app/changelog/data.json
+
+# prisma generated client
+app/generated/
+
+# vitest
+coverage/

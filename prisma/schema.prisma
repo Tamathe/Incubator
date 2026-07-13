@@ -1,0 +1,69 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../app/generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Subscriber {
+  id              String              @id @default(cuid())
+  email           String              @unique
+  status          SubscriberStatus    @default(active)
+  source          String?
+  createdAt       DateTime            @default(now())
+  unsubscribedAt  DateTime?
+  ipAddress       String?
+  userAgent       String?
+
+  @@index([createdAt])
+}
+
+enum SubscriberStatus {
+  active
+  unsubscribed
+}
+
+model Rsvp {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  role          String?
+  motivations   String[]
+  note          String?
+  joinListserv  Boolean  @default(false)
+  meetingDate   DateTime
+  reviewed      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  ipAddress     String?
+
+  @@index([meetingDate])
+  @@index([createdAt])
+}
+
+model Pitch {
+  id              String       @id @default(cuid())
+  submitterName   String
+  submitterEmail  String
+  role            String?
+  problem         String
+  affected        String
+  firstBuild      String
+  status          PitchStatus  @default(new)
+  notes           String?
+  createdAt       DateTime     @default(now())
+  reviewedAt      DateTime?
+
+  @@index([status, createdAt])
+  @@index([createdAt])
+}
+
+enum PitchStatus {
+  new
+  reviewing
+  accepted
+  declined
+  converted
+}
