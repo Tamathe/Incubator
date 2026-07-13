@@ -21,11 +21,11 @@ const CHAPTERS = [
   },
   {
     number: "03",
-    title: "Demonstrate",
-    body: "Members show tools, workflows, and prototypes they are using.",
-    video: "/media/studio-reel/03-demonstrate.mp4",
-    poster: "/media/studio-reel/03-demonstrate.jpg",
-    focus: "54% center",
+    title: "Build",
+    body: "Chaelyn McGuire builds a philanthropy website for her sorority.",
+    video: "/media/studio-reel/03-chaelyn.mp4",
+    poster: "/media/studio-reel/03-chaelyn.jpg",
+    focus: "50% center",
   },
   {
     number: "04",
@@ -37,11 +37,11 @@ const CHAPTERS = [
   },
   {
     number: "05",
-    title: "Adapt",
-    body: "Projects change after questions and feedback from the room.",
-    video: "/media/studio-reel/05-adapt.mp4",
-    poster: "/media/studio-reel/05-adapt.jpg",
-    focus: "56% center",
+    title: "Teach",
+    body: "Hunter Colson demonstrates the student-built Socratic Tutor.",
+    video: "/media/studio-reel/05-hunter.mp4",
+    poster: "/media/studio-reel/05-hunter.jpg",
+    focus: "50% center",
   },
 ] as const;
 
