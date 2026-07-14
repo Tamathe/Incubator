@@ -1,6 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import CommercialPlayer from "./CommercialPlayer";
 
 const CHAPTERS = [
   {
@@ -47,26 +49,12 @@ const CHAPTERS = [
 
 const MOSAIC_SLOTS = ["focus", "upper", "top", "lower", "bottom"] as const;
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
-
 export default function StudioReel() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
-  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [motionPaused, setMotionPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-
-  const manualMode = prefersReducedMotion;
-
-  const updateActiveIndex = useCallback((nextIndex: number) => {
-    if (activeIndexRef.current === nextIndex) return;
-    activeIndexRef.current = nextIndex;
-    setActiveIndex(nextIndex);
-  }, []);
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -78,7 +66,6 @@ export default function StudioReel() {
 
     syncPreferences();
     motionQuery.addEventListener("change", syncPreferences);
-
     return () => motionQuery.removeEventListener("change", syncPreferences);
   }, []);
 
@@ -88,79 +75,32 @@ export default function StudioReel() {
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.14 },
+      { threshold: 0.2 },
     );
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return;
-      if (index === activeIndex && isVisible && !motionPaused) {
-        void video.play().catch(() => undefined);
-      } else {
-        video.pause();
-      }
-    });
-  }, [activeIndex, isVisible, motionPaused]);
+    if (!isVisible || motionPaused || prefersReducedMotion) return;
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || manualMode) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % CHAPTERS.length);
+    }, 5600);
 
-    let frame = 0;
-
-    const updateFromPageScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const scrollableDistance = Math.max(
-          1,
-          section.offsetHeight - window.innerHeight,
-        );
-        const progress = clamp(-rect.top / scrollableDistance, 0, 1);
-        updateActiveIndex(Math.round(progress * (CHAPTERS.length - 1)));
-      });
-    };
-
-    window.addEventListener("scroll", updateFromPageScroll, { passive: true });
-    window.addEventListener("resize", updateFromPageScroll);
-    updateFromPageScroll();
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", updateFromPageScroll);
-      window.removeEventListener("resize", updateFromPageScroll);
-    };
-  }, [manualMode, updateActiveIndex]);
-
-  const selectChapter = (index: number) => {
-    updateActiveIndex(index);
-
-    if (manualMode) return;
-
-    const section = sectionRef.current;
-    if (!section) return;
-    const sectionTop = window.scrollY + section.getBoundingClientRect().top;
-    const scrollableDistance = section.offsetHeight - window.innerHeight;
-    const progress = index / (CHAPTERS.length - 1);
-    window.scrollTo({
-      top: sectionTop + scrollableDistance * progress,
-      behavior: "smooth",
-    });
-  };
+    return () => window.clearInterval(timer);
+  }, [activeIndex, isVisible, motionPaused, prefersReducedMotion]);
 
   const getSlot = (index: number) => {
-    const offset =
-      (index - activeIndex + CHAPTERS.length) % CHAPTERS.length;
+    const offset = (index - activeIndex + CHAPTERS.length) % CHAPTERS.length;
     return MOSAIC_SLOTS[offset];
   };
 
   return (
     <section
       ref={sectionRef}
-      className={`studio-reel ${manualMode ? "studio-reel-manual" : ""}`}
+      className="studio-reel"
+      id="studio"
       aria-labelledby="studio-reel-title"
     >
       <div className="studio-reel-sticky">
@@ -180,7 +120,8 @@ export default function StudioReel() {
               className={`studio-reel-motion-toggle ${motionPaused ? "is-paused" : ""}`}
               onClick={() => setMotionPaused((paused) => !paused)}
               aria-label={motionPaused ? "Play video motion" : "Pause video motion"}
-              title={motionPaused ? "Play video motion" : "Pause video motion"}
+              title={motionPaused ? "Play motion" : "Pause motion"}
+              disabled={prefersReducedMotion}
             >
               <span aria-hidden="true" />
             </button>
@@ -191,6 +132,8 @@ export default function StudioReel() {
           <div className="studio-mosaic-stage">
             {CHAPTERS.map((chapter, index) => {
               const isActive = index === activeIndex;
+              const shouldPlay =
+                isActive && isVisible && !motionPaused && !prefersReducedMotion;
 
               return (
                 <button
@@ -198,24 +141,33 @@ export default function StudioReel() {
                   type="button"
                   className={`studio-mosaic-tile ${isActive ? "is-active" : ""}`}
                   data-slot={getSlot(index)}
-                  onClick={() => selectChapter(index)}
+                  onClick={() => setActiveIndex(index)}
                   aria-label={`${chapter.title}. ${chapter.body}`}
                   aria-pressed={isActive}
                 >
-                  <video
-                    ref={(node) => {
-                      videoRefs.current[index] = node;
-                    }}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster={chapter.poster}
-                    aria-hidden="true"
-                    style={{ objectPosition: chapter.focus }}
-                  >
-                    <source src={chapter.video} type="video/mp4" />
-                  </video>
+                  {shouldPlay ? (
+                    <video
+                      key={chapter.video}
+                      src={chapter.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster={chapter.poster}
+                      aria-hidden="true"
+                      style={{ objectPosition: chapter.focus }}
+                    />
+                  ) : (
+                    <Image
+                      src={chapter.poster}
+                      alt=""
+                      fill
+                      sizes="(max-width: 700px) 100vw, 70vw"
+                      aria-hidden="true"
+                      style={{ objectPosition: chapter.focus }}
+                    />
+                  )}
                   <span className="studio-mosaic-shade" aria-hidden="true" />
                   <span className="studio-mosaic-caption" aria-hidden="true">
                     <span className="studio-mosaic-number">{chapter.number}</span>
@@ -230,12 +182,13 @@ export default function StudioReel() {
           </div>
         </div>
 
-        <div className="studio-shell studio-reel-footer" aria-hidden="true">
-          <div className="studio-reel-progress">
+        <div className="studio-shell studio-reel-footer">
+          <div className="studio-reel-progress" aria-hidden="true">
             <span
               style={{ width: `${((activeIndex + 1) / CHAPTERS.length) * 100}%` }}
             />
           </div>
+          <CommercialPlayer />
         </div>
       </div>
     </section>

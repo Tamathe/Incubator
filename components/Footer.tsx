@@ -39,9 +39,9 @@ export default function Footer() {
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
+              <li><Link href="/#studio">Inside Friday</Link></li>
+              <li><Link href="/#student-work">Student work</Link></li>
               <li><Link href="/#fridays">Friday meetings</Link></li>
-              <li><Link href="/ideas">Ideas</Link></li>
-              <li><Link href="/changelog">Changelog</Link></li>
               <li><Link href="/join">Ways to join</Link></li>
             </ul>
           </div>

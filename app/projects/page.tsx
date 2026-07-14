@@ -25,11 +25,11 @@ export default function ProjectsPage() {
             Projects · {content.cohort.replace(/^Cohort\s+\d+\s+·\s+/, "")}
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            Current work.
+            Work in motion.
           </h1>
           <p className="lead" style={{ marginTop: 28 }}>
-            Browse active projects, their current stage, and ways students can
-            contribute. Filter by status or area.
+            See what teams are exploring, what stage each project has reached,
+            and where students can contribute.
           </p>
         </div>
       </header>

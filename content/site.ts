@@ -153,6 +153,16 @@ export interface Artifact {
   note?: string;
 }
 
+export interface StudentWork {
+  id: string;
+  title: string;
+  person: string;
+  format: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+}
+
 export type SessionKind =
   | "pitch"
   | "demo"
@@ -188,11 +198,12 @@ export interface SiteContent {
   outcomes: Outcome[];
   partners: Partner[];
   artifacts: Artifact[];
+  studentWork: StudentWork[];
   meetings: MeetingSession[];
 }
 
 export const content: SiteContent = {
-  lastUpdated: "2026-07-13",
+  lastUpdated: "2026-07-14",
   cohort: "Cohort 03 - Summer 2026",
   session: {
     dayOfWeek: 5,
@@ -520,6 +531,39 @@ export const content: SiteContent = {
     },
   ],
   artifacts: [],
+  studentWork: [
+    {
+      id: "philanthropy-outreach-site",
+      title: "Philanthropy outreach site",
+      person: "Chaelyn McGuire",
+      format: "Student build",
+      summary:
+        "A website built to support a sorority philanthropy effort and make outreach easier to organize.",
+      image: "/media/studio-reel/03-chaelyn.jpg",
+      imageAlt:
+        "Students discussing a philanthropy website around a table with their laptops",
+    },
+    {
+      id: "socratic-tutor",
+      title: "Socratic Tutor",
+      person: "Hunter Colson",
+      format: "Prototype",
+      summary:
+        "A student-built tutoring prototype that uses questions to help learners reason through a problem.",
+      image: "/media/studio-reel/05-hunter.jpg",
+      imageAlt: "Hunter Colson discussing the Socratic Tutor prototype",
+    },
+    {
+      id: "vibe-coding-workshop",
+      title: "Vibe coding workshop",
+      person: "Alex Dripchak",
+      format: "Learning session",
+      summary:
+        "A practical session on building software with AI-assisted tools, from the first prompt through a working result.",
+      image: "/media/student-work/alex-vibe-coding.jpg",
+      imageAlt: "Vibe coding workshop presentation with Alex Dripchak",
+    },
+  ],
   meetings: [
     {
       date: "2026-07-10",

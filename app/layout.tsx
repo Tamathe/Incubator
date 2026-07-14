@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     siteName: "AI Incubator @ University of Kentucky",
     images: [
       {
-        url: "/media/incubator-primary.jpg",
-        width: 2400,
-        height: 1600,
-        alt: "University of Kentucky AI Incubator members gathered at a campus showcase",
+        url: "/media/incubator-commercial-poster.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "AI Incubator members at a University of Kentucky showcase above the Incubator logo",
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Learn to work with AI, together at UK.",
     description:
       "Every Friday at noon, students, faculty, and staff from across campus gather to solve problems and learn to use AI.",
-    images: ["/media/incubator-primary.jpg"],
+    images: ["/media/incubator-commercial-poster.jpg"],
   },
 };
 

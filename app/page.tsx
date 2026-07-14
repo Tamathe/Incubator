@@ -14,6 +14,7 @@ const FEATURED_STORIES = [
     image: "/media/research/ky-ahead-kentucky.svg",
     imageAlt:
       "Conceptual visualization of the Kentucky map with screening-navigation markers",
+    motion: "map",
   },
   {
     id: "dr-retinopathy-rural-ky",
@@ -23,6 +24,7 @@ const FEATURED_STORIES = [
     image: "/media/research/retinopathy-concept.png",
     imageAlt:
       "Conceptual visualization of a portable retinal camera and retinal image",
+    motion: "focus",
   },
   {
     id: "whole-blood-drone",
@@ -32,6 +34,7 @@ const FEATURED_STORIES = [
     image: "/media/research/blood-drone-concept.png",
     imageAlt:
       "Conceptual visualization of a drone, insulated carrier, and test instrumentation",
+    motion: "route",
   },
 ] as const;
 
@@ -56,7 +59,35 @@ const FRIDAY_MODES = [
     title: "Project pitches",
     body: "Bring an early idea and get questions and feedback from the room.",
   },
-];
+] as const;
+
+type ResearchMotionKind = (typeof FEATURED_STORIES)[number]["motion"];
+
+function ResearchMotion({ kind }: { kind: ResearchMotionKind }) {
+  if (kind === "map") {
+    return (
+      <span className="studio-research-motion studio-research-motion-map" aria-hidden="true">
+        {Array.from({ length: 7 }, (_, index) => (
+          <span key={index} />
+        ))}
+      </span>
+    );
+  }
+
+  if (kind === "focus") {
+    return (
+      <span className="studio-research-motion studio-research-motion-focus" aria-hidden="true">
+        <span />
+      </span>
+    );
+  }
+
+  return (
+    <span className="studio-research-motion studio-research-motion-route" aria-hidden="true">
+      <span />
+    </span>
+  );
+}
 
 function getFeaturedStories() {
   return FEATURED_STORIES.flatMap((story) => {
@@ -67,33 +98,34 @@ function getFeaturedStories() {
 
 export default function HomePage() {
   const featured = getFeaturedStories();
-  const { session } = content;
+  const { session, studentWork } = content;
 
   return (
     <>
       <Nav active="overview" tone="overlay" />
 
       <main className="studio-home">
-        <header className="studio-hero">
-          <div className="studio-hero-visual">
+        <header className="studio-hero" id="about">
+          <div className="studio-hero-visual" aria-hidden="true">
             <Image
               src="/media/incubator-primary.jpg"
-              alt="University of Kentucky AI Incubator members gathered at a campus showcase"
+              alt=""
               fill
               priority
               sizes="100vw"
               className="studio-hero-photo"
             />
-            <div className="studio-hero-shade" aria-hidden="true" />
+            <div className="studio-hero-shade" />
           </div>
 
           <div className="studio-hero-content">
             <div className="studio-hero-intro">
-              <p className="studio-kicker">University of Kentucky</p>
-              <h1>Learn to work with AI, together at UK.</h1>
+              <p className="studio-kicker">University of Kentucky AI Incubator</p>
+              <h1>AI is changing every field.</h1>
             </div>
 
             <div className="studio-hero-copy">
+              <p className="studio-hero-deck">Learn to work with it, together at UK.</p>
               <p className="studio-hero-lead">
                 Every Friday at noon, students, faculty, and staff from across
                 campus gather to solve problems and learn to use AI. The meeting
@@ -107,10 +139,10 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Attend this Friday <span aria-hidden="true">→</span>
+                  Attend this Friday <span aria-hidden="true">-&gt;</span>
                 </a>
-                <Link className="studio-button studio-button-glass" href="/join#cant-make-friday">
-                  Friday at noon doesn&apos;t work?
+                <Link className="studio-text-link" href="/join#cant-make-friday">
+                  I cannot attend at noon
                 </Link>
               </div>
             </div>
@@ -124,43 +156,25 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="studio-manifesto" aria-labelledby="manifesto-title">
-          <div className="studio-shell studio-manifesto-grid">
-            <p className="studio-section-index">The premise</p>
-            <div>
-              <h2 id="manifesto-title">
-                AI is changing every field.
-              </h2>
-              <p>
-                Useful AI work needs people who understand patients, classrooms,
-                communities, systems, language, ethics, and design. On Fridays,
-                they bring that knowledge together to solve problems and learn
-                from one another.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <StudioReel />
-
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
             <p className="studio-section-index">Current work</p>
             <div>
-              <h2 id="builds-title">
-                What learning together can become.
-              </h2>
+              <h2 id="builds-title">Three projects underway now.</h2>
               <p>
-                These are three projects underway now. People across UK can
-                bring a question, add their expertise, and help shape what gets
-                built next.
+                Current teams are working on cancer screening, preventable
+                vision loss, and blood delivery for rural emergency care.
               </p>
             </div>
           </div>
 
           <div className="studio-shell studio-build-gallery">
             {featured.map(({ story, project }) => (
-              <article className="studio-research-card" key={project.id}>
+              <article
+                className="studio-research-card"
+                data-project={project.id}
+                key={project.id}
+              >
                 <figure className="studio-research-image">
                   <Image
                     src={story.image}
@@ -168,6 +182,7 @@ export default function HomePage() {
                     fill
                     sizes="(max-width: 900px) 88vw, 30vw"
                   />
+                  <ResearchMotion kind={story.motion} />
                   <span className="studio-research-number">{story.number}</span>
                   <figcaption>Concept visualization</figcaption>
                 </figure>
@@ -187,17 +202,19 @@ export default function HomePage() {
 
           <div className="studio-shell studio-portfolio-link">
             <Link href="/projects">
-              Explore the broader portfolio <span aria-hidden="true">→</span>
+              Explore the broader portfolio <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </section>
+
+        <StudioReel />
 
         <section className="studio-friday" id="fridays" aria-labelledby="friday-title">
           <div className="studio-shell studio-friday-grid">
             <div className="studio-friday-when" aria-label="Friday meeting time">
               <span>FRI</span>
               <strong>12:00</strong>
-              <small>Microsoft Teams · Completely open</small>
+              <small>Microsoft Teams / Completely open</small>
             </div>
 
             <div className="studio-friday-copy">
@@ -219,26 +236,68 @@ export default function HomePage() {
               </div>
 
               <div className="studio-friday-actions">
-                <a
-                  className="studio-button studio-button-light"
-                  href={session.teamsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open the Friday meeting <span aria-hidden="true">→</span>
-                </a>
+                <Link className="studio-button studio-button-primary" href="/join#rsvp">
+                  Get the next invitation <span aria-hidden="true">-&gt;</span>
+                </Link>
                 <Link className="studio-text-link" href="/join#cant-make-friday">
-                  I can&apos;t attend at noon
+                  I cannot attend at noon
                 </Link>
               </div>
             </div>
           </div>
         </section>
 
+        <section
+          className="studio-student-work"
+          id="student-work"
+          aria-labelledby="student-work-title"
+        >
+          <div className="studio-shell studio-student-work-head">
+            <p className="studio-section-index">Student work</p>
+            <div>
+              <h2 id="student-work-title">Students are already making things.</h2>
+              <p>
+                Workshops, prototypes, and practical builds all have a place in
+                the studio. These are three examples shared by students.
+              </p>
+            </div>
+          </div>
+
+          <div className="studio-shell studio-student-work-grid">
+            {studentWork.map((item, index) => (
+              <article className="studio-student-work-card" key={item.id}>
+                <figure>
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(max-width: 700px) 100vw, 33vw"
+                  />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </figure>
+                <div>
+                  <p className="studio-student-work-meta">
+                    <span>{item.person}</span>
+                    <span>{item.format}</span>
+                  </p>
+                  <h3>{item.title}</h3>
+                  <p>{item.summary}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="studio-shell studio-student-work-action">
+            <Link href="/join#pitch">
+              Bring what you are building Friday <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </div>
+        </section>
+
         <section className="studio-final" aria-labelledby="final-title">
           <div className="studio-shell studio-final-grid">
             <div>
-              <p className="studio-section-index">Your first Friday</p>
+              <p className="studio-section-index">Join the community</p>
               <h2 id="final-title">Start by showing up.</h2>
             </div>
             <div>
@@ -247,16 +306,8 @@ export default function HomePage() {
                 yourself. That is enough.
               </p>
               <div className="studio-final-actions">
-                <a
-                  className="studio-button studio-button-primary"
-                  href={session.teamsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Attend this Friday <span aria-hidden="true">→</span>
-                </a>
-                <Link className="studio-button studio-button-dark" href="/join">
-                  See every way to join
+                <Link className="studio-button studio-button-primary" href="/join">
+                  See every way to join <span aria-hidden="true">-&gt;</span>
                 </Link>
               </div>
             </div>

@@ -25,6 +25,7 @@ function makeContent(overrides: Partial<SiteContent> = {}): SiteContent {
     outcomes: [],
     partners: [],
     artifacts: [],
+    studentWork: [],
     meetings: [],
     ...overrides,
   };

@@ -159,25 +159,17 @@ export default function JoinPage() {
             </a>
           </div>
 
-          <div
-            className="join-card"
-            style={{
-              background: "var(--ink)",
-              color: "var(--bg)",
-              borderColor: "var(--ink)",
-            }}
-          >
-            <div className="num" style={{ color: "var(--accent)" }}>
+          <div className="join-card join-card-featured">
+            <div className="num">
               PATH 02
             </div>
             <div>
-              <h2 className="h2" style={{ color: "var(--bg)" }}>
+              <h2 className="h2">
                 Bring something to discuss
               </h2>
               <p
                 className="body"
                 style={{
-                  color: "color-mix(in oklab, var(--bg) 75%, transparent)",
                   marginTop: 10,
                 }}
               >
@@ -192,7 +184,7 @@ export default function JoinPage() {
                 gap: 6,
                 fontFamily: "var(--mono)",
                 fontSize: 12,
-                color: "color-mix(in oklab, var(--bg) 55%, transparent)",
+                color: "var(--ink-3)",
               }}
             >
               <span>01 A question you are stuck on</span>
@@ -202,11 +194,6 @@ export default function JoinPage() {
             <Link
               href="#rsvp"
               className="cta"
-              style={{
-                color: "var(--accent)",
-                borderTopColor:
-                  "color-mix(in oklab, var(--bg) 20%, transparent)",
-              }}
             >
               Bring something Friday <span>→</span>
             </Link>
