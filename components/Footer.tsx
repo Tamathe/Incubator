@@ -49,6 +49,15 @@ export default function Footer() {
             <h4>Connect</h4>
             <ul>
               <li><a href="mailto:incubator@uky.edu">incubator@uky.edu</a></li>
+              <li>
+                <a
+                  href="https://tamathe.com/incubator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  About Tama Thé, founder -&gt;
+                </a>
+              </li>
               <li><a href="/join">Weekly listserv -&gt;</a></li>
               <li>
                 <a
