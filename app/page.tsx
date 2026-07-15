@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CommercialPlayer from "@/components/CommercialPlayer";
 import Footer from "@/components/Footer";
+import Logo from "@/components/Logo";
 import Nav from "@/components/Nav";
 import StudioClipStrip from "@/components/StudioClipStrip";
 import StoryChapter from "@/components/StoryChapter";
@@ -10,33 +11,24 @@ import { content } from "@/content/site";
 const FEATURED_STORIES = [
   {
     id: "ky-ahead",
-    number: "01",
     question:
       "How do we help more people get the cancer screening they are due for?",
-    image: "/media/research/ky-ahead-kentucky.svg",
-    imageAlt:
-      "Conceptual visualization of the Kentucky map with screening-navigation markers",
-    motion: "map",
+    image: "/media/research/ky-ahead-concept.png",
+    imageAlt: "Kentucky map for the KY-AHEAD cancer-screening project",
   },
   {
     id: "dr-retinopathy-rural-ky",
-    number: "02",
     question:
       "Could AI-supported screening help catch diabetic eye disease earlier in rural Kentucky?",
     image: "/media/research/retinopathy-concept.png",
-    imageAlt:
-      "Conceptual visualization of a portable retinal camera and retinal image",
-    motion: "focus",
+    imageAlt: "Portable retinal camera beside a retinal image",
   },
   {
     id: "whole-blood-drone",
-    number: "03",
     question:
       "Can whole blood stay at the right temperature and remain intact during a drone flight?",
     image: "/media/research/blood-drone-concept.png",
-    imageAlt:
-      "Conceptual visualization of a drone, insulated carrier, and test instrumentation",
-    motion: "route",
+    imageAlt: "Drone carrying an insulated container with test instrumentation",
   },
 ] as const;
 
@@ -46,75 +38,33 @@ const STUDENT_STORIES = [
     chapterId: "chaelyn-build",
     side: "right",
     variant: "standard",
-    title: "Chaelyn built a site for philanthropy outreach.",
+    title: "Philanthropy outreach site",
     body:
-      "It helps her sorority organize outreach and raise money for survivors of domestic abuse. She put the working site on screen and walked the room through it.",
+      "Chaelyn McGuire built the site to help her sorority organize outreach and raise money for survivors of domestic abuse.",
     video: "/media/studio-reel/03-chaelyn.mp4",
     poster: "/media/studio-reel/03-chaelyn.jpg",
-    caption: "Chaelyn and other students walk through the philanthropy site",
   },
   {
     id: "socratic-tutor",
     chapterId: "hunter-tutor",
     side: "left",
     variant: "proof",
-    title: "Hunter built a tutor that answers with questions.",
+    title: "Socratic Tutor",
     body:
-      "It asks students to explain their reasoning. The room tried it, challenged it, and helped him decide what to test next.",
+      "Hunter Colson, Matthew Bernard, and Alex Dripchak built a tutor that answers with questions and asks students to explain their reasoning.",
     video: "/media/studio-reel/05-hunter.mp4",
     poster: "/media/studio-reel/05-hunter.jpg",
-    caption: "Hunter explains the Socratic Tutor prototype",
   },
   {
     id: "vibe-coding-workshop",
     chapterId: "alex-workshop",
     side: "right",
     variant: "proof",
-    title: "Alex led a coding workshop.",
-    body:
-      "Participants used AI coding tools to build a small app during the session.",
+    title: "An introduction to vibe coding with Alex Dripchak",
     video: "/media/story/07-alex-vibecoding.mp4",
     poster: "/media/story/07-alex-vibecoding.jpg",
-    caption: "Alex leads a live AI-assisted coding session",
   },
 ] as const;
-
-type ResearchMotionKind = (typeof FEATURED_STORIES)[number]["motion"];
-
-function ResearchMotion({ kind }: { kind: ResearchMotionKind }) {
-  if (kind === "map") {
-    return (
-      <span
-        className="studio-research-motion studio-research-motion-map"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 7 }, (_, index) => (
-          <span key={index} />
-        ))}
-      </span>
-    );
-  }
-
-  if (kind === "focus") {
-    return (
-      <span
-        className="studio-research-motion studio-research-motion-focus"
-        aria-hidden="true"
-      >
-        <span />
-      </span>
-    );
-  }
-
-  return (
-    <span
-      className="studio-research-motion studio-research-motion-route"
-      aria-hidden="true"
-    >
-      <span />
-    </span>
-  );
-}
 
 function getFeaturedStories() {
   return FEATURED_STORIES.flatMap((story) => {
@@ -123,16 +73,9 @@ function getFeaturedStories() {
   });
 }
 
-function getStudentStories() {
-  return STUDENT_STORIES.flatMap((story) => {
-    const item = content.studentWork.find((work) => work.id === story.id);
-    return item ? [{ story, item }] : [];
-  });
-}
-
 export default function HomePage() {
   const featured = getFeaturedStories();
-  const studentStories = getStudentStories();
+  const studentStories = STUDENT_STORIES;
   const { session } = content;
 
   return (
@@ -155,17 +98,18 @@ export default function HomePage() {
 
           <div className="studio-hero-content">
             <div className="studio-hero-intro">
-              <p className="studio-kicker">University of Kentucky AI Incubator</p>
-              <h1>AI is changing how people work.</h1>
+              <Logo
+                alt="AI Incubator at the University of Kentucky"
+                className="studio-hero-logo"
+                src="/logo-mark-dark.png"
+              />
+              <h1>Students, faculty, and staff are using AI to solve problems.</h1>
             </div>
 
             <div className="studio-hero-copy">
               <p className="studio-hero-deck">
-                Every Friday at noon, someone in the room has something the rest of us can learn from.
-              </p>
-              <p className="studio-hero-lead">
-                Students, faculty, and staff bring tools, problems, and work in
-                progress. The room helps decide what to try next.
+                Current work includes cancer screening, rural eye care,
+                emergency medicine, tutoring, and student-built tools.
               </p>
 
               <div className="studio-hero-actions">
@@ -190,22 +134,19 @@ export default function HomePage() {
           id="fridays"
           side="right"
           variant="anchor"
-          eyebrow="A Friday meeting"
           title="The person teaching changes every week."
-          body="One week, a student shows a tool. The next, a clinician brings a problem and an engineer helps figure out how to test it. Whoever has learned something can lead."
+          body="Recent sessions have included image segmentation, vibe coding, Socratic tutors, and student-built websites."
           video="/media/story/01-student-presenter.mp4"
           poster="/media/story/01-student-presenter.jpg"
-          caption="A student presents his work to the room"
-        />
+        >
+          <CommercialPlayer />
+        </StoryChapter>
 
         <StudioClipStrip />
 
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
-            <p className="studio-section-index">What people are working on</p>
-            <div>
-              <h2 id="builds-title">Some of those ideas become projects.</h2>
-            </div>
+            <h2 id="builds-title">What people are working on</h2>
           </div>
 
           <div className="studio-shell studio-build-gallery">
@@ -222,16 +163,9 @@ export default function HomePage() {
                     fill
                     sizes="(max-width: 900px) 88vw, 30vw"
                   />
-                  <ResearchMotion kind={story.motion} />
-                  <span className="studio-research-number">{story.number}</span>
-                  <figcaption>Concept visualization</figcaption>
                 </figure>
 
                 <div className="studio-research-copy">
-                  <div className="studio-research-meta">
-                    <span>{project.area}</span>
-                    <span>{project.stage}</span>
-                  </div>
                   <h3>{project.name}</h3>
                   <p className="studio-research-question">{story.question}</p>
                 </div>
@@ -252,37 +186,26 @@ export default function HomePage() {
           aria-labelledby="student-work-title"
         >
           <div className="studio-shell studio-student-work-head">
-            <p className="studio-section-index">Student work</p>
             <div>
-              <h2 id="student-work-title">What students brought to Friday.</h2>
+              <h2 id="student-work-title">Student projects</h2>
               <Link className="studio-student-work-share" href="/join#pitch">
-                Share what you are building <span aria-hidden="true">-&gt;</span>
+                Share a project or demo <span aria-hidden="true">-&gt;</span>
               </Link>
             </div>
           </div>
 
           <div className="studio-student-work-stories">
-            {studentStories.map(({ story, item }) => (
+            {studentStories.map((story) => (
               <StoryChapter
                 id={story.chapterId}
                 key={story.id}
                 side={story.side}
                 variant={story.variant}
-                eyebrow={`${item.person} / ${item.format}`}
                 title={story.title}
-                body={story.body}
+                body={"body" in story ? story.body : undefined}
                 video={story.video}
                 poster={story.poster}
-                caption={story.caption}
-                secondaryLink={
-                  item.videoUrl && item.videoLabel
-                    ? {
-                        href: item.videoUrl,
-                        label: item.videoLabel,
-                        external: true,
-                      }
-                    : undefined
-                }
+                focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}
               />
             ))}
           </div>
@@ -290,32 +213,37 @@ export default function HomePage() {
         </section>
 
         <StoryChapter
-          id="join-from-anywhere"
+          id="hunter-image-segmentation"
           side="left"
           variant="proof"
-          eyebrow="Join from anywhere"
-          title="Sometimes the person teaching is on a screen."
-          body="Students and guests can join on Teams, walk through a project, and take questions from the room."
-          video="/media/story/03-zoom-presentation.mp4"
-          poster="/media/story/03-zoom-presentation.jpg"
-          caption="A remote presentation plays on the room's main screen"
+          title="Hunter Colson on medical image segmentation"
+          video="/media/story/08-hunter-image-segmentation.mp4"
+          poster="/media/story/08-hunter-image-segmentation.jpg"
+          withSound
+        />
+
+        <StoryChapter
+          id="sully-chen"
+          side="right"
+          variant="proof"
+          title="Sully Chen on AI and time with patients"
+          body="Sully joined from Duke to talk about his work at OpenAI and AI in medicine."
+          video="/media/story/09-sully-chen.mp4"
+          poster="/media/story/09-sully-chen.jpg"
+          withSound
         />
 
         <StoryChapter
           id="come-this-friday"
-          side="right"
+          side="left"
           tone="final"
           variant="anchor"
-          eyebrow="Come this Friday"
-          title="What would you show the room?"
-          body="Bring a tool, a problem, or something that worked. Or just come listen. No AI or coding experience is required. Just bring your curiosity."
+          title="Join the AI Incubator."
+          body="We meet Fridays at noon on Microsoft Teams. Students, faculty, and staff across UK are welcome. No AI or coding experience is required."
           video="/media/story/04-smiling-student.mp4"
           poster="/media/story/04-smiling-student.jpg"
-          caption="A student smiles during an Incubator event"
-          primaryLink={{ href: "/join", label: "Join Friday's meeting" }}
-        >
-          <CommercialPlayer />
-        </StoryChapter>
+          primaryLink={{ href: "/join", label: "Join us Friday" }}
+        />
       </main>
 
       <Footer />

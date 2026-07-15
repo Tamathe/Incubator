@@ -9,16 +9,18 @@ type StoryVideoProps = {
   id: string;
   video: string;
   poster: string;
-  caption: string;
+  label: string;
   focus?: string;
+  withSound?: boolean;
 };
 
 export default function StoryVideo({
   id,
   video,
   poster,
-  caption,
+  label,
   focus = "center",
+  withSound = false,
 }: StoryVideoProps) {
   const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -95,11 +97,11 @@ export default function StoryVideo({
       return;
     }
 
-    if (requiresTap || userPaused) return;
+    if (requiresTap || userPaused || withSound) return;
 
     window.dispatchEvent(new CustomEvent<string>(PLAY_EVENT, { detail: id }));
     void element.play().catch(() => setIsPlaying(false));
-  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused]);
+  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused, withSound]);
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -116,7 +118,8 @@ export default function StoryVideo({
         isNear &&
         !prefersReducedMotion &&
         !requiresTap &&
-        !userPaused
+        !userPaused &&
+        !withSound
       ) {
         window.dispatchEvent(new CustomEvent<string>(PLAY_EVENT, { detail: id }));
         void element.play().catch(() => setIsPlaying(false));
@@ -125,7 +128,7 @@ export default function StoryVideo({
 
     document.addEventListener("visibilitychange", handleVisibility);
     return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused]);
+  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused, withSound]);
 
   async function togglePlayback() {
     const element = videoRef.current;
@@ -154,7 +157,7 @@ export default function StoryVideo({
         isPlaying ? "is-playing" : ""
       }`}
     >
-      {prefersReducedMotion ? (
+      {prefersReducedMotion && !withSound ? (
         <Image
           src={poster}
           alt=""
@@ -165,8 +168,8 @@ export default function StoryVideo({
       ) : (
         <video
           ref={videoRef}
-          muted
-          loop
+          muted={!withSound}
+          loop={!withSound}
           playsInline
           preload="metadata"
           poster={poster}
@@ -174,23 +177,29 @@ export default function StoryVideo({
           style={{ objectPosition: focus }}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
         >
           {isNear ? <source src={video} type="video/mp4" /> : null}
         </video>
       )}
 
-      <span className="studio-story-media-shade" aria-hidden="true" />
-      <figcaption>{caption}</figcaption>
-
-      {!prefersReducedMotion && isNear ? (
+      {isNear && (!prefersReducedMotion || withSound) ? (
         <button
           type="button"
           className="studio-story-play"
           onClick={togglePlayback}
-          aria-label={`${isPlaying ? "Pause" : "Play"} silent video: ${caption}`}
+          aria-label={`${isPlaying ? "Pause" : "Play"} ${withSound ? "video with sound" : "silent video"}: ${label}`}
         >
           <span aria-hidden="true">{isPlaying ? "II" : ">"}</span>
-          <span>{isPlaying ? "Pause" : requiresTap ? "Play clip" : "Play"}</span>
+          <span>
+            {isPlaying
+              ? "Pause"
+              : withSound
+                ? "Play with sound"
+                : requiresTap
+                  ? "Play clip"
+                  : "Play"}
+          </span>
         </button>
       ) : null}
     </figure>

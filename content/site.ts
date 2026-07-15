@@ -541,10 +541,10 @@ export const content: SiteContent = {
     {
       id: "socratic-tutor",
       title: "Socratic Tutor",
-      person: "Hunter Colson",
+      person: "Hunter Colson, Matthew Bernard, and Alex Dripchak",
       format: "Prototype",
       summary:
-        "Hunter built a tutor that answers with questions and asks students to show their reasoning.",
+        "Hunter, Matthew, and Alex built a tutor that answers with questions and asks students to explain their reasoning.",
       image: "/media/studio-reel/05-hunter.jpg",
       imageAlt: "Hunter Colson discussing the Socratic Tutor prototype",
       videoUrl:
