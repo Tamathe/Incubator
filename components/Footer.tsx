@@ -1,19 +1,8 @@
 import Link from "next/link";
-import { content } from "@/content/site";
-import { fmtIsoDate } from "@/lib/session";
 import Logo from "./Logo";
 import SubscribeForm from "./SubscribeForm";
 
-const GH_HISTORY_URL =
-  "https://github.com/uky-ai-incubator/site/commits/master/content/site.ts";
-
 export default function Footer() {
-  const lastUpdated = fmtIsoDate(content.lastUpdated, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
   return (
     <footer>
       <div className="container">
@@ -32,15 +21,14 @@ export default function Footer() {
               style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
             >
               Students, faculty, and staff from across UK meet Fridays at noon
-              to share what they are learning about AI and help one another
-              build.
+              on Microsoft Teams.
             </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/#studio">Fridays</Link></li>
+              <li><Link href="/#fridays">Fridays</Link></li>
               <li><Link href="/#student-work">Student work</Link></li>
               <li><Link href="/join">Ways to join</Link></li>
             </ul>
@@ -58,7 +46,6 @@ export default function Footer() {
                   About Tama Thé, founder -&gt;
                 </a>
               </li>
-              <li><a href="/join">Weekly listserv -&gt;</a></li>
               <li>
                 <a
                   href="https://github.com/uky-ai-incubator"
@@ -71,7 +58,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Listserv</h4>
+            <h4>Friday updates</h4>
             <p className="small" style={{ marginBottom: 10 }}>
               Friday meeting notes and project updates.
             </p>
@@ -82,12 +69,6 @@ export default function Footer() {
           <span>
             (c) {new Date().getFullYear()} - AI Incubator @ University of
             Kentucky
-          </span>
-          <span className="mono">
-            Content updated{" "}
-            <a href={GH_HISTORY_URL} target="_blank" rel="noopener noreferrer">
-              {lastUpdated}
-            </a>
           </span>
         </div>
       </div>
