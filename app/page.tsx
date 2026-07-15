@@ -20,7 +20,7 @@ const FEATURED_STORIES = [
     id: "dr-retinopathy-rural-ky",
     number: "02",
     question:
-      "How do we catch preventable vision loss before it changes a life?",
+      "Could AI-supported screening help catch diabetic eye disease earlier in rural Kentucky?",
     image: "/media/research/retinopathy-concept.png",
     imageAlt:
       "Conceptual visualization of a portable retinal camera and retinal image",
@@ -30,7 +30,7 @@ const FEATURED_STORIES = [
     id: "whole-blood-drone",
     number: "03",
     question:
-      "Can blood travel by drone and still arrive ready for emergency use?",
+      "Can whole blood stay at the right temperature and remain intact during a drone flight?",
     image: "/media/research/blood-drone-concept.png",
     imageAlt:
       "Conceptual visualization of a drone, insulated carrier, and test instrumentation",
@@ -41,23 +41,23 @@ const FEATURED_STORIES = [
 const FRIDAY_MODES = [
   {
     number: "01",
-    title: "Roundtables",
-    body: "Talk through current work, hard questions, and what people are learning.",
+    title: "Show what you learned",
+    body: "Bring a tool, a method, or something that worked.",
   },
   {
     number: "02",
-    title: "Demonstrations",
-    body: "Members show tools, workflows, prototypes, and techniques they are using.",
+    title: "Bring an idea",
+    body: "It does not have to be polished. The group will ask questions.",
   },
   {
     number: "03",
-    title: "Learning sessions",
-    body: "Learn a model, method, policy, or technical skill together.",
+    title: "Try it together",
+    body: "Test the tool or prototype and see where it holds up.",
   },
   {
     number: "04",
-    title: "Project pitches",
-    body: "Bring an early idea and get questions and feedback from the room.",
+    title: "Choose the next step",
+    body: "Decide what is worth doing before the next meeting.",
   },
 ] as const;
 
@@ -96,6 +96,57 @@ function getFeaturedStories() {
   });
 }
 
+function StudentWorkCard({
+  item,
+  index,
+}: {
+  item: (typeof content.studentWork)[number];
+  index: number;
+}) {
+  const cardContent = (
+    <>
+      <figure>
+        <Image
+          src={item.image}
+          alt={item.imageAlt}
+          fill
+          sizes="(max-width: 700px) 100vw, 33vw"
+        />
+        <span>{String(index + 1).padStart(2, "0")}</span>
+      </figure>
+      <div>
+        <p className="studio-student-work-meta">
+          <span>{item.person}</span>
+          <span>{item.format}</span>
+        </p>
+        <h3>{item.title}</h3>
+        <p>{item.summary}</p>
+        {item.videoLabel ? (
+          <span className="studio-student-work-watch">
+            {item.videoLabel} <span aria-hidden="true">-&gt;</span>
+          </span>
+        ) : null}
+      </div>
+    </>
+  );
+
+  if (!item.videoUrl || !item.videoLabel) {
+    return <article className="studio-student-work-card">{cardContent}</article>;
+  }
+
+  return (
+    <a
+      className="studio-student-work-card"
+      href={item.videoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${item.title}: ${item.videoLabel}`}
+    >
+      {cardContent}
+    </a>
+  );
+}
+
 export default function HomePage() {
   const featured = getFeaturedStories();
   const { session, studentWork } = content;
@@ -121,15 +172,18 @@ export default function HomePage() {
           <div className="studio-hero-content">
             <div className="studio-hero-intro">
               <p className="studio-kicker">University of Kentucky AI Incubator</p>
-              <h1>AI is changing every field.</h1>
+              <h1>AI is changing how people work.</h1>
             </div>
 
             <div className="studio-hero-copy">
-              <p className="studio-hero-deck">Learn to work with it, together at UK.</p>
+              <p className="studio-hero-deck">
+                The AI Incubator is where people across UK compare notes and build things together.
+              </p>
               <p className="studio-hero-lead">
-                Every Friday at noon, students, faculty, and staff from across
-                campus gather to solve problems and learn to use AI. The meeting
-                is completely open. No coding background or project required.
+                Students, faculty, and staff meet every Friday at noon. Someone
+                shows a tool. Someone brings a problem. Someone pitches an
+                idea. The group asks questions, tries things, and helps decide
+                what to do next.
               </p>
 
               <div className="studio-hero-actions">
@@ -139,10 +193,10 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Attend this Friday <span aria-hidden="true">-&gt;</span>
+                  Join us this Friday <span aria-hidden="true">-&gt;</span>
                 </a>
-                <Link className="studio-text-link" href="/join#cant-make-friday">
-                  I cannot attend at noon
+                <Link className="studio-text-link" href="/projects">
+                  See what people are working on
                 </Link>
               </div>
             </div>
@@ -152,18 +206,38 @@ export default function HomePage() {
             <span>Every Friday</span>
             <span>12:00 pm</span>
             <span>Microsoft Teams</span>
-            <span>Open to everyone</span>
+            <span>Open across UK</span>
           </div>
         </header>
 
+        <section className="studio-manifesto" aria-labelledby="possibility-title">
+          <div className="studio-shell studio-manifesto-grid">
+            <p className="studio-section-index">Why we meet</p>
+            <div>
+              <h2 id="possibility-title">
+                Ideas get better when you put them in front of other people.
+              </h2>
+              <p>
+                A clinician may know the problem. An engineer may know how to
+                test it. A student may see a simpler way in. The Incubator gives
+                them a place to meet, try something, and learn from it.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <StudioReel />
+
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
-            <p className="studio-section-index">Current work</p>
+            <p className="studio-section-index">What people are working on</p>
             <div>
-              <h2 id="builds-title">Three projects underway now.</h2>
+              <h2 id="builds-title">Some of those ideas become projects.</h2>
               <p>
-                Current teams are working on cancer screening, preventable
-                vision loss, and blood delivery for rural emergency care.
+                Right now, teams are working on cancer screening, rural eye
+                care, and whether blood can stay within the right temperature
+                and integrity limits during drone flight. The cards below say
+                what is happening now—and what is still being planned.
               </p>
             </div>
           </div>
@@ -202,27 +276,49 @@ export default function HomePage() {
 
           <div className="studio-shell studio-portfolio-link">
             <Link href="/projects">
-              Explore the broader portfolio <span aria-hidden="true">-&gt;</span>
+              See all projects <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </section>
 
-        <StudioReel />
+        <section
+          className="studio-student-work"
+          id="student-work"
+          aria-labelledby="student-work-title"
+        >
+          <div className="studio-shell studio-student-work-head">
+            <p className="studio-section-index">Student work</p>
+            <div>
+              <h2 id="student-work-title">Students are making things, too.</h2>
+              <p>
+                Sometimes a Friday idea becomes a working tool, a workshop, or
+                a new research question. Here are three examples.
+              </p>
+            </div>
+          </div>
+
+          <div className="studio-shell studio-student-work-grid">
+            {studentWork.map((item, index) => (
+              <StudentWorkCard item={item} index={index} key={item.id} />
+            ))}
+          </div>
+
+          <div className="studio-shell studio-student-work-action">
+            <Link href="/join#pitch">
+              Share what you are building <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </div>
+        </section>
 
         <section className="studio-friday" id="fridays" aria-labelledby="friday-title">
           <div className="studio-shell studio-friday-grid">
-            <div className="studio-friday-when" aria-label="Friday meeting time">
-              <span>FRI</span>
-              <strong>12:00</strong>
-              <small>Microsoft Teams / Completely open</small>
-            </div>
+            <p className="studio-section-index studio-friday-label">Every Friday at noon</p>
 
             <div className="studio-friday-copy">
-              <p className="studio-section-index">Every Friday at noon</p>
-              <h2 id="friday-title">See a demo. Ask a question. Join the work.</h2>
+              <h2 id="friday-title">Here is what we do on Fridays.</h2>
               <p className="studio-friday-intro">
-                Each meeting may include a project roundtable, demonstration,
-                learning session, policy discussion, or new project pitch.
+                The agenda changes, but the meeting is simple: show people
+                something, ask for help, try an idea, and leave with a next step.
               </p>
 
               <div className="studio-friday-modes">
@@ -237,77 +333,31 @@ export default function HomePage() {
 
               <div className="studio-friday-actions">
                 <Link className="studio-button studio-button-primary" href="/join#rsvp">
-                  Get the next invitation <span aria-hidden="true">-&gt;</span>
+                  Join us this Friday <span aria-hidden="true">-&gt;</span>
                 </Link>
                 <Link className="studio-text-link" href="/join#cant-make-friday">
-                  I cannot attend at noon
+                  What if I cannot make Friday?
                 </Link>
               </div>
             </div>
           </div>
         </section>
 
-        <section
-          className="studio-student-work"
-          id="student-work"
-          aria-labelledby="student-work-title"
-        >
-          <div className="studio-shell studio-student-work-head">
-            <p className="studio-section-index">Student work</p>
-            <div>
-              <h2 id="student-work-title">Students are already making things.</h2>
-              <p>
-                Workshops, prototypes, and practical builds all have a place in
-                the studio. These are three examples shared by students.
-              </p>
-            </div>
-          </div>
-
-          <div className="studio-shell studio-student-work-grid">
-            {studentWork.map((item, index) => (
-              <article className="studio-student-work-card" key={item.id}>
-                <figure>
-                  <Image
-                    src={item.image}
-                    alt={item.imageAlt}
-                    fill
-                    sizes="(max-width: 700px) 100vw, 33vw"
-                  />
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                </figure>
-                <div>
-                  <p className="studio-student-work-meta">
-                    <span>{item.person}</span>
-                    <span>{item.format}</span>
-                  </p>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="studio-shell studio-student-work-action">
-            <Link href="/join#pitch">
-              Bring what you are building Friday <span aria-hidden="true">-&gt;</span>
-            </Link>
-          </div>
-        </section>
-
         <section className="studio-final" aria-labelledby="final-title">
           <div className="studio-shell studio-final-grid">
             <div>
-              <p className="studio-section-index">Join the community</p>
-              <h2 id="final-title">Start by showing up.</h2>
+              <p className="studio-section-index">Come to a meeting</p>
+              <h2 id="final-title">Come by on Friday.</h2>
             </div>
             <div>
               <p>
-                Come for one meeting. Listen, ask a question, or introduce
-                yourself. That is enough.
+                You do not need to know how to code or have a project ready.
+                Bring a question, tell us what you are curious about, or just
+                listen the first time.
               </p>
               <div className="studio-final-actions">
                 <Link className="studio-button studio-button-primary" href="/join">
-                  See every way to join <span aria-hidden="true">-&gt;</span>
+                  Join Friday&apos;s meeting <span aria-hidden="true">-&gt;</span>
                 </Link>
               </div>
             </div>

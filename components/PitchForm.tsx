@@ -235,7 +235,7 @@ export default function PitchForm() {
                     )}
             </button>
             <span className="small">
-              We read every pitch. We will be in touch within a week.
+              A group lead reviews submissions and may follow up with questions.
             </span>
           </div>
           {state.kind === "error" && (

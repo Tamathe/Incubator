@@ -7,47 +7,31 @@ import CommercialPlayer from "./CommercialPlayer";
 const CHAPTERS = [
   {
     number: "01",
-    title: "Gather",
-    body: "Students, faculty, and staff arrive from across campus.",
+    title: "Show what you found",
+    body: "A tool, a method, or something that worked.",
     video: "/media/studio-reel/01-gather.mp4",
     poster: "/media/studio-reel/01-gather.jpg",
     focus: "52% center",
   },
   {
     number: "02",
-    title: "Collaborate",
-    body: "People from different fields discuss the same question.",
+    title: "Put an idea on the table",
+    body: "The group asks questions and offers ideas from other fields.",
     video: "/media/studio-reel/02-collaborate.mp4",
     poster: "/media/studio-reel/02-collaborate.jpg",
     focus: "50% center",
   },
   {
     number: "03",
-    title: "Build",
-    body: "Chaelyn McGuire builds a philanthropy website for her sorority.",
-    video: "/media/studio-reel/03-chaelyn.mp4",
-    poster: "/media/studio-reel/03-chaelyn.jpg",
-    focus: "50% center",
-  },
-  {
-    number: "04",
-    title: "Test",
-    body: "The group tests an idea and examines what works.",
+    title: "Try it together",
+    body: "People test the idea and decide what to change.",
     video: "/media/studio-reel/04-test.mp4",
     poster: "/media/studio-reel/04-test.jpg",
     focus: "42% center",
   },
-  {
-    number: "05",
-    title: "Teach",
-    body: "Hunter Colson demonstrates the student-built Socratic Tutor.",
-    video: "/media/studio-reel/05-hunter.mp4",
-    poster: "/media/studio-reel/05-hunter.jpg",
-    focus: "50% center",
-  },
 ] as const;
 
-const MOSAIC_SLOTS = ["focus", "upper", "top", "lower", "bottom"] as const;
+const MOSAIC_SLOTS = ["focus", "upper", "lower"] as const;
 
 export default function StudioReel() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -106,8 +90,8 @@ export default function StudioReel() {
       <div className="studio-reel-sticky">
         <div className="studio-shell studio-reel-head">
           <div>
-            <p className="studio-section-index">Inside the room</p>
-            <h2 id="studio-reel-title">What happens on Fridays.</h2>
+            <p className="studio-section-index">A Friday meeting</p>
+            <h2 id="studio-reel-title">People show what they found, ask for help, and try things together.</h2>
           </div>
 
           <div className="studio-reel-status">

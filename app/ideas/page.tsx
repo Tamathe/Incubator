@@ -6,14 +6,14 @@ import { content } from "@/content/site";
 export const metadata = {
   title: "Ideas - AI Incubator",
   description:
-    "Conversation starters and questions for the weekly AI Incubator community at the University of Kentucky.",
+    "Questions people are bringing to University of Kentucky AI Incubator meetings.",
 };
 
 const IDEAS_THIS_MONTH = [
   {
     label: "Student learning",
     title: "How should students use AI without outsourcing the work?",
-    body: "A standing question for classes, capstones, advising, and research training.",
+    body: "This comes up in classes, capstones, advising, and research training.",
   },
   {
     label: "Clinical workflow",
@@ -32,8 +32,8 @@ const IDEAS_THIS_MONTH = [
   },
   {
     label: "Friday demo",
-    title: "What tool, skill, or AI policy question should we learn next?",
-    body: "Bring a short demo, a confusing tool, a paper, or a question the group can unpack together.",
+    title: "What tool, skill, or AI policy should we cover next?",
+    body: "Bring a short demo, a confusing tool, a paper, or a question the group can work through together.",
   },
   {
     label: "Open question",
@@ -57,11 +57,11 @@ export default function IdeasPage() {
             Ideas - {content.cohort.replace(/^Cohort\s+\d+\s+-\s+/, "")}
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            Questions we are discussing.
+            Questions people are bringing to the group.
           </h1>
           <p className="lead" style={{ marginTop: 28 }}>
-            Friday conversations often begin with questions like these. Bring
-            one to the group or add your own.
+            These are the kinds of questions that come up on Fridays. Bring one
+            from your work, class, research, or daily life.
           </p>
         </div>
       </header>
@@ -74,7 +74,7 @@ export default function IdeasPage() {
               <span>Conversation starters</span>
             </div>
             <h2 className="h1" style={{ maxWidth: "20ch" }}>
-              Questions worth discussing.
+              A few things people are talking about.
             </h2>
           </div>
           <a href="/join" className="btn ghost">
@@ -96,11 +96,11 @@ export default function IdeasPage() {
       <section className="container" style={{ paddingBottom: 80 }}>
         <div className="ideas-callout">
           <div>
-            <div className="eyebrow">Have a different question?</div>
-            <h2 className="h2">Bring your question Friday.</h2>
+            <div className="eyebrow">Have another question?</div>
+            <h2 className="h2">Bring it Friday.</h2>
             <p>
-              Bring a workflow annoyance, classroom concern, research idea,
-              demo, or tool you want to understand with the group.
+              It can be about a tool, a workflow, a class, a research idea, or
+              something that is not working.
             </p>
           </div>
           <a href="/join" className="btn primary">

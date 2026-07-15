@@ -51,7 +51,7 @@ export default function OutcomesTable({ outcomes }: OutcomesTableProps) {
       </div>
 
       {visible.length === 0 ? (
-        <div className="small">Nothing logged in this category yet.</div>
+        <div className="small">No entries in this category yet.</div>
       ) : (
         <ul className="outcomes-list">
           {visible.map((o) => (

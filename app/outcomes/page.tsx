@@ -7,7 +7,7 @@ import OutcomesTable from "@/components/OutcomesTable";
 export const metadata = {
   title: "Outcomes · AI Incubator",
   description:
-    "What the AI Incubator has produced: grants, papers, products, students trained, talks given. Numbers and dates.",
+    "Documented grants, papers, talks, tools, and student achievements from University of Kentucky AI Incubator work.",
 };
 
 export default function OutcomesPage() {
@@ -22,21 +22,28 @@ export default function OutcomesPage() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <div className="hero-meta">
             <span className="chip live">
-              <span>Verified outputs</span>
+              <span>Documented results</span>
             </span>
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            What we&apos;ve <em>made.</em>
+            What the work <em>has produced.</em>
           </h1>
           <p className="lead" style={{ marginTop: 28, maxWidth: "60ch" }}>
-            Verified grants, papers, products, student work, and talks, listed
-            with dates and public links when available.
+            We list public results here when we can point to a date, a source,
+            or a link.
           </p>
         </div>
       </header>
 
       <section className="section container">
-        <OutcomesTable outcomes={o} />
+        {o.length === 0 ? (
+          <p className="small">
+            There are no results to list here yet. The projects page shows what
+            is underway.
+          </p>
+        ) : (
+          <OutcomesTable outcomes={o} />
+        )}
       </section>
 
       <Footer />

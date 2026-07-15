@@ -29,8 +29,8 @@ export default function PitchSection() {
           </h2>
           <p className="body" style={{ marginTop: 18, maxWidth: "44ch" }}>
             Write the sharp version of the idea: the problem, who it affects,
-            and the smallest useful build. Takes about five minutes. The group
-            lead reads every one and gets back within a few days.
+            and the smallest useful thing to try. It takes about five minutes.
+            A group lead reviews submissions and may follow up with questions.
           </p>
           <p className="small" style={{ marginTop: 14, maxWidth: "44ch" }}>
             If the project queue is unavailable, the form gives you a

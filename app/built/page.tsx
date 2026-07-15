@@ -7,7 +7,7 @@ import ArtifactCard from "@/components/ArtifactCard";
 export const metadata = {
   title: "Built · AI Incubator",
   description:
-    "Working products and prototypes from University of Kentucky AI Incubator teams.",
+    "Public tools and prototypes made by University of Kentucky AI Incubator teams.",
 };
 
 export default function BuiltPage() {
@@ -22,22 +22,26 @@ export default function BuiltPage() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <div className="hero-meta">
             <span className="chip live">
-              <span>{artifacts.length} live artifact{artifacts.length === 1 ? "" : "s"}</span>
+              <span>
+                {artifacts.length > 0
+                  ? `${artifacts.length} public item${artifacts.length === 1 ? "" : "s"}`
+                  : "Nothing public yet"}
+              </span>
             </span>
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            Built <em>and shipped.</em>
+            Things people <em>have made.</em>
           </h1>
           <p className="lead" style={{ marginTop: 28, maxWidth: "62ch" }}>
-            Working products and prototypes from Incubator teams. Open an
-            artifact to see what it does and who built it.
+            When a tool or prototype is ready to share, it will appear here with
+            a link and a short explanation.
           </p>
         </div>
       </header>
 
       <section className="section container">
         {artifacts.length === 0 ? (
-          <p className="small">No public artifacts yet. See the projects page for work underway.</p>
+          <p className="small">Nothing is ready to share here yet. The projects page shows what teams are working on.</p>
         ) : (
           <div className="proj-grid">
             {artifacts.map((a) => (
