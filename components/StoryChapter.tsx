@@ -2,12 +2,6 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import StoryVideo from "./StoryVideo";
 
-type StoryDetail = {
-  number: string;
-  title: string;
-  body: string;
-};
-
 type StoryLink = {
   href: string;
   label: string;
@@ -26,7 +20,6 @@ type StoryChapterProps = {
   poster: string;
   caption: string;
   focus?: string;
-  details?: readonly StoryDetail[];
   primaryLink?: StoryLink;
   secondaryLink?: StoryLink;
   children?: ReactNode;
@@ -77,7 +70,6 @@ export default function StoryChapter({
   poster,
   caption,
   focus,
-  details,
   primaryLink,
   secondaryLink,
   children,
@@ -105,18 +97,6 @@ export default function StoryChapter({
           <p className="studio-section-index">{eyebrow}</p>
           <h2 id={titleId}>{title}</h2>
           <p className="studio-story-body">{body}</p>
-
-          {details?.length ? (
-            <div className="studio-story-details">
-              {details.map((detail) => (
-                <div key={detail.number}>
-                  <span>{detail.number}</span>
-                  <strong>{detail.title}</strong>
-                  <p>{detail.body}</p>
-                </div>
-              ))}
-            </div>
-          ) : null}
 
           {primaryLink || secondaryLink ? (
             <div className="studio-story-actions">
