@@ -66,7 +66,7 @@ export default function ProjectsFilteredList({
       <section className="container">
         <div className="projects-filter">
           <div className="projects-filter-summary">
-            <span className="lbl">Portfolio</span>
+            <span className="lbl">Projects</span>
             <strong>{filtered.length} project{filtered.length === 1 ? "" : "s"}</strong>
           </div>
           <div className="group" aria-label="Filter projects by status">

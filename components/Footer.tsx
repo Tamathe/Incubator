@@ -31,17 +31,17 @@ export default function Footer() {
               className="body"
               style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
             >
-              An open Friday community where University of Kentucky students,
-              faculty, and staff learn AI together.
+              Students, faculty, and staff from across UK meet Fridays at noon
+              to share what they are learning about AI and help one another
+              build.
             </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/#studio">Inside Friday</Link></li>
+              <li><Link href="/#studio">Fridays</Link></li>
               <li><Link href="/#student-work">Student work</Link></li>
-              <li><Link href="/#fridays">Friday meetings</Link></li>
               <li><Link href="/join">Ways to join</Link></li>
             </ul>
           </div>
@@ -73,7 +73,7 @@ export default function Footer() {
           <div>
             <h4>Listserv</h4>
             <p className="small" style={{ marginBottom: 10 }}>
-              Weekly updates from the group.
+              Friday meeting notes and project updates.
             </p>
             <SubscribeForm />
           </div>

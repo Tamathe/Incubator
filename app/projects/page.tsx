@@ -7,7 +7,7 @@ import ProjectsFilteredList from "@/components/ProjectsFilteredList";
 export const metadata = {
   title: "Projects · AI Incubator",
   description:
-    "Active projects and ways students can contribute at the University of Kentucky AI Incubator.",
+    "See what University of Kentucky AI Incubator teams are working on in cancer screening, rural health, education, trauma care, and more.",
 };
 
 export default function ProjectsPage() {
@@ -25,11 +25,13 @@ export default function ProjectsPage() {
             Projects · {content.cohort.replace(/^Cohort\s+\d+\s+·\s+/, "")}
           </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            Work in motion.
+            What people are working on.
           </h1>
           <p className="lead" style={{ marginTop: 28 }}>
-            See what teams are exploring, what stage each project has reached,
-            and where students can contribute.
+            These projects are in different stages. Some are still being
+            planned. Clinicians, engineers, educators, researchers, and
+            students are working on them together. Each card says what the team
+            is doing now and where someone else could help.
           </p>
         </div>
       </header>

@@ -3104,8 +3104,8 @@ html[data-theme="dark"] .chip.kind-demo {
 .studio-mosaic-tile[data-slot="upper"] {
   left: 64.2%;
   top: 0;
-  width: 17.4%;
-  height: 46.8%;
+  width: 35.8%;
+  height: 49.2%;
 }
 .studio-mosaic-tile[data-slot="top"] {
   left: 83%;
@@ -3115,9 +3115,9 @@ html[data-theme="dark"] .chip.kind-demo {
 }
 .studio-mosaic-tile[data-slot="lower"] {
   left: 64.2%;
-  top: 48.4%;
-  width: 17.4%;
-  height: 51.6%;
+  top: 50.8%;
+  width: 35.8%;
+  height: 49.2%;
 }
 .studio-mosaic-tile[data-slot="bottom"] {
   left: 83%;
@@ -3380,9 +3380,13 @@ html[data-theme="dark"] .chip.kind-demo {
 }
 .studio-friday-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
-  gap: 110px;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 56px;
   align-items: start;
+}
+.studio-friday-label {
+  padding-top: 8px;
+  color: #b6d3ff;
 }
 .studio-friday-when {
   position: sticky;
@@ -3420,7 +3424,7 @@ html[data-theme="dark"] .chip.kind-demo {
 .studio-friday-copy .studio-section-index { color: #b6d3ff; }
 .studio-friday-copy h2 {
   max-width: 13ch;
-  margin: 28px 0 0;
+  margin: 0;
   font-size: 62px;
   line-height: 1.04;
   font-weight: 620;
@@ -3765,7 +3769,7 @@ html[data-theme="dark"] .chip.kind-demo {
   .studio-mosaic-tile[data-slot="upper"] {
     left: 0;
     top: 69%;
-    width: 24.25%;
+    width: 49.5%;
     height: 31%;
   }
   .studio-mosaic-tile[data-slot="top"] {
@@ -3777,7 +3781,7 @@ html[data-theme="dark"] .chip.kind-demo {
   .studio-mosaic-tile[data-slot="lower"] {
     left: 50.5%;
     top: 69%;
-    width: 24.25%;
+    width: 49.5%;
     height: 31%;
   }
   .studio-mosaic-tile[data-slot="bottom"] {
@@ -4672,8 +4676,17 @@ footer {
   border: 1px solid #2b2b2b;
 }
 .studio-student-work-card {
+  display: block;
   min-width: 0;
   background: #0d0d0d;
+  color: inherit;
+  text-decoration: none;
+  transition: background 180ms var(--ease);
+}
+a.studio-student-work-card:hover { background: #111111; }
+a.studio-student-work-card:focus-visible {
+  outline: 3px solid #8edb3f;
+  outline-offset: 3px;
 }
 .studio-student-work-card figure {
   position: relative;
@@ -4732,6 +4745,20 @@ footer {
   color: rgba(255, 255, 255, 0.58);
   font-size: 14.5px;
   line-height: 1.6;
+}
+.studio-student-work-watch {
+  display: inline-flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.36);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+a.studio-student-work-card:hover .studio-student-work-watch {
+  border-bottom-color: #ffffff;
 }
 .studio-student-work-action {
   display: flex;

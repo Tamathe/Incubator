@@ -6,7 +6,7 @@ import PitchForm from "@/components/PitchForm";
 export const metadata = {
   title: "Pitch a project - AI Incubator",
   description:
-    "Share a campus AI project idea with the University of Kentucky AI Incubator.",
+    "Tell the University of Kentucky AI Incubator about a problem or project idea you want to try.",
 };
 
 export default function PitchPage() {
@@ -19,7 +19,7 @@ export default function PitchPage() {
         <div style={{ position: "relative", zIndex: 2 }}>
           <div className="hero-meta">
             <span className="chip live">
-              <span>Pitch intake open</span>
+              <span>Project ideas welcome</span>
             </span>
             <span
               className="mono"
@@ -30,12 +30,12 @@ export default function PitchPage() {
           </div>
 
           <h1 className="h-display" style={{ maxWidth: "18ch" }}>
-            Pitch <em>a project.</em>
+            Tell us what <em>you want to try.</em>
           </h1>
 
           <p className="lead" style={{ marginTop: 28 }}>
-            Describe the problem, who it affects, and the smallest useful
-            prototype you would test.
+            Start with the problem. Tell us who it affects and what you would
+            try first.
           </p>
         </div>
       </header>
@@ -48,14 +48,14 @@ export default function PitchPage() {
           <div>
             <div className="section-label">
               <span className="idx">PITCH</span>{" "}
-              <span>Bring a problem to the group</span>
+              <span>Bring an idea to the group</span>
             </div>
             <h2 className="h1" style={{ maxWidth: "14ch" }}>
               Three short questions.
             </h2>
             <p className="body" style={{ marginTop: 18, maxWidth: "38ch" }}>
-              Your answers give the group enough context to discuss the idea
-              and identify a useful first test.
+              Your answers give the group enough context to understand the idea
+              and suggest a useful first step.
             </p>
             <div
               style={{
@@ -93,7 +93,7 @@ export default function PitchPage() {
             <div className="num">Step 01</div>
             <h3 className="h3">You submit</h3>
             <p>
-              Your responses go to the Incubator project queue. If the form is
+              Your answers go to the Incubator team. If the form is
               unavailable, you will receive a ready-to-send email draft.
             </p>
           </div>
@@ -101,7 +101,8 @@ export default function PitchPage() {
             <div className="num">Step 02</div>
             <h3 className="h3">We read it</h3>
             <p>
-              A group lead reviews each pitch and may follow up with questions.
+              Someone from the Incubator reviews submissions and may follow up
+              with questions.
             </p>
           </div>
           <div className="step">

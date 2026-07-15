@@ -9,53 +9,53 @@ import SubscribeForm from "@/components/SubscribeForm";
 import PitchForm from "@/components/PitchForm";
 
 export const metadata = {
-  title: "Get involved · AI Incubator",
+  title: "Join us Friday · AI Incubator",
   description:
-    "Join the weekly AI Incubator community at the University of Kentucky. No project or coding background required.",
+    "Students, faculty, and staff from across UK meet Fridays at noon to share what they are learning about AI, try ideas, and work on projects together.",
 };
 
 const JOIN_REASSURANCE = [
   {
-    title: "No project required",
-    body: "Come to listen, ask questions, or see what people are learning.",
+    title: "You can just listen",
+    body: "You do not need a project or a prepared question.",
   },
   {
-    title: "No coding required",
-    body: "Projects need writing, workflow mapping, literature review, evaluation, design, and domain expertise.",
+    title: "Bring what you know",
+    body: "Writing, design, evaluation, lived experience, subject knowledge, and technical skill all help.",
   },
   {
-    title: "Try one meeting",
-    body: "There is no application, audition, or long-term commitment.",
+    title: "Try one Friday",
+    body: "There is no application or long-term commitment.",
   },
 ];
 
 const FRIDAY_FLOW = [
   {
     time: "First 5 min",
-    title: "Settle in",
-    body: "Introduce yourself and hear what people are working on.",
+    title: "Share something",
+    body: "A tool, a method, or something you learned.",
   },
   {
     time: "10-15 min",
-    title: "Learn something",
-    body: "A demo, skill session, policy question, or expert walkthrough of a tool or workflow.",
+    title: "Ask a question",
+    body: "Bring a problem, workflow, or early idea.",
   },
   {
     time: "20-25 min",
-    title: "Roundtable",
-    body: "Discuss current projects, open questions, and student ideas.",
+    title: "Try something",
+    body: "Look at a demo or prototype together.",
   },
   {
     time: "Last 10 min",
-    title: "Find a next step",
-    body: "Choose a resource to read, a person to contact, or a project to revisit.",
+    title: "Pick a next step",
+    body: "Decide what someone will try before the next meeting.",
   },
 ];
 
 const FAQ: { q: string; a: string }[] = [
   {
-    q: "Do I need to know how to code?",
-    a: "No. Projects need domain expertise, design, writing, project management, evaluation, and literature review.",
+    q: "Do I need AI or coding experience?",
+    a: "No. People help in different ways, including subject knowledge, design, writing, project management, evaluation, literature review, and technical work.",
   },
   {
     q: "Am I too junior? Too senior?",
@@ -103,13 +103,14 @@ export default function JoinPage() {
           </div>
 
           <h1 className="h-display" style={{ maxWidth: "18ch" }}>
-            Come learn AI <em>with us.</em>
+            Come to a <em>Friday meeting.</em>
           </h1>
 
           <p className="lead" style={{ marginTop: 28 }}>
-            Anyone is welcome. The group meets Fridays at noon in Microsoft
-            Teams. You do not need a project, a slide, or a technical background
-            to try a session.
+            You can bring a question, a tool, or an idea. You can also just
+            listen. Students, faculty, and staff from across campus meet Fridays
+            at noon to compare notes, try things, and help one another. You do
+            not need AI or coding experience.
           </p>
         </div>
       </header>
@@ -227,11 +228,11 @@ export default function JoinPage() {
               <span className="idx">FRI</span> <span>Friday at noon</span>
             </div>
             <h2 className="h1" style={{ maxWidth: "18ch" }}>
-              A typical Friday.
+              What a Friday usually looks like.
             </h2>
           </div>
           <p className="body friday-flow-note">
-            The agenda changes each week. This is a common rhythm.
+            The agenda changes, but this is how most meetings go.
           </p>
         </div>
         <div className="friday-flow">
@@ -295,7 +296,7 @@ export default function JoinPage() {
               <span>Pitch when ready</span>
             </div>
             <h2 className="h1" style={{ maxWidth: "14ch" }}>
-              Have a project idea?
+              Have an idea you want to try?
             </h2>
             <p className="body" style={{ marginTop: 18, maxWidth: "36ch" }}>
               Pitch it in about sixty seconds at a Friday meeting, or submit

@@ -161,6 +161,8 @@ export interface StudentWork {
   summary: string;
   image: string;
   imageAlt: string;
+  videoUrl?: string;
+  videoLabel?: string;
 }
 
 export type SessionKind =
@@ -203,7 +205,7 @@ export interface SiteContent {
 }
 
 export const content: SiteContent = {
-  lastUpdated: "2026-07-14",
+  lastUpdated: "2026-07-15",
   cohort: "Cohort 03 - Summer 2026",
   session: {
     dayOfWeek: 5,
@@ -212,27 +214,27 @@ export const content: SiteContent = {
     venue: "Microsoft Teams",
     teamsUrl: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzZhMTNiNjYtODcwNy00MjBhLTg3MmQtNmZhNDU4MGVlMjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222b30530b-69b6-4457-b818-481cb53d42ae%22%2c%22Oid%22%3a%22e5e67874-0b35-4528-b862-6b2d1a6b1fc2%22%7d",
     agenda: [
-      "KY-AHEAD - finding people due for cancer screening",
-      "Rural diabetic retinopathy - catching preventable vision loss earlier",
-      "Whole-blood drone delivery - testing blood transport for rural trauma care",
+      "KY-AHEAD - planning a human-reviewed cancer-screening workflow",
+      "Rural diabetic retinopathy - planning a proposed AI-supported eye-screening pilot",
+      "Whole-blood drone delivery - planning the first nonclinical feasibility study",
     ],
   },
   projects: [
     {
       id: "ky-ahead",
       name: "KY-AHEAD",
-      tagline: "AI-assisted cancer screening outreach",
+      tagline: "Human-reviewed cancer-screening support",
       status: "active",
-      stage: "Finding overdue patients",
+      stage: "Planning a cancer-screening workflow",
       area: "Population Health / Oncology",
       leads: "Emergency Medicine / Markey / state data collaborators",
       summary:
-        "KY-AHEAD uses data and AI-assisted review to identify Kentuckians who may be due for colorectal, cervical, or lung cancer screening. Care teams handle outreach, navigation, and scheduling.",
+        "KY-AHEAD is designing a human-reviewed workflow that could help care teams find people who may be due for colorectal, cervical, or lung cancer screening. The project is still in planning, and the software is being tested only with synthetic data. Any outreach would wait for the required approvals.",
       anchors: [
         "Many screenings are missed because the right patient is hard to find at the right time",
-        "AI helps surface people who may be overdue for screening",
-        "Outreach and scheduling support stay human-reviewed",
-        "Focused on colorectal, cervical, and lung cancer screening",
+        "AI-assisted review could help surface people who may be due",
+        "Clinical scope, outreach, and follow-through remain human-owned",
+        "Software testing stays synthetic until approvals permit otherwise",
       ],
       studentFit: [
         "Workflow and literature mapping",
@@ -244,18 +246,18 @@ export const content: SiteContent = {
     {
       id: "dr-retinopathy-rural-ky",
       name: "Rural Diabetic Retinopathy Screening",
-      tagline: "Finding preventable vision loss earlier",
+      tagline: "A proposed rural eye-screening pilot",
       status: "active",
-      stage: "Screening closer to home",
+      stage: "Planning a rural screening pilot",
       area: "Rural Health / Ophthalmology",
-      leads: "Ophthalmology / Telehealth / Microsoft collaborators",
+      leads: "Ophthalmology / Telehealth / rural health planning",
       summary:
-        "Diabetic retinopathy is a leading cause of blindness among working-age adults. Early detection and treatment can prevent most diabetes-related vision loss. The project is testing retinal cameras, AI-assisted triage, specialist review, and patient navigation in rural Kentucky.",
+        "UK already has a tele-ophthalmology network in which specialists read retinal images. The team is planning a rural pilot that would add AI-supported screening and help patients get referrals and follow-up closer to home.",
       anchors: [
-        "Kentucky has hundreds of thousands of adults living with diabetes",
-        "Many patients never get the yearly eye exam that could catch disease early",
-        "AI can flag images for review while clinicians make care decisions",
-        "Screening includes a plan for follow-up care",
+        "Builds on UK's existing human-read tele-ophthalmology network",
+        "The proposed pilot would test whether AI-supported screening can help find disease earlier",
+        "Clinicians remain responsible for care decisions",
+        "Referral, navigation, and follow-up are part of the pilot design",
       ],
       studentFit: [
         "Referral-workflow mapping",
@@ -269,16 +271,16 @@ export const content: SiteContent = {
       name: "Whole-Blood Drone Delivery",
       tagline: "Cold-chain transport research for rural trauma care",
       status: "building",
-      stage: "Testing rural trauma logistics",
+      stage: "Planning the first nonclinical study",
       area: "Trauma / Aerospace",
       leads: "Trauma Surgery / Aerospace Engineering / Emergency Medicine",
       summary:
-        "In rural trauma care, access to blood can be limited by distance and time. This pre-clinical project tests whether drones can carry whole-blood units while preserving temperature and lab integrity before any clinical use.",
+        "The team includes people from trauma care, emergency medicine, aerospace, the blood bank, and students. They are planning a controlled, nonclinical study of whether whole blood stays at the right temperature and shows no signs of damage during drone flight. The first phase is still focused on the protocol and testing materials.",
       anchors: [
-        "Designed for rural places where distance slows access to blood",
-        "Tests temperature control before any patient-facing use",
-        "Initial testing focuses on temperature, packaging, and drop conditions",
-        "Pairs trauma, emergency medicine, and aerospace expertise",
+        "Begins with controlled, nonclinical feasibility work",
+        "Focuses on temperature control and product integrity during flight",
+        "Clinical delivery and rural field simulations are outside Phase 1",
+        "Combines trauma, blood-bank, emergency medicine, aerospace, and student expertise",
       ],
       studentFit: [
         "Cold-chain protocol review",
@@ -292,16 +294,16 @@ export const content: SiteContent = {
       name: "Virtual Clinic",
       tagline: "AI communication and reasoning practice",
       status: "building",
-      stage: "Practicing hard conversations safely",
+      stage: "Developing research prototypes",
       area: "Med-Ed / Simulation",
       leads: "Curriculum / Clinical Skills / AI education",
       summary:
-        "Virtual Clinic lets learners practice clinical conversations, handoffs, and reasoning with AI-assisted simulated patients. Faculty write the cases and review performance against explicit rubrics.",
+        "The team is developing research prototypes for practicing clinical conversations, handoffs, and reasoning with AI-assisted simulated patients. The work is designed for formative practice, with faculty-authored cases and rubrics.",
       anchors: [
-        "Students can practice before seeing real patients",
-        "Faculty write and review every case",
-        "AI supports simulated patients and handoffs",
-        "Faculty use explicit rubrics to review learner performance",
+        "Designed to let students practice before seeing real patients",
+        "Cases and rubrics would be written and reviewed by faculty",
+        "AI-assisted simulated patients and handoffs are under study",
+        "The work is intended for formative practice, not autonomous grading",
       ],
       studentFit: [
         "Case-script testing",
@@ -315,16 +317,16 @@ export const content: SiteContent = {
       name: "HPV/Pap Patient Education",
       tagline: "Plain-language follow-up support",
       status: "building",
-      stage: "Explaining results in plain language",
+      stage: "Drafting a patient-education prototype",
       area: "Oncology / Patient Education",
       leads: "Markey / Community health / Internal Medicine",
       summary:
-        "This prototype helps patients understand abnormal HPV and Pap results in plain language, including what follow-up may look like and what questions to bring back to their care team.",
+        "The team is considering a prototype designed to explain abnormal HPV and Pap results in plain language, including what follow-up may look like and what questions to bring back to a care team.",
       anchors: [
         "Abnormal HPV/Pap results can be stressful and confusing",
-        "Patients receive plain-language guidance on follow-up questions",
-        "English and Spanish support are part of the build",
-        "Clinicians review all content before patient use",
+        "The design would offer plain-language guidance on follow-up questions",
+        "English and Spanish support are part of the proposed work",
+        "Clinical review would be required before any patient use",
       ],
       studentFit: [
         "Plain-language copy review",
@@ -337,17 +339,17 @@ export const content: SiteContent = {
       id: "hrsa-rural-learning",
       name: "AI-Guided Rural Health Learning Collaborative",
       tagline: "Practice and support for rural care teams",
-      status: "active",
-      stage: "Training rural health teams",
+      status: "building",
+      stage: "Developing a grant proposal",
       area: "Rural Health / Workforce",
       leads: "College of Nursing / College of Medicine / UK HealthCare",
       summary:
-        "Rural and underserved healthcare teams meet for tele-mentoring, case consultation, and AI-supported simulation. Clinicians practice difficult scenarios with faculty and peer feedback.",
+        "The proposal would bring rural and underserved healthcare teams together for tele-mentoring, case consultation, and AI-supported simulation. Clinicians would practice difficult scenarios with faculty and peer feedback.",
       anchors: [
         "Rural clinicians often manage complex needs with fewer local supports",
-        "Simulation lets teams practice difficult cases",
-        "Tele-mentoring connects teams across distance",
-        "Clinicians retain all clinical decision-making",
+        "The proposed simulation would let teams practice difficult cases",
+        "Tele-mentoring would connect teams across distance",
+        "Clinicians would retain all clinical decision-making",
       ],
       studentFit: [
         "Learning-session design",
@@ -365,7 +367,7 @@ export const content: SiteContent = {
       area: "Med-Ed / Clinical Reasoning",
       leads: "Emergency Medicine / medical education collaborators",
       summary:
-        "Researchers are studying how clinicians and learners use generative AI under uncertainty. Surveys, interviews, and simulations examine its effects on reasoning, feedback, and formative assessment.",
+        "Researchers are studying how clinicians and learners use generative AI under uncertainty. Surveys, interviews, and simulations examine how that use relates to reasoning, feedback, and formative assessment.",
       anchors: [
         "Asks where AI helps and where it can mislead",
         "Faculty review all formative assessments",
@@ -382,18 +384,18 @@ export const content: SiteContent = {
     {
       id: "hep-c-smart-bottles",
       name: "Hep C Smart Pill Bottle Pilot",
-      tagline: "Medication-adherence workflow support",
+      tagline: "A proposed smart-pill-bottle pilot",
       status: "building",
-      stage: "Supporting medication follow-through",
+      stage: "Proposed pilot under review",
       area: "Infectious Disease / Medication Adherence",
       leads: "UK HealthCare / device partner",
       summary:
-        "This pilot tests whether smart pill bottles and AI/device-supported signals help care teams identify adherence barriers earlier during Hepatitis C treatment.",
+        "The proposed pilot would study whether signals from smart pill bottles could help care teams notice sooner when a patient is having trouble taking hepatitis C medication as planned.",
       anchors: [
         "Treatment only works when follow-up stays on track",
         "Smart bottles may flag adherence barriers earlier",
-        "Care teams review adherence signals and decide how to respond",
-        "The pilot evaluates privacy, clinical workflow, and signal usefulness",
+        "Care teams would review adherence signals and decide how to respond",
+        "The proposed work would examine privacy, clinical workflow, and signal usefulness",
       ],
       studentFit: [
         "Adherence-workflow mapping",
@@ -407,7 +409,7 @@ export const content: SiteContent = {
     {
       date: "2026-07-04",
       project: "KY-AHEAD",
-      note: "KY-AHEAD is developing AI-assisted, human-reviewed outreach for colorectal, cervical, and lung cancer screening.",
+      note: "KY-AHEAD is planning a human-reviewed workflow for colorectal, cervical, and lung cancer screening.",
     },
     {
       date: "2026-07-01",
@@ -417,29 +419,29 @@ export const content: SiteContent = {
     {
       date: "2026-06-30",
       project: "AI-guided rural health learning collaborative",
-      note: "The learning collaborative is developing tele-mentoring, case consultation, and AI-supported simulation for rural clinicians.",
+      note: "The grant proposal includes tele-mentoring, case consultation, and AI-supported simulation for rural clinicians.",
     },
     {
       date: "2026-06-23",
       project: "Whole-blood drone delivery",
-      note: "The team is testing temperature, packaging, and lab integrity during drone transport of whole blood.",
+      note: "The team is writing the first protocol for testing whole-blood temperature and condition during drone flight.",
     },
     {
       date: "2026-06-17",
       project: "AI assessment and clinical reasoning",
-      note: "Researchers are studying how generative AI affects clinical reasoning, feedback, and formative assessment.",
+      note: "Researchers are studying how generative AI use relates to clinical reasoning, feedback, and formative assessment.",
     },
     {
       date: "2026-05-26",
       project: "HPV/Pap patient education",
-      note: "The prototype explains abnormal HPV and Pap results and common follow-up steps in plain language.",
+      note: "The team is considering a prototype for explaining abnormal HPV and Pap results and common follow-up steps in plain language.",
     },
   ],
   leads: [
     {
       initials: "AI",
       name: "AI Incubator",
-      role: "Project studio and prototype support",
+      role: "Helps teams plan and test prototypes",
       areas: ["Med-Ed", "Population Health", "Workflow Support"],
     },
     {
@@ -470,31 +472,21 @@ export const content: SiteContent = {
   actions: [],
   blockers: [],
   decisions: [],
-  outcomes: [
-    {
-      id: "ky-ahead-sup-grant-2026",
-      kind: "grant",
-      project: "ky-ahead",
-      title: "KY-AHEAD State University Partnership launch",
-      value: "$475K",
-      date: "2026-04-13",
-      note: "Supports work to find Kentuckians who may be due for cancer screening and connect them with outreach and navigation.",
-    },
-  ],
+  outcomes: [],
   partners: [
     {
       id: "chfs",
       name: "Kentucky Cabinet for Health & Family Services",
-      role: "Funder",
+      role: "State project counterpart",
       project: "ky-ahead",
-      note: "State University Partnership support for KY-AHEAD.",
+      note: "Pre-launch alignment around the proposed State University Partnership work.",
     },
     {
       id: "kcr",
       name: "Kentucky Cancer Registry",
-      role: "Data partner",
+      role: "Planned data collaborator",
       project: "ky-ahead",
-      note: "Cancer registry and data-linkage collaboration.",
+      note: "Cancer-registry and data-linkage planning remain subject to the required approvals.",
     },
     {
       id: "markey",
@@ -505,16 +497,16 @@ export const content: SiteContent = {
     {
       id: "microsoft",
       name: "Microsoft",
-      role: "Technology collaborator",
+      role: "Strategic connection",
       project: "dr-retinopathy-rural-ky",
-      note: "Rural health and ophthalmology screening strategy collaboration.",
+      note: "Strategic conversations about possible platform, expertise, and connection support; no scoped deliverable is confirmed.",
     },
     {
       id: "cerh",
       name: "UK Center of Excellence in Rural Health",
-      role: "Rural health partner",
+      role: "Possible partner in a later phase",
       project: "whole-blood-drone",
-      note: "Rural logistics and drone-delivery context for the whole-blood pilot.",
+      note: "Intended partner for a possible later Appalachian field simulation, beyond the current Phase 1 design work.",
     },
     {
       id: "ukcom",
@@ -538,10 +530,13 @@ export const content: SiteContent = {
       person: "Chaelyn McGuire",
       format: "Student build",
       summary:
-        "A website built to support a sorority philanthropy effort and make outreach easier to organize.",
+        "Chaelyn built a working site to help her sorority organize outreach and raise money for survivors of domestic abuse.",
       image: "/media/studio-reel/03-chaelyn.jpg",
       imageAlt:
         "Students discussing a philanthropy website around a table with their laptops",
+      videoUrl:
+        "https://play.vidyard.com/KJM4GjGYMsrekARSQb18wP?autoplay=1&second=124",
+      videoLabel: "Watch the philanthropy story",
     },
     {
       id: "socratic-tutor",
@@ -549,9 +544,12 @@ export const content: SiteContent = {
       person: "Hunter Colson",
       format: "Prototype",
       summary:
-        "A student-built tutoring prototype that uses questions to help learners reason through a problem.",
+        "Hunter built a tutor that answers with questions and asks students to show their reasoning.",
       image: "/media/studio-reel/05-hunter.jpg",
       imageAlt: "Hunter Colson discussing the Socratic Tutor prototype",
+      videoUrl:
+        "https://play.vidyard.com/KJM4GjGYMsrekARSQb18wP?autoplay=1&second=94",
+      videoLabel: "Watch the Socratic Tutor story",
     },
     {
       id: "vibe-coding-workshop",
@@ -559,7 +557,7 @@ export const content: SiteContent = {
       person: "Alex Dripchak",
       format: "Learning session",
       summary:
-        "A practical session on building software with AI-assisted tools, from the first prompt through a working result.",
+        "Alex led a hands-on session where participants built a small app with AI-assisted coding tools.",
       image: "/media/student-work/alex-vibe-coding.jpg",
       imageAlt: "Vibe coding workshop presentation with Alex Dripchak",
     },
@@ -575,9 +573,9 @@ export const content: SiteContent = {
     {
       date: "2026-07-17",
       kind: "roundtable",
-      title: "Broader portfolio review",
+      title: "Review the other projects",
       blurb:
-        "Review which project-board entries are ready for public artifacts, outcomes, or partner updates.",
+        "Review which project-board entries are ready to share publicly, including results and partner updates.",
     },
   ],
 };
