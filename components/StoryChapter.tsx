@@ -18,6 +18,7 @@ type StoryChapterProps = {
   id: string;
   side: "left" | "right";
   tone?: "ink" | "blue" | "final";
+  variant?: "anchor" | "standard" | "proof";
   eyebrow: string;
   title: string;
   body: string;
@@ -68,6 +69,7 @@ export default function StoryChapter({
   id,
   side,
   tone = "ink",
+  variant = "standard",
   eyebrow,
   title,
   body,
@@ -87,6 +89,7 @@ export default function StoryChapter({
       className="studio-story"
       id={id}
       data-tone={tone}
+      data-variant={variant}
       aria-labelledby={titleId}
     >
       <div className="studio-shell studio-story-chapter" data-side={side}>
