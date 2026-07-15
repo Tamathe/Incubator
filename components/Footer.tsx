@@ -14,14 +14,14 @@ export default function Footer() {
               style={{ marginBottom: 14 }}
               aria-label="AI Incubator at the University of Kentucky home"
             >
-              <Logo alt="" className="nav-logo" />
+              <Logo alt="" className="nav-logo" src="/logo-mark-dark.png" />
             </Link>
             <p
               className="body"
               style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
             >
-              Students, faculty, and staff from across UK meet Fridays at noon
-              on Microsoft Teams.
+              Fridays at noon on Microsoft Teams. Open to students, faculty,
+              and staff across UK.
             </p>
           </div>
           <div>
@@ -29,7 +29,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/#fridays">Fridays</Link></li>
-              <li><Link href="/#student-work">Student work</Link></li>
+              <li><Link href="/#student-work">Student projects</Link></li>
               <li><Link href="/join">Ways to join</Link></li>
             </ul>
           </div>
@@ -59,9 +59,6 @@ export default function Footer() {
           </div>
           <div>
             <h4>Friday updates</h4>
-            <p className="small" style={{ marginBottom: 10 }}>
-              Friday meeting notes and project updates.
-            </p>
             <SubscribeForm />
           </div>
         </div>

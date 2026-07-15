@@ -13,13 +13,12 @@ type StoryChapterProps = {
   side: "left" | "right";
   tone?: "ink" | "blue" | "final";
   variant?: "anchor" | "standard" | "proof";
-  eyebrow: string;
   title: string;
-  body: string;
+  body?: string;
   video: string;
   poster: string;
-  caption: string;
   focus?: string;
+  withSound?: boolean;
   primaryLink?: StoryLink;
   secondaryLink?: StoryLink;
   children?: ReactNode;
@@ -63,13 +62,12 @@ export default function StoryChapter({
   side,
   tone = "ink",
   variant = "standard",
-  eyebrow,
   title,
   body,
   video,
   poster,
-  caption,
   focus,
+  withSound,
   primaryLink,
   secondaryLink,
   children,
@@ -89,14 +87,14 @@ export default function StoryChapter({
           id={id}
           video={video}
           poster={poster}
-          caption={caption}
+          label={title}
           focus={focus}
+          withSound={withSound}
         />
 
         <div className="studio-story-copy">
-          <p className="studio-section-index">{eyebrow}</p>
           <h2 id={titleId}>{title}</h2>
-          <p className="studio-story-body">{body}</p>
+          {body ? <p className="studio-story-body">{body}</p> : null}
 
           {primaryLink || secondaryLink ? (
             <div className="studio-story-actions">

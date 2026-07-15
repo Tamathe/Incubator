@@ -27,14 +27,13 @@ export default function Nav({ active, tone = "default" }: NavProps) {
           href="/"
           aria-label="AI Incubator at the University of Kentucky home"
         >
-          <Logo alt="" className="nav-logo" src="/logo.png" />
-          <span className="tag">University of Kentucky</span>
+          <Logo alt="" className="nav-logo" src="/logo-mark-dark.png" />
         </Link>
 
         <div className="nav-links">
           <Link href="/projects" className={cls("projects")}>Work</Link>
           <Link href="/#fridays">Fridays</Link>
-          <Link href="/#student-work">Student work</Link>
+          <Link href="/#student-work">Student projects</Link>
           <Link
             href="/join"
             className={`btn primary sm ${active === "join" ? "active" : ""}`}
@@ -48,7 +47,7 @@ export default function Nav({ active, tone = "default" }: NavProps) {
           <div className="nav-mobile-panel">
             <Link href="/projects" className={cls("projects")}>Work</Link>
             <Link href="/#fridays">Fridays</Link>
-            <Link href="/#student-work">Student work</Link>
+            <Link href="/#student-work">Student projects</Link>
             <Link href="/join" className="nav-mobile-cta">
               Join Friday <span aria-hidden="true">-&gt;</span>
             </Link>

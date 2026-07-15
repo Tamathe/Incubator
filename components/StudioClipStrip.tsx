@@ -7,17 +7,14 @@ const CLIPS = [
   {
     video: "/media/story/02-student-demo.mp4",
     poster: "/media/story/02-student-demo.jpg",
-    caption: "Students gather around a project demo",
   },
   {
     video: "/media/story/05-audience.mp4",
     poster: "/media/story/05-audience.jpg",
-    caption: "Students listen and ask questions during a presentation",
   },
   {
     video: "/media/story/06-event-crowd.mp4",
     poster: "/media/story/06-event-crowd.jpg",
-    caption: "People crowd around a screen to see a student demo",
   },
 ] as const;
 
@@ -87,8 +84,6 @@ export default function StudioClipStrip() {
                   sizes="(max-width: 700px) 100vw, 34vw"
                 />
               )}
-              <span aria-hidden="true" />
-              <figcaption>{clip.caption}</figcaption>
             </figure>
           );
         })}

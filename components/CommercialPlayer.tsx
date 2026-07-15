@@ -55,7 +55,6 @@ export default function CommercialPlayer() {
         aria-label="Watch the AI Incubator film with sound"
       >
         <span>Watch the complete film</span>
-        <small>58 seconds / sound on</small>
       </button>
 
       <dialog
