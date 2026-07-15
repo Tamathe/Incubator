@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { content } from "@/content/site";
+import CommercialPlayer from "@/components/CommercialPlayer";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
-import StudioReel from "@/components/StudioReel";
+import StoryChapter from "@/components/StoryChapter";
+import { content } from "@/content/site";
 
 const FEATURED_STORIES = [
   {
@@ -41,23 +42,59 @@ const FEATURED_STORIES = [
 const FRIDAY_MODES = [
   {
     number: "01",
-    title: "Show what you learned",
+    title: "Show something",
     body: "Bring a tool, a method, or something that worked.",
   },
   {
     number: "02",
-    title: "Bring an idea",
-    body: "It does not have to be polished. The group will ask questions.",
+    title: "Ask for help",
+    body: "It does not have to be polished. Let the room ask questions.",
   },
   {
     number: "03",
-    title: "Try it together",
+    title: "Try it",
     body: "Test the tool or prototype and see where it holds up.",
   },
   {
     number: "04",
-    title: "Choose the next step",
+    title: "Pick the next step",
     body: "Decide what is worth doing before the next meeting.",
+  },
+] as const;
+
+const STUDENT_STORIES = [
+  {
+    id: "philanthropy-outreach-site",
+    chapterId: "chaelyn-build",
+    side: "right",
+    title: "Chaelyn brought a site she built.",
+    body:
+      "She made it to help her sorority organize outreach and raise money for survivors of domestic abuse. Then she put the real thing on screen so everyone could see how it worked.",
+    video: "/media/studio-reel/03-chaelyn.mp4",
+    poster: "/media/studio-reel/03-chaelyn.jpg",
+    caption: "Chaelyn and other students walk through the philanthropy site",
+  },
+  {
+    id: "socratic-tutor",
+    chapterId: "hunter-tutor",
+    side: "left",
+    title: "Hunter brought a tutor that answers with questions.",
+    body:
+      "He showed how it asks students to explain their reasoning. The room tried it, challenged it, and helped him think about what to test next.",
+    video: "/media/studio-reel/05-hunter.mp4",
+    poster: "/media/studio-reel/05-hunter.jpg",
+    caption: "Hunter explains the Socratic Tutor prototype",
+  },
+  {
+    id: "vibe-coding-workshop",
+    chapterId: "alex-workshop",
+    side: "right",
+    title: "Alex led a hands-on build.",
+    body:
+      "Participants used AI coding tools to build a small app during the session. They did not just hear about the tools. They left having made something.",
+    video: "/media/story/07-alex-vibecoding.mp4",
+    poster: "/media/story/07-alex-vibecoding.jpg",
+    caption: "Alex leads a live AI-assisted coding session",
   },
 ] as const;
 
@@ -66,7 +103,10 @@ type ResearchMotionKind = (typeof FEATURED_STORIES)[number]["motion"];
 function ResearchMotion({ kind }: { kind: ResearchMotionKind }) {
   if (kind === "map") {
     return (
-      <span className="studio-research-motion studio-research-motion-map" aria-hidden="true">
+      <span
+        className="studio-research-motion studio-research-motion-map"
+        aria-hidden="true"
+      >
         {Array.from({ length: 7 }, (_, index) => (
           <span key={index} />
         ))}
@@ -76,14 +116,20 @@ function ResearchMotion({ kind }: { kind: ResearchMotionKind }) {
 
   if (kind === "focus") {
     return (
-      <span className="studio-research-motion studio-research-motion-focus" aria-hidden="true">
+      <span
+        className="studio-research-motion studio-research-motion-focus"
+        aria-hidden="true"
+      >
         <span />
       </span>
     );
   }
 
   return (
-    <span className="studio-research-motion studio-research-motion-route" aria-hidden="true">
+    <span
+      className="studio-research-motion studio-research-motion-route"
+      aria-hidden="true"
+    >
       <span />
     </span>
   );
@@ -96,60 +142,17 @@ function getFeaturedStories() {
   });
 }
 
-function StudentWorkCard({
-  item,
-  index,
-}: {
-  item: (typeof content.studentWork)[number];
-  index: number;
-}) {
-  const cardContent = (
-    <>
-      <figure>
-        <Image
-          src={item.image}
-          alt={item.imageAlt}
-          fill
-          sizes="(max-width: 700px) 100vw, 33vw"
-        />
-        <span>{String(index + 1).padStart(2, "0")}</span>
-      </figure>
-      <div>
-        <p className="studio-student-work-meta">
-          <span>{item.person}</span>
-          <span>{item.format}</span>
-        </p>
-        <h3>{item.title}</h3>
-        <p>{item.summary}</p>
-        {item.videoLabel ? (
-          <span className="studio-student-work-watch">
-            {item.videoLabel} <span aria-hidden="true">-&gt;</span>
-          </span>
-        ) : null}
-      </div>
-    </>
-  );
-
-  if (!item.videoUrl || !item.videoLabel) {
-    return <article className="studio-student-work-card">{cardContent}</article>;
-  }
-
-  return (
-    <a
-      className="studio-student-work-card"
-      href={item.videoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${item.title}: ${item.videoLabel}`}
-    >
-      {cardContent}
-    </a>
-  );
+function getStudentStories() {
+  return STUDENT_STORIES.flatMap((story) => {
+    const item = content.studentWork.find((work) => work.id === story.id);
+    return item ? [{ story, item }] : [];
+  });
 }
 
 export default function HomePage() {
   const featured = getFeaturedStories();
-  const { session, studentWork } = content;
+  const studentStories = getStudentStories();
+  const { session } = content;
 
   return (
     <>
@@ -177,13 +180,12 @@ export default function HomePage() {
 
             <div className="studio-hero-copy">
               <p className="studio-hero-deck">
-                The AI Incubator is where people across UK compare notes and build things together.
+                Every Friday, someone in the room has something the rest of us can learn from.
               </p>
               <p className="studio-hero-lead">
-                Students, faculty, and staff meet every Friday at noon. Someone
-                shows a tool. Someone brings a problem. Someone pitches an
-                idea. The group asks questions, tries things, and helps decide
-                what to do next.
+                Students, faculty, and staff meet at noon. Someone shows a tool.
+                Someone brings a problem. Someone pitches an idea. The group asks
+                questions, tries things, and helps decide what to do next.
               </p>
 
               <div className="studio-hero-actions">
@@ -226,7 +228,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <StudioReel />
+        <StoryChapter
+          id="a-friday-meeting"
+          side="right"
+          eyebrow="A Friday meeting"
+          title="The person teaching the room changes every week."
+          body="One Friday it is a student showing a tool. The next it might be a clinician walking through a workflow, or a staff member explaining what failed. Anyone can bring something the rest of us can learn from."
+          video="/media/story/01-student-presenter.mp4"
+          poster="/media/story/01-student-presenter.jpg"
+          caption="A student presents his work to the room"
+        />
 
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
@@ -237,7 +248,7 @@ export default function HomePage() {
                 Right now, teams are working on cancer screening, rural eye
                 care, and whether blood can stay within the right temperature
                 and integrity limits during drone flight. The cards below say
-                what is happening now—and what is still being planned.
+                what is happening now and what is still being planned.
               </p>
             </div>
           </div>
@@ -281,6 +292,17 @@ export default function HomePage() {
           </div>
         </section>
 
+        <StoryChapter
+          id="bring-what-you-built"
+          side="left"
+          eyebrow="Then the room gets involved"
+          title="Bring what you built."
+          body="This is not a show-and-tell where everyone nods and moves on. People gather around the screen, ask how it works, spot what is missing, and help decide what to try next."
+          video="/media/story/02-student-demo.mp4"
+          poster="/media/story/02-student-demo.jpg"
+          caption="Students gather around a project demo"
+        />
+
         <section
           className="studio-student-work"
           id="student-work"
@@ -297,9 +319,28 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="studio-shell studio-student-work-grid">
-            {studentWork.map((item, index) => (
-              <StudentWorkCard item={item} index={index} key={item.id} />
+          <div className="studio-student-work-stories">
+            {studentStories.map(({ story, item }) => (
+              <StoryChapter
+                id={story.chapterId}
+                key={story.id}
+                side={story.side}
+                eyebrow={`${item.person} / ${item.format}`}
+                title={story.title}
+                body={story.body}
+                video={story.video}
+                poster={story.poster}
+                caption={story.caption}
+                secondaryLink={
+                  item.videoUrl && item.videoLabel
+                    ? {
+                        href: item.videoUrl,
+                        label: item.videoLabel,
+                        external: true,
+                      }
+                    : undefined
+                }
+              />
             ))}
           </div>
 
@@ -310,59 +351,60 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="studio-friday" id="fridays" aria-labelledby="friday-title">
-          <div className="studio-shell studio-friday-grid">
-            <p className="studio-section-index studio-friday-label">Every Friday at noon</p>
+        <StoryChapter
+          id="join-from-anywhere"
+          side="left"
+          eyebrow="The room can stretch"
+          title="Sometimes the person teaching is on a screen."
+          body="A student can walk the room through a project. A guest can call in from somewhere else. If you have tried something and learned from it, you have something worth sharing."
+          video="/media/story/03-zoom-presentation.mp4"
+          poster="/media/story/03-zoom-presentation.jpg"
+          caption="A remote presentation plays on the room's main screen"
+        />
 
-            <div className="studio-friday-copy">
-              <h2 id="friday-title">Here is what we do on Fridays.</h2>
-              <p className="studio-friday-intro">
-                The agenda changes, but the meeting is simple: show people
-                something, ask for help, try an idea, and leave with a next step.
-              </p>
+        <StoryChapter
+          id="fridays"
+          side="right"
+          tone="blue"
+          eyebrow="Every Friday at noon"
+          title="Here is what we do on Fridays."
+          body="The agenda changes, but the meeting is simple: show people something, ask for help, try an idea, and leave with a next step."
+          video="/media/story/05-audience.mp4"
+          poster="/media/story/05-audience.jpg"
+          caption="Students listen and ask questions during a presentation"
+          details={FRIDAY_MODES}
+          primaryLink={{ href: "/join#rsvp", label: "Join us this Friday" }}
+          secondaryLink={{
+            href: "/join#cant-make-friday",
+            label: "What if I cannot make Friday?",
+          }}
+        />
 
-              <div className="studio-friday-modes">
-                {FRIDAY_MODES.map((mode) => (
-                  <div key={mode.title}>
-                    <span>{mode.number}</span>
-                    <strong>{mode.title}</strong>
-                    <p>{mode.body}</p>
-                  </div>
-                ))}
-              </div>
+        <StoryChapter
+          id="the-room-teaches-back"
+          side="left"
+          eyebrow="The room teaches back"
+          title="One person starts. Everybody adds something."
+          body="Someone spots a problem. Someone else knows a tool. A third person has seen the same thing in another field. By the end, the person who brought the idea usually has a clearer next step."
+          video="/media/story/06-event-crowd.mp4"
+          poster="/media/story/06-event-crowd.jpg"
+          caption="People crowd around a screen to see a student demo"
+        />
 
-              <div className="studio-friday-actions">
-                <Link className="studio-button studio-button-primary" href="/join#rsvp">
-                  Join us this Friday <span aria-hidden="true">-&gt;</span>
-                </Link>
-                <Link className="studio-text-link" href="/join#cant-make-friday">
-                  What if I cannot make Friday?
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="studio-final" aria-labelledby="final-title">
-          <div className="studio-shell studio-final-grid">
-            <div>
-              <p className="studio-section-index">Come to a meeting</p>
-              <h2 id="final-title">Come by on Friday.</h2>
-            </div>
-            <div>
-              <p>
-                You do not need to know how to code or have a project ready.
-                Bring a question, tell us what you are curious about, or just
-                listen the first time.
-              </p>
-              <div className="studio-final-actions">
-                <Link className="studio-button studio-button-primary" href="/join">
-                  Join Friday&apos;s meeting <span aria-hidden="true">-&gt;</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <StoryChapter
+          id="come-this-friday"
+          side="right"
+          tone="final"
+          eyebrow="Come this Friday"
+          title="What would you show the room?"
+          body="Bring a tool, a method, a problem, or something that worked. Or just come listen the first time. You do not need AI or coding experience. Just bring your curiosity."
+          video="/media/story/04-smiling-student.mp4"
+          poster="/media/story/04-smiling-student.jpg"
+          caption="A student smiles during an Incubator event"
+          primaryLink={{ href: "/join", label: "Join Friday's meeting" }}
+        >
+          <CommercialPlayer />
+        </StoryChapter>
       </main>
 
       <Footer />

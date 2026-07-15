@@ -384,7 +384,8 @@ public-safe details from the project source.
 - Project and meeting content: `content/site.ts`
 - Homepage story selection and sequence: `app/page.tsx`
 - Studio Black implementation: the `.studio-*` rules in `app/globals.css`
-- Motion behavior: `components/StudioReel.tsx`
+- Scroll-video layout: `components/StoryChapter.tsx`
+- Motion and playback behavior: `components/StoryVideo.tsx`
 - Visual standard: this document
 
 ### Current versus next
@@ -412,4 +413,3 @@ Before publishing a new expressive page or section, confirm:
 - Is the primary action obvious on desktop and mobile?
 - Has every public-facing fact, partner reference, and project claim been
   reviewed for safety and accuracy?
-
