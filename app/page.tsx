@@ -67,6 +67,7 @@ const STUDENT_STORIES = [
     id: "philanthropy-outreach-site",
     chapterId: "chaelyn-build",
     side: "right",
+    variant: "anchor",
     title: "Chaelyn brought a site she built.",
     body:
       "She made it to help her sorority organize outreach and raise money for survivors of domestic abuse. Then she put the real thing on screen so everyone could see how it worked.",
@@ -78,6 +79,7 @@ const STUDENT_STORIES = [
     id: "socratic-tutor",
     chapterId: "hunter-tutor",
     side: "left",
+    variant: "proof",
     title: "Hunter brought a tutor that answers with questions.",
     body:
       "He showed how it asks students to explain their reasoning. The room tried it, challenged it, and helped him think about what to test next.",
@@ -89,6 +91,7 @@ const STUDENT_STORIES = [
     id: "vibe-coding-workshop",
     chapterId: "alex-workshop",
     side: "right",
+    variant: "proof",
     title: "Alex led a hands-on build.",
     body:
       "Participants used AI coding tools to build a small app during the session. They did not just hear about the tools. They left having made something.",
@@ -160,10 +163,10 @@ export default function HomePage() {
 
       <main className="studio-home">
         <header className="studio-hero" id="about">
-          <div className="studio-hero-visual" aria-hidden="true">
+          <div className="studio-hero-visual">
             <Image
               src="/media/incubator-primary.jpg"
-              alt=""
+              alt="Students, faculty, and staff from the UK AI Incubator gathered at a campus event"
               fill
               priority
               sizes="100vw"
@@ -183,9 +186,8 @@ export default function HomePage() {
                 Every Friday, someone in the room has something the rest of us can learn from.
               </p>
               <p className="studio-hero-lead">
-                Students, faculty, and staff meet at noon. Someone shows a tool.
-                Someone brings a problem. Someone pitches an idea. The group asks
-                questions, tries things, and helps decide what to do next.
+                Students, faculty, and staff show what they are trying, bring
+                real problems, and help one another figure out what comes next.
               </p>
 
               <div className="studio-hero-actions">
@@ -231,6 +233,7 @@ export default function HomePage() {
         <StoryChapter
           id="a-friday-meeting"
           side="right"
+          variant="anchor"
           eyebrow="A Friday meeting"
           title="The person teaching the room changes every week."
           body="One Friday it is a student showing a tool. The next it might be a clinician walking through a workflow, or a staff member explaining what failed. Anyone can bring something the rest of us can learn from."
@@ -295,6 +298,7 @@ export default function HomePage() {
         <StoryChapter
           id="bring-what-you-built"
           side="left"
+          variant="standard"
           eyebrow="Then the room gets involved"
           title="Bring what you built."
           body="This is not a show-and-tell where everyone nods and moves on. People gather around the screen, ask how it works, spot what is missing, and help decide what to try next."
@@ -316,6 +320,9 @@ export default function HomePage() {
                 Sometimes a Friday idea becomes a working tool, a workshop, or
                 a new research question. Here are three examples.
               </p>
+              <Link className="studio-student-work-share" href="/join#pitch">
+                Share what you are building <span aria-hidden="true">-&gt;</span>
+              </Link>
             </div>
           </div>
 
@@ -325,6 +332,7 @@ export default function HomePage() {
                 id={story.chapterId}
                 key={story.id}
                 side={story.side}
+                variant={story.variant}
                 eyebrow={`${item.person} / ${item.format}`}
                 title={story.title}
                 body={story.body}
@@ -344,16 +352,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="studio-shell studio-student-work-action">
-            <Link href="/join#pitch">
-              Share what you are building <span aria-hidden="true">-&gt;</span>
-            </Link>
-          </div>
         </section>
 
         <StoryChapter
           id="join-from-anywhere"
           side="left"
+          variant="proof"
           eyebrow="The room can stretch"
           title="Sometimes the person teaching is on a screen."
           body="A student can walk the room through a project. A guest can call in from somewhere else. If you have tried something and learned from it, you have something worth sharing."
@@ -366,6 +370,7 @@ export default function HomePage() {
           id="fridays"
           side="right"
           tone="blue"
+          variant="anchor"
           eyebrow="Every Friday at noon"
           title="Here is what we do on Fridays."
           body="The agenda changes, but the meeting is simple: show people something, ask for help, try an idea, and leave with a next step."
@@ -383,6 +388,7 @@ export default function HomePage() {
         <StoryChapter
           id="the-room-teaches-back"
           side="left"
+          variant="proof"
           eyebrow="The room teaches back"
           title="One person starts. Everybody adds something."
           body="Someone spots a problem. Someone else knows a tool. A third person has seen the same thing in another field. By the end, the person who brought the idea usually has a clearer next step."
@@ -395,6 +401,7 @@ export default function HomePage() {
           id="come-this-friday"
           side="right"
           tone="final"
+          variant="anchor"
           eyebrow="Come this Friday"
           title="What would you show the room?"
           body="Bring a tool, a method, a problem, or something that worked. Or just come listen the first time. You do not need AI or coding experience. Just bring your curiosity."
