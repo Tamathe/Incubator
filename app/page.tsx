@@ -4,7 +4,6 @@ import CommercialPlayer from "@/components/CommercialPlayer";
 import Footer from "@/components/Footer";
 import Logo from "@/components/Logo";
 import Nav from "@/components/Nav";
-import StudioClipStrip from "@/components/StudioClipStrip";
 import StoryChapter from "@/components/StoryChapter";
 import { content } from "@/content/site";
 
@@ -13,8 +12,8 @@ const FEATURED_STORIES = [
     id: "ky-ahead",
     question:
       "How do we help more people get the cancer screening they are due for?",
-    image: "/media/research/ky-ahead-concept.png",
-    imageAlt: "Kentucky map for the KY-AHEAD cancer-screening project",
+    image: "/media/research/ky-ahead-kentucky.svg",
+    imageAlt: "Accurate Kentucky silhouette for the KY-AHEAD cancer-screening project",
   },
   {
     id: "dr-retinopathy-rural-ky",
@@ -153,13 +152,47 @@ export default function HomePage() {
           variant="anchor"
           title="Friday is where the community meets."
           body="One week, a student demos a tool. The next, someone brings a research problem or asks the group to test an idea. The agenda changes because the people in the room change it."
-          video="/media/story/01-student-presenter.mp4"
-          poster="/media/story/01-student-presenter.jpg"
+          video="/media/story/02-student-demo.mp4"
+          poster="/media/story/02-student-demo.jpg"
         >
           <CommercialPlayer />
         </StoryChapter>
 
-        <StudioClipStrip />
+        <section
+          className="studio-student-work studio-student-work-sequenced"
+          aria-labelledby="student-work-title"
+        >
+          <StoryChapter
+            id="student-work"
+            side="left"
+            variant="anchor"
+            title="Students do not have to wait until they are experts."
+            body="They can bring a problem, build a small first version, and show the group what happened."
+            video="/media/story/01-student-presenter.mp4"
+            poster="/media/story/01-student-presenter.jpg"
+            primaryLink={{
+              href: "/join#pitch",
+              label: "Bring your work to the group",
+            }}
+          />
+
+          <div className="studio-student-work-stories">
+            {studentStories.map((story) => (
+              <StoryChapter
+                id={story.chapterId}
+                key={story.id}
+                side={story.side}
+                variant={story.variant}
+                title={story.title}
+                body={"body" in story ? story.body : undefined}
+                video={story.video}
+                poster={story.poster}
+                focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}
+                primaryLink={getStudentStoryLink(story.id)}
+              />
+            ))}
+          </div>
+        </section>
 
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
@@ -198,44 +231,6 @@ export default function HomePage() {
               See the full project list <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
-        </section>
-
-        <section
-          className="studio-student-work"
-          id="student-work"
-          aria-labelledby="student-work-title"
-        >
-          <div className="studio-shell studio-student-work-head">
-            <div>
-              <p className="studio-section-index">Student work</p>
-              <h2 id="student-work-title">Students do not have to wait until they are experts.</h2>
-              <p>
-                They can bring a problem, build a small first version, and show
-                the group what happened.
-              </p>
-              <Link className="studio-student-work-share" href="/join#pitch">
-                Bring your work to the group <span aria-hidden="true">-&gt;</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="studio-student-work-stories">
-            {studentStories.map((story) => (
-              <StoryChapter
-                id={story.chapterId}
-                key={story.id}
-                side={story.side}
-                variant={story.variant}
-                title={story.title}
-                body={"body" in story ? story.body : undefined}
-                video={story.video}
-                poster={story.poster}
-                focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}
-                primaryLink={getStudentStoryLink(story.id)}
-              />
-            ))}
-          </div>
-
         </section>
 
         <StoryChapter
