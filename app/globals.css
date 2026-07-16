@@ -4316,6 +4316,7 @@ footer {
 
 .studio-clip-strip {
   position: relative;
+  padding: clamp(24px, 4vw, 64px);
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
   background: #050505;
@@ -4323,12 +4324,14 @@ footer {
 .studio-clip-strip-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 1600px, 138.67vh);
+  margin-inline: auto;
   gap: 1px;
-  background: #252525;
+  background: #101010;
 }
 .studio-clip-strip figure {
   position: relative;
-  aspect-ratio: 16 / 4.5;
+  aspect-ratio: 16 / 9;
   margin: 0;
   overflow: hidden;
   background: #101010;
@@ -4342,14 +4345,13 @@ footer {
 }
 .studio-clip-strip figure > video,
 .studio-clip-strip figure > img {
-  object-fit: cover;
+  object-fit: contain;
   filter: saturate(0.74) brightness(0.68) contrast(1.03);
-  transition: filter 420ms var(--ease), transform 700ms var(--ease);
+  transition: filter 420ms var(--ease);
 }
 .studio-clip-strip figure[data-active="true"] > video,
 .studio-clip-strip figure[data-active="true"] > img {
   filter: saturate(1) brightness(0.96) contrast(1.02);
-  transform: scale(1.015);
 }
 .studio-clip-strip-control {
   position: absolute;
@@ -4375,8 +4377,12 @@ footer {
 }
 
 @media (max-width: 700px) {
+  .studio-clip-strip {
+    padding: 0;
+  }
   .studio-clip-strip-grid {
     grid-template-columns: minmax(0, 1fr);
+    width: 100%;
   }
   .studio-clip-strip figure {
     aspect-ratio: 16 / 9;
