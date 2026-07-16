@@ -9,8 +9,8 @@ type StatusFilter = "all" | ProjectStatus;
 const STATUS_LABELS: Record<StatusFilter, string> = {
   all: "All",
   active: "Active",
-  building: "Building",
-  kickoff: "Just kicked off",
+  building: "In development",
+  kickoff: "New",
   paused: "On hold",
 };
 
@@ -70,7 +70,7 @@ export default function ProjectsFilteredList({
             <strong>{filtered.length} project{filtered.length === 1 ? "" : "s"}</strong>
           </div>
           <div className="group" aria-label="Filter projects by status">
-            {statusFilters.map((s) => (
+            {statusFilters.filter((s) => s === "all" || statusCounts[s] > 0).map((s) => (
               <button
                 type="button"
                 key={s}
@@ -109,7 +109,7 @@ export default function ProjectsFilteredList({
               fontSize: 13,
             }}
           >
-            No projects match those filters.
+            No projects match those filters. Try another area or stage.
           </div>
         ) : (
           <div className="proj-grid big" style={{ marginTop: 32 }}>

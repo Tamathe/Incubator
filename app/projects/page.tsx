@@ -1,13 +1,13 @@
+import Link from "next/link";
 import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import DotGrid from "@/components/DotGrid";
 import ProjectsFilteredList from "@/components/ProjectsFilteredList";
 
 export const metadata = {
-  title: "Projects · AI Incubator",
+  title: "Current projects · AI Incubator",
   description:
-    "See what University of Kentucky AI Incubator teams are working on in cancer screening, rural health, education, trauma care, and more.",
+    "See what people in the UK AI Incubator are working on and where a student or collaborator could help.",
 };
 
 export default function ProjectsPage() {
@@ -15,28 +15,32 @@ export default function ProjectsPage() {
     <>
       <Nav active="projects" />
 
-      <header
-        className="projects-hero container"
-        style={{ position: "relative", overflow: "hidden" }}
-      >
-        <DotGrid />
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <div className="eyebrow" style={{ marginBottom: 14 }}>
-            Projects · {content.cohort.replace(/^Cohort\s+\d+\s+·\s+/, "")}
+      <main className="community-page">
+        <header className="community-hero container">
+          <div className="eyebrow">
+            Current projects · {content.cohort.replace(/^Cohort\s+\d+\s+[-·]\s+/, "")}
           </div>
-          <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            What people are working on.
-          </h1>
-          <p className="lead" style={{ marginTop: 28 }}>
-            These projects are in different stages. Some are still being
-            planned. Clinicians, engineers, educators, researchers, and
-            students are working on them together. Each card says what the team
-            is doing now and where someone else could help.
+          <h1>See what people are building—and where you could help.</h1>
+          <p className="lead">
+            Some of this work is still an early idea. Some is research or a
+            prototype. Each project entry says what the team is doing now and
+            names useful first steps for a student or collaborator. You do not
+            have to arrive as the expert.
           </p>
-        </div>
-      </header>
+          <div className="community-hero-actions">
+            <Link className="studio-button studio-button-primary" href="/join">
+              Meet the community <span aria-hidden="true">-&gt;</span>
+            </Link>
+            <a className="studio-text-link" href="#project-list">
+              Browse the projects <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </header>
 
-      <ProjectsFilteredList projects={content.projects} />
+        <div id="project-list">
+          <ProjectsFilteredList projects={content.projects} />
+        </div>
+      </main>
 
       <Footer />
     </>
