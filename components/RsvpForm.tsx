@@ -6,7 +6,7 @@ const MOTIVATIONS = [
   "Curious about the group",
   "Have a problem to pitch",
   "Want to join a team",
-  "Looking to collaborate (faculty)",
+  "Looking to collaborate",
   "Bringing a colleague",
 ];
 
@@ -208,7 +208,7 @@ export default function RsvpForm() {
                 color: "var(--ink)",
                 outline: "none",
               }}
-              placeholder="What you're working on, what you'd like help with, what you can contribute."
+              placeholder="What are you working on or hoping to help with?"
             />
           </div>
           <div
@@ -269,7 +269,7 @@ export default function RsvpForm() {
                       </>
                     )}
             </button>
-            <span className="small">We will never share your email.</span>
+            <span className="small">Your email stays private.</span>
           </div>
           {state.kind === "error" && (
             <div

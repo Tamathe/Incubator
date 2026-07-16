@@ -20,21 +20,11 @@ export default function BuiltPage() {
       <header className="join-hero container">
         <DotGrid />
         <div style={{ position: "relative", zIndex: 2 }}>
-          <div className="hero-meta">
-            <span className="chip live">
-              <span>
-                {artifacts.length > 0
-                  ? `${artifacts.length} public item${artifacts.length === 1 ? "" : "s"}`
-                  : "Nothing public yet"}
-              </span>
-            </span>
-          </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
             Things people <em>have made.</em>
           </h1>
           <p className="lead" style={{ marginTop: 28, maxWidth: "62ch" }}>
-            When a tool or prototype is ready to share, it will appear here with
-            a link and a short explanation.
+            Public tools and prototypes.
           </p>
         </div>
       </header>

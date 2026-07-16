@@ -16,21 +16,14 @@ export default function Footer() {
             >
               <Logo alt="" className="nav-logo" src="/logo-incubator.png" />
             </Link>
-            <p
-              className="body"
-              style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
-            >
-              A Friday community where students, faculty, and staff learn what
-              AI can and cannot do by working on real problems together.
-            </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/#fridays">What happens on Fridays</Link></li>
+              <li><Link href="/#fridays">Fridays</Link></li>
               <li><Link href="/#student-work">Student work</Link></li>
-              <li><Link href="/join">Come to a meeting</Link></li>
+              <li><Link href="/join">Join us</Link></li>
             </ul>
           </div>
           <div>
@@ -58,14 +51,13 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Get Friday updates</h4>
+            <h4>Friday updates</h4>
             <SubscribeForm />
           </div>
         </div>
         <div className="foot-bottom">
           <span>
-            &copy; {new Date().getFullYear()} AI Incubator at the University of
-            Kentucky
+            &copy; {new Date().getFullYear()} AI Incubator, University of Kentucky
           </span>
         </div>
       </div>

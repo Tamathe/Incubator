@@ -31,25 +31,25 @@ export default function Nav({ active, tone = "default" }: NavProps) {
         </Link>
 
         <div className="nav-links">
-          <Link href="/#fridays">What happens</Link>
+          <Link href="/#fridays">Fridays</Link>
           <Link href="/projects" className={cls("projects")}>Projects</Link>
           <Link href="/#student-work">Student work</Link>
           <Link
             href="/join"
             className={`btn primary sm ${active === "join" ? "active" : ""}`}
           >
-            Come Friday <span className="arrow">-&gt;</span>
+            Join us <span className="arrow">-&gt;</span>
           </Link>
         </div>
 
         <details className="nav-mobile">
           <summary aria-label="Open site navigation">Menu</summary>
           <div className="nav-mobile-panel">
-            <Link href="/#fridays">What happens</Link>
+            <Link href="/#fridays">Fridays</Link>
             <Link href="/projects" className={cls("projects")}>Projects</Link>
             <Link href="/#student-work">Student work</Link>
             <Link href="/join" className="nav-mobile-cta">
-              Come Friday <span aria-hidden="true">-&gt;</span>
+              Join us <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </details>

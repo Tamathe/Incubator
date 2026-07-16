@@ -229,7 +229,7 @@ export const content: SiteContent = {
       area: "Population Health / Oncology",
       leads: "Emergency Medicine / Markey / state data collaborators",
       summary:
-        "KY-AHEAD is designing a human-reviewed workflow that could help care teams find people who may be due for colorectal, cervical, or lung cancer screening. The project is still in planning, and the software is being tested only with synthetic data. Any outreach would wait for the required approvals.",
+        "KY-AHEAD is designing a human-reviewed workflow to help care teams find people who may be due for colorectal, cervical, or lung cancer screening. Testing uses synthetic data while the team works through the required approvals.",
       anchors: [
         "Many screenings are missed because the right patient is hard to find at the right time",
         "AI-assisted review could help surface people who may be due",
@@ -252,7 +252,7 @@ export const content: SiteContent = {
       area: "Rural Health / Ophthalmology",
       leads: "Ophthalmology / Telehealth / rural health planning",
       summary:
-        "UK already has a tele-ophthalmology network in which specialists read retinal images. The team is planning a rural pilot that would add AI-supported screening and help patients get referrals and follow-up closer to home.",
+        "The team is planning a rural pilot that would pair UK's human-read tele-ophthalmology network with AI-supported screening. The pilot would also address referrals and follow-up care.",
       anchors: [
         "Builds on UK's existing human-read tele-ophthalmology network",
         "The proposed pilot would test whether AI-supported screening can help find disease earlier",
@@ -275,7 +275,7 @@ export const content: SiteContent = {
       area: "Trauma / Aerospace",
       leads: "Trauma Surgery / Aerospace Engineering / Emergency Medicine",
       summary:
-        "The team includes people from trauma care, emergency medicine, aerospace, the blood bank, and students. They are planning a controlled, nonclinical study of whether whole blood stays at the right temperature and shows no signs of damage during drone flight. The first phase is still focused on the protocol and testing materials.",
+        "Researchers are planning a controlled, nonclinical study of whether whole blood stays within temperature and handling limits during drone flight. The first phase focuses on the protocol and test materials.",
       anchors: [
         "Begins with controlled, nonclinical feasibility work",
         "Focuses on temperature control and product integrity during flight",
@@ -298,7 +298,7 @@ export const content: SiteContent = {
       area: "Med-Ed / Simulation",
       leads: "Curriculum / Clinical Skills / AI education",
       summary:
-        "The team is developing research prototypes for practicing clinical conversations, handoffs, and reasoning with AI-assisted simulated patients. The work is designed for formative practice, with faculty-authored cases and rubrics.",
+        "Faculty-authored simulated patients would let learners practice clinical conversations, handoffs, and reasoning. The prototypes support formative practice, not autonomous grading.",
       anchors: [
         "Designed to let students practice before seeing real patients",
         "Cases and rubrics would be written and reviewed by faculty",
@@ -321,7 +321,7 @@ export const content: SiteContent = {
       area: "Oncology / Patient Education",
       leads: "Markey / Community health / Internal Medicine",
       summary:
-        "The team is considering a prototype designed to explain abnormal HPV and Pap results in plain language, including what follow-up may look like and what questions to bring back to a care team.",
+        "A patient-education prototype would explain abnormal HPV and Pap results, likely follow-up, and questions to ask a care team. English and Spanish content would require clinical review.",
       anchors: [
         "Abnormal HPV/Pap results can be stressful and confusing",
         "The design would offer plain-language guidance on follow-up questions",
@@ -344,7 +344,7 @@ export const content: SiteContent = {
       area: "Rural Health / Workforce",
       leads: "College of Nursing / College of Medicine / UK HealthCare",
       summary:
-        "The proposal would bring rural and underserved healthcare teams together for tele-mentoring, case consultation, and AI-supported simulation. Clinicians would practice difficult scenarios with faculty and peer feedback.",
+        "A proposed collaborative would connect rural care teams for case consultation, tele-mentoring, and AI-supported simulation. Clinicians would keep all clinical decisions.",
       anchors: [
         "Rural clinicians often manage complex needs with fewer local supports",
         "The proposed simulation would let teams practice difficult cases",
@@ -367,7 +367,7 @@ export const content: SiteContent = {
       area: "Med-Ed / Clinical Reasoning",
       leads: "Emergency Medicine / medical education collaborators",
       summary:
-        "Researchers are studying how clinicians and learners use generative AI under uncertainty. Surveys, interviews, and simulations examine how that use relates to reasoning, feedback, and formative assessment.",
+        "Researchers are studying how clinicians and learners use generative AI under uncertainty. Surveys, interviews, and simulations focus on reasoning and formative feedback; faculty review all formative assessments.",
       anchors: [
         "Asks where AI helps and where it can mislead",
         "Faculty review all formative assessments",
@@ -390,7 +390,7 @@ export const content: SiteContent = {
       area: "Infectious Disease / Medication Adherence",
       leads: "UK HealthCare / device partner",
       summary:
-        "The proposed pilot would study whether signals from smart pill bottles could help care teams notice sooner when a patient is having trouble taking hepatitis C medication as planned.",
+        "A proposed pilot would test whether smart pill-bottle signals help care teams notice adherence problems sooner. The team would study privacy, clinical workflow, and whether the signals are useful.",
       anchors: [
         "Treatment only works when follow-up stays on track",
         "Smart bottles may flag adherence barriers earlier",
