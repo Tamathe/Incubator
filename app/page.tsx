@@ -106,32 +106,30 @@ export default function HomePage() {
           </div>
 
           <div className="studio-hero-content">
-            <div className="studio-hero-intro">
-              <Logo
-                alt="AI Incubator at the University of Kentucky"
-                className="studio-hero-logo"
-                src="/logo-incubator.png"
-              />
-              <h1>Learn AI by working on something real.</h1>
-            </div>
+            <Logo
+              alt="AI Incubator at the University of Kentucky"
+              className="studio-hero-logo"
+              src="/logo-incubator.png"
+            />
 
-            <div className="studio-hero-copy">
+            <div className="studio-hero-message">
+              <h1>Learn AI by working on something real.</h1>
               <p className="studio-hero-deck">
                 The AI Incubator is a group of students, faculty, and staff who
                 meet once a week to solve problems with AI.
               </p>
+            </div>
 
-              <div className="studio-hero-actions">
-                <Link
-                  className="studio-button studio-button-primary"
-                  href="/join"
-                >
-                  Join us <span aria-hidden="true">-&gt;</span>
-                </Link>
-                <Link className="studio-text-link" href="/projects">
-                  See projects <span aria-hidden="true">-&gt;</span>
-                </Link>
-              </div>
+            <div className="studio-hero-actions">
+              <Link
+                className="studio-button studio-button-primary"
+                href="/join"
+              >
+                Join us <span aria-hidden="true">-&gt;</span>
+              </Link>
+              <Link className="studio-text-link" href="/projects">
+                See projects <span aria-hidden="true">-&gt;</span>
+              </Link>
             </div>
           </div>
         </header>

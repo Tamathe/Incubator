@@ -4276,10 +4276,25 @@ footer {
 .studio-hero-content {
   grid-row: 2;
   min-height: 0;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+  grid-template-areas:
+    "logo message"
+    "actions message";
+  column-gap: clamp(64px, 7vw, 112px);
+  row-gap: 30px;
   align-items: start;
   padding-top: 56px;
   padding-bottom: 60px;
   background: #050505;
+}
+.studio-hero-logo {
+  grid-area: logo;
+  align-self: start;
+  margin: 0;
+}
+.studio-hero-message {
+  grid-area: message;
+  align-self: start;
 }
 .studio-hero h1 {
   max-width: 14ch;
@@ -4287,19 +4302,21 @@ footer {
   line-height: 0.98;
 }
 .studio-hero-deck {
-  max-width: 18ch;
-  margin: 0 0 18px;
-  font-size: 32px;
-  line-height: 1.08;
-  font-weight: 600;
-  color: #ffffff;
+  max-width: 30ch;
+  margin: 26px 0 0;
+  font-size: 22px;
+  line-height: 1.38;
+  font-weight: 450;
+  color: rgba(255, 255, 255, 0.78);
 }
 .studio-hero-lead {
   max-width: 610px;
   font-size: 18px;
 }
 .studio-hero .studio-hero-actions {
-  margin-top: 28px;
+  grid-area: actions;
+  align-self: start;
+  margin-top: 0;
 }
 .studio-hero-meta {
   display: flex;
@@ -4660,7 +4677,7 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 
 @media (max-width: 1100px) {
   .studio-hero h1 { font-size: 64px; }
-  .studio-hero-deck { font-size: 28px; }
+  .studio-hero-deck { font-size: 21px; }
   .studio-student-work-head h2 { font-size: 52px; }
 }
 
@@ -4672,11 +4689,18 @@ a.studio-student-work-card:hover .studio-student-work-watch {
     min-height: 400px;
   }
   .studio-hero-content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "message"
+      "actions";
+    gap: 32px;
     align-content: start;
     padding-top: 52px;
     padding-bottom: 56px;
   }
   .studio-hero h1 { font-size: 58px; }
+  .studio-hero-logo { width: min(360px, 70vw); }
   .studio-student-work-head { grid-template-columns: 1fr; gap: 34px; }
   .studio-student-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .studio-student-work-card:last-child { grid-column: 1 / -1; }
@@ -4707,10 +4731,10 @@ a.studio-student-work-card:hover .studio-student-work-watch {
     padding: 44px 22px 48px;
   }
   .studio-hero h1 { font-size: 46px; }
-  .studio-hero-deck { margin-bottom: 18px; font-size: 25px; }
+  .studio-hero-deck { margin-top: 18px; font-size: 20px; }
   .studio-hero-lead { font-size: 16px; }
   .studio-hero-actions { align-items: stretch; }
-  .studio-hero .studio-hero-actions { margin-top: 24px; }
+  .studio-hero .studio-hero-actions { margin-top: 0; }
   .studio-hero-actions .studio-text-link { align-self: center; }
   .studio-hero-meta { margin-top: 16px; }
   .studio-reel { height: auto; padding: 88px 0 78px; }
@@ -5306,8 +5330,8 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   }
 
   .studio-hero-logo {
-    width: clamp(300px, 24vw, 400px);
-    margin-bottom: 28px;
+    width: clamp(340px, 30vw, 430px);
+    margin-bottom: 0;
   }
 
   .studio-hero h1 {
