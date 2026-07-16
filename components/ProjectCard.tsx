@@ -59,7 +59,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {hasContributionDetails && (
         <details className="project-index-details">
           <summary>
-            How to help <span aria-hidden="true">+</span>
+            Where you could help <span aria-hidden="true">+</span>
           </summary>
           <div>
             {project.open && <p>{project.open}</p>}

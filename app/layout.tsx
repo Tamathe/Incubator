@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://aiincubator-uky.vercel.app",
   ),
-  title: "AI Incubator @ UK | Fridays at Noon",
+  title: "AI Incubator at UK | Learn by Building Together",
   description:
-    "Students, faculty, and staff from across UK meet every Friday at noon to share what they are learning about AI, try ideas, and work on projects together.",
+    "A Friday community where UK students, faculty, and staff learn what AI can and cannot do by working on real problems together.",
   openGraph: {
     title: "The AI Incubator at UK",
     description:
-      "Students, faculty, and staff from across UK meet every Friday at noon to share what they are learning about AI, try ideas, and work on projects together.",
+      "Come learn what AI can and cannot do by working on real problems with people across UK.",
     type: "website",
     siteName: "AI Incubator @ University of Kentucky",
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The AI Incubator at UK",
     description:
-      "Students, faculty, and staff from across UK meet every Friday at noon to share what they are learning about AI, try ideas, and work on projects together.",
+      "Come learn what AI can and cannot do by working on real problems with people across UK.",
     images: ["/media/incubator-commercial-poster.jpg"],
   },
 };

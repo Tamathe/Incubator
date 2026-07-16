@@ -87,7 +87,6 @@ function getStudentStoryLink(id: string) {
 export default function HomePage() {
   const featured = getFeaturedStories();
   const studentStories = STUDENT_STORIES;
-  const { session } = content;
 
   return (
     <>
@@ -114,28 +113,35 @@ export default function HomePage() {
                 className="studio-hero-logo"
                 src="/logo-incubator.png"
               />
-              <h1>Students, faculty, and staff are using AI to solve problems.</h1>
+              <p className="studio-hero-kicker">The AI Incubator at UK</p>
+              <h1>Learn AI by working on something real.</h1>
             </div>
 
             <div className="studio-hero-copy">
               <p className="studio-hero-deck">
-                Current work includes cancer screening, rural eye care,
-                emergency medicine, tutoring, and student-built tools.
+                Every Friday, people across UK bring questions, show unfinished
+                work, and help each other figure out the next step.
+              </p>
+
+              <p className="studio-hero-lead">
+                You can come listen. You do not need AI or coding experience.
               </p>
 
               <div className="studio-hero-actions">
-                <a
+                <Link
                   className="studio-button studio-button-primary"
-                  href={session.teamsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/join"
                 >
-                  Join us this Friday <span aria-hidden="true">-&gt;</span>
-                </a>
+                  Plan your first Friday <span aria-hidden="true">-&gt;</span>
+                </Link>
+                <Link className="studio-text-link" href="/projects">
+                  See current projects <span aria-hidden="true">-&gt;</span>
+                </Link>
               </div>
 
               <p className="studio-hero-meta">
-                Microsoft Teams <span aria-hidden="true">/</span> Open across UK
+                Fridays at noon <span aria-hidden="true">/</span> Microsoft Teams
+                <span aria-hidden="true">/</span> Open across UK
               </p>
             </div>
           </div>
@@ -145,8 +151,8 @@ export default function HomePage() {
           id="fridays"
           side="right"
           variant="anchor"
-          title="The person teaching changes every week."
-          body="Recent sessions have included image segmentation, vibe coding, Socratic tutors, and student-built websites."
+          title="Friday is where the community meets."
+          body="One week, a student demos a tool. The next, someone brings a research problem or asks the group to test an idea. The agenda changes because the people in the room change it."
           video="/media/story/01-student-presenter.mp4"
           poster="/media/story/01-student-presenter.jpg"
         >
@@ -157,7 +163,10 @@ export default function HomePage() {
 
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
-            <h2 id="builds-title">What people are working on</h2>
+            <div>
+              <p className="studio-section-index">Current projects</p>
+              <h2 id="builds-title">Projects people are building together</h2>
+            </div>
           </div>
 
           <div className="studio-shell studio-build-gallery">
@@ -186,7 +195,7 @@ export default function HomePage() {
 
           <div className="studio-shell studio-portfolio-link">
             <Link href="/projects">
-              See all projects <span aria-hidden="true">-&gt;</span>
+              See the full project list <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </section>
@@ -198,9 +207,14 @@ export default function HomePage() {
         >
           <div className="studio-shell studio-student-work-head">
             <div>
-              <h2 id="student-work-title">Student projects</h2>
+              <p className="studio-section-index">Student work</p>
+              <h2 id="student-work-title">Students do not have to wait until they are experts.</h2>
+              <p>
+                They can bring a problem, build a small first version, and show
+                the group what happened.
+              </p>
               <Link className="studio-student-work-share" href="/join#pitch">
-                Share a project or demo <span aria-hidden="true">-&gt;</span>
+                Bring your work to the group <span aria-hidden="true">-&gt;</span>
               </Link>
             </div>
           </div>
@@ -225,36 +239,15 @@ export default function HomePage() {
         </section>
 
         <StoryChapter
-          id="hunter-image-segmentation"
-          side="left"
-          variant="proof"
-          title="Hunter Colson on medical image segmentation"
-          video="/media/story/08-hunter-image-segmentation.mp4"
-          poster="/media/story/08-hunter-image-segmentation.jpg"
-          withSound
-        />
-
-        <StoryChapter
-          id="sully-chen"
-          side="right"
-          variant="proof"
-          title="Sully Chen on AI and time with patients"
-          body="Sully joined from Duke to talk about his work at OpenAI and AI in medicine."
-          video="/media/story/09-sully-chen.mp4"
-          poster="/media/story/09-sully-chen.jpg"
-          withSound
-        />
-
-        <StoryChapter
           id="come-this-friday"
           side="left"
           tone="final"
           variant="anchor"
-          title="Join the AI Incubator."
-          body="We meet Fridays at noon on Microsoft Teams. Students, faculty, and staff across UK are welcome. No AI or coding experience is required."
+          title="Come once. See what you think."
+          body="We meet Fridays at noon on Microsoft Teams. Students, faculty, and staff across UK are welcome. You can bring a question, a project, or nothing at all."
           video="/media/story/04-smiling-student.mp4"
           poster="/media/story/04-smiling-student.jpg"
-          primaryLink={{ href: "/join", label: "Join us Friday" }}
+          primaryLink={{ href: "/join", label: "Plan your first Friday" }}
         />
       </main>
 

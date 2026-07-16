@@ -20,17 +20,17 @@ export default function Footer() {
               className="body"
               style={{ maxWidth: "36ch", fontSize: 14, marginTop: 10 }}
             >
-              Fridays at noon on Microsoft Teams. Open to students, faculty,
-              and staff across UK.
+              A Friday community where students, faculty, and staff learn what
+              AI can and cannot do by working on real problems together.
             </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/#fridays">Fridays</Link></li>
-              <li><Link href="/#student-work">Student projects</Link></li>
-              <li><Link href="/join">Ways to join</Link></li>
+              <li><Link href="/#fridays">What happens on Fridays</Link></li>
+              <li><Link href="/#student-work">Student work</Link></li>
+              <li><Link href="/join">Come to a meeting</Link></li>
             </ul>
           </div>
           <div>
@@ -58,13 +58,13 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4>Friday updates</h4>
+            <h4>Get Friday updates</h4>
             <SubscribeForm />
           </div>
         </div>
         <div className="foot-bottom">
           <span>
-            (c) {new Date().getFullYear()} - AI Incubator @ University of
+            &copy; {new Date().getFullYear()} AI Incubator at the University of
             Kentucky
           </span>
         </div>
