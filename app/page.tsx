@@ -73,6 +73,17 @@ function getFeaturedStories() {
   });
 }
 
+function getStudentStoryLink(id: string) {
+  const item = content.studentWork.find((work) => work.id === id);
+  if (!item?.videoUrl) return undefined;
+
+  return {
+    href: item.videoUrl,
+    label: item.videoLabel ?? "Watch the video",
+    external: true,
+  };
+}
+
 export default function HomePage() {
   const featured = getFeaturedStories();
   const studentStories = STUDENT_STORIES;
@@ -206,6 +217,7 @@ export default function HomePage() {
                 video={story.video}
                 poster={story.poster}
                 focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}
+                primaryLink={getStudentStoryLink(story.id)}
               />
             ))}
           </div>

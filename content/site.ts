@@ -560,6 +560,8 @@ export const content: SiteContent = {
         "Alex led a hands-on session where participants built a small app with AI-assisted coding tools.",
       image: "/media/student-work/alex-vibe-coding.jpg",
       imageAlt: "Vibe coding workshop presentation with Alex Dripchak",
+      videoUrl: "https://youtu.be/ni40Z1JOAXQ",
+      videoLabel: "Watch the full workshop",
     },
   ],
   meetings: [
