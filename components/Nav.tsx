@@ -27,7 +27,12 @@ export default function Nav({ active, tone = "default" }: NavProps) {
           href="/"
           aria-label="AI Incubator at the University of Kentucky home"
         >
-          <Logo alt="" className="nav-logo" src="/logo-mark-dark.png" />
+          <Logo
+            alt=""
+            className="nav-logo"
+            src="/logo-incubator-modern.png"
+            style={{ width: 64, height: 64, borderRadius: 4 }}
+          />
         </Link>
 
         <div className="nav-links">
