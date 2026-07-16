@@ -4924,6 +4924,12 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 .studio-student-work {
   padding: 80px 0 0;
 }
+.studio-student-work-sequenced {
+  padding-top: 0;
+}
+.studio-student-work-sequenced > .studio-story {
+  border-top: 0;
+}
 .studio-student-work-head {
   padding-bottom: 40px;
 }
@@ -5049,6 +5055,9 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   }
   .studio-student-work {
     padding-top: 64px;
+  }
+  .studio-student-work-sequenced {
+    padding-top: 0;
   }
   .studio-student-work-head { padding-bottom: 32px; }
   .studio-builds { padding-top: 64px; }
