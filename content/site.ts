@@ -205,7 +205,7 @@ export interface SiteContent {
 }
 
 export const content: SiteContent = {
-  lastUpdated: "2026-07-15",
+  lastUpdated: "2026-07-16",
   cohort: "Cohort 03 - Summer 2026",
   session: {
     dayOfWeek: 5,
@@ -534,8 +534,7 @@ export const content: SiteContent = {
       image: "/media/studio-reel/03-chaelyn.jpg",
       imageAlt:
         "Students discussing a philanthropy website around a table with their laptops",
-      videoUrl:
-        "https://play.vidyard.com/KJM4GjGYMsrekARSQb18wP?autoplay=1&second=124",
+      videoUrl: "https://youtu.be/IGmB8OBMKkg",
       videoLabel: "Watch the philanthropy story",
     },
     {
@@ -547,8 +546,7 @@ export const content: SiteContent = {
         "Hunter, Matthew, and Alex built a tutor that answers with questions and asks students to explain their reasoning.",
       image: "/media/studio-reel/05-hunter.jpg",
       imageAlt: "Hunter Colson discussing the Socratic Tutor prototype",
-      videoUrl:
-        "https://play.vidyard.com/KJM4GjGYMsrekARSQb18wP?autoplay=1&second=94",
+      videoUrl: "https://youtu.be/WsiDyqqhBH0",
       videoLabel: "Watch the Socratic Tutor story",
     },
     {

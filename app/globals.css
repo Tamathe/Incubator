@@ -4225,8 +4225,15 @@ footer {
   .projects-filter .group { width: calc(100vw - 44px); }
   .projects-area-select { justify-content: space-between; }
   .projects-area-select select { min-width: 0; flex: 1; }
-  .project-index-head { grid-template-columns: auto minmax(0, 1fr); padding: 13px 20px; }
-  .project-index-area { justify-self: end; text-align: right; }
+  .project-index-head { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 13px 20px; }
+  .project-index-head .chip { justify-self: start; max-width: 100%; }
+  .project-index-area {
+    justify-self: start;
+    overflow: visible;
+    text-align: left;
+    text-overflow: clip;
+    white-space: normal;
+  }
   .project-index-body { padding: 26px 20px 20px; }
   .project-index-body h2 { font-size: 27px; }
   .project-index-anchors { margin-left: 20px; margin-right: 20px; }
