@@ -8,21 +8,12 @@ const CLIPS = [
     video: "/media/story/02-student-demo.mp4",
     poster: "/media/story/02-student-demo.jpg",
   },
-  {
-    video: "/media/story/05-audience.mp4",
-    poster: "/media/story/05-audience.jpg",
-  },
-  {
-    video: "/media/story/06-event-crowd.mp4",
-    poster: "/media/story/06-event-crowd.jpg",
-  },
 ] as const;
 
 export default function StudioClipStrip() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isNear, setIsNear] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -54,25 +45,21 @@ export default function StudioClipStrip() {
       aria-label="Inside a Friday meeting"
     >
       <div className="studio-clip-strip-grid">
-        {CLIPS.map((clip, index) => {
-          const isActive = index === activeIndex;
-          const showVideo =
-            isActive && isNear && !isPaused && !prefersReducedMotion;
+        {CLIPS.map((clip) => {
+          const showVideo = isNear && !isPaused && !prefersReducedMotion;
 
           return (
-            <figure key={clip.video} data-active={isActive}>
+            <figure key={clip.video} data-active="true">
               {showVideo ? (
                 <video
                   key={clip.video}
                   autoPlay
+                  loop
                   muted
                   playsInline
                   preload="metadata"
                   poster={clip.poster}
                   aria-hidden="true"
-                  onEnded={() =>
-                    setActiveIndex((current) => (current + 1) % CLIPS.length)
-                  }
                 >
                   <source src={clip.video} type="video/mp4" />
                 </video>
@@ -96,10 +83,10 @@ export default function StudioClipStrip() {
           onClick={() => setIsPaused((current) => !current)}
           aria-pressed={isPaused}
           aria-label={
-            isPaused ? "Play Friday meeting clips" : "Pause Friday meeting clips"
+            isPaused ? "Play Friday meeting clip" : "Pause Friday meeting clip"
           }
         >
-          {isPaused ? "Play clips" : "Pause clips"}
+          {isPaused ? "Play clip" : "Pause clip"}
         </button>
       ) : null}
     </section>

@@ -15,7 +15,7 @@ export default function Logo({
   alt,
   width,
   height,
-  src = "/logo.png",
+  src = "/logo-incubator.png",
 }: LogoProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
