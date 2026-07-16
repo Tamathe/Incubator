@@ -59,7 +59,9 @@ const STUDENT_STORIES = [
     chapterId: "alex-workshop",
     side: "right",
     variant: "proof",
-    title: "Vibe coding with Alex Dripchak",
+    title: "Agentic Engineering with Alex Dripchak",
+    body:
+      "Alex runs through a live demonstration of Agentic coding tools that UK students have access to.",
     video: "/media/story/07-alex-vibecoding.mp4",
     poster: "/media/story/07-alex-vibecoding.jpg",
   },
