@@ -52,9 +52,9 @@ export default function CommercialPlayer() {
         type="button"
         className="studio-commercial-link"
         onClick={openCommercial}
-        aria-label="Watch the AI Incubator film with sound"
+        aria-label="Watch the AI Incubator video with sound"
       >
-        <span>Watch the complete film</span>
+        <span>Watch the video with sound</span>
       </button>
 
       <dialog
