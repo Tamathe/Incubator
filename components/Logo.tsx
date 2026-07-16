@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 interface LogoProps {
   /** Extra class to size the image, e.g. "hero-logo". */
   className?: string;
@@ -10,8 +8,6 @@ interface LogoProps {
   height?: number;
   /** Alternate approved logo asset. */
   src?: string;
-  /** Context-specific presentation without altering the approved artwork. */
-  style?: CSSProperties;
 }
 
 export default function Logo({
@@ -19,8 +15,7 @@ export default function Logo({
   alt,
   width,
   height,
-  src = "/logo-incubator-modern.png",
-  style,
+  src = "/logo-incubator.png",
 }: LogoProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -30,7 +25,6 @@ export default function Logo({
       className={`logo-img${className ? " " + className : ""}`}
       width={width}
       height={height}
-      style={style}
     />
   );
 }

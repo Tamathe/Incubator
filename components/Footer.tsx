@@ -14,13 +14,7 @@ export default function Footer() {
               style={{ marginBottom: 14 }}
               aria-label="AI Incubator at the University of Kentucky home"
             >
-              <Logo
-                alt=""
-                width={110}
-                height={108}
-                src="/logo-incubator-modern.png"
-                style={{ width: 110, height: "auto", borderRadius: 4 }}
-              />
+              <Logo alt="" className="nav-logo" src="/logo-incubator.png" />
             </Link>
             <p
               className="body"
