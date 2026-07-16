@@ -11,7 +11,7 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -92,7 +92,7 @@ function readGitLog() {
     return stdout;
   } catch (err) {
     process.stderr.write(
-      `[build-changelog] git log failed (${err.message}); preserving committed changelog.\n`
+      `[build-changelog] git log failed (${err.message}).\n`
     );
     return null;
   }
@@ -100,9 +100,14 @@ function readGitLog() {
 
 function main() {
   const raw = readGitLog();
-  if (raw === null) return;
+  if (raw === null && existsSync(OUT_PATH)) {
+    process.stdout.write(
+      `[build-changelog] preserving existing changelog at ${OUT_PATH}\n`
+    );
+    return;
+  }
 
-  const commits = parseCommits(raw);
+  const commits = parseCommits(raw ?? "");
   const weeks = groupByWeek(commits);
   mkdirSync(dirname(OUT_PATH), { recursive: true });
   writeFileSync(
