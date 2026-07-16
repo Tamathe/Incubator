@@ -553,15 +553,15 @@ export const content: SiteContent = {
     },
     {
       id: "vibe-coding-workshop",
-      title: "Vibe coding workshop",
+      title: "Agentic Engineering",
       person: "Alex Dripchak",
       format: "Learning session",
       summary:
-        "Alex led a hands-on session where participants built a small app with AI-assisted coding tools.",
+        "Alex runs through a live demonstration of Agentic coding tools that UK students have access to.",
       image: "/media/student-work/alex-vibe-coding.jpg",
-      imageAlt: "Vibe coding workshop presentation with Alex Dripchak",
+      imageAlt: "Agentic Engineering presentation with Alex Dripchak",
       videoUrl: "https://youtu.be/ni40Z1JOAXQ",
-      videoLabel: "Watch the full workshop",
+      videoLabel: "Watch the Agentic Engineering demonstration",
     },
   ],
   meetings: [
