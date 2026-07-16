@@ -20,17 +20,11 @@ export default function OutcomesPage() {
       <header className="join-hero container">
         <DotGrid />
         <div style={{ position: "relative", zIndex: 2 }}>
-          <div className="hero-meta">
-            <span className="chip live">
-              <span>Documented results</span>
-            </span>
-          </div>
           <h1 className="h-display" style={{ maxWidth: "22ch" }}>
-            What the work <em>has produced.</em>
+            Results.
           </h1>
           <p className="lead" style={{ marginTop: 28, maxWidth: "60ch" }}>
-            We list public results here when we can point to a date, a source,
-            or a link.
+            Public results with a source or link.
           </p>
         </div>
       </header>

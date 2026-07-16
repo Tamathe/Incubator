@@ -1,10 +1,8 @@
 import { content } from "@/content/site";
 import type { Project } from "@/content/site";
-import { fmtIsoDate } from "@/lib/session";
 
 interface ProjectCardProps {
   project: Project;
-  index?: number;
 }
 
 function StatusChip({ project }: { project: Project }) {
@@ -18,7 +16,7 @@ function StatusChip({ project }: { project: Project }) {
   return <span className={`chip ${status.cls}`}>{status.text}</span>;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const openActions = content.actions.filter(
     (action) => action.project === project.id && action.status === "open",
   );
@@ -30,30 +28,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article className="project-index-card" data-id={project.id}>
       <header className="project-index-head">
-        <span className="project-index-number mono">
-          {String((index ?? 0) + 1).padStart(2, "0")}
-        </span>
         <StatusChip project={project} />
         <span className="project-index-area mono">{project.area}</span>
       </header>
 
       <div className="project-index-body">
         <h2>{project.name}</h2>
-        {project.tagline && <p className="project-index-tagline">{project.tagline}</p>}
         <p className="project-index-summary">{project.summary}</p>
       </div>
 
-      {project.anchors && project.anchors.length > 0 && (
-        <ul className="project-index-anchors" aria-label="Project focus">
-          {project.anchors.slice(0, 3).map((anchor) => (
-            <li key={anchor}>{anchor}</li>
-          ))}
-        </ul>
-      )}
-
       <div className="project-index-meta">
         <span>Led by {project.leads}</span>
-        {project.updated && <span>Updated {fmtIsoDate(project.updated)}</span>}
       </div>
 
       {hasContributionDetails && (

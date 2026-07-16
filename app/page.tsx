@@ -39,7 +39,7 @@ const STUDENT_STORIES = [
     variant: "standard",
     title: "Philanthropy outreach site",
     body:
-      "Chaelyn McGuire built the site to help her sorority organize outreach and raise money for survivors of domestic abuse.",
+      "Chaelyn McGuire built a site that helps her sorority organize outreach and raise money for survivors of domestic abuse.",
     video: "/media/studio-reel/03-chaelyn.mp4",
     poster: "/media/studio-reel/03-chaelyn.jpg",
   },
@@ -50,7 +50,7 @@ const STUDENT_STORIES = [
     variant: "proof",
     title: "Socratic Tutor",
     body:
-      "Hunter Colson, Matthew Bernard, and Alex Dripchak built a tutor that answers with questions and asks students to explain their reasoning.",
+      "Hunter Colson, Matthew Bernard, and Alex Dripchak built a tutor that asks students to explain their reasoning.",
     video: "/media/studio-reel/05-hunter.mp4",
     poster: "/media/studio-reel/05-hunter.jpg",
   },
@@ -59,7 +59,7 @@ const STUDENT_STORIES = [
     chapterId: "alex-workshop",
     side: "right",
     variant: "proof",
-    title: "An introduction to vibe coding with Alex Dripchak",
+    title: "Vibe coding with Alex Dripchak",
     video: "/media/story/07-alex-vibecoding.mp4",
     poster: "/media/story/07-alex-vibecoding.jpg",
   },
@@ -112,18 +112,13 @@ export default function HomePage() {
                 className="studio-hero-logo"
                 src="/logo-incubator.png"
               />
-              <p className="studio-hero-kicker">The AI Incubator at UK</p>
               <h1>Learn AI by working on something real.</h1>
             </div>
 
             <div className="studio-hero-copy">
               <p className="studio-hero-deck">
-                Every Friday, people across UK bring questions, show unfinished
-                work, and help each other figure out the next step.
-              </p>
-
-              <p className="studio-hero-lead">
-                You can come listen. You do not need AI or coding experience.
+                The AI Incubator is a group of students, faculty, and staff who
+                meet once a week to solve problems with AI.
               </p>
 
               <div className="studio-hero-actions">
@@ -131,17 +126,12 @@ export default function HomePage() {
                   className="studio-button studio-button-primary"
                   href="/join"
                 >
-                  Plan your first Friday <span aria-hidden="true">-&gt;</span>
+                  Join us <span aria-hidden="true">-&gt;</span>
                 </Link>
                 <Link className="studio-text-link" href="/projects">
-                  See current projects <span aria-hidden="true">-&gt;</span>
+                  See projects <span aria-hidden="true">-&gt;</span>
                 </Link>
               </div>
-
-              <p className="studio-hero-meta">
-                Fridays at noon <span aria-hidden="true">/</span> Microsoft Teams
-                <span aria-hidden="true">/</span> Open across UK
-              </p>
             </div>
           </div>
         </header>
@@ -151,7 +141,7 @@ export default function HomePage() {
           side="right"
           variant="anchor"
           title="Friday is where the community meets."
-          body="One week, a student demos a tool. The next, someone brings a research problem or asks the group to test an idea. The agenda changes because the people in the room change it."
+          body="Bring a question, show something unfinished, or help someone find a next step."
           video="/media/story/02-student-demo.mp4"
           poster="/media/story/02-student-demo.jpg"
         >
@@ -166,8 +156,8 @@ export default function HomePage() {
             id="student-work"
             side="left"
             variant="anchor"
-            title="Students do not have to wait until they are experts."
-            body="They can bring a problem, build a small first version, and show the group what happened."
+            title="Students do not need to wait to be experts."
+            body="Bring a problem. Build a first version. Show us what happened."
             video="/media/story/01-student-presenter.mp4"
             poster="/media/story/01-student-presenter.jpg"
             primaryLink={{
@@ -197,8 +187,7 @@ export default function HomePage() {
         <section className="studio-builds" id="work" aria-labelledby="builds-title">
           <div className="studio-shell studio-builds-intro">
             <div>
-              <p className="studio-section-index">Current projects</p>
-              <h2 id="builds-title">Projects people are building together</h2>
+              <h2 id="builds-title">Current projects</h2>
             </div>
           </div>
 
@@ -228,7 +217,7 @@ export default function HomePage() {
 
           <div className="studio-shell studio-portfolio-link">
             <Link href="/projects">
-              See the full project list <span aria-hidden="true">-&gt;</span>
+              See all projects <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </section>
@@ -239,10 +228,10 @@ export default function HomePage() {
           tone="final"
           variant="anchor"
           title="Come once. See what you think."
-          body="We meet Fridays at noon on Microsoft Teams. Students, faculty, and staff across UK are welcome. You can bring a question, a project, or nothing at all."
+          body="We meet Fridays at noon on Microsoft Teams. No experience or preparation required."
           video="/media/story/04-smiling-student.mp4"
           poster="/media/story/04-smiling-student.jpg"
-          primaryLink={{ href: "/join", label: "Plan your first Friday" }}
+          primaryLink={{ href: "/join", label: "Join us" }}
         />
       </main>
 

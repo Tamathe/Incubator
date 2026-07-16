@@ -29,26 +29,14 @@ export default function OpenProblemsPage() {
       <header className="join-hero container">
         <DotGrid />
         <div style={{ position: "relative", zIndex: 2 }}>
-          <div className="hero-meta">
-            <span className="chip live">
-              <span>Current questions and ways to help</span>
-            </span>
-          </div>
           <h1 className="h-display" style={{ maxWidth: "20ch" }}>
-            Where another person <em>could help.</em>
+            Where help <em>is needed.</em>
           </h1>
-          <p className="lead" style={{ marginTop: 28, maxWidth: "62ch" }}>
-            These are the questions teams are working through, the decisions
-            coming up, and the places where they could use another set of hands.
-          </p>
         </div>
       </header>
 
       <section className="section container">
-        <div className="section-label">
-          <span className="idx">01</span> <span>Open questions</span>
-        </div>
-        <h2 className="h1" style={{ maxWidth: "20ch" }}>What is holding up the work.</h2>
+        <h2 className="h1" style={{ maxWidth: "20ch" }}>Open questions.</h2>
         <StuckList
           blockers={stuck}
           emptyText="No active questions are posted right now."
@@ -56,10 +44,7 @@ export default function OpenProblemsPage() {
       </section>
 
       <section className="section container">
-        <div className="section-label">
-          <span className="idx">02</span> <span>Upcoming decisions</span>
-        </div>
-        <h2 className="h1" style={{ maxWidth: "22ch" }}>What the group needs to decide.</h2>
+        <h2 className="h1" style={{ maxWidth: "22ch" }}>Upcoming decisions.</h2>
         <DecisionList
           decisions={queued}
           emptyText="No choices are queued for Friday right now."
@@ -67,10 +52,7 @@ export default function OpenProblemsPage() {
       </section>
 
       <section className="section container">
-        <div className="section-label">
-          <span className="idx">03</span> <span>Looking for help</span>
-        </div>
-        <h2 className="h1" style={{ maxWidth: "22ch" }}>Where someone can pitch in.</h2>
+        <h2 className="h1" style={{ maxWidth: "22ch" }}>Looking for help.</h2>
         <OpenCallList
           projects={openCalls}
           emptyText="No open invitations are posted right now."

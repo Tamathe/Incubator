@@ -113,8 +113,8 @@ export default function ProjectsFilteredList({
           </div>
         ) : (
           <div className="proj-grid big" style={{ marginTop: 32 }}>
-            {filtered.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+            {filtered.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         )}
