@@ -229,8 +229,9 @@ export default function HomePage() {
           variant="anchor"
           title="Join us"
           body="We meet Fridays at noon on Microsoft Teams. No experience or preparation required."
-          video="/media/story/04-smiling-student.mp4"
-          poster="/media/story/04-smiling-student.jpg"
+          video="/media/story/10-andrew-peng-drones.mp4"
+          poster="/media/story/10-andrew-peng-drones.jpg"
+          withSound
           primaryLink={{ href: "/join", label: "Join us" }}
         />
       </main>
