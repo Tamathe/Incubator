@@ -6,9 +6,8 @@
  * them by ISO week (Mon–Sun), and writes app/changelog/data.json which
  * the /changelog page consumes at build time.
  *
- * If git history is unavailable (shallow clone, missing repo, etc.), we
- * still write an empty payload so `next build` succeeds and the page
- * renders an empty-state message.
+ * If git history is unavailable (shallow clone, missing repo, etc.), keep
+ * the committed payload so remote builds do not erase the changelog.
  */
 
 import { execFileSync } from "node:child_process";
@@ -93,14 +92,16 @@ function readGitLog() {
     return stdout;
   } catch (err) {
     process.stderr.write(
-      `[build-changelog] git log failed (${err.message}); writing empty changelog.\n`
+      `[build-changelog] git log failed (${err.message}); preserving committed changelog.\n`
     );
-    return "";
+    return null;
   }
 }
 
 function main() {
   const raw = readGitLog();
+  if (raw === null) return;
+
   const commits = parseCommits(raw);
   const weeks = groupByWeek(commits);
   mkdirSync(dirname(OUT_PATH), { recursive: true });
