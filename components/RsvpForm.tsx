@@ -108,18 +108,25 @@ export default function RsvpForm() {
         <div style={{ display: "grid", gap: 18 }}>
           <div>
             <label
+              htmlFor="rsvp-name"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
               Your name
             </label>
             <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
-              <input name="name" placeholder="First Last" required />
+              <input
+                id="rsvp-name"
+                name="name"
+                placeholder="First Last"
+                required
+              />
             </div>
           </div>
           <div className="form-two-grid">
             <div>
               <label
+                htmlFor="rsvp-email"
                 className="eyebrow"
                 style={{ display: "block", marginBottom: 8 }}
               >
@@ -127,6 +134,7 @@ export default function RsvpForm() {
               </label>
               <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
                 <input
+                  id="rsvp-email"
                   name="email"
                   type="email"
                   placeholder="name@uky.edu"
@@ -136,6 +144,7 @@ export default function RsvpForm() {
             </div>
             <div>
               <label
+                htmlFor="rsvp-role"
                 className="eyebrow"
                 style={{ display: "block", marginBottom: 8 }}
               >
@@ -143,6 +152,7 @@ export default function RsvpForm() {
               </label>
               <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
                 <input
+                  id="rsvp-role"
                   name="role"
                   list="roles"
                   placeholder="Student / Faculty / Other"
@@ -157,12 +167,17 @@ export default function RsvpForm() {
           </div>
           <div>
             <label
+              id="rsvp-motivations-label"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
               What brings you in?
             </label>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            <div
+              role="group"
+              aria-labelledby="rsvp-motivations-label"
+              style={{ display: "flex", flexWrap: "wrap", gap: 8 }}
+            >
               {MOTIVATIONS.map((motivation) => (
                 <button
                   type="button"
@@ -170,6 +185,7 @@ export default function RsvpForm() {
                   className={`filter-chip ${
                     picked.has(motivation) ? "active" : ""
                   }`}
+                  aria-pressed={picked.has(motivation)}
                   onClick={() => togglePick(motivation)}
                 >
                   {motivation}
@@ -179,6 +195,7 @@ export default function RsvpForm() {
           </div>
           <div>
             <label
+              htmlFor="rsvp-note"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
@@ -194,6 +211,7 @@ export default function RsvpForm() {
               </span>
             </label>
             <textarea
+              id="rsvp-note"
               name="note"
               rows={3}
               style={{

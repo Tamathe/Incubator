@@ -41,7 +41,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/uky-ai-incubator"
+                  href="https://github.com/Tamathe/Incubator"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

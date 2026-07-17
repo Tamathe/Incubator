@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import MobileNav from "./MobileNav";
 
 type NavKey =
   | "overview"
@@ -42,17 +43,7 @@ export default function Nav({ active, tone = "default" }: NavProps) {
           </Link>
         </div>
 
-        <details className="nav-mobile">
-          <summary aria-label="Open site navigation">Menu</summary>
-          <div className="nav-mobile-panel">
-            <Link href="/#fridays">Fridays</Link>
-            <Link href="/projects" className={cls("projects")}>Projects</Link>
-            <Link href="/#student-work">Student work</Link>
-            <Link href="/join" className="nav-mobile-cta">
-              Join us <span aria-hidden="true">-&gt;</span>
-            </Link>
-          </div>
-        </details>
+        <MobileNav projectsActive={active === "projects"} />
       </div>
     </nav>
   );

@@ -107,17 +107,24 @@ export default function PitchForm() {
           <div className="form-two-grid">
             <div>
               <label
+                htmlFor="pitch-name"
                 className="eyebrow"
                 style={{ display: "block", marginBottom: 8 }}
               >
                 Your name
               </label>
               <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
-                <input name="submitterName" placeholder="First Last" required />
+                <input
+                  id="pitch-name"
+                  name="submitterName"
+                  placeholder="First Last"
+                  required
+                />
               </div>
             </div>
             <div>
               <label
+                htmlFor="pitch-role"
                 className="eyebrow"
                 style={{ display: "block", marginBottom: 8 }}
               >
@@ -125,6 +132,7 @@ export default function PitchForm() {
               </label>
               <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
                 <input
+                  id="pitch-role"
                   name="role"
                   list="pitch-roles"
                   placeholder="Student / Faculty / Staff"
@@ -139,6 +147,7 @@ export default function PitchForm() {
           </div>
           <div>
             <label
+              htmlFor="pitch-email"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
@@ -146,6 +155,7 @@ export default function PitchForm() {
             </label>
             <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
               <input
+                id="pitch-email"
                 name="submitterEmail"
                 type="email"
                 placeholder="name@uky.edu"
@@ -155,12 +165,14 @@ export default function PitchForm() {
           </div>
           <div>
             <label
+              htmlFor="pitch-problem"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
               The problem
             </label>
             <textarea
+              id="pitch-problem"
               name="problem"
               rows={3}
               required
@@ -171,12 +183,14 @@ export default function PitchForm() {
           </div>
           <div>
             <label
+              htmlFor="pitch-affected"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
               Who it affects
             </label>
             <textarea
+              id="pitch-affected"
               name="affected"
               rows={2}
               required
@@ -187,12 +201,14 @@ export default function PitchForm() {
           </div>
           <div>
             <label
+              htmlFor="pitch-first-build"
               className="eyebrow"
               style={{ display: "block", marginBottom: 8 }}
             >
               What you would build first
             </label>
             <textarea
+              id="pitch-first-build"
               name="firstBuild"
               rows={3}
               required

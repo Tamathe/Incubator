@@ -51,6 +51,7 @@ export default function SubscribeForm({ source = "footer" }: Props) {
   return (
     <form className="field" onSubmit={onSubmit}>
       <input
+        aria-label="Email address for Friday updates"
         type="email"
         placeholder="name@uky.edu"
         required
