@@ -4156,9 +4156,16 @@ footer {
     --section-py: calc(72px * var(--d));
   }
   .nav,
-  .nav-overlay { position: relative; background: #070707; }
+  .nav-overlay {
+    position: relative;
+    overflow: visible;
+    background: #070707;
+  }
   .nav-inner,
-  .nav-overlay .nav-inner { height: 84px; }
+  .nav-overlay .nav-inner {
+    height: 84px;
+    overflow: visible;
+  }
   .nav-brand .nav-logo,
   .nav-overlay .nav-logo { height: 56px; }
   .nav-links { display: none; }
