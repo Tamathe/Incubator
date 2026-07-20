@@ -40,7 +40,7 @@ const STUDENT_STORIES = [
     variant: "standard",
     title: "Philanthropy outreach site",
     body:
-      "Chaelyn McGuire built a site that helps her sorority organize outreach and raise money for survivors of domestic abuse.",
+      "Chaelyn McGuire built a site that helps her sorority organize outreach and raise money for survivors of domestic abuse. Her work is featured in Microsoft’s “Creating an AI Future for Kentucky.”",
     video: "/media/studio-reel/03-chaelyn.mp4",
     poster: "/media/studio-reel/03-chaelyn.jpg",
   },
@@ -51,7 +51,7 @@ const STUDENT_STORIES = [
     variant: "proof",
     title: "Socratic Tutor",
     body:
-      "Hunter Colson, Matthew Bernard, and Alex Dripchak built a tutor that asks students to explain their reasoning.",
+      "Hunter Colson, Matthew Bernard, and Alex Dripchak built a tutor that asks students to explain their reasoning. Their work is featured in Microsoft’s “Creating an AI Future for Kentucky.”",
     video: "/media/studio-reel/05-hunter.mp4",
     poster: "/media/studio-reel/05-hunter.jpg",
   },
@@ -84,10 +84,6 @@ function getStudentStoryLink(id: string) {
     label: item.videoLabel ?? "Watch the video",
     external: true,
   };
-}
-
-function getStudentStoryCredit(id: string) {
-  return content.studentWork.find((work) => work.id === id)?.videoCredit;
 }
 
 export default function HomePage() {
@@ -170,7 +166,6 @@ export default function HomePage() {
                 variant={story.variant}
                 title={story.title}
                 body={"body" in story ? story.body : undefined}
-                sourceCredit={getStudentStoryCredit(story.id)}
                 video={story.video}
                 poster={story.poster}
                 focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}
