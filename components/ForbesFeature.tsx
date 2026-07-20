@@ -16,7 +16,7 @@ export default function ForbesFeature() {
 
         <div className="studio-forbes-feature-copy">
           <h2 id="forbes-feature-title">
-            You Can’t Outsource Understanding
+            “You Can’t Outsource Understanding”
           </h2>
           <p>
             Forbes profiles the AI Incubator’s approach to learning AI: start
