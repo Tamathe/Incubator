@@ -129,7 +129,7 @@ export default function HomePage() {
           id="fridays"
           side="right"
           variant="anchor"
-          title="We meet once a week"
+          title="Meet people across campus"
           body="to share strategies, pitch ambitious ideas, and test new tools."
           video="/media/story/02-student-demo.mp4"
           poster="/media/story/02-student-demo.jpg"
