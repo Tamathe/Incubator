@@ -15,6 +15,7 @@ type StoryChapterProps = {
   variant?: "anchor" | "standard" | "proof";
   title: string;
   body?: string;
+  sourceCredit?: string;
   video: string;
   poster: string;
   focus?: string;
@@ -64,6 +65,7 @@ export default function StoryChapter({
   variant = "standard",
   title,
   body,
+  sourceCredit,
   video,
   poster,
   focus,
@@ -93,6 +95,9 @@ export default function StoryChapter({
         />
 
         <div className="studio-story-copy">
+          {sourceCredit ? (
+            <p className="studio-story-source">{sourceCredit}</p>
+          ) : null}
           <h2 id={titleId}>{title}</h2>
           {body ? <p className="studio-story-body">{body}</p> : null}
 

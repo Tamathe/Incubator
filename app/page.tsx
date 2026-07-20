@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CommercialPlayer from "@/components/CommercialPlayer";
 import Footer from "@/components/Footer";
+import ForbesFeature from "@/components/ForbesFeature";
 import Logo from "@/components/Logo";
 import Nav from "@/components/Nav";
 import StoryChapter from "@/components/StoryChapter";
@@ -85,6 +86,10 @@ function getStudentStoryLink(id: string) {
   };
 }
 
+function getStudentStoryCredit(id: string) {
+  return content.studentWork.find((work) => work.id === id)?.videoCredit;
+}
+
 export default function HomePage() {
   const featured = getFeaturedStories();
   const studentStories = STUDENT_STORIES;
@@ -121,18 +126,6 @@ export default function HomePage() {
                 meet once a week to solve problems with AI.
               </p>
             </div>
-
-            <div className="studio-hero-actions">
-              <Link
-                className="studio-button studio-button-primary"
-                href="/join"
-              >
-                Join us <span aria-hidden="true">-&gt;</span>
-              </Link>
-              <Link className="studio-text-link" href="/projects">
-                See projects <span aria-hidden="true">-&gt;</span>
-              </Link>
-            </div>
           </div>
         </header>
 
@@ -147,6 +140,8 @@ export default function HomePage() {
         >
           <CommercialPlayer />
         </StoryChapter>
+
+        <ForbesFeature />
 
         <section
           className="studio-student-work studio-student-work-sequenced"
@@ -175,6 +170,7 @@ export default function HomePage() {
                 variant={story.variant}
                 title={story.title}
                 body={"body" in story ? story.body : undefined}
+                sourceCredit={getStudentStoryCredit(story.id)}
                 video={story.video}
                 poster={story.poster}
                 focus={story.id === "philanthropy-outreach-site" ? "46% center" : undefined}

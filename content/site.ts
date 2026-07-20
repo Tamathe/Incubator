@@ -163,6 +163,7 @@ export interface StudentWork {
   imageAlt: string;
   videoUrl?: string;
   videoLabel?: string;
+  videoCredit?: string;
 }
 
 export type SessionKind =
@@ -536,6 +537,8 @@ export const content: SiteContent = {
         "Students discussing a philanthropy website around a table with their laptops",
       videoUrl: "https://youtu.be/IGmB8OBMKkg",
       videoLabel: "Watch the philanthropy story",
+      videoCredit:
+        "Video excerpt from Microsoft’s “Creating an AI Future for Kentucky”",
     },
     {
       id: "socratic-tutor",
@@ -548,6 +551,8 @@ export const content: SiteContent = {
       imageAlt: "Hunter Colson discussing the Socratic Tutor prototype",
       videoUrl: "https://youtu.be/WsiDyqqhBH0",
       videoLabel: "Watch the Socratic Tutor story",
+      videoCredit:
+        "Video excerpt from Microsoft’s “Creating an AI Future for Kentucky”",
     },
     {
       id: "vibe-coding-workshop",

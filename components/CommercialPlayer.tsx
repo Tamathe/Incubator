@@ -50,11 +50,11 @@ export default function CommercialPlayer() {
       <button
         ref={triggerRef}
         type="button"
-        className="studio-commercial-link"
+        className="studio-button studio-button-primary"
         onClick={openCommercial}
         aria-label="Watch the AI Incubator video with sound"
       >
-        <span>Watch the video with sound</span>
+        <span>Find out more</span>
       </button>
 
       <dialog

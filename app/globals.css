@@ -4290,20 +4290,18 @@ footer {
 .studio-hero-content {
   grid-row: 2;
   min-height: 0;
-  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
-  grid-template-areas:
-    "logo message"
-    "actions message";
-  column-gap: clamp(64px, 7vw, 112px);
-  row-gap: 30px;
-  align-items: start;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-areas: "logo message";
+  column-gap: clamp(48px, 6vw, 88px);
+  row-gap: 0;
+  align-items: center;
   padding-top: 56px;
   padding-bottom: 60px;
   background: #050505;
 }
 .studio-hero-logo {
   grid-area: logo;
-  align-self: start;
+  align-self: center;
   margin: 0;
 }
 .studio-hero-message {
@@ -4706,15 +4704,17 @@ a.studio-student-work-card:hover .studio-student-work-watch {
     grid-template-columns: 1fr;
     grid-template-areas:
       "logo"
-      "message"
-      "actions";
+      "message";
     gap: 32px;
     align-content: start;
     padding-top: 52px;
     padding-bottom: 56px;
   }
   .studio-hero h1 { font-size: 58px; }
-  .studio-hero-logo { width: min(360px, 70vw); }
+  .studio-hero-logo {
+    width: min(420px, 82vw);
+    align-self: start;
+  }
   .studio-student-work-head { grid-template-columns: 1fr; gap: 34px; }
   .studio-student-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .studio-student-work-card:last-child { grid-column: 1 / -1; }
@@ -4911,6 +4911,13 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 .studio-story-copy {
   min-width: 0;
 }
+.studio-story-source {
+  margin: 0 0 14px;
+  color: #82b3ff;
+  font: 600 10px/1.5 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .studio-story-copy h2 {
   max-width: 15ch;
   margin: 0;
@@ -4957,6 +4964,62 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 .studio-story-extra .studio-commercial-link {
   width: 100%;
   justify-content: space-between;
+}
+
+.studio-forbes-feature {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0b4db7;
+  color: #ffffff;
+}
+.studio-forbes-feature-inner {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1.58fr) auto;
+  gap: clamp(30px, 4vw, 64px);
+  align-items: center;
+  padding-top: 58px;
+  padding-bottom: 58px;
+}
+.studio-forbes-feature-source span,
+.studio-forbes-feature-source time {
+  display: block;
+  font: 600 11px/1.45 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.studio-forbes-feature-source span {
+  color: rgba(255, 255, 255, 0.7);
+}
+.studio-forbes-feature-source strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 650;
+}
+.studio-forbes-feature-source time {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+.studio-forbes-feature-copy h2 {
+  max-width: 20ch;
+  margin: 0;
+  font-size: clamp(30px, 2.8vw, 42px);
+  line-height: 1.04;
+  font-weight: 620;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.studio-forbes-feature-copy p {
+  max-width: 66ch;
+  margin: 17px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.studio-forbes-feature-link {
+  justify-self: end;
+  white-space: nowrap;
 }
 
 .studio-student-work {
@@ -5041,6 +5104,13 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   }
   .studio-story-copy h2 { max-width: 17ch; }
   .studio-story-body { max-width: 720px; }
+  .studio-forbes-feature-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .studio-forbes-feature-link { justify-self: start; }
   .studio-builds-intro,
   .studio-student-work-head { gap: 20px; }
   .studio-student-work-head { padding-bottom: 40px; }
@@ -5082,6 +5152,14 @@ a.studio-student-work-card:hover .studio-student-work-watch {
     margin-top: 18px;
     font-size: 17px;
   }
+  .studio-forbes-feature-inner {
+    gap: 24px;
+    padding-top: 40px;
+    padding-bottom: 42px;
+  }
+  .studio-forbes-feature-copy h2 { font-size: 32px; }
+  .studio-forbes-feature-copy p { font-size: 15px; }
+  .studio-forbes-feature-link { width: 100%; }
   .studio-story-actions {
     align-items: stretch;
     flex-direction: column;
@@ -5344,7 +5422,7 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   }
 
   .studio-hero-logo {
-    width: clamp(340px, 30vw, 430px);
+    width: min(100%, clamp(360px, 38vw, 520px));
     margin-bottom: 0;
   }
 

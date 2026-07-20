@@ -48,6 +48,15 @@ export default function Footer() {
                   GitHub
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://github.com/Lenario22"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Lenario22 on GitHub
+                </a>
+              </li>
             </ul>
           </div>
           <div>
