@@ -149,8 +149,8 @@ export default function HomePage() {
             variant="anchor"
             title="Students are building solutions"
             body="Founding their own startups, leading national discussions, and taking on real-life projects."
-            video="/media/story/01-student-presenter.mp4"
-            poster="/media/story/01-student-presenter.jpg"
+            video="/media/story/10-andrew-peng-drone-demo.mp4"
+            poster="/media/story/10-andrew-peng-drone-demo.jpg"
             primaryLink={{
               href: "/join#pitch",
               label: "Bring your work to the group",
@@ -220,8 +220,8 @@ export default function HomePage() {
           variant="anchor"
           title="Join us"
           body="We meet Fridays at noon on Microsoft Teams. No experience or preparation required."
-          video="/media/story/10-andrew-peng-drone-demo.mp4"
-          poster="/media/story/10-andrew-peng-drone-demo.jpg"
+          video="/media/story/01-student-presenter.mp4"
+          poster="/media/story/01-student-presenter.jpg"
           primaryLink={{ href: "/join", label: "Join us" }}
         />
       </main>
