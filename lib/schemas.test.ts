@@ -95,7 +95,7 @@ describe("pitchSchema", () => {
     expect(r.problem).toBe("Problem text");
   });
 
-  it("requires all three structured fields", () => {
+  it("requires the proposal and the ask", () => {
     expect(() =>
       pitchSchema.parse({
         submitterName: "X",
@@ -105,6 +105,16 @@ describe("pitchSchema", () => {
         firstBuild: "Build",
       }),
     ).toThrow();
+  });
+
+  it("allows the advance context to be omitted", () => {
+    const r = pitchSchema.parse({
+      submitterName: "X",
+      submitterEmail: "x@uky.edu",
+      problem: "A short talk",
+      affected: "Questions from the room",
+    });
+    expect(r.firstBuild).toBeUndefined();
   });
 
   it("caps problem at 2000 chars", () => {

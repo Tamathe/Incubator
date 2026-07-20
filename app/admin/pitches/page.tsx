@@ -83,12 +83,12 @@ export default async function PitchesPage({ searchParams }: PageProps) {
                 <button type="submit" className="btn sm primary" style={{ marginTop: 8 }}>Save status</button>
               </form>
 
-              <h3 className="eyebrow">The problem</h3>
+              <h3 className="eyebrow">What they are bringing</h3>
               <p style={{ margin: "6px 0 16px 0", fontSize: 14, whiteSpace: "pre-wrap" }}>{selected.problem}</p>
-              <h3 className="eyebrow">Who it affects</h3>
+              <h3 className="eyebrow">What they want from the room</h3>
               <p style={{ margin: "6px 0 16px 0", fontSize: 14, whiteSpace: "pre-wrap" }}>{selected.affected}</p>
-              <h3 className="eyebrow">What they&apos;d build first</h3>
-              <p style={{ margin: "6px 0 16px 0", fontSize: 14, whiteSpace: "pre-wrap" }}>{selected.firstBuild}</p>
+              <h3 className="eyebrow">What the group should know first</h3>
+              <p style={{ margin: "6px 0 16px 0", fontSize: 14, whiteSpace: "pre-wrap" }}>{selected.firstBuild || "Nothing else yet."}</p>
 
               <form action={async (fd) => { "use server"; await setPitchNotes(selected.id, String(fd.get("notes") ?? "")); }}>
                 <label className="eyebrow" style={{ display: "block", marginBottom: 6 }}>Private notes</label>

@@ -43,7 +43,7 @@ export async function POST(req: Request) {
         role: parsed.data.role ?? null,
         problem: parsed.data.problem,
         affected: parsed.data.affected,
-        firstBuild: parsed.data.firstBuild,
+        firstBuild: parsed.data.firstBuild ?? "",
         status: "new",
       },
     });

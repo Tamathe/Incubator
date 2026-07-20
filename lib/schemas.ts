@@ -35,7 +35,7 @@ export const pitchSchema = z
     role: z.string().trim().max(100).optional(),
     problem: shortText(2000),
     affected: shortText(1000),
-    firstBuild: shortText(2000),
+    firstBuild: optionalText(2000),
   })
   .strict();
 

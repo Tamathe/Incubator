@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./PitchForm.module.css";
 
 const ROLES = [
   "Undergraduate student",
@@ -42,20 +43,20 @@ const textareaStyle: React.CSSProperties = {
 };
 
 function buildPitchEmail(body: PitchBody) {
-  const subject = `AI Incubator pitch: ${body.problem.slice(0, 72)}`;
+  const subject = `AI Incubator Friday proposal: ${body.problem.slice(0, 72)}`;
   const message = [
     `Name: ${body.submitterName}`,
     `Email: ${body.submitterEmail}`,
     `Role: ${body.role || "Not specified"}`,
     "",
-    "Problem:",
+    "What I want to bring:",
     body.problem,
     "",
-    "Who it affects:",
+    "What I want from the room:",
     body.affected,
     "",
-    "What I would build first:",
-    body.firstBuild,
+    "What the group should know first:",
+    body.firstBuild || "Nothing else yet.",
   ].join("\n");
 
   return `mailto:incubator@uky.edu?subject=${encodeURIComponent(
@@ -101,19 +102,18 @@ export default function PitchForm() {
   const sending = state.kind === "sending";
 
   return (
-    <div className="card" style={{ padding: 32 }}>
+    <div className={`card ${styles.card}`}>
       <form onSubmit={handleSubmit}>
-        <div style={{ display: "grid", gap: 18 }}>
-          <div className="form-two-grid">
+        <div className={styles.fields}>
+          <div className={`form-two-grid ${styles.twoColumn}`}>
             <div>
               <label
                 htmlFor="pitch-name"
-                className="eyebrow"
-                style={{ display: "block", marginBottom: 8 }}
+                className={`eyebrow ${styles.label}`}
               >
                 Your name
               </label>
-              <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
+              <div className={`field ${styles.field}`}>
                 <input
                   id="pitch-name"
                   name="submitterName"
@@ -125,12 +125,11 @@ export default function PitchForm() {
             <div>
               <label
                 htmlFor="pitch-role"
-                className="eyebrow"
-                style={{ display: "block", marginBottom: 8 }}
+                className={`eyebrow ${styles.label}`}
               >
                 Role (optional)
               </label>
-              <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
+              <div className={`field ${styles.field}`}>
                 <input
                   id="pitch-role"
                   name="role"
@@ -148,12 +147,11 @@ export default function PitchForm() {
           <div>
             <label
               htmlFor="pitch-email"
-              className="eyebrow"
-              style={{ display: "block", marginBottom: 8 }}
+              className={`eyebrow ${styles.label}`}
             >
               Email
             </label>
-            <div className="field" style={{ borderRadius: 10, paddingLeft: 16 }}>
+            <div className={`field ${styles.field}`}>
               <input
                 id="pitch-email"
                 name="submitterEmail"
@@ -166,10 +164,9 @@ export default function PitchForm() {
           <div>
             <label
               htmlFor="pitch-problem"
-              className="eyebrow"
-              style={{ display: "block", marginBottom: 8 }}
+              className={`eyebrow ${styles.label}`}
             >
-              The problem
+              What are you bringing?
             </label>
             <textarea
               id="pitch-problem"
@@ -177,17 +174,17 @@ export default function PitchForm() {
               rows={3}
               required
               maxLength={2000}
+              className={styles.textarea}
               style={textareaStyle}
-              placeholder="What is stuck? Two to three sentences."
+              placeholder="An idea, talk, demo, collaborator request, or problem for the group."
             />
           </div>
           <div>
             <label
               htmlFor="pitch-affected"
-              className="eyebrow"
-              style={{ display: "block", marginBottom: 8 }}
+              className={`eyebrow ${styles.label}`}
             >
-              Who it affects
+              What do you want from the room?
             </label>
             <textarea
               id="pitch-affected"
@@ -195,26 +192,26 @@ export default function PitchForm() {
               rows={2}
               required
               maxLength={1000}
+              className={styles.textarea}
               style={textareaStyle}
-              placeholder="Which students, staff, faculty, teams, or communities feel it?"
+              placeholder="Feedback, collaborators, questions, or help building a first prototype."
             />
           </div>
           <div>
             <label
               htmlFor="pitch-first-build"
-              className="eyebrow"
-              style={{ display: "block", marginBottom: 8 }}
+              className={`eyebrow ${styles.label}`}
             >
-              What you would build first
+              What should we know before Friday? (optional)
             </label>
             <textarea
               id="pitch-first-build"
               name="firstBuild"
               rows={3}
-              required
               maxLength={2000}
+              className={styles.textarea}
               style={textareaStyle}
-              placeholder="What is the smallest useful version you could test?"
+              placeholder="What exists already, what you have tried, or anything useful to read or see."
             />
           </div>
           <input
@@ -225,7 +222,7 @@ export default function PitchForm() {
             aria-hidden="true"
             style={{ display: "none" }}
           />
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <div className={styles.submitRow}>
             <button
               type="submit"
               disabled={sending || submitted}
@@ -246,11 +243,16 @@ export default function PitchForm() {
                   ? "Submitting..."
                   : (
                       <>
-                        Submit pitch <span className="arrow">-&gt;</span>
+                        Propose a Friday <span className="arrow">-&gt;</span>
                       </>
                     )}
             </button>
           </div>
+          {submitted && (
+            <p className={styles.success} role="status">
+              Thanks. We will review it and follow up by email.
+            </p>
+          )}
           {state.kind === "error" && (
             <div
               className="small"

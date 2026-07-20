@@ -3,11 +3,12 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RsvpForm from "@/components/RsvpForm";
 import PitchForm from "@/components/PitchForm";
+import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Come to a Friday meeting · AI Incubator",
+  title: "Come Friday or pitch a session · AI Incubator",
   description:
-    "Come to one UK AI Incubator meeting. You can listen, ask a question, show unfinished work, or meet people working on something that interests you.",
+    "Come to a UK AI Incubator Friday meeting, or propose a talk, demo, collaborator request, or working session.",
 };
 
 const FRIDAY_FLOW = [
@@ -51,6 +52,29 @@ const FAQ = [
   },
 ];
 
+const PITCH_FORMATS = [
+  {
+    title: "Pitch an idea",
+    body: "Explain what you want to try and who you need.",
+  },
+  {
+    title: "Give a talk",
+    body: "Teach a method, tool, or idea the group should know.",
+  },
+  {
+    title: "Show your work",
+    body: "Present research, a prototype, or something unfinished.",
+  },
+  {
+    title: "Find collaborators",
+    body: "Show what you are trying to do and the people or expertise you are missing.",
+  },
+  {
+    title: "Work a problem",
+    body: "Bring something stuck. We can investigate it with AI or build a first prototype together.",
+  },
+];
+
 export default function JoinPage() {
   return (
     <>
@@ -68,6 +92,9 @@ export default function JoinPage() {
           <div className="community-hero-actions">
             <a className="studio-button studio-button-primary" href="#rsvp">
               RSVP <span aria-hidden="true">-&gt;</span>
+            </a>
+            <a className="studio-text-link" href="#pitch">
+              Pitch a Friday <span aria-hidden="true">-&gt;</span>
             </a>
           </div>
         </header>
@@ -106,17 +133,47 @@ export default function JoinPage() {
           </div>
         </section>
 
-        <section className="section container" id="pitch">
-          <div className="join-section-grid">
-            <div>
-              <h2 className="h1">Bring a problem.</h2>
-              <p className="body community-section-copy">
-                Tell us what is stuck, who it affects, and what you would test
-                first.
+        <section
+          className={`section container ${styles.pitchSection}`}
+          id="pitch"
+        >
+          <div className={styles.pitchLayout}>
+            <div className={styles.pitchCopy}>
+              <div className={`mono ${styles.kicker}`}>Selected Fridays</div>
+              <h2 className="h1">Pitch a Friday.</h2>
+              <p className={`body ${styles.pitchLead}`}>
+                Pitch an idea. Give a talk. Show your work. Find collaborators.
+                Or bring a problem and let the group work on it with you.
+              </p>
+
+              <div className={styles.formatList}>
+                {PITCH_FORMATS.map((format, index) => (
+                  <div className={styles.format} key={format.title}>
+                    <span className={`mono ${styles.formatNumber}`}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3>{format.title}</h3>
+                      <p>{format.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className={styles.pitchNote}>
+                No finished project or polished deck required. Send the rough
+                version. We will follow up by email to choose a Friday and the
+                right format.
               </p>
             </div>
 
-            <PitchForm />
+            <div className={styles.formColumn}>
+              <div className={styles.formHeading}>
+                <span className="mono">Propose a session</span>
+                <p>Three short answers.</p>
+              </div>
+              <PitchForm />
+            </div>
           </div>
         </section>
 

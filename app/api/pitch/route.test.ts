@@ -43,6 +43,13 @@ describe("POST /api/pitch", () => {
     });
   });
 
+  it("stores blank advance context when it is omitted", async () => {
+    const { firstBuild: _firstBuild, ...withoutAdvanceContext } = valid;
+    const res = await post(withoutAdvanceContext, { "x-forwarded-for": "3.3.3.4" });
+    expect(res.status).toBe(204);
+    expect(pitchCreateMock.mock.calls[0][0].data.firstBuild).toBe("");
+  });
+
   it("honeypot silently returns 204", async () => {
     const res = await post({ ...valid, website: "x" });
     expect(res.status).toBe(204);
