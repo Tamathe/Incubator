@@ -29,7 +29,6 @@ export default function Footer() {
           <div>
             <h4>Connect</h4>
             <ul>
-              <li><a href="mailto:incubator@uky.edu">incubator@uky.edu</a></li>
               <li>
                 <a
                   href="https://tamathe.com/incubator"
@@ -37,24 +36,6 @@ export default function Footer() {
                   rel="noopener noreferrer"
                 >
                   About Tama Thé, founder -&gt;
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Tamathe/Incubator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Lenario22"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Lenario22 on GitHub
                 </a>
               </li>
             </ul>
