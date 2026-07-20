@@ -31,20 +31,6 @@ export default function ProjectsFilteredList({
     return Array.from(set).sort();
   }, [projects]);
 
-  const statusCounts = useMemo(() => {
-    const c: Record<StatusFilter, number> = {
-      all: projects.length,
-      active: 0,
-      building: 0,
-      kickoff: 0,
-      paused: 0,
-    };
-    projects.forEach((p) => {
-      c[p.status]++;
-    });
-    return c;
-  }, [projects]);
-
   const filtered = useMemo(() => {
     return projects.filter((p) => {
       if (statusFilter !== "all" && p.status !== statusFilter) return false;
@@ -65,12 +51,8 @@ export default function ProjectsFilteredList({
     <>
       <section className="container">
         <div className="projects-filter">
-          <div className="projects-filter-summary">
-            <span className="lbl">Projects</span>
-            <strong>{filtered.length} project{filtered.length === 1 ? "" : "s"}</strong>
-          </div>
           <div className="group" aria-label="Filter projects by status">
-            {statusFilters.filter((s) => s === "all" || statusCounts[s] > 0).map((s) => (
+            {statusFilters.filter((s) => s === "all" || projects.some((project) => project.status === s)).map((s) => (
               <button
                 type="button"
                 key={s}
@@ -78,12 +60,11 @@ export default function ProjectsFilteredList({
                 onClick={() => setStatusFilter(s)}
                 aria-pressed={statusFilter === s}
               >
-                {STATUS_LABELS[s]} <span>{statusCounts[s]}</span>
+                {STATUS_LABELS[s]}
               </button>
             ))}
           </div>
-          <label className="projects-area-select">
-            <span className="lbl">Area</span>
+          <label className="projects-area-select" aria-label="Filter projects by area">
             <select
               value={areaFilter ?? ""}
               onChange={(event) => setAreaFilter(event.target.value || null)}
