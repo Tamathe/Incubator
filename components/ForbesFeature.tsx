@@ -19,10 +19,9 @@ export default function ForbesFeature() {
             You Can’t Outsource Understanding
           </h2>
           <p>
-            Forbes profiles Hunter Colson’s Socratic Tutor and the AI
-            Incubator’s approach to learning AI: start with a real problem,
-            build something useful, and keep judgment with the person doing the
-            work.
+            Forbes profiles the AI Incubator’s approach to learning AI: start
+            with a real problem, build something useful, and keep judgment with
+            the person doing the work.
           </p>
         </div>
 

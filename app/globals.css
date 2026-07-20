@@ -4974,11 +4974,14 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 }
 .studio-forbes-feature-inner {
   display: grid;
-  grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1.58fr) auto;
-  gap: clamp(30px, 4vw, 64px);
+  grid-template-columns: 180px minmax(0, 1fr) auto;
+  gap: clamp(28px, 3vw, 48px);
   align-items: center;
   padding-top: 58px;
   padding-bottom: 58px;
+}
+.studio-forbes-feature-source {
+  align-self: start;
 }
 .studio-forbes-feature-source span,
 .studio-forbes-feature-source time {
@@ -4993,7 +4996,7 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 .studio-forbes-feature-source strong {
   display: block;
   margin-top: 3px;
-  font-size: 31px;
+  font-size: 35px;
   line-height: 1;
   font-weight: 650;
 }
@@ -5110,6 +5113,7 @@ a.studio-student-work-card:hover .studio-student-work-watch {
     padding-top: 48px;
     padding-bottom: 48px;
   }
+  .studio-forbes-feature-source strong { font-size: 30px; }
   .studio-forbes-feature-link { justify-self: start; }
   .studio-builds-intro,
   .studio-student-work-head { gap: 20px; }
