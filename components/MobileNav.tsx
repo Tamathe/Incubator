@@ -34,8 +34,13 @@ export default function MobileNav({
         >
           Projects
         </Link>
-        <Link href="/#student-work" onClick={closeMenu}>
-          Student work
+        <Link
+          className="nav-student-work"
+          href="/#student-work"
+          onClick={closeMenu}
+        >
+          <span>Student work</span>
+          <small>(page in development)</small>
         </Link>
         <Link href="/join" className="nav-mobile-cta" onClick={closeMenu}>
           Join us <span aria-hidden="true">-&gt;</span>

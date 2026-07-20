@@ -34,7 +34,10 @@ export default function Nav({ active, tone = "default" }: NavProps) {
         <div className="nav-links">
           <Link href="/#fridays">Fridays</Link>
           <Link href="/projects" className={cls("projects")}>Projects</Link>
-          <Link href="/#student-work">Student work</Link>
+          <Link className="nav-student-work" href="/#student-work">
+            <span>Student work</span>
+            <small>(page in development)</small>
+          </Link>
           <Link
             href="/join"
             className={`btn primary sm ${active === "join" ? "active" : ""}`}

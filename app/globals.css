@@ -3777,6 +3777,18 @@ html[data-theme="dark"][data-accent="blue"] {
   border-bottom-color: #1769e0;
 }
 .nav-links a.active::after { display: none; }
+.nav-links > .nav-student-work {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.1;
+}
+.nav-student-work small {
+  color: rgba(255, 255, 255, 0.42);
+  font: 400 9px/1.2 var(--mono);
+  white-space: nowrap;
+}
 .nav .btn.primary {
   min-height: 42px;
   height: 42px;
@@ -4150,6 +4162,12 @@ footer {
     font-size: 13px;
   }
   .nav-mobile-panel a.active { color: #ffffff; background: #151515; }
+  .nav-mobile-panel .nav-student-work {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+  }
   .nav-mobile-panel .nav-mobile-cta {
     grid-column: 1 / -1;
     justify-content: space-between;
