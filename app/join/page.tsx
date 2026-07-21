@@ -93,10 +93,9 @@ export default function JoinPage() {
             <p className={`mono ${styles.kicker}`}>What happens Friday</p>
             <h2>Come as you are.</h2>
             <p>
-              No AI or coding experience is required. The Incubator is open to
-              both active and passive participation. If you want to log in and
-              spectate, you can keep your camera off. If you want to be
-              included in the conversation, turn your camera on.
+              No AI or coding experience is required. Camera off is fine if
+              you want to listen; turn it on when you want to join the
+              conversation.
             </p>
           </div>
 
