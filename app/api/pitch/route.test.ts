@@ -1,9 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const pitchCreateMock = vi.fn();
+const pitchUpdateManyMock = vi.fn();
 
 vi.mock("@/lib/prisma", () => ({
-  prisma: { pitch: { create: pitchCreateMock } },
+  prisma: {
+    pitch: { create: pitchCreateMock, updateMany: pitchUpdateManyMock },
+  },
 }));
 
 async function post(body: unknown, headers: Record<string, string> = {}) {
@@ -18,10 +21,16 @@ async function post(body: unknown, headers: Record<string, string> = {}) {
 }
 
 beforeEach(() => {
+  vi.useFakeTimers();
+  vi.setSystemTime(new Date("2026-07-21T14:00:00.000Z"));
   process.env.DATABASE_URL = "postgresql://test:test@localhost:5432/test";
   pitchCreateMock.mockReset();
   pitchCreateMock.mockResolvedValue({});
+  pitchUpdateManyMock.mockReset();
+  pitchUpdateManyMock.mockResolvedValue({ count: 0 });
 });
+
+afterEach(() => vi.useRealTimers());
 
 const valid = {
   submitterName: "X",
@@ -40,6 +49,46 @@ describe("POST /api/pitch", () => {
       submitterEmail: "x@uky.edu",
       problem: "There is a problem",
       status: "new",
+    });
+  });
+
+  it("places a seven-day hold on an available Friday", async () => {
+    const res = await post(
+      {
+        ...valid,
+        preferredFriday: "2026-08-14",
+        alternateFriday: "2026-08-21",
+      },
+      { "x-forwarded-for": "3.3.3.5" },
+    );
+    expect(res.status).toBe(204);
+    expect(pitchCreateMock.mock.calls[0][0].data).toMatchObject({
+      bookingStatus: "requested",
+      preferredFriday: new Date("2026-08-14T00:00:00.000Z"),
+      alternateFriday: new Date("2026-08-21T00:00:00.000Z"),
+      scheduledFriday: new Date("2026-08-14T00:00:00.000Z"),
+      bookingHoldUntil: new Date("2026-07-28T14:00:00.000Z"),
+    });
+  });
+
+  it("rejects the first Friday of a month", async () => {
+    const res = await post(
+      { ...valid, preferredFriday: "2026-08-07" },
+      { "x-forwarded-for": "3.3.3.6" },
+    );
+    expect(res.status).toBe(409);
+    expect(pitchCreateMock).not.toHaveBeenCalled();
+  });
+
+  it("returns 409 when another request takes the slot first", async () => {
+    pitchCreateMock.mockRejectedValueOnce({ code: "P2002" });
+    const res = await post(
+      { ...valid, preferredFriday: "2026-08-14" },
+      { "x-forwarded-for": "3.3.3.7" },
+    );
+    expect(res.status).toBe(409);
+    expect(await res.json()).toMatchObject({
+      error: expect.stringMatching(/taken/i),
     });
   });
 

@@ -10,6 +10,7 @@ async function loadStats() {
     subscriberCount,
     unreviewedRsvps,
     newPitches,
+    bookingHolds,
   ] = await Promise.all([
     prisma.member.count({ where: { status: "active" } }),
     prisma.member.findMany({
@@ -23,6 +24,12 @@ async function loadStats() {
       where: { reviewed: false, meetingDate: { gte: new Date() } },
     }),
     prisma.pitch.count({ where: { status: "new" } }),
+    prisma.pitch.count({
+      where: {
+        bookingStatus: "requested",
+        bookingHoldUntil: { gt: new Date() },
+      },
+    }),
   ]);
 
   return {
@@ -31,6 +38,7 @@ async function loadStats() {
     subscriberCount,
     unreviewedRsvps,
     newPitches,
+    bookingHolds,
   };
 }
 
@@ -80,6 +88,12 @@ export default async function AdminOverview() {
           label="New pitches"
           count={stats.newPitches}
           detail="awaiting review"
+        />
+        <StatCard
+          href="/admin/pitches"
+          label="Friday holds"
+          count={stats.bookingHolds}
+          detail="awaiting confirmation"
         />
       </div>
 

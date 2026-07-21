@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import type { FridaySlot } from "@/lib/friday-booking";
 import styles from "./PitchForm.module.css";
 
 const ROLES = [
@@ -20,14 +21,16 @@ type PitchBody = {
   problem: string;
   affected: string;
   firstBuild: string;
+  preferredFriday?: string;
+  alternateFriday?: string;
   website: string;
 };
 
 type FormState =
   | { kind: "idle" }
   | { kind: "sending" }
-  | { kind: "done" }
-  | { kind: "error"; mailtoHref: string };
+  | { kind: "done"; heldLabel?: string }
+  | { kind: "error"; message: string; mailtoHref?: string };
 
 const textareaStyle: React.CSSProperties = {
   width: "100%",
@@ -57,6 +60,9 @@ function buildPitchEmail(body: PitchBody) {
     "",
     "What the group should know first:",
     body.firstBuild || "Nothing else yet.",
+    "",
+    `Preferred Friday: ${body.preferredFriday || "No date requested"}`,
+    `Alternate Friday: ${body.alternateFriday || "None"}`,
   ].join("\n");
 
   return `mailto:incubator@uky.edu?subject=${encodeURIComponent(
@@ -66,6 +72,28 @@ function buildPitchEmail(body: PitchBody) {
 
 export default function PitchForm() {
   const [state, setState] = useState<FormState>({ kind: "idle" });
+  const [slots, setSlots] = useState<FridaySlot[]>([]);
+  const [slotsLoading, setSlotsLoading] = useState(true);
+  const [preferredFriday, setPreferredFriday] = useState("");
+  const [alternateFriday, setAlternateFriday] = useState("");
+
+  const refreshSlots = useCallback(async () => {
+    setSlotsLoading(true);
+    try {
+      const response = await fetch("/api/fridays", { cache: "no-store" });
+      if (!response.ok) throw new Error("availability request failed");
+      const payload = (await response.json()) as { slots: FridaySlot[] };
+      setSlots(payload.slots);
+    } catch {
+      setSlots([]);
+    } finally {
+      setSlotsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void refreshSlots();
+  }, [refreshSlots]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -77,6 +105,10 @@ export default function PitchForm() {
       problem: String(fd.get("problem") ?? ""),
       affected: String(fd.get("affected") ?? ""),
       firstBuild: String(fd.get("firstBuild") ?? ""),
+      preferredFriday:
+        String(fd.get("preferredFriday") ?? "") || undefined,
+      alternateFriday:
+        String(fd.get("alternateFriday") ?? "") || undefined,
       website: String(fd.get("website") ?? ""),
     };
     const mailtoHref = buildPitchEmail(body);
@@ -88,18 +120,44 @@ export default function PitchForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      if (!res.ok && res.status !== 204) {
-        setState({ kind: "error", mailtoHref });
+      if (res.status === 409) {
+        const payload = (await res.json()) as { error?: string };
+        setState({
+          kind: "error",
+          message:
+            payload.error ?? "That Friday is no longer available. Choose another date.",
+        });
+        setPreferredFriday("");
+        setAlternateFriday("");
+        await refreshSlots();
         return;
       }
-      setState({ kind: "done" });
+      if (!res.ok && res.status !== 204) {
+        setState({
+          kind: "error",
+          message: "The site could not save the proposal just now.",
+          mailtoHref,
+        });
+        return;
+      }
+      setState({
+        kind: "done",
+        heldLabel: body.preferredFriday
+          ? slots.find((slot) => slot.date === body.preferredFriday)?.label
+          : undefined,
+      });
     } catch {
-      setState({ kind: "error", mailtoHref });
+      setState({
+        kind: "error",
+        message: "The site could not save the proposal just now.",
+        mailtoHref,
+      });
     }
   }
 
   const submitted = state.kind === "done";
   const sending = state.kind === "sending";
+  const availableSlots = slots.filter((slot) => slot.state === "available");
 
   return (
     <div className={`card ${styles.card}`}>
@@ -179,6 +237,69 @@ export default function PitchForm() {
               placeholder="An idea, talk, demo, collaborator request, or problem for the group."
             />
           </div>
+          <fieldset className={styles.booking}>
+            <legend className={`eyebrow ${styles.bookingLegend}`}>
+              Book a Friday <span>(optional)</span>
+            </legend>
+            <p className={styles.bookingCopy}>
+              Choose a preferred date and we&apos;ll hold it for seven days while
+              we review the proposal. The first Friday of every month is
+              reserved for the Incubator.
+            </p>
+            <div className={`form-two-grid ${styles.twoColumn}`}>
+              <div>
+                <label htmlFor="pitch-preferred-friday" className={styles.dateLabel}>
+                  Preferred Friday
+                </label>
+                <select
+                  id="pitch-preferred-friday"
+                  name="preferredFriday"
+                  value={preferredFriday}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    setPreferredFriday(value);
+                    if (value === alternateFriday) setAlternateFriday("");
+                  }}
+                  className={styles.dateSelect}
+                  disabled={slotsLoading}
+                >
+                  <option value="">
+                    {slotsLoading ? "Loading dates..." : "No date yet"}
+                  </option>
+                  {availableSlots.map((slot) => (
+                    <option value={slot.date} key={slot.date}>
+                      {slot.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="pitch-alternate-friday" className={styles.dateLabel}>
+                  Alternate Friday
+                </label>
+                <select
+                  id="pitch-alternate-friday"
+                  name="alternateFriday"
+                  value={alternateFriday}
+                  onChange={(event) => setAlternateFriday(event.target.value)}
+                  className={styles.dateSelect}
+                  disabled={slotsLoading || !preferredFriday}
+                >
+                  <option value="">No alternate</option>
+                  {availableSlots
+                    .filter((slot) => slot.date !== preferredFriday)
+                    .map((slot) => (
+                      <option value={slot.date} key={slot.date}>
+                        {slot.label}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <a className={styles.calendarLink} href="/sessions">
+              See the full Friday calendar <span aria-hidden="true">-&gt;</span>
+            </a>
+          </fieldset>
           <div>
             <label
               htmlFor="pitch-affected"
@@ -250,7 +371,9 @@ export default function PitchForm() {
           </div>
           {submitted && (
             <p className={styles.success} role="status">
-              Thanks. We will review it and follow up by email.
+              {state.heldLabel
+                ? `Thanks. We have held ${state.heldLabel} while we review the proposal. We will confirm it by email.`
+                : "Thanks. We will review it and follow up by email."}
             </p>
           )}
           {state.kind === "error" && (
@@ -259,8 +382,10 @@ export default function PitchForm() {
               role="alert"
               style={{ color: "var(--danger, #c0392b)", lineHeight: 1.6 }}
             >
-              The site could not save the pitch just now.{" "}
-              <a href={state.mailtoHref}>Open an email draft instead</a>.
+              {state.message}{" "}
+              {state.mailtoHref && (
+                <a href={state.mailtoHref}>Open an email draft instead</a>
+              )}
             </div>
           )}
         </div>

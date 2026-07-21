@@ -14,7 +14,7 @@ export async function GET() {
   await requireAdmin();
   const rows = await prisma.pitch.findMany({ orderBy: { createdAt: "desc" } });
 
-  const header = ["id", "submitterName", "submitterEmail", "role", "problem", "affected", "firstBuild", "status", "notes", "createdAt", "reviewedAt"].join(",");
+  const header = ["id", "submitterName", "submitterEmail", "role", "problem", "affected", "firstBuild", "status", "preferredFriday", "alternateFriday", "scheduledFriday", "bookingStatus", "bookingHoldUntil", "notes", "createdAt", "reviewedAt"].join(",");
   const lines = rows.map((r) =>
     [
       r.id,
@@ -25,6 +25,11 @@ export async function GET() {
       r.affected,
       r.firstBuild,
       r.status,
+      r.preferredFriday?.toISOString().slice(0, 10) ?? "",
+      r.alternateFriday?.toISOString().slice(0, 10) ?? "",
+      r.scheduledFriday?.toISOString().slice(0, 10) ?? "",
+      r.bookingStatus,
+      r.bookingHoldUntil?.toISOString() ?? "",
       r.notes,
       r.createdAt.toISOString(),
       r.reviewedAt?.toISOString() ?? "",

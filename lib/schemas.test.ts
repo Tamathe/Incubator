@@ -138,6 +138,42 @@ describe("pitchSchema", () => {
     expect(r.firstBuild).toBeUndefined();
   });
 
+  it("accepts a preferred and alternate Friday", () => {
+    const r = pitchSchema.parse({
+      submitterName: "Tama",
+      submitterEmail: "tama@uky.edu",
+      problem: "A session idea",
+      affected: "Feedback from the room",
+      preferredFriday: "2026-08-14",
+      alternateFriday: "2026-08-21",
+    });
+    expect(r.preferredFriday).toBe("2026-08-14");
+    expect(r.alternateFriday).toBe("2026-08-21");
+  });
+
+  it("rejects non-Friday and duplicate booking dates", () => {
+    expect(() =>
+      pitchSchema.parse({
+        submitterName: "Tama",
+        submitterEmail: "tama@uky.edu",
+        problem: "A session idea",
+        affected: "Feedback from the room",
+        preferredFriday: "2026-08-13",
+      }),
+    ).toThrow();
+
+    expect(() =>
+      pitchSchema.parse({
+        submitterName: "Tama",
+        submitterEmail: "tama@uky.edu",
+        problem: "A session idea",
+        affected: "Feedback from the room",
+        preferredFriday: "2026-08-14",
+        alternateFriday: "2026-08-14",
+      }),
+    ).toThrow();
+  });
+
   it("caps problem at 2000 chars", () => {
     expect(() =>
       pitchSchema.parse({

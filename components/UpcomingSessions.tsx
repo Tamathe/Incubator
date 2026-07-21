@@ -2,22 +2,73 @@ import { content } from "@/content/site";
 import {
   KIND_LABEL,
   meetingsForDate,
-  toIsoDate,
-  upcomingFridays,
 } from "@/lib/calendar";
+import {
+  bookingDateFromIso,
+  loadFridaySlots,
+  type FridaySlot,
+} from "@/lib/friday-booking";
 import AddToCalendarButton from "@/components/AddToCalendarButton";
 import SubscribeAllButton from "@/components/SubscribeAllButton";
 
-const HORIZON = 8;
+const HORIZON = 16;
 
-function fmtDate(d: Date) {
-  const weekday = d.toLocaleDateString("en-US", { weekday: "short" });
-  const md = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+function fmtDate(iso: string) {
+  const date = bookingDateFromIso(iso);
+  const weekday = date.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    weekday: "short",
+  });
+  const md = date.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    month: "short",
+    day: "numeric",
+  });
   return { weekday, md };
 }
 
-export default function UpcomingSessions() {
-  const fridays = upcomingFridays(HORIZON);
+function EmptySlot({ slot }: { slot: FridaySlot }) {
+  const labels = {
+    available: { chip: "Open", title: "Topic open", className: "kind-open" },
+    reserved: {
+      chip: "Reserved",
+      title: "Reserved for the Incubator",
+      className: "kind-reserved",
+    },
+    held: { chip: "Held", title: "Date on hold", className: "kind-held" },
+    booked: { chip: "Booked", title: "Friday booked", className: "kind-booked" },
+    unavailable: {
+      chip: "No meeting",
+      title: "No meeting this Friday",
+      className: "kind-unavailable",
+    },
+  } as const;
+  const label = labels[slot.state];
+
+  return (
+    <div className="upcoming-row">
+      <div className="row-head">
+        <span className={`chip kind ${label.className}`}>{label.chip}</span>
+        <span className="row-title">{label.title}</span>
+      </div>
+      {slot.state === "reserved" && (
+        <div className="row-blurb">
+          The first Friday of each month stays open for the Incubator&apos;s own session.
+        </div>
+      )}
+      {slot.state === "available" && (
+        <div className="row-meta">
+          <a className="row-open-cta" href="/join#pitch">
+            Book a Friday <span aria-hidden="true">-&gt;</span>
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default async function UpcomingSessions() {
+  const slots = await loadFridaySlots(new Date(), HORIZON);
 
   return (
     <section className="section container" id="upcoming">
@@ -34,12 +85,12 @@ export default function UpcomingSessions() {
       </div>
 
       <div className="upcoming">
-        {fridays.map((friday) => {
-          const iso = toIsoDate(friday);
+        {slots.map((slot) => {
+          const iso = slot.date;
           const meetings = meetingsForDate(iso);
           const isCancelledDay =
             meetings.length > 0 && meetings.every((m) => m.kind === "cancelled");
-          const { weekday, md } = fmtDate(friday);
+          const { weekday, md } = fmtDate(iso);
 
           return (
             <div
@@ -53,17 +104,7 @@ export default function UpcomingSessions() {
 
               <div className="upcoming-rows">
                 {meetings.length === 0 ? (
-                  <div className="upcoming-row">
-                    <div className="row-head">
-                      <span className="chip kind kind-open">Open</span>
-                      <span className="row-title">Topic open</span>
-                    </div>
-                    <div className="row-meta">
-                      <a className="row-open-cta" href="/pitch">
-                        Pitch a topic →
-                      </a>
-                    </div>
-                  </div>
+                  <EmptySlot slot={slot} />
                 ) : (
                   meetings.map((m, i) => (
                     <div className="upcoming-row" key={`${iso}-${i}`}>

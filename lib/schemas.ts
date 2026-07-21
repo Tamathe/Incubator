@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isFridayIso } from "@/lib/friday-booking";
 
 const emailField = z
   .string()
@@ -9,6 +10,11 @@ const emailField = z
 
 const shortText = (max = 200) => z.string().trim().min(1).max(max);
 const optionalText = (max = 2000) => z.string().trim().max(max).optional();
+const optionalFriday = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/)
+  .refine(isFridayIso, "Date must be a Friday")
+  .optional();
 
 export const subscribeSchema = z
   .object({
@@ -42,8 +48,29 @@ export const pitchSchema = z
     problem: shortText(2000),
     affected: shortText(1000),
     firstBuild: optionalText(2000),
+    preferredFriday: optionalFriday,
+    alternateFriday: optionalFriday,
   })
-  .strict();
+  .strict()
+  .superRefine((data, ctx) => {
+    if (data.alternateFriday && !data.preferredFriday) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["alternateFriday"],
+        message: "A preferred Friday is required before an alternate",
+      });
+    }
+    if (
+      data.preferredFriday &&
+      data.alternateFriday === data.preferredFriday
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["alternateFriday"],
+        message: "Alternate Friday must be different",
+      });
+    }
+  });
 
 export const loginSchema = z
   .object({

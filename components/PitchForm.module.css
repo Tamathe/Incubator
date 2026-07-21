@@ -33,6 +33,77 @@
   border-color: #82b3ff !important;
 }
 
+.booking {
+  display: grid;
+  gap: 14px;
+  margin: 2px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.bookingLegend {
+  padding: 0 7px;
+  color: #82b3ff;
+}
+
+.bookingLegend span {
+  color: var(--ink-3);
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.bookingCopy {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.dateLabel {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+.dateSelect {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.dateSelect:focus {
+  border-color: #82b3ff;
+  outline: 2px solid transparent;
+}
+
+.dateSelect:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.calendarLink {
+  width: fit-content;
+  color: #82b3ff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.calendarLink:hover {
+  text-decoration: underline;
+}
+
 .submitRow {
   display: flex;
   align-items: center;

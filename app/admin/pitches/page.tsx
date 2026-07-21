@@ -1,13 +1,25 @@
 import { prisma } from "@/lib/prisma";
-import { setPitchStatus, setPitchNotes } from "./actions";
+import { bookingDateToIso, formatFridayLabel } from "@/lib/friday-booking";
+import { setFridayBooking, setPitchStatus, setPitchNotes } from "./actions";
 
 export const dynamic = "force-dynamic";
 
 const STATUSES = ["new", "reviewing", "accepted", "declined", "converted"] as const;
+const BOOKING_STATUSES = [
+  "requested",
+  "confirmed",
+  "completed",
+  "cancelled",
+  "expired",
+] as const;
 type StatusKey = (typeof STATUSES)[number];
 
 interface PageProps {
-  searchParams: Promise<{ id?: string }>;
+  searchParams: Promise<{
+    id?: string;
+    bookingError?: string;
+    bookingSaved?: string;
+  }>;
 }
 
 export default async function PitchesPage({ searchParams }: PageProps) {
@@ -28,6 +40,17 @@ export default async function PitchesPage({ searchParams }: PageProps) {
         <h1>Pitches</h1>
         <a href="/api/admin/pitches.csv" className="btn sm" download>Export CSV</a>
       </div>
+
+      {params.bookingError && (
+        <p className="admin-notice admin-notice-error" role="alert">
+          {params.bookingError}
+        </p>
+      )}
+      {params.bookingSaved && (
+        <p className="admin-notice" role="status">
+          Friday booking updated.
+        </p>
+      )}
 
       {pitches.length === 0 ? (
         <p className="small" style={{ color: "var(--ink-3)" }}>
@@ -59,6 +82,11 @@ export default async function PitchesPage({ searchParams }: PageProps) {
                     <div style={{ marginTop: 6, color: "var(--ink-2)", lineHeight: 1.4 }}>
                       {p.problem.length > 80 ? p.problem.slice(0, 80) + "…" : p.problem}
                     </div>
+                    {p.scheduledFriday && (
+                      <div className="small" style={{ color: "var(--accent)", marginTop: 8 }}>
+                        {bookingDateToIso(p.scheduledFriday)} · {p.bookingStatus}
+                      </div>
+                    )}
                   </a>
                 ))}
               </div>
@@ -74,6 +102,72 @@ export default async function PitchesPage({ searchParams }: PageProps) {
               <div className="small" style={{ color: "var(--ink-3)", marginBottom: 14 }}>
                 {selected.submitterEmail} {selected.role ? `· ${selected.role}` : ""}
               </div>
+
+              <section className="admin-booking-panel">
+                <div className="eyebrow">Friday booking</div>
+                {selected.preferredFriday ? (
+                  <p className="small" style={{ margin: "7px 0 12px" }}>
+                    Requested {formatFridayLabel(bookingDateToIso(selected.preferredFriday))}
+                    {selected.alternateFriday
+                      ? `; alternate ${formatFridayLabel(bookingDateToIso(selected.alternateFriday))}`
+                      : ""}
+                  </p>
+                ) : (
+                  <p className="small" style={{ margin: "7px 0 12px", color: "var(--ink-3)" }}>
+                    No date requested.
+                  </p>
+                )}
+                <form
+                  action={async (fd) => {
+                    "use server";
+                    await setFridayBooking(
+                      selected.id,
+                      String(fd.get("scheduledFriday") ?? ""),
+                      String(fd.get("bookingStatus") ?? "requested"),
+                    );
+                  }}
+                >
+                  <label htmlFor="scheduledFriday" className="admin-field-label">
+                    Scheduled Friday
+                  </label>
+                  <input
+                    id="scheduledFriday"
+                    name="scheduledFriday"
+                    type="date"
+                    defaultValue={
+                      selected.scheduledFriday
+                        ? bookingDateToIso(selected.scheduledFriday)
+                        : selected.preferredFriday
+                          ? bookingDateToIso(selected.preferredFriday)
+                          : ""
+                    }
+                    className="admin-input"
+                  />
+                  <label htmlFor="bookingStatus" className="admin-field-label">
+                    Booking status
+                  </label>
+                  <select
+                    id="bookingStatus"
+                    name="bookingStatus"
+                    defaultValue={selected.bookingStatus ?? "requested"}
+                    className="admin-input"
+                  >
+                    {BOOKING_STATUSES.map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="submit" className="btn sm primary" style={{ marginTop: 9 }}>
+                    Save booking
+                  </button>
+                </form>
+                {selected.bookingHoldUntil && selected.bookingStatus === "requested" && (
+                  <p className="small" style={{ color: "var(--ink-3)", margin: "10px 0 0" }}>
+                    Hold expires {selected.bookingHoldUntil.toLocaleString("en-US")}.
+                  </p>
+                )}
+              </section>
 
               <form action={async (fd) => { "use server"; await setPitchStatus(selected.id, String(fd.get("status") ?? "new")); }} style={{ marginBottom: 18 }}>
                 <label className="eyebrow" style={{ display: "block", marginBottom: 6 }}>Status</label>

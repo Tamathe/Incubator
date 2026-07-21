@@ -143,9 +143,10 @@ export default function JoinPage() {
               <span className="mono join-incubator-kicker">This Friday</span>
               <h2 className="h1">Come as you are.</h2>
               <p className="body community-section-copy">
-                Drop in when the agenda or a project interests you. Listening
-                is participation too. Keep your camera off if you want to
-                listen; turn it on when you want to join the conversation.
+                The Incubator is open to both active and passive participation.
+                If you want to log in and spectate, you can keep your camera
+                off. If you want to be included in the conversation, turn your
+                camera on.
               </p>
 
               <div className="community-agenda">

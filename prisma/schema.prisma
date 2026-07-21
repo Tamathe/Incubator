@@ -63,20 +63,26 @@ model Rsvp {
 }
 
 model Pitch {
-  id              String       @id @default(cuid())
-  submitterName   String
-  submitterEmail  String
-  role            String?
-  problem         String
-  affected        String
-  firstBuild      String
-  status          PitchStatus  @default(new)
-  notes           String?
-  createdAt       DateTime     @default(now())
-  reviewedAt      DateTime?
+  id                String               @id @default(cuid())
+  submitterName     String
+  submitterEmail    String
+  role              String?
+  problem           String
+  affected          String
+  firstBuild        String
+  status            PitchStatus          @default(new)
+  notes             String?
+  preferredFriday   DateTime?             @db.Date
+  alternateFriday   DateTime?             @db.Date
+  scheduledFriday   DateTime?             @unique @db.Date
+  bookingStatus     FridayBookingStatus?
+  bookingHoldUntil  DateTime?
+  createdAt         DateTime              @default(now())
+  reviewedAt        DateTime?
 
   @@index([status, createdAt])
   @@index([createdAt])
+  @@index([bookingStatus, scheduledFriday])
 }
 
 enum PitchStatus {
@@ -85,4 +91,12 @@ enum PitchStatus {
   accepted
   declined
   converted
+}
+
+enum FridayBookingStatus {
+  requested
+  confirmed
+  completed
+  cancelled
+  expired
 }
