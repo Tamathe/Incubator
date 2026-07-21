@@ -144,7 +144,8 @@ export default function JoinPage() {
               <h2 className="h1">Come as you are.</h2>
               <p className="body community-section-copy">
                 Drop in when the agenda or a project interests you. Listening
-                is participation too.
+                is participation too. Keep your camera off if you want to
+                listen; turn it on when you want to join the conversation.
               </p>
 
               <div className="community-agenda">
