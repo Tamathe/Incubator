@@ -10,6 +10,8 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
   - [ ] Enter a fresh email in "Join the Incubator" → "See you Friday."
   - [ ] The email creates one active `Member` and one active `Subscriber`; repeat submission updates the same rows.
   - [ ] Pitch form: fill in name, email, problem/affected/firstBuild → "Submitted ✓".
+  - [ ] Submit a proposal with an open preferred Friday → success message names the held date.
+  - [ ] Confirm that the first Friday of each month never appears in the available-date list.
 
 ## Admin auth
 
@@ -46,6 +48,7 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
   - [ ] Click a card → detail panel opens on the right.
   - [ ] Change status → card moves columns.
   - [ ] Add a note, click "Save notes" → persists after reload.
+  - [ ] Confirm a held Friday → `/sessions` changes that date from Held to Booked.
   - [ ] CSV export works.
 
 ## Spam guards

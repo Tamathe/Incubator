@@ -12,6 +12,7 @@ Friday meeting, recent activity, and how to get involved.
 - **Dynamic deployment** on Vercel (formerly static export)
 - **Neon Postgres** via Prisma 7 + PrismaPg adapter
 - **`/admin` dashboard** (password-protected) for members, subscribers, RSVPs, pitches
+- **Book a Friday** workflow with live availability, temporary holds, and admin confirmation
 - **No CMS yet.** Site content still in `content/site.ts` (Stage 2 will migrate this)
 
 The original HTML/CSS/JS design prototype lives in [`reference/`](reference/)
