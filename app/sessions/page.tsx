@@ -48,7 +48,7 @@ export default function SessionsPage() {
             <div>
               <span className="mono">Open Fridays</span>
               <p>
-                Choose one when you propose a session. We&apos;ll hold your
+                Choose one when you propose a Friday. We&apos;ll hold your
                 preferred date for seven days while we review it.
               </p>
             </div>

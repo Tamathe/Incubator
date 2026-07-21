@@ -180,7 +180,7 @@ export default function PitchForm() {
                   id="pitch-role"
                   name="role"
                   list="pitch-roles"
-                  placeholder="Student / Faculty / Staff"
+                  placeholder="Student, faculty, staff, or partner"
                 />
                 <datalist id="pitch-roles">
                   {ROLES.map((role) => (

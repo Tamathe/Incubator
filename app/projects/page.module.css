@@ -50,7 +50,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   margin-top: clamp(56px, 7vw, 92px);
-  background: #292929;
+  background: #080808;
 }
 
 .closing {
