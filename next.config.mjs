@@ -7,7 +7,6 @@ const nextConfig = {
       { source: "/built", destination: "/projects", permanent: true },
       { source: "/outcomes", destination: "/projects", permanent: true },
       { source: "/open-problems", destination: "/projects", permanent: true },
-      { source: "/pitch", destination: "/join#pitch", permanent: true },
       { source: "/changelog", destination: "/projects", permanent: true },
     ];
   },

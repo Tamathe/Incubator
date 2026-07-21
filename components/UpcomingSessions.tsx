@@ -58,7 +58,7 @@ function EmptySlot({ slot }: { slot: FridaySlot }) {
       )}
       {slot.state === "available" && (
         <div className="row-meta">
-          <a className="row-open-cta" href="/join#pitch">
+          <a className="row-open-cta" href="/pitch">
             Book a Friday <span aria-hidden="true">-&gt;</span>
           </a>
         </div>

@@ -152,7 +152,7 @@ export default function HomePage() {
             video="/media/story/10-andrew-peng-drone-demo.mp4"
             poster="/media/story/10-andrew-peng-drone-demo.jpg"
             primaryLink={{
-              href: "/join#pitch",
+              href: "/pitch",
               label: "Bring your work to the group",
             }}
           />

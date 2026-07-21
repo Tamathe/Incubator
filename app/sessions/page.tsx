@@ -76,7 +76,7 @@ export default function SessionsPage() {
               Send the rough version. Choose a preferred date and an alternate;
               we&apos;ll follow up about the fit and format.
             </p>
-            <Link className="btn primary" href="/join#pitch" style={{ marginTop: 16 }}>
+            <Link className="btn primary" href="/pitch" style={{ marginTop: 16 }}>
               Propose a session <span className="arrow">-&gt;</span>
             </Link>
           </div>

@@ -29,7 +29,7 @@ Let someone submit an idea, talk, demonstration, collaborator request, or proble
 
 ## Surfaces
 
-- `/join#pitch`: proposal form, preferred date, alternate date, and confirmation.
+- `/pitch`: proposal form, preferred date, alternate date, and confirmation.
 - `/sessions`: public availability and published Friday calendar.
 - `/api/fridays`: privacy-safe availability data.
 - `/admin/pitches`: review, reschedule, confirmation, completion, cancellation, and private notes.
