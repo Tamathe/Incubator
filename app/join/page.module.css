@@ -48,20 +48,6 @@
   scroll-margin-top: 88px;
 }
 
-.joinHeading {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 12px;
-}
-
-.joinHeading strong {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.joinHeading span,
 .joinNote {
   color: rgba(255, 255, 255, 0.46);
   font-size: 13px;
@@ -402,11 +388,6 @@
   .heroLead {
     margin-top: 22px;
     font-size: 17px;
-  }
-
-  .joinHeading {
-    flex-direction: column;
-    gap: 4px;
   }
 
   .heroFigure figcaption {
