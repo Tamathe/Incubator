@@ -133,7 +133,7 @@ export default async function UpcomingSessions() {
       </div>
 
       <div className="upcoming-actions">
-        <SubscribeAllButton />
+        <SubscribeAllButton slots={slots} />
       </div>
     </section>
   );

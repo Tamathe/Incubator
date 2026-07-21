@@ -210,7 +210,7 @@ export interface SiteContent {
 }
 
 export const content: SiteContent = {
-  lastUpdated: "2026-07-16",
+  lastUpdated: "2026-07-21",
   cohort: "Cohort 03 - Summer 2026",
   session: {
     dayOfWeek: 5,
@@ -219,9 +219,9 @@ export const content: SiteContent = {
     venue: "Microsoft Teams",
     teamsUrl: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzZhMTNiNjYtODcwNy00MjBhLTg3MmQtNmZhNDU4MGVlMjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222b30530b-69b6-4457-b818-481cb53d42ae%22%2c%22Oid%22%3a%22e5e67874-0b35-4528-b862-6b2d1a6b1fc2%22%7d",
     agenda: [
-      "KY-AHEAD - planning a human-reviewed cancer-screening workflow",
-      "Rural diabetic retinopathy - planning a proposed AI-supported eye-screening pilot",
-      "Whole-blood drone delivery - planning the first nonclinical feasibility study",
+      "AI for knowledge work - Andrew Peng on Claude Projects",
+      "AI for knowledge work - Tama Thé on Codex",
+      "Record the session for the website",
     ],
   },
   projects: [
@@ -276,7 +276,7 @@ export const content: SiteContent = {
       name: "Whole-Blood Drone Delivery",
       tagline: "Cold-chain transport research for rural trauma care",
       status: "building",
-      stage: "Planning the first nonclinical study",
+      stage: "Scheduling an in-person hardware assessment",
       area: "Trauma / Aerospace",
       leads: "Trauma Surgery / Aerospace Engineering / Emergency Medicine",
       summary:
@@ -292,7 +292,7 @@ export const content: SiteContent = {
         "Flight-test documentation",
         "Poster and pilot materials",
       ],
-      updated: "2026-06-23",
+      updated: "2026-07-17",
     },
     {
       id: "virtual-clinic",
@@ -411,6 +411,11 @@ export const content: SiteContent = {
     },
   ],
   log: [
+    {
+      date: "2026-07-17",
+      project: "Whole-blood drone delivery",
+      note: "Andrew will inspect the available drone and drop hardware with Dr. Bailey before the team schedules the first nonclinical flight test.",
+    },
     {
       date: "2026-07-04",
       project: "KY-AHEAD",
@@ -587,9 +592,22 @@ export const content: SiteContent = {
     {
       date: "2026-07-17",
       kind: "roundtable",
-      title: "Review the other projects",
+      title: "Drone planning and the Incubator operating surface",
       blurb:
-        "Review which project-board entries are ready to share publicly, including results and partner updates.",
+        "The team set the next hardware-assessment step for the drone project and agreed to build the website around opportunities, practical AI workflows, and recorded sessions.",
+    },
+    {
+      date: "2026-07-24",
+      kind: "cancelled",
+      title: "No meeting",
+    },
+    {
+      date: "2026-07-31",
+      kind: "presentation",
+      title: "AI for knowledge work - Claude Projects and Codex",
+      presenters: "Andrew Peng / Tama Thé",
+      blurb:
+        "How Andrew organizes a research effort in Claude Projects and how Tama uses Codex for knowledge work.",
     },
   ],
 };

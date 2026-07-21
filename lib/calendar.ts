@@ -198,6 +198,23 @@ export function openFridayToIcsEvent(friday: Date): IcsEvent {
   };
 }
 
+/** Build a calendar placeholder for a reserved or confirmed Friday. */
+export function scheduledFridayToIcsEvent(
+  isoDate: string,
+  summary: string,
+  description: string,
+): IcsEvent {
+  const { start, end } = fridayNoonRange(isoDate);
+  return {
+    uid: `${isoDate}-scheduled@aiincubator.uky.edu`,
+    start,
+    end,
+    summary,
+    description: `${description}\nTeams: ${content.session.teamsUrl}`,
+    location: content.session.venue,
+  };
+}
+
 // ─── Browser download ─────────────────────────────────────────────────────
 
 /** Trigger a browser download of `.ics` content. Client-only. */

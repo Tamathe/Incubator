@@ -21,6 +21,7 @@ export default function Footer() {
             <h4>Explore</h4>
             <ul>
               <li><Link href="/projects">Projects</Link></li>
+              <li><Link href="/sessions">Friday calendar</Link></li>
               <li><Link href="/#fridays">Fridays</Link></li>
               <li><Link href="/#student-work">Student work</Link></li>
               <li><Link href="/join">Join the Incubator</Link></li>

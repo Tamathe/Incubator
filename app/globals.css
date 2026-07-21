@@ -2254,6 +2254,26 @@ html[data-theme="dark"] .tweaks-panel { box-shadow: 0 24px 60px -20px rgba(0,0,0
   color: var(--ink-3);
   border-color: var(--line);
 }
+.chip.kind-reserved {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.chip.kind-held {
+  background: transparent;
+  color: var(--ink-3);
+  border-color: var(--line-2);
+}
+.chip.kind-booked {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.chip.kind-unavailable {
+  background: transparent;
+  color: var(--ink-4);
+  border-color: var(--line);
+}
 .chip.kind-cancelled {
   background: transparent;
   color: var(--ink-4);
@@ -2343,6 +2363,18 @@ html[data-theme="dark"] .chip.kind-demo {
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .upcoming-day {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .upcoming-row .row-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 /* ── /ideas page surface switch ─────────────────── */
