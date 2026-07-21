@@ -2,16 +2,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 
-type NavKey =
-  | "overview"
-  | "sessions"
-  | "projects"
-  | "ideas"
-  | "team"
-  | "open-problems"
-  | "outcomes"
-  | "built"
-  | "join";
+type NavKey = "overview" | "sessions" | "projects" | "join";
 
 interface NavProps {
   active?: NavKey;

@@ -6,16 +6,7 @@ import { useRef, type KeyboardEvent } from "react";
 export default function MobileNav({
   active,
 }: {
-  active?:
-    | "overview"
-    | "sessions"
-    | "projects"
-    | "ideas"
-    | "team"
-    | "open-problems"
-    | "outcomes"
-    | "built"
-    | "join";
+  active?: "overview" | "sessions" | "projects" | "join";
 }) {
   const menuRef = useRef<HTMLDetailsElement>(null);
 
