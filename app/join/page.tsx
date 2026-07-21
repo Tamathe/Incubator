@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import JoinIncubator from "@/components/JoinIncubator";
@@ -11,31 +10,6 @@ export const metadata = {
   description:
     "Join the University of Kentucky AI Incubator for a Friday working session on Microsoft Teams.",
 };
-
-const FRIDAY_FLOW = [
-  {
-    number: "01",
-    title: "Show something real",
-    body: "A demo, result, question, or failure gives the room somewhere to start.",
-  },
-  {
-    number: "02",
-    title: "Work the problem",
-    body: "The group asks questions, tests ideas, and makes useful connections.",
-  },
-  {
-    number: "03",
-    title: "Choose a next step",
-    body: "We end with one concrete thing to try, build, or investigate next.",
-  },
-];
-
-const FRIDAY_FACTS = [
-  ["When", "Fridays at noon ET"],
-  ["Where", "Microsoft Teams"],
-  ["Prep", "None required"],
-  ["Commitment", "Come when it is useful"],
-];
 
 export default function JoinPage() {
   return (
@@ -77,45 +51,15 @@ export default function JoinPage() {
 
         <section className={`container ${styles.fridaySection}`}>
           <div className={styles.sectionIntro}>
-            <p className={`mono ${styles.kicker}`}>What happens on Friday</p>
-            <h2>Come as you are.</h2>
+            <h2>Meetings.</h2>
             <p>
-              No AI or coding experience is required. Listening counts. Keep
-              your camera off if you want to listen; turn it on when you want
-              to join the conversation.
+              No previous experience required. Turn your camera on to join the
+              conversation, or leave it off in second-screen mode.
             </p>
+            <Link className={styles.calendarLink} href="/sessions">
+              See this Friday&apos;s agenda <span aria-hidden="true">-&gt;</span>
+            </Link>
           </div>
-
-          <div className={styles.fridayFlow}>
-            {FRIDAY_FLOW.map((item) => (
-              <article key={item.title}>
-                <span className="mono">{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
-
-          <aside className={styles.fridayCard}>
-            <div className={styles.factList}>
-              {FRIDAY_FACTS.map(([label, value]) => (
-                <div key={label}>
-                  <span className="mono">{label}</span>
-                  <strong>{value}</strong>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.agenda}>
-              <p className="mono">Current agenda</p>
-              {content.session.agenda.map((item) => (
-                <div key={item}>{item}</div>
-              ))}
-              <Link className={styles.calendarLink} href="/sessions">
-                See upcoming Fridays <span aria-hidden="true">-&gt;</span>
-              </Link>
-            </div>
-          </aside>
         </section>
 
         <section className={`container ${styles.bringSection}`} id="pitch">
