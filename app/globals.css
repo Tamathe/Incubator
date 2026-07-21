@@ -4113,9 +4113,15 @@ footer {
   padding-top: 64px;
 }
 .foot-grid {
-  grid-template-columns: minmax(280px, 1.8fr) repeat(3, minmax(150px, 0.75fr));
+  grid-template-columns: minmax(280px, 1.8fr) repeat(2, minmax(150px, 0.75fr));
   gap: 36px;
   margin-bottom: 40px;
+}
+.foot-brand .footer-logo {
+  display: block;
+  width: auto;
+  height: 76px;
+  max-width: 100%;
 }
 .foot-grid h4 { color: #82b3ff; }
 .foot-grid a { color: rgba(255, 255, 255, 0.58); }
@@ -4135,7 +4141,6 @@ footer {
   .outcome-proj,
   .outcome-value { grid-column: 3; justify-self: start; }
   .foot-grid { grid-template-columns: 1.5fr 1fr 1fr; }
-  .foot-grid > div:last-child { grid-column: 1 / -1; }
 }
 
 @media (max-width: 700px) {
@@ -4241,8 +4246,7 @@ footer {
   .outcome-proj,
   .outcome-value { grid-column: 1 / -1; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 36px 22px; }
-  .foot-grid > div:first-child,
-  .foot-grid > div:last-child { grid-column: 1 / -1; }
+  .foot-grid > div:first-child { grid-column: 1 / -1; }
   .foot-bottom { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
 

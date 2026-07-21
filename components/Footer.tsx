@@ -1,20 +1,19 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import SubscribeForm from "./SubscribeForm";
 
 export default function Footer() {
   return (
     <footer>
       <div className="container">
         <div className="foot-grid">
-          <div>
+          <div className="foot-brand">
             <Link
               className="nav-brand"
               href="/"
               style={{ marginBottom: 14 }}
               aria-label="AI Incubator at the University of Kentucky home"
             >
-              <Logo alt="" className="nav-logo" src="/logo-incubator.png" />
+              <Logo alt="" className="footer-logo" src="/logo-mark-dark.png" />
             </Link>
           </div>
           <div>
@@ -39,10 +38,6 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-          <div>
-            <h4>Friday updates</h4>
-            <SubscribeForm />
           </div>
         </div>
         <div className="foot-bottom">
