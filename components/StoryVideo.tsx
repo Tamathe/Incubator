@@ -29,25 +29,15 @@ export default function StoryVideo({
   const [isPlaying, setIsPlaying] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [requiresTap, setRequiresTap] = useState(false);
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const pointerQuery = window.matchMedia("(hover: none), (pointer: coarse)");
+    const syncPreference = () => setPrefersReducedMotion(motionQuery.matches);
 
-    const syncPreferences = () => {
-      setPrefersReducedMotion(motionQuery.matches);
-      setRequiresTap(pointerQuery.matches);
-    };
+    syncPreference();
+    motionQuery.addEventListener("change", syncPreference);
 
-    syncPreferences();
-    motionQuery.addEventListener("change", syncPreferences);
-    pointerQuery.addEventListener("change", syncPreferences);
-
-    return () => {
-      motionQuery.removeEventListener("change", syncPreferences);
-      pointerQuery.removeEventListener("change", syncPreferences);
-    };
+    return () => motionQuery.removeEventListener("change", syncPreference);
   }, []);
 
   useEffect(() => {
@@ -97,11 +87,11 @@ export default function StoryVideo({
       return;
     }
 
-    if (requiresTap || userPaused || withSound) return;
+    if (userPaused || withSound) return;
 
     window.dispatchEvent(new CustomEvent<string>(PLAY_EVENT, { detail: id }));
     void element.play().catch(() => setIsPlaying(false));
-  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused, withSound]);
+  }, [id, isActive, isNear, prefersReducedMotion, userPaused, withSound]);
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -117,7 +107,6 @@ export default function StoryVideo({
         isActive &&
         isNear &&
         !prefersReducedMotion &&
-        !requiresTap &&
         !userPaused &&
         !withSound
       ) {
@@ -128,7 +117,7 @@ export default function StoryVideo({
 
     document.addEventListener("visibilitychange", handleVisibility);
     return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, [id, isActive, isNear, prefersReducedMotion, requiresTap, userPaused, withSound]);
+  }, [id, isActive, isNear, prefersReducedMotion, userPaused, withSound]);
 
   async function togglePlayback() {
     const element = videoRef.current;
@@ -168,6 +157,7 @@ export default function StoryVideo({
       ) : (
         <video
           ref={videoRef}
+          autoPlay={isActive && !userPaused && !withSound}
           muted={!withSound}
           loop={!withSound}
           playsInline
@@ -196,9 +186,7 @@ export default function StoryVideo({
               ? "Pause"
               : withSound
                 ? "Play with sound"
-                : requiresTap
-                  ? "Play clip"
-                  : "Play"}
+                : "Play"}
           </span>
         </button>
       ) : null}

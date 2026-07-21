@@ -7,7 +7,7 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
 - [ ] Visit `/` — page loads, no console errors.
 - [ ] Footer subscribe form: enter a fresh email, click Subscribe → "Sent ✓".
 - [ ] Visit `/join`:
-  - [ ] Enter a fresh email in "Join the Incubator" → "You're in."
+  - [ ] Enter a fresh email in "Join the Incubator" → "See you Friday."
   - [ ] The email creates one active `Member` and one active `Subscriber`; repeat submission updates the same rows.
   - [ ] Pitch form: fill in name, email, problem/affected/firstBuild → "Submitted ✓".
 

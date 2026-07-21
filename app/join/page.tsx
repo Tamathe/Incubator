@@ -107,7 +107,7 @@ export default function JoinPage() {
           <div className="join-incubator-layout">
             <div>
               <span className="mono join-incubator-kicker">Open to everyone</span>
-              <h2 className="h1">One email. You&apos;re in.</h2>
+              <h2 className="h1">See you Friday.</h2>
               <p className="body community-section-copy">
                 Come to learn, share something you&apos;re building, find
                 collaborators, or just listen. No AI experience, project, or
