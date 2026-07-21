@@ -4,6 +4,7 @@ import MobileNav from "./MobileNav";
 
 type NavKey =
   | "overview"
+  | "sessions"
   | "projects"
   | "ideas"
   | "team"
@@ -32,12 +33,9 @@ export default function Nav({ active, tone = "default" }: NavProps) {
         </Link>
 
         <div className="nav-links">
-          <Link href="/#fridays">Fridays</Link>
+          <Link href="/sessions" className={cls("sessions")}>Fridays</Link>
           <Link href="/projects" className={cls("projects")}>Projects</Link>
-          <Link className="nav-student-work" href="/#student-work">
-            <span>Student work</span>
-            <small>(page in development)</small>
-          </Link>
+          <Link href="/#student-work">Student work</Link>
           <Link
             href="/join"
             className={`btn primary sm ${active === "join" ? "active" : ""}`}
@@ -46,7 +44,7 @@ export default function Nav({ active, tone = "default" }: NavProps) {
           </Link>
         </div>
 
-        <MobileNav projectsActive={active === "projects"} />
+        <MobileNav active={active} />
       </div>
     </nav>
   );

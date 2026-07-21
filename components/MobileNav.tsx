@@ -4,9 +4,18 @@ import Link from "next/link";
 import { useRef, type KeyboardEvent } from "react";
 
 export default function MobileNav({
-  projectsActive = false,
+  active,
 }: {
-  projectsActive?: boolean;
+  active?:
+    | "overview"
+    | "sessions"
+    | "projects"
+    | "ideas"
+    | "team"
+    | "open-problems"
+    | "outcomes"
+    | "built"
+    | "join";
 }) {
   const menuRef = useRef<HTMLDetailsElement>(null);
 
@@ -24,25 +33,26 @@ export default function MobileNav({
     <details ref={menuRef} className="nav-mobile" onKeyDown={handleKeyDown}>
       <summary aria-label="Open site navigation">Menu</summary>
       <div className="nav-mobile-panel">
-        <Link href="/#fridays" onClick={closeMenu}>
+        <Link
+          href="/sessions"
+          className={active === "sessions" ? "active" : undefined}
+          onClick={closeMenu}
+        >
           Fridays
         </Link>
         <Link
           href="/projects"
-          className={projectsActive ? "active" : undefined}
+          className={active === "projects" ? "active" : undefined}
           onClick={closeMenu}
         >
           Projects
         </Link>
+        <Link href="/#student-work" onClick={closeMenu}>Student work</Link>
         <Link
-          className="nav-student-work"
-          href="/#student-work"
+          href="/join"
+          className={`nav-mobile-cta${active === "join" ? " active" : ""}`}
           onClick={closeMenu}
         >
-          <span>Student work</span>
-          <small>(page in development)</small>
-        </Link>
-        <Link href="/join" className="nav-mobile-cta" onClick={closeMenu}>
           Join the Incubator <span aria-hidden="true">-&gt;</span>
         </Link>
       </div>

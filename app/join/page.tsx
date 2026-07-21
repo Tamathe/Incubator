@@ -90,13 +90,12 @@ export default function JoinPage() {
 
         <section className={`container ${styles.fridaySection}`}>
           <div className={styles.sectionIntro}>
-            <p className={`mono ${styles.kicker}`}>What happens Friday</p>
+            <p className={`mono ${styles.kicker}`}>What happens on Friday</p>
             <h2>Come as you are.</h2>
             <p>
-              No AI or coding experience is required. The Incubator is open to
-              both active and passive participation. If you want to log in and
-              spectate, you can keep your camera off. If you want to be
-              included in the conversation, turn your camera on.
+              No AI or coding experience is required. Listening counts. Keep
+              your camera off if you want to listen; turn it on when you want
+              to join the conversation.
             </p>
           </div>
 
@@ -125,6 +124,9 @@ export default function JoinPage() {
               {content.session.agenda.map((item) => (
                 <div key={item}>{item}</div>
               ))}
+              <Link className={styles.calendarLink} href="/sessions">
+                See upcoming Fridays <span aria-hidden="true">-&gt;</span>
+              </Link>
             </div>
           </aside>
         </section>

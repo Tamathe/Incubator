@@ -1,5 +1,8 @@
 .card {
   padding: clamp(22px, 3vw, 32px);
+  border-color: #303030;
+  border-radius: 0 !important;
+  background: #0d0d0d;
 }
 
 .fields {
@@ -14,18 +17,38 @@
 .label {
   display: block;
   margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .field {
   min-height: 46px;
   padding-left: 15px;
-  border-radius: 8px;
+  border-color: #333333;
+  border-radius: 2px;
+  background: #111111;
+}
+
+.field input {
+  color: #ffffff;
 }
 
 .textarea {
+  width: 100%;
   min-height: 84px;
-  border-radius: 8px !important;
+  resize: vertical;
+  padding: 13px 15px;
+  border: 1px solid #333333;
+  border-radius: 2px !important;
+  outline: none;
+  background: #111111;
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 14px;
   line-height: 1.5;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.34);
 }
 
 .textarea:focus,
@@ -37,10 +60,10 @@
   display: grid;
   gap: 14px;
   margin: 2px 0;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  padding: 22px;
+  border: 1px solid #333333;
+  border-radius: 0;
+  background: #0a0a0a;
 }
 
 .bookingLegend {
@@ -59,7 +82,7 @@
 .bookingCopy {
   max-width: 58ch;
   margin: 0;
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.58);
   font-size: 13px;
   line-height: 1.55;
 }
@@ -67,7 +90,7 @@
 .dateLabel {
   display: block;
   margin-bottom: 7px;
-  color: var(--ink-3);
+  color: rgba(255, 255, 255, 0.48);
   font-size: 12px;
 }
 
@@ -75,10 +98,10 @@
   width: 100%;
   min-height: 44px;
   padding: 0 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--ink);
+  border: 1px solid #333333;
+  border-radius: 2px;
+  background: #111111;
+  color: #ffffff;
   font-family: var(--sans);
   font-size: 13px;
 }
@@ -95,13 +118,15 @@
 
 .calendarLink {
   width: fit-content;
-  color: #82b3ff;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+  color: #ffffff;
   font-size: 12px;
   text-decoration: none;
 }
 
 .calendarLink:hover {
-  text-decoration: underline;
+  border-bottom-color: #ffffff;
 }
 
 .submitRow {
@@ -113,7 +138,7 @@
 
 .success {
   margin: -5px 0 0;
-  color: var(--ink-2);
+  color: rgba(255, 255, 255, 0.66);
   font-size: 13px;
   line-height: 1.5;
 }

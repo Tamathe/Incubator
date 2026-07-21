@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import type { FridaySlot } from "@/lib/friday-booking";
 import styles from "./PitchForm.module.css";
@@ -31,19 +32,6 @@ type FormState =
   | { kind: "sending" }
   | { kind: "done"; heldLabel?: string }
   | { kind: "error"; message: string; mailtoHref?: string };
-
-const textareaStyle: React.CSSProperties = {
-  width: "100%",
-  resize: "vertical",
-  background: "var(--surface)",
-  border: "1px solid var(--line)",
-  borderRadius: 10,
-  padding: "12px 16px",
-  fontFamily: "var(--sans)",
-  fontSize: 14,
-  color: "var(--ink)",
-  outline: "none",
-};
 
 function buildPitchEmail(body: PitchBody) {
   const subject = `AI Incubator Friday proposal: ${body.problem.slice(0, 72)}`;
@@ -233,18 +221,49 @@ export default function PitchForm() {
               required
               maxLength={2000}
               className={styles.textarea}
-              style={textareaStyle}
               placeholder="An idea, talk, demo, collaborator request, or problem for the group."
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="pitch-affected"
+              className={`eyebrow ${styles.label}`}
+            >
+              What do you want from the room?
+            </label>
+            <textarea
+              id="pitch-affected"
+              name="affected"
+              rows={2}
+              required
+              maxLength={1000}
+              className={styles.textarea}
+              placeholder="Feedback, collaborators, questions, or help building a first prototype."
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="pitch-first-build"
+              className={`eyebrow ${styles.label}`}
+            >
+              What should we know before we meet? (optional)
+            </label>
+            <textarea
+              id="pitch-first-build"
+              name="firstBuild"
+              rows={3}
+              maxLength={2000}
+              className={styles.textarea}
+              placeholder="What exists already, what you have tried, or anything useful to read or see."
             />
           </div>
           <fieldset className={styles.booking}>
             <legend className={`eyebrow ${styles.bookingLegend}`}>
-              Book a Friday <span>(optional)</span>
+              Choose a Friday <span>(optional)</span>
             </legend>
             <p className={styles.bookingCopy}>
-              Choose a preferred date and we&apos;ll hold it for seven days while
-              we review the proposal. The first Friday of every month is
-              reserved for the Incubator.
+              Choose an open date and an alternate. We&apos;ll hold your preferred
+              date for seven days while we review the proposal.
             </p>
             <div className={`form-two-grid ${styles.twoColumn}`}>
               <div>
@@ -296,45 +315,10 @@ export default function PitchForm() {
                 </select>
               </div>
             </div>
-            <a className={styles.calendarLink} href="/sessions">
-              See the full Friday calendar <span aria-hidden="true">-&gt;</span>
-            </a>
+            <Link className={styles.calendarLink} href="/sessions">
+              See upcoming Fridays <span aria-hidden="true">-&gt;</span>
+            </Link>
           </fieldset>
-          <div>
-            <label
-              htmlFor="pitch-affected"
-              className={`eyebrow ${styles.label}`}
-            >
-              What do you want from the room?
-            </label>
-            <textarea
-              id="pitch-affected"
-              name="affected"
-              rows={2}
-              required
-              maxLength={1000}
-              className={styles.textarea}
-              style={textareaStyle}
-              placeholder="Feedback, collaborators, questions, or help building a first prototype."
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="pitch-first-build"
-              className={`eyebrow ${styles.label}`}
-            >
-              What should we know before Friday? (optional)
-            </label>
-            <textarea
-              id="pitch-first-build"
-              name="firstBuild"
-              rows={3}
-              maxLength={2000}
-              className={styles.textarea}
-              style={textareaStyle}
-              placeholder="What exists already, what you have tried, or anything useful to read or see."
-            />
-          </div>
           <input
             type="text"
             name="website"

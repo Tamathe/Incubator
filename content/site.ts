@@ -11,6 +11,12 @@ export type ProjectStatus = "active" | "building" | "kickoff" | "paused";
 export interface Project {
   id: string;
   name: string;
+  /** The public-facing question that gives the work its human stakes. */
+  question: string;
+  /** Editorial project image shown on the public projects page. */
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
   tagline?: string;
   status: ProjectStatus;
   stage: string;
@@ -228,6 +234,11 @@ export const content: SiteContent = {
     {
       id: "ky-ahead",
       name: "KY-AHEAD",
+      question:
+        "How do we help more people get the cancer screening they are due for?",
+      image: "/media/research/ky-ahead-concept.png",
+      imageAlt:
+        "Concept visualization of a Kentucky map, screening pathways, and an outreach calendar",
       tagline: "Human-reviewed cancer-screening support",
       status: "active",
       stage: "Planning a cancer-screening workflow",
@@ -251,6 +262,11 @@ export const content: SiteContent = {
     {
       id: "dr-retinopathy-rural-ky",
       name: "Rural Diabetic Retinopathy Screening",
+      question:
+        "Could AI-supported screening help catch diabetic eye disease earlier in rural Kentucky?",
+      image: "/media/research/retinopathy-concept.png",
+      imageAlt:
+        "Concept visualization of a portable retinal camera beside a retinal image",
       tagline: "A proposed rural eye-screening pilot",
       status: "active",
       stage: "Planning a rural screening pilot",
@@ -274,6 +290,11 @@ export const content: SiteContent = {
     {
       id: "whole-blood-drone",
       name: "Whole-Blood Drone Delivery",
+      question:
+        "Can whole blood stay at the right temperature and remain intact during a drone flight?",
+      image: "/media/research/blood-drone-concept.png",
+      imageAlt:
+        "Concept visualization of a drone carrying an insulated blood transport container",
       tagline: "Cold-chain transport research for rural trauma care",
       status: "building",
       stage: "Scheduling an in-person hardware assessment",
@@ -297,6 +318,11 @@ export const content: SiteContent = {
     {
       id: "virtual-clinic",
       name: "Virtual Clinic",
+      question:
+        "How can students practice clinical conversations before they see real patients?",
+      image: "/media/research/virtual-clinic-concept.png",
+      imageAlt:
+        "Concept visualization of a microphone and simulated patient interface used for practice",
       tagline: "AI communication and reasoning practice",
       status: "building",
       stage: "Developing research prototypes",
@@ -320,6 +346,11 @@ export const content: SiteContent = {
     {
       id: "markey-hpv-pap",
       name: "HPV/Pap Patient Education",
+      question:
+        "How can we make abnormal HPV and Pap results easier to understand?",
+      image: "/media/research/hpv-pap-education-concept.png",
+      imageAlt:
+        "Concept visualization of patient education materials for HPV and Pap follow-up",
       tagline: "Plain-language follow-up support",
       status: "building",
       stage: "Drafting a patient-education prototype",
@@ -343,6 +374,11 @@ export const content: SiteContent = {
     {
       id: "hrsa-rural-learning",
       name: "AI-Guided Rural Health Learning Collaborative",
+      question:
+        "How can rural care teams practice difficult cases and learn from each other across distance?",
+      image: "/media/research/rural-learning-collaborative-concept.png",
+      imageAlt:
+        "Concept visualization of rural care teams connected for case consultation and simulation",
       tagline: "Practice and support for rural care teams",
       status: "building",
       stage: "Developing a grant proposal",
@@ -366,6 +402,11 @@ export const content: SiteContent = {
     {
       id: "ai-clinical-reasoning",
       name: "AI Assessment & Clinical Reasoning Research",
+      question:
+        "Where does generative AI help clinical reasoning, and where can it mislead?",
+      image: "/media/research/clinical-reasoning-concept.png",
+      imageAlt:
+        "Concept visualization of a clinical reasoning assessment workspace with human review",
       tagline: "Human oversight for AI-assisted assessment",
       status: "active",
       stage: "Studying how clinicians use AI",
@@ -389,6 +430,11 @@ export const content: SiteContent = {
     {
       id: "hep-c-smart-bottles",
       name: "Hep C Smart Pill Bottle Pilot",
+      question:
+        "Could smart pill-bottle signals help care teams find adherence problems sooner?",
+      image: "/media/research/hep-c-smart-bottle-concept.png",
+      imageAlt:
+        "Concept visualization of a smart pill bottle and adherence signals for care-team review",
       tagline: "A proposed smart-pill-bottle pilot",
       status: "building",
       stage: "Proposed pilot under review",

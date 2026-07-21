@@ -1,83 +1,85 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import DotGrid from "@/components/DotGrid";
+import PublicPageHero from "@/components/PublicPageHero";
 import UpcomingSessions from "@/components/UpcomingSessions";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Friday calendar · AI Incubator",
+  title: "Upcoming Fridays · AI Incubator",
   description:
-    "See upcoming AI Incubator Fridays, find an open date, and request a session.",
+    "See what the UK AI Incubator is working on and find an open Friday for something you want to bring.",
 };
-
-const RHYTHM = [
-  {
-    label: "Bring the work",
-    copy: "Pitch an idea, show a prototype, teach a method, or bring a problem that needs the room.",
-  },
-  {
-    label: "Work it together",
-    copy: "The group asks questions, tests the idea, and helps identify the next useful move.",
-  },
-  {
-    label: "Leave with a next step",
-    copy: "The session ends with a concrete action, decision, collaborator, or experiment.",
-  },
-];
 
 export default function SessionsPage() {
   return (
     <>
-      <Nav />
+      <Nav active="sessions" />
 
-      <main>
-        <header className="join-hero container">
-          <DotGrid />
-          <div style={{ position: "relative", zIndex: 2 }}>
-            <h1 className="h-display" style={{ maxWidth: "18ch" }}>
-              Fridays, <em>on the calendar.</em>
-            </h1>
-            <p className="lead" style={{ marginTop: 28, maxWidth: "62ch" }}>
-              Pick an open Friday when you submit your idea. We&apos;ll hold the
-              date for seven days while we review the proposal, then confirm it
-              by email.
-            </p>
-            <p className="small" style={{ marginTop: 16, maxWidth: "62ch" }}>
-              The first Friday of every month is reserved for the Incubator.
-            </p>
+      <main className={`community-page ${styles.page}`}>
+        <PublicPageHero
+          kicker="Fridays at noon ET · Microsoft Teams"
+          title="Upcoming Fridays."
+          description="See what the group is working on and find an open Friday for something you want to bring."
+          image={{
+            src: "/media/studio-conversation.jpg",
+            alt: "A University of Kentucky student showing a drone during an AI Incubator gathering",
+            caption: "Bring unfinished work. The room helps find the next step.",
+            position: "center 44%",
+          }}
+        >
+          <a className="studio-button studio-button-primary" href="#upcoming">
+            See upcoming Fridays <span aria-hidden="true">-&gt;</span>
+          </a>
+          <Link className="studio-text-link" href="/pitch">
+            Propose a Friday <span aria-hidden="true">-&gt;</span>
+          </Link>
+        </PublicPageHero>
+
+        <section className={`container ${styles.guide}`}>
+          <div>
+            <p className={`mono ${styles.kicker}`}>How scheduling works</p>
+            <h2>Bring the rough version.</h2>
           </div>
-        </header>
 
-        <section className="section container">
-          <h2 className="h1" style={{ maxWidth: "22ch" }}>
-            What a Friday is for.
-          </h2>
-          <div className="steps">
-            {RHYTHM.map((item) => (
-              <div className="step" key={item.label}>
-                <h3 className="h3">{item.label}</h3>
-                <p>{item.copy}</p>
-              </div>
-            ))}
+          <div className={styles.guideDetails}>
+            <div>
+              <span className="mono">Open Fridays</span>
+              <p>
+                Choose one when you propose a session. We&apos;ll hold your
+                preferred date for seven days while we review it.
+              </p>
+            </div>
+            <div>
+              <span className="mono">First Friday</span>
+              <p>
+                The first Friday of each month stays open for an
+                Incubator-led session.
+              </p>
+            </div>
           </div>
         </section>
 
-        <UpcomingSessions />
+        <div className={styles.calendar}>
+          <UpcomingSessions />
+        </div>
 
-        <section className="section container">
-          <div className="card" style={{ padding: 24 }}>
-            <span className="eyebrow">Have something for the room?</span>
-            <h2 className="h2" style={{ marginTop: 9 }}>
-              Book a Friday.
-            </h2>
-            <p className="body" style={{ marginTop: 10, maxWidth: "58ch" }}>
-              Send the rough version. Choose a preferred date and an alternate;
-              we&apos;ll follow up about the fit and format.
-            </p>
-            <Link className="btn primary" href="/pitch" style={{ marginTop: 16 }}>
-              Propose a session <span className="arrow">-&gt;</span>
+        <section className={styles.propose}>
+          <div className={`container ${styles.proposeInner}`}>
+            <div>
+              <p className={`mono ${styles.proposeKicker}`}>
+                Have something for the room?
+              </p>
+              <h2>Propose a Friday.</h2>
+              <p>
+                Send the rough version. Choose a preferred date if you have
+                one, and we&apos;ll follow up about the fit and format.
+              </p>
+            </div>
+            <Link className="studio-button studio-button-light" href="/pitch">
+              Propose a Friday <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>
         </section>

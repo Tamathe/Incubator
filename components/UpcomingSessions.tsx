@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { content } from "@/content/site";
 import {
   KIND_LABEL,
@@ -29,14 +30,14 @@ function fmtDate(iso: string) {
 
 function EmptySlot({ slot }: { slot: FridaySlot }) {
   const labels = {
-    available: { chip: "Open", title: "Topic open", className: "kind-open" },
+    available: { chip: "Open", title: "Open Friday", className: "kind-open" },
     reserved: {
-      chip: "Reserved",
-      title: "Reserved for the Incubator",
+      chip: "Incubator",
+      title: "Incubator-led session",
       className: "kind-reserved",
     },
-    held: { chip: "Held", title: "Date on hold", className: "kind-held" },
-    booked: { chip: "Booked", title: "Friday booked", className: "kind-booked" },
+    held: { chip: "Held", title: "Proposal under review", className: "kind-held" },
+    booked: { chip: "Scheduled", title: "Friday scheduled", className: "kind-booked" },
     unavailable: {
       chip: "No meeting",
       title: "No meeting this Friday",
@@ -53,14 +54,14 @@ function EmptySlot({ slot }: { slot: FridaySlot }) {
       </div>
       {slot.state === "reserved" && (
         <div className="row-blurb">
-          The first Friday of each month stays open for the Incubator&apos;s own session.
+          The first Friday of each month stays open for an Incubator-led session.
         </div>
       )}
       {slot.state === "available" && (
         <div className="row-meta">
-          <a className="row-open-cta" href="/pitch">
-            Book a Friday <span aria-hidden="true">-&gt;</span>
-          </a>
+          <Link className="row-open-cta" href="/pitch">
+            Propose a Friday <span aria-hidden="true">-&gt;</span>
+          </Link>
         </div>
       )}
     </div>
@@ -73,14 +74,14 @@ export default async function UpcomingSessions() {
   return (
     <section className="section container" id="upcoming">
       <div className="section-label">
-        <span className="idx">02</span> <span>Upcoming Fridays</span>
+        <span>Upcoming Fridays</span>
       </div>
       <div className="section-head">
         <h2 className="h1" style={{ maxWidth: "20ch" }}>
-          What&apos;s on the calendar.
+          Upcoming Fridays.
         </h2>
         <span className="small">
-          Fridays · 12:00 pm · {content.session.venue}
+          Fridays at noon ET on {content.session.venue}
         </span>
       </div>
 

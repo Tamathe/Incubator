@@ -90,6 +90,9 @@ describe("deriveOpenCalls", () => {
   const p: (id: string, status: Project["status"], open?: string) => Project = (id, status, open) => ({
     id,
     name: id,
+    question: `${id}?`,
+    image: "/test.png",
+    imageAlt: "Test image",
     status,
     stage: "",
     area: "",

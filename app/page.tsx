@@ -11,22 +11,16 @@ import { content } from "@/content/site";
 const FEATURED_STORIES = [
   {
     id: "ky-ahead",
-    question:
-      "How do we help more people get the cancer screening they are due for?",
     image: "/media/research/ky-ahead-kentucky.svg",
     imageAlt: "Accurate Kentucky silhouette for the KY-AHEAD cancer-screening project",
   },
   {
     id: "dr-retinopathy-rural-ky",
-    question:
-      "Could AI-supported screening help catch diabetic eye disease earlier in rural Kentucky?",
     image: "/media/research/retinopathy-concept.png",
     imageAlt: "Portable retinal camera beside a retinal image",
   },
   {
     id: "whole-blood-drone",
-    question:
-      "Can whole blood stay at the right temperature and remain intact during a drone flight?",
     image: "/media/research/blood-drone-concept.png",
     imageAlt: "Drone carrying an insulated container with test instrumentation",
   },
@@ -200,7 +194,7 @@ export default function HomePage() {
 
                 <div className="studio-research-copy">
                   <h3>{project.name}</h3>
-                  <p className="studio-research-question">{story.question}</p>
+                  <p className="studio-research-question">{project.question}</p>
                 </div>
               </article>
             ))}
