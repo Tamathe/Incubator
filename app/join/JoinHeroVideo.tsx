@@ -49,18 +49,22 @@ export default function JoinHeroVideo() {
         loop
         playsInline
         preload="metadata"
-        poster="/media/story/04-smiling-student.jpg"
+        poster="/media/join/chaelyn-interview-poster.jpg"
         aria-hidden="true"
         onPlay={() => setPaused(false)}
         onPause={() => setPaused(true)}
       >
-        <source src="/media/story/04-smiling-student.mp4" type="video/mp4" />
+        <source src="/media/join/chaelyn-interview.mp4" type="video/mp4" />
       </video>
       <button
         type="button"
         className={styles.videoToggle}
         onClick={togglePlayback}
-        aria-label={paused ? "Play student video" : "Pause student video"}
+        aria-label={
+          paused
+            ? "Play Chaelyn interview video"
+            : "Pause Chaelyn interview video"
+        }
         title={paused ? "Play video" : "Pause video"}
       >
         <span aria-hidden="true">{paused ? "\u25b6" : "\u2161"}</span>

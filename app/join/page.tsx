@@ -69,7 +69,8 @@ export default function JoinPage() {
               <JoinHeroVideo />
             </div>
             <figcaption>
-              Bring an idea, unfinished work, or a question worth exploring.
+              Chaelyn McGuire talks about the philanthropy outreach site she
+              built.
             </figcaption>
           </figure>
         </header>
