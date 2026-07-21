@@ -1,67 +1,109 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { nextSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
 async function loadStats() {
-  const upcomingMeeting = nextSession();
-  const [subscriberCount, latestSubscribers, unreviewedRsvps, newPitches] = await Promise.all([
-    prisma.subscriber.count({ where: { status: "active" } }),
-    prisma.subscriber.findMany({
+  const [
+    memberCount,
+    latestMembers,
+    subscriberCount,
+    unreviewedRsvps,
+    newPitches,
+  ] = await Promise.all([
+    prisma.member.count({ where: { status: "active" } }),
+    prisma.member.findMany({
       where: { status: "active" },
-      orderBy: { createdAt: "desc" },
+      orderBy: { lastConfirmedAt: "desc" },
       take: 5,
-      select: { email: true, createdAt: true, source: true },
+      select: { email: true, registeredAt: true, lastConfirmedAt: true },
     }),
-    prisma.rsvp.count({ where: { reviewed: false, meetingDate: { gte: new Date() } } }),
+    prisma.subscriber.count({ where: { status: "active" } }),
+    prisma.rsvp.count({
+      where: { reviewed: false, meetingDate: { gte: new Date() } },
+    }),
     prisma.pitch.count({ where: { status: "new" } }),
   ]);
-  return { subscriberCount, latestSubscribers, upcomingMeeting, unreviewedRsvps, newPitches };
+
+  return {
+    memberCount,
+    latestMembers,
+    subscriberCount,
+    unreviewedRsvps,
+    newPitches,
+  };
 }
 
 export default async function AdminOverview() {
-  const s = await loadStats();
+  const stats = await loadStats();
   return (
     <>
       <div className="topbar">
         <h1>Overview</h1>
-        <button type="button" title="Coming in Stage 3" disabled style={{ opacity: 0.5, cursor: "not-allowed" }}>
+        <button
+          type="button"
+          title="Coming in Stage 3"
+          disabled
+          style={{ opacity: 0.5, cursor: "not-allowed" }}
+        >
           Draft this week&apos;s digest
         </button>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
-        <Link href="/admin/subscribers" className="card" style={{ padding: 20, textDecoration: "none", color: "inherit" }}>
-          <div className="eyebrow">Subscribers</div>
-          <div style={{ fontSize: 32, fontWeight: 800, marginTop: 6 }}>{s.subscriberCount}</div>
-          <div className="small" style={{ marginTop: 6, color: "var(--ink-3)" }}>active</div>
-        </Link>
-        <Link href="/admin/rsvps" className="card" style={{ padding: 20, textDecoration: "none", color: "inherit" }}>
-          <div className="eyebrow">Unreviewed RSVPs</div>
-          <div style={{ fontSize: 32, fontWeight: 800, marginTop: 6 }}>{s.unreviewedRsvps}</div>
-          <div className="small" style={{ marginTop: 6, color: "var(--ink-3)" }}>for upcoming meetings</div>
-        </Link>
-        <Link href="/admin/pitches" className="card" style={{ padding: 20, textDecoration: "none", color: "inherit" }}>
-          <div className="eyebrow">New pitches</div>
-          <div style={{ fontSize: 32, fontWeight: 800, marginTop: 6 }}>{s.newPitches}</div>
-          <div className="small" style={{ marginTop: 6, color: "var(--ink-3)" }}>awaiting review</div>
-        </Link>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: 16,
+        }}
+      >
+        <StatCard
+          href="/admin/members"
+          label="Members"
+          count={stats.memberCount}
+          detail="active roster"
+        />
+        <StatCard
+          href="/admin/subscribers"
+          label="Friday updates"
+          count={stats.subscriberCount}
+          detail="active"
+        />
+        <StatCard
+          href="/admin/rsvps"
+          label="Unreviewed RSVPs"
+          count={stats.unreviewedRsvps}
+          detail="for upcoming meetings"
+        />
+        <StatCard
+          href="/admin/pitches"
+          label="New pitches"
+          count={stats.newPitches}
+          detail="awaiting review"
+        />
       </div>
+
       <section style={{ marginTop: 32 }}>
-        <h2 style={{ fontSize: 16, marginBottom: 12 }}>Latest subscribers</h2>
-        {s.latestSubscribers.length === 0 ? (
-          <p className="small" style={{ color: "var(--ink-3)" }}>No subscribers yet.</p>
+        <h2 style={{ fontSize: 16, marginBottom: 12 }}>Latest members</h2>
+        {stats.latestMembers.length === 0 ? (
+          <p className="small" style={{ color: "var(--ink-3)" }}>
+            No one has joined through the website yet.
+          </p>
         ) : (
           <table className="admin-table">
             <thead>
-              <tr><th>Email</th><th>Source</th><th>Signed up</th></tr>
+              <tr>
+                <th>Email</th>
+                <th>Joined</th>
+                <th>Last confirmed</th>
+              </tr>
             </thead>
             <tbody>
-              {s.latestSubscribers.map((row) => (
-                <tr key={row.email}>
-                  <td>{row.email}</td>
-                  <td>{row.source ?? "—"}</td>
-                  <td>{row.createdAt.toISOString().slice(0, 10)}</td>
+              {stats.latestMembers.map((member) => (
+                <tr key={member.email}>
+                  <td>{member.email}</td>
+                  <td>{member.registeredAt.toISOString().slice(0, 10)}</td>
+                  <td>{member.lastConfirmedAt.toISOString().slice(0, 10)}</td>
                 </tr>
               ))}
             </tbody>
@@ -69,5 +111,31 @@ export default async function AdminOverview() {
         )}
       </section>
     </>
+  );
+}
+
+function StatCard({
+  href,
+  label,
+  count,
+  detail,
+}: {
+  href: string;
+  label: string;
+  count: number;
+  detail: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="card"
+      style={{ padding: 20, textDecoration: "none", color: "inherit" }}
+    >
+      <div className="eyebrow">{label}</div>
+      <div style={{ fontSize: 32, fontWeight: 800, marginTop: 6 }}>{count}</div>
+      <div className="small" style={{ marginTop: 6, color: "var(--ink-3)" }}>
+        {detail}
+      </div>
+    </Link>
   );
 }

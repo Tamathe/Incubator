@@ -1,10 +1,31 @@
 import { describe, it, expect } from "vitest";
 import {
   subscribeSchema,
+  memberRegistrationSchema,
   rsvpSchema,
   pitchSchema,
   loginSchema,
 } from "./schemas";
+
+describe("memberRegistrationSchema", () => {
+  it("accepts and normalizes an email", () => {
+    const r = memberRegistrationSchema.parse({ email: "Tama@UKY.edu" });
+    expect(r.email).toBe("tama@uky.edu");
+  });
+
+  it("rejects malformed email", () => {
+    expect(() => memberRegistrationSchema.parse({ email: "nope" })).toThrow();
+  });
+
+  it("rejects extra fields", () => {
+    expect(() =>
+      memberRegistrationSchema.parse({
+        email: "alex@example.com",
+        name: "Alex",
+      }),
+    ).toThrow();
+  });
+});
 
 describe("subscribeSchema", () => {
   it("accepts a valid email", () => {

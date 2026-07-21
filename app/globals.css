@@ -5293,6 +5293,136 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   font-size: 17px;
 }
 
+#join-incubator {
+  scroll-margin-top: 72px;
+}
+
+.join-incubator-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.join-incubator-layout > * {
+  min-width: 0;
+}
+
+.join-incubator-kicker {
+  display: block;
+  margin-bottom: 18px;
+  color: #82b3ff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.join-incubator-action {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #353535;
+  background: #0d0d0d;
+}
+
+.join-incubator-action input[type="email"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font: 15px/1.4 var(--sans);
+}
+
+.join-incubator-action input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.join-incubator-action:focus-within {
+  border-color: #82b3ff;
+}
+
+.join-incubator-action button {
+  white-space: nowrap;
+}
+
+.join-incubator-error {
+  grid-column: 1 / -1;
+  margin: 2px 8px 4px;
+  color: #ff9b9b;
+  font-size: 13px;
+}
+
+.join-incubator-error a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.join-incubator-note {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 13px;
+}
+
+.join-incubator-success {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 76px;
+  padding: 18px 20px;
+  border: 1px solid rgba(130, 179, 255, 0.55);
+  background: rgba(130, 179, 255, 0.08);
+}
+
+.join-incubator-success > span {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: #82b3ff;
+  color: #080808;
+  font-weight: 800;
+}
+
+.join-incubator-success strong {
+  display: block;
+  font-size: 18px;
+}
+
+.join-incubator-success p {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+}
+
+.join-friday-layout {
+  max-width: 760px;
+}
+
+.form-honeypot {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .community-page .friday-flow {
   border-color: #2b2b2b;
   background: #2b2b2b;
@@ -5420,6 +5550,20 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   .community-hero-actions .studio-text-link {
     justify-content: center;
     text-align: center;
+  }
+
+  .join-incubator-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .join-incubator-action {
+    grid-template-columns: 1fr;
+  }
+
+  .join-incubator-action button {
+    justify-content: center;
+    width: 100%;
   }
 
   .community-reassurance {

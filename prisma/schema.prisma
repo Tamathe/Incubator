@@ -8,6 +8,25 @@ datasource db {
   provider = "postgresql"
 }
 
+model Member {
+  id                String        @id @default(cuid())
+  email             String        @unique
+  status            MemberStatus  @default(active)
+  registeredAt      DateTime      @default(now())
+  lastConfirmedAt   DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  ipAddress         String?
+  userAgent         String?
+
+  @@index([status, lastConfirmedAt])
+  @@index([registeredAt])
+}
+
+enum MemberStatus {
+  active
+  inactive
+}
+
 model Subscriber {
   id              String              @id @default(cuid())
   email           String              @unique

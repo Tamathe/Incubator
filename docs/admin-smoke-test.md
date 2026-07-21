@@ -7,8 +7,8 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
 - [ ] Visit `/` — page loads, no console errors.
 - [ ] Footer subscribe form: enter a fresh email, click Subscribe → "Sent ✓".
 - [ ] Visit `/join`:
-  - [ ] Path 02 CTA "Submit a pitch" scrolls to the pitch section.
-  - [ ] RSVP form: fill in name, email, pick a chip, check "Add me to the listserv" → "Confirmed ✓".
+  - [ ] Enter a fresh email in "Join the Incubator" → "You're in."
+  - [ ] The email creates one active `Member` and one active `Subscriber`; repeat submission updates the same rows.
   - [ ] Pitch form: fill in name, email, problem/affected/firstBuild → "Submitted ✓".
 
 ## Admin auth
@@ -22,10 +22,15 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
 ## Admin dashboards
 
 - [ ] Overview shows correct counts:
+  - Members count matches the active member roster.
   - Subscribers count matches DB.
   - Unreviewed RSVPs count matches DB.
   - New pitches count matches DB.
-  - Latest subscribers table shows the email submitted above.
+  - Latest members table shows the email submitted above.
+- [ ] `/admin/members`:
+  - [ ] Table shows members ordered by latest confirmation.
+  - [ ] "Mark inactive" removes a member from the active count; "Reactivate" restores it.
+  - [ ] "Export CSV" downloads a valid CSV with all roster columns.
 - [ ] `/admin/subscribers`:
   - [ ] Table shows all subscribers ordered newest-first.
   - [ ] "Add subscriber" form adds a row.
@@ -45,6 +50,9 @@ Manual checklist for verifying Stage 1 after deploy. ~10 minutes.
 
 ## Spam guards
 
+- [ ] POST `/api/members/register` with `{ email, website: "spam" }` → 204, no DB row.
+- [ ] POST `/api/members/register` with garbage email → 400.
+- [ ] POST `/api/members/register` six times within 10 minutes from the same IP → 6th returns 429.
 - [ ] Open browser devtools, manually POST to `/api/subscribe` with `{ email, website: "spam" }` → 204, no DB row.
 - [ ] POST `/api/subscribe` with garbage email → 400.
 - [ ] POST `/api/subscribe` six times within 10 minutes from the same IP → 6th returns 429.

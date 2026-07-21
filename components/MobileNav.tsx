@@ -43,7 +43,7 @@ export default function MobileNav({
           <small>(page in development)</small>
         </Link>
         <Link href="/join" className="nav-mobile-cta" onClick={closeMenu}>
-          Join us <span aria-hidden="true">-&gt;</span>
+          Join the Incubator <span aria-hidden="true">-&gt;</span>
         </Link>
       </div>
     </details>

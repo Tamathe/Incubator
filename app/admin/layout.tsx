@@ -27,6 +27,7 @@ export default function AdminLayout({ children }: Props) {
       <aside>
         <div className="brand">AI Incubator</div>
         <Link href="/admin">Overview</Link>
+        <Link href="/admin/members">Members</Link>
         <Link href="/admin/subscribers">Subscribers</Link>
         <Link href="/admin/rsvps">RSVPs</Link>
         <Link href="/admin/pitches">Pitches</Link>

@@ -40,11 +40,8 @@ export default function CTABanner() {
             <a href={session.teamsUrl} className="btn primary lg">
               Join this Friday <span className="arrow">{"->"}</span>
             </a>
-            <a
-              href="mailto:incubator@uky.edu?subject=AI%20Incubator%20mailing%20list"
-              className="btn lg btn-cta-secondary"
-            >
-              Email us to join
+            <a href="/join" className="btn lg btn-cta-secondary">
+              Join the Incubator
             </a>
           </div>
         </div>

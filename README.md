@@ -11,7 +11,7 @@ Friday meeting, recent activity, and how to get involved.
 - **Next.js 15** App Router with React 19, TypeScript strict mode
 - **Dynamic deployment** on Vercel (formerly static export)
 - **Neon Postgres** via Prisma 7 + PrismaPg adapter
-- **`/admin` dashboard** (password-protected) for subscribers, RSVPs, pitches
+- **`/admin` dashboard** (password-protected) for members, subscribers, RSVPs, pitches
 - **No CMS yet.** Site content still in `content/site.ts` (Stage 2 will migrate this)
 
 The original HTML/CSS/JS design prototype lives in [`reference/`](reference/)
@@ -108,7 +108,7 @@ AI INcubator/
 │   ├── globals.css         # all styling (copied from reference/site/styles.css)
 │   ├── page.tsx            # /  (homepage)
 │   ├── projects/page.tsx   # /projects (filterable)
-│   └── join/page.tsx       # /join
+│   └── join/page.tsx       # /join, including one-email member signup
 ├── components/
 │   ├── Nav.tsx             # sticky nav
 │   ├── Footer.tsx          # 4-col footer + listserv form
@@ -122,8 +122,9 @@ AI INcubator/
 │   ├── LogList.tsx
 │   ├── CTABanner.tsx
 │   ├── ProjectsFilteredList.tsx  # client-side status/area filtering
-│   ├── RsvpForm.tsx        # join page form (client)
-│   └── SubscribeForm.tsx   # listserv form (client)
+│   ├── JoinIncubator.tsx   # one-email member signup (client)
+│   ├── RsvpForm.tsx        # retained meeting-RSVP component (client)
+│   └── SubscribeForm.tsx   # Friday-updates form (client)
 ├── content/
 │   └── site.ts             # ⬅ canonical edit surface
 ├── lib/
@@ -152,9 +153,11 @@ These are real gaps. None blocks deploy.
 
 1. **`session.teamsUrl` is a placeholder** (`#teams-link`). Replace in
    `content/site.ts` with the real Microsoft Teams join URL.
-2. **Subscribe + RSVP forms are wired** in Stage 1. Submissions land in
-   Neon Postgres and surface in the password-protected `/admin` dashboard
-   (overview, subscribers, RSVPs, pitches with CSV export and status flow).
+2. **Member signup, subscribe, RSVP, and pitch intake are wired.** Member
+   signup is intentionally one email field. It creates the active roster and
+   adds the member to Friday updates. Submissions land in Neon Postgres and
+   surface in the password-protected `/admin` dashboard, with CSV export and
+   status controls.
 3. **No CMS / agent integration yet.** Stage 2 will migrate `content/site.ts`
    into the database and build a GitHub Action that:
    a) accepts the Friday transcript (file upload or webhook),

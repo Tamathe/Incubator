@@ -23,7 +23,7 @@ export default function Footer() {
               <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/#fridays">Fridays</Link></li>
               <li><Link href="/#student-work">Student work</Link></li>
-              <li><Link href="/join">Join us</Link></li>
+              <li><Link href="/join">Join the Incubator</Link></li>
             </ul>
           </div>
           <div>

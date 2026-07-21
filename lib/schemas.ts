@@ -17,6 +17,12 @@ export const subscribeSchema = z
   })
   .strict();
 
+export const memberRegistrationSchema = z
+  .object({
+    email: emailField,
+  })
+  .strict();
+
 export const rsvpSchema = z
   .object({
     name: shortText(200),
@@ -46,6 +52,9 @@ export const loginSchema = z
   .strict();
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>;
+export type MemberRegistrationInput = z.infer<
+  typeof memberRegistrationSchema
+>;
 export type RsvpInput = z.infer<typeof rsvpSchema>;
 export type PitchInput = z.infer<typeof pitchSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;

@@ -1,14 +1,14 @@
 import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import RsvpForm from "@/components/RsvpForm";
+import JoinIncubator from "@/components/JoinIncubator";
 import PitchForm from "@/components/PitchForm";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Come Friday or pitch a session · AI Incubator",
+  title: "Join the AI Incubator",
   description:
-    "Come to a UK AI Incubator Friday meeting, or propose a talk, demo, collaborator request, or working session.",
+    "Join the University of Kentucky AI Incubator, come to a Friday meeting, or propose a session.",
 };
 
 const FRIDAY_FLOW = [
@@ -48,7 +48,7 @@ const FAQ = [
   },
   {
     q: "What if I cannot make Fridays at noon?",
-    a: "Email the group or join the update list in the footer.",
+    a: "Join anyway. We also share projects, collaborator requests, and other ways to participate by email.",
   },
 ];
 
@@ -82,22 +82,46 @@ export default function JoinPage() {
 
       <main className="community-page">
         <header className="community-hero container">
-          <h1>Come Friday.</h1>
+          <h1>Join the Incubator.</h1>
 
           <p className="lead">
-            Join us on Microsoft Teams at noon. No experience, project, or
-            weekly commitment required.
+            We meet Fridays at noon on Microsoft Teams to share work, learn
+            from each other, and help move projects forward. Students, faculty,
+            staff, researchers, and community partners are all welcome.
           </p>
 
           <div className="community-hero-actions">
-            <a className="studio-button studio-button-primary" href="#rsvp">
-              RSVP <span aria-hidden="true">-&gt;</span>
+            <a
+              className="studio-button studio-button-primary"
+              href="#join-incubator"
+            >
+              Join the Incubator <span aria-hidden="true">-&gt;</span>
             </a>
-            <a className="studio-text-link" href="#pitch">
-              Pitch a Friday <span aria-hidden="true">-&gt;</span>
+            <a className="studio-text-link" href="#what-happens">
+              What happens Friday <span aria-hidden="true">-&gt;</span>
             </a>
           </div>
         </header>
+
+        <section className="section container" id="join-incubator">
+          <div className="join-incubator-layout">
+            <div>
+              <span className="mono join-incubator-kicker">Open to everyone</span>
+              <h2 className="h1">One email. You&apos;re in.</h2>
+              <p className="body community-section-copy">
+                Come to learn, share something you&apos;re building, find
+                collaborators, or just listen. No AI experience, project, or
+                weekly commitment required.
+              </p>
+            </div>
+            <div>
+              <JoinIncubator />
+              <p className="join-incubator-note">
+                We&apos;ll send Friday details and occasional ways to get involved.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="section container" id="what-happens">
           <h2 className="h1">What happens on Friday.</h2>
@@ -113,12 +137,14 @@ export default function JoinPage() {
           </div>
         </section>
 
-        <section className="section container" id="rsvp">
-          <div className="join-section-grid">
+        <section className="section container">
+          <div className="join-friday-layout">
             <div>
-              <h2 className="h1">RSVP.</h2>
+              <span className="mono join-incubator-kicker">This Friday</span>
+              <h2 className="h1">Come as you are.</h2>
               <p className="body community-section-copy">
-                We will send the Teams link and a reminder.
+                Drop in when the agenda or a project interests you. Listening
+                is participation too.
               </p>
 
               <div className="community-agenda">
@@ -128,8 +154,6 @@ export default function JoinPage() {
                 ))}
               </div>
             </div>
-
-            <RsvpForm />
           </div>
         </section>
 

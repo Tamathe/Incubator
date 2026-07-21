@@ -42,7 +42,7 @@ export default function Nav({ active, tone = "default" }: NavProps) {
             href="/join"
             className={`btn primary sm ${active === "join" ? "active" : ""}`}
           >
-            Join us <span className="arrow">-&gt;</span>
+            Join the Incubator <span className="arrow">-&gt;</span>
           </Link>
         </div>
 

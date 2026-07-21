@@ -218,11 +218,11 @@ export default function HomePage() {
           side="left"
           tone="final"
           variant="anchor"
-          title="Join us"
-          body="We meet Fridays at noon on Microsoft Teams. No experience or preparation required."
+          title="Join the Incubator"
+          body="We meet Fridays at noon on Microsoft Teams. Students, faculty, staff, researchers, and community partners are all welcome."
           video="/media/story/01-student-presenter.mp4"
           poster="/media/story/01-student-presenter.jpg"
-          primaryLink={{ href: "/join", label: "Join us" }}
+          primaryLink={{ href: "/join", label: "Join the Incubator" }}
         />
       </main>
 
