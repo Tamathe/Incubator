@@ -1,5 +1,10 @@
 -- CreateEnum
-CREATE TYPE "FridayBookingStatus" AS ENUM ('requested', 'confirmed', 'completed', 'cancelled', 'expired');
+DO $$
+BEGIN
+    CREATE TYPE "FridayBookingStatus" AS ENUM ('requested', 'confirmed', 'completed', 'cancelled', 'expired');
+EXCEPTION
+    WHEN duplicate_object THEN NULL;
+END $$;
 
 -- AlterTable
 ALTER TABLE "Pitch"

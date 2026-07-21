@@ -82,19 +82,19 @@ Dynamic Next.js on Vercel.
 | Var | Value |
 |---|---|
 | `DATABASE_URL` | Neon **pooled** connection string |
-| `DIRECT_URL` | Neon **direct** connection string (used by migrations) |
+| `DATABASE_URL_UNPOOLED` | Neon **direct** connection string used by migrations (`DIRECT_URL` is also supported) |
 | `JWT_SECRET` | 32+ random chars; `openssl rand -hex 32` |
 | `ADMIN_PASSWORD_HASH` | bcrypt hash from `node scripts/hash-password.mjs` |
 
 ### One-time setup
 
-1. Provision a Neon project; copy both connection strings.
-2. Locally: `cp prisma/.env.example .env.local`, fill in the values.
+1. Connect a Neon resource to the project through the Vercel Marketplace.
+2. Pull the environment locally with `vercel env pull .env.local`.
 3. Run the initial migration: `npx prisma migrate deploy` (or `npm run db:deploy`).
 4. Generate the client: `npm run db:generate`.
 5. Generate an admin password hash: `node scripts/hash-password.mjs`.
-6. Paste all four vars into Vercel's project Environment Variables.
-7. Push to `master` — Vercel deploys.
+6. Add `JWT_SECRET` and `ADMIN_PASSWORD_HASH` to Vercel's project Environment Variables.
+7. Push to `main`; Vercel deploys.
 
 ### Smoke test
 
