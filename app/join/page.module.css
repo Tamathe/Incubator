@@ -78,7 +78,7 @@
 
 .heroImage {
   position: relative;
-  min-height: clamp(430px, 58vw, 680px);
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #121212;
 }
@@ -231,7 +231,7 @@
   position: absolute;
   left: 0;
   color: #82b3ff;
-  content: "\\2192";
+  content: "\2192";
 }
 
 .bringSection {
@@ -323,7 +323,7 @@
   }
 
   .heroImage {
-    min-height: min(108vw, 520px);
+    aspect-ratio: 16 / 10;
   }
 
   .fridaySection {
