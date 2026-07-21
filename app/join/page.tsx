@@ -61,10 +61,6 @@ export default function JoinPage() {
 
             <div className={styles.joinBlock} id="join-incubator">
               <JoinIncubator />
-              <p className={styles.joinNote}>
-                We&apos;ll send the Teams link, Friday details, and occasional
-                ways to get involved.
-              </p>
             </div>
           </div>
 
