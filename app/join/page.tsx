@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { content } from "@/content/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import JoinIncubator from "@/components/JoinIncubator";
+import JoinHeroVideo from "./JoinHeroVideo";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -74,13 +74,7 @@ export default function JoinPage() {
 
           <figure className={styles.heroFigure}>
             <div className={styles.heroImage}>
-              <Image
-                src="/media/studio-collaboration.jpg"
-                alt="Three University of Kentucky students talking around a table with their laptops"
-                fill
-                priority
-                sizes="(max-width: 860px) 100vw, 44vw"
-              />
+              <JoinHeroVideo />
             </div>
             <figcaption>
               Bring an idea, unfinished work, or a question worth exploring.
