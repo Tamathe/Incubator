@@ -8,6 +8,9 @@ const nextConfig = {
       { source: "/outcomes", destination: "/projects", permanent: true },
       { source: "/open-problems", destination: "/projects", permanent: true },
       { source: "/changelog", destination: "/projects", permanent: true },
+      { source: "/join", destination: "/fridays#join", permanent: true },
+      { source: "/sessions", destination: "/fridays#schedule", permanent: true },
+      { source: "/pitch", destination: "/fridays#propose", permanent: true },
     ];
   },
 };

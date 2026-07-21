@@ -59,7 +59,7 @@ function EmptySlot({ slot }: { slot: FridaySlot }) {
       )}
       {slot.state === "available" && (
         <div className="row-meta">
-          <Link className="row-open-cta" href="/pitch">
+          <Link className="row-open-cta" href="/fridays#propose">
             Propose a Friday <span aria-hidden="true">-&gt;</span>
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default async function UpcomingSessions() {
   const slots = await loadFridaySlots(new Date(), HORIZON);
 
   return (
-    <section className="section container" id="upcoming">
+    <section className="section container" id="schedule">
       <div className="section-label">
         <span>Upcoming Fridays</span>
       </div>

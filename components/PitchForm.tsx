@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import type { FridaySlot } from "@/lib/friday-booking";
+import FridayCalendarPicker from "./FridayCalendarPicker";
 import styles from "./PitchForm.module.css";
 
 const ROLES = [
@@ -145,8 +146,6 @@ export default function PitchForm() {
 
   const submitted = state.kind === "done";
   const sending = state.kind === "sending";
-  const availableSlots = slots.filter((slot) => slot.state === "available");
-
   return (
     <div className={`card ${styles.card}`}>
       <form onSubmit={handleSubmit}>
@@ -262,62 +261,25 @@ export default function PitchForm() {
               Choose a Friday <span>(optional)</span>
             </legend>
             <p className={styles.bookingCopy}>
-              Choose an open date and an alternate. We&apos;ll hold your preferred
-              date for seven days while we review the proposal.
+              Choose an open Friday. After you select it, you can add an
+              alternate. We&apos;ll hold your preferred date for seven days while
+              we review the proposal.
             </p>
-            <div className={`form-two-grid ${styles.twoColumn}`}>
-              <div>
-                <label htmlFor="pitch-preferred-friday" className={styles.dateLabel}>
-                  Preferred Friday
-                </label>
-                <select
-                  id="pitch-preferred-friday"
-                  name="preferredFriday"
-                  value={preferredFriday}
-                  onChange={(event) => {
-                    const value = event.target.value;
-                    setPreferredFriday(value);
-                    if (value === alternateFriday) setAlternateFriday("");
-                  }}
-                  className={styles.dateSelect}
-                  disabled={slotsLoading}
-                >
-                  <option value="">
-                    {slotsLoading ? "Loading dates..." : "No date yet"}
-                  </option>
-                  {availableSlots.map((slot) => (
-                    <option value={slot.date} key={slot.date}>
-                      {slot.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="pitch-alternate-friday" className={styles.dateLabel}>
-                  Alternate Friday
-                </label>
-                <select
-                  id="pitch-alternate-friday"
-                  name="alternateFriday"
-                  value={alternateFriday}
-                  onChange={(event) => setAlternateFriday(event.target.value)}
-                  className={styles.dateSelect}
-                  disabled={slotsLoading || !preferredFriday}
-                >
-                  <option value="">No alternate</option>
-                  {availableSlots
-                    .filter((slot) => slot.date !== preferredFriday)
-                    .map((slot) => (
-                      <option value={slot.date} key={slot.date}>
-                        {slot.label}
-                      </option>
-                    ))}
-                </select>
-              </div>
+            <FridayCalendarPicker
+              slots={slots}
+              loading={slotsLoading}
+              preferredFriday={preferredFriday}
+              alternateFriday={alternateFriday}
+              onPreferredChange={setPreferredFriday}
+              onAlternateChange={setAlternateFriday}
+              onRetry={refreshSlots}
+            />
+            <div className={styles.bookingFooter}>
+              <span>No date in mind? Leave the calendar blank.</span>
+              <Link className={styles.calendarLink} href="/fridays#schedule">
+                See the full Friday schedule <span aria-hidden="true">-&gt;</span>
+              </Link>
             </div>
-            <Link className={styles.calendarLink} href="/sessions">
-              See upcoming Fridays <span aria-hidden="true">-&gt;</span>
-            </Link>
           </fieldset>
           <input
             type="text"

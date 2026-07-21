@@ -2,7 +2,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 
-type NavKey = "overview" | "sessions" | "projects" | "join";
+type NavKey = "overview" | "fridays" | "projects";
 
 interface NavProps {
   active?: NavKey;
@@ -11,6 +11,7 @@ interface NavProps {
 
 export default function Nav({ active, tone = "default" }: NavProps) {
   const cls = (key: NavKey) => (active === key ? "active" : undefined);
+  const workClass = active === "overview" || active === "projects" ? "active" : undefined;
 
   return (
     <nav className={`nav ${tone === "overlay" ? "nav-overlay" : ""}`}>
@@ -24,12 +25,11 @@ export default function Nav({ active, tone = "default" }: NavProps) {
         </Link>
 
         <div className="nav-links">
-          <Link href="/sessions" className={cls("sessions")}>Fridays</Link>
-          <Link href="/projects" className={cls("projects")}>Projects</Link>
-          <Link href="/#student-work">Student work</Link>
+          <Link href="/#work" className={workClass}>Work</Link>
+          <Link href="/fridays" className={cls("fridays")}>Fridays</Link>
           <Link
-            href="/join"
-            className={`btn primary sm ${active === "join" ? "active" : ""}`}
+            href="/fridays#join"
+            className="btn primary sm"
           >
             Join the Incubator <span className="arrow">-&gt;</span>
           </Link>

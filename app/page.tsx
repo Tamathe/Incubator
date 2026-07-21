@@ -146,7 +146,7 @@ export default function HomePage() {
             video="/media/story/10-andrew-peng-drone-demo.mp4"
             poster="/media/story/10-andrew-peng-drone-demo.jpg"
             primaryLink={{
-              href: "/pitch",
+              href: "/fridays#propose",
               label: "Bring your work to the group",
             }}
           />
@@ -216,7 +216,7 @@ export default function HomePage() {
           body="We meet Fridays at noon on Microsoft Teams. Students, faculty, staff, researchers, and community partners are all welcome."
           video="/media/story/01-student-presenter.mp4"
           poster="/media/story/01-student-presenter.jpg"
-          primaryLink={{ href: "/join", label: "Join the Incubator" }}
+          primaryLink={{ href: "/fridays#join", label: "Join the Incubator" }}
         />
       </main>
 

@@ -31,7 +31,7 @@ export default function ProjectsPage() {
           <a className="studio-button studio-button-primary" href="#project-list">
             See the projects <span aria-hidden="true">-&gt;</span>
           </a>
-          <Link className="studio-text-link" href="/join">
+          <Link className="studio-text-link" href="/fridays#join">
             Join the Incubator <span aria-hidden="true">-&gt;</span>
           </Link>
         </PublicPageHero>
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                 the project does not have yet.
               </p>
             </div>
-            <Link className="studio-button studio-button-primary" href="/join">
+            <Link className="studio-button studio-button-primary" href="/fridays#join">
               Join the Incubator <span aria-hidden="true">-&gt;</span>
             </Link>
           </div>

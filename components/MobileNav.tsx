@@ -6,7 +6,7 @@ import { useRef, type KeyboardEvent } from "react";
 export default function MobileNav({
   active,
 }: {
-  active?: "overview" | "sessions" | "projects" | "join";
+  active?: "overview" | "fridays" | "projects";
 }) {
   const menuRef = useRef<HTMLDetailsElement>(null);
 
@@ -25,23 +25,24 @@ export default function MobileNav({
       <summary aria-label="Open site navigation">Menu</summary>
       <div className="nav-mobile-panel">
         <Link
-          href="/sessions"
-          className={active === "sessions" ? "active" : undefined}
+          href="/#work"
+          className={
+            active === "overview" || active === "projects" ? "active" : undefined
+          }
+          onClick={closeMenu}
+        >
+          Work
+        </Link>
+        <Link
+          href="/fridays"
+          className={active === "fridays" ? "active" : undefined}
           onClick={closeMenu}
         >
           Fridays
         </Link>
         <Link
-          href="/projects"
-          className={active === "projects" ? "active" : undefined}
-          onClick={closeMenu}
-        >
-          Projects
-        </Link>
-        <Link href="/#student-work" onClick={closeMenu}>Student work</Link>
-        <Link
-          href="/join"
-          className={`nav-mobile-cta${active === "join" ? " active" : ""}`}
+          href="/fridays#join"
+          className="nav-mobile-cta"
           onClick={closeMenu}
         >
           Join the Incubator <span aria-hidden="true">-&gt;</span>

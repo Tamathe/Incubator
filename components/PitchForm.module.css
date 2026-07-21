@@ -58,11 +58,11 @@
 
 .booking {
   display: grid;
-  gap: 14px;
+  gap: 17px;
   margin: 2px 0;
-  padding: 22px;
-  border: 1px solid #333333;
-  border-radius: 0;
+  padding: clamp(18px, 3vw, 26px);
+  border: 1px solid #2f2f2f;
+  border-radius: 18px;
   background: #0a0a0a;
 }
 
@@ -87,33 +87,14 @@
   line-height: 1.55;
 }
 
-.dateLabel {
-  display: block;
-  margin-bottom: 7px;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 12px;
-}
-
-.dateSelect {
-  width: 100%;
-  min-height: 44px;
-  padding: 0 12px;
-  border: 1px solid #333333;
-  border-radius: 2px;
-  background: #111111;
-  color: #ffffff;
-  font-family: var(--sans);
-  font-size: 13px;
-}
-
-.dateSelect:focus {
-  border-color: #82b3ff;
-  outline: 2px solid transparent;
-}
-
-.dateSelect:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
+.bookingFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 620px);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
 }
 
 .calendarLink {
@@ -151,5 +132,11 @@
   .submitRow button {
     justify-content: center;
     width: 100%;
+  }
+
+  .bookingFooter {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 }
