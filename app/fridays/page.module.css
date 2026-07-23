@@ -167,16 +167,6 @@
   color: #ffffff;
 }
 
-.guide {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
-  gap: clamp(48px, 8vw, 120px);
-  padding-top: clamp(78px, 9vw, 126px);
-  padding-bottom: clamp(78px, 9vw, 126px);
-  border-bottom: 1px solid #252525;
-}
-
-.guide h2,
 .proposeIntro h2 {
   margin: 0;
   color: #ffffff;
@@ -187,11 +177,6 @@
   text-wrap: balance;
 }
 
-.guide h2 {
-  max-width: 12ch;
-}
-
-.guideLead,
 .proposeIntro > p {
   max-width: 48ch;
   margin: 22px 0 0;
@@ -200,36 +185,9 @@
   line-height: 1.65;
 }
 
-.guideDetails {
-  border-top: 1px solid #303030;
-}
-
-.guideDetails > div {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 24px;
-  padding: 22px 0;
-  border-bottom: 1px solid #303030;
-}
-
-.guideDetails span {
-  padding-top: 3px;
-  color: #82b3ff;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.guideDetails p {
-  max-width: 50ch;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
 .calendar :global(.section) {
-  border-top: 0;
-  border-bottom: 1px solid #252525;
+  border-top: 1px solid #252525;
+  border-bottom: 0;
 }
 
 .calendar :global(#schedule) {
@@ -336,10 +294,6 @@
     grid-row: 5;
     margin-top: 0;
   }
-
-  .guide {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 560px) {
@@ -349,11 +303,6 @@
     gap: 10px;
     padding-top: 16px;
     padding-bottom: 16px;
-  }
-
-  .guideDetails > div {
-    grid-template-columns: 1fr;
-    gap: 10px;
   }
 }
 

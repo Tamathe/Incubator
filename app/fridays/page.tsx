@@ -58,43 +58,11 @@ export default function FridaysPage() {
             <span className={styles.jumpLabel}>On this page</span>
             <div>
               <a href="#join">Join</a>
-              <a href="#schedule">Schedule</a>
               <a href="#propose">Propose something</a>
+              <a href="#schedule">Schedule</a>
             </div>
           </div>
         </nav>
-
-        <section className={`container ${styles.guide}`} aria-labelledby="guide-title">
-          <div>
-            <p className={`mono ${styles.kicker}`}>How Fridays work</p>
-            <h2 id="guide-title">Bring the rough version.</h2>
-            <p className={styles.guideLead}>
-              No previous experience is required. Turn your camera on to join
-              the conversation, or leave it off in second-screen mode.
-            </p>
-          </div>
-
-          <div className={styles.guideDetails}>
-            <div>
-              <span className="mono">Open Fridays</span>
-              <p>
-                Choose one when you propose something. We will hold your
-                preferred date for seven days while we review it.
-              </p>
-            </div>
-            <div>
-              <span className="mono">First Friday</span>
-              <p>
-                The first Friday of each month stays open for an
-                Incubator-led session.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div className={styles.calendar}>
-          <UpcomingSessions />
-        </div>
 
         <section
           className={`container ${styles.proposeSection}`}
@@ -130,6 +98,10 @@ export default function FridaysPage() {
 
           <PitchForm />
         </section>
+
+        <div className={styles.calendar}>
+          <UpcomingSessions />
+        </div>
       </main>
 
       <Footer />
