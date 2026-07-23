@@ -26,20 +26,6 @@ export default function Footer() {
               <li><Link href="/fridays#propose">Propose something</Link></li>
             </ul>
           </div>
-          <div>
-            <h4>Connect</h4>
-            <ul>
-              <li>
-                <a
-                  href="https://tamathe.com/incubator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  About Tama Thé, founder -&gt;
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
         <div className="foot-bottom">
           <span>

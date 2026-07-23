@@ -4113,7 +4113,7 @@ footer {
   padding-top: 64px;
 }
 .foot-grid {
-  grid-template-columns: minmax(280px, 1.8fr) repeat(2, minmax(150px, 0.75fr));
+  grid-template-columns: minmax(280px, 1.8fr) minmax(150px, 0.75fr);
   gap: 36px;
   margin-bottom: 40px;
 }
@@ -4140,7 +4140,7 @@ footer {
   .outcome-row { grid-template-columns: 78px 72px minmax(0, 1fr); }
   .outcome-proj,
   .outcome-value { grid-column: 3; justify-self: start; }
-  .foot-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .foot-grid { grid-template-columns: 1.5fr 1fr; }
 }
 
 @media (max-width: 700px) {
