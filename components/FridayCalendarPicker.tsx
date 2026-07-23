@@ -119,14 +119,14 @@ export default function FridayCalendarPicker({
 
   if (loading) {
     return (
-      <div className={styles.loading} role="status" aria-label="Loading Friday availability">
+      <div className={styles.loading} role="status" aria-label="Loading availability">
         <div className={styles.loadingHeader} />
         <div className={styles.loadingGrid} aria-hidden="true">
           {Array.from({ length: 42 }, (_, index) => (
             <span key={index} />
           ))}
         </div>
-        <span className={styles.loadingText}>Finding open Fridays...</span>
+        <span className={styles.loadingText}>Finding open dates...</span>
       </div>
     );
   }
@@ -135,7 +135,7 @@ export default function FridayCalendarPicker({
     return (
       <div className={styles.unavailable} role="status">
         <div>
-          <strong>Friday availability is temporarily unavailable.</strong>
+          <strong>Availability is temporarily unavailable.</strong>
           <span>You can retry or send the proposal without choosing a date.</span>
         </div>
         <button type="button" onClick={onRetry}>Try again</button>
@@ -152,7 +152,7 @@ export default function FridayCalendarPicker({
       <input type="hidden" name="preferredFriday" value={preferredFriday} />
       <input type="hidden" name="alternateFriday" value={alternateFriday} />
 
-      <div className={styles.selectionRail} role="group" aria-label="Friday date preference">
+      <div className={styles.selectionRail} role="group" aria-label="Date preference">
         <button
           type="button"
           className={`${styles.selection} ${target === "preferred" ? styles.selectionActive : ""}`}
@@ -183,7 +183,7 @@ export default function FridayCalendarPicker({
       <div className={styles.calendar}>
         <div className={styles.monthHeader}>
           <div>
-            <span className={styles.monthKicker}>Friday availability</span>
+            <span className={styles.monthKicker}>Available dates</span>
             <strong aria-live="polite">{monthLabel(currentMonth)}</strong>
           </div>
           <div className={styles.monthControls}>
@@ -277,9 +277,9 @@ export default function FridayCalendarPicker({
       <p className={styles.guidance} aria-live="polite">
         {choosingAlternate
           ? alternateFriday
-            ? "Alternate selected. Choose another Friday to change it."
+            ? "Alternate selected. Choose another date to change it."
             : "Preferred date selected. Add an alternate, or continue without one."
-          : "Choose your preferred open Friday."}
+          : "Choose your preferred open date."}
       </p>
     </div>
   );

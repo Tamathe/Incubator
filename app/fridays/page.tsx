@@ -36,7 +36,7 @@ export default function FridaysPage() {
             </p>
 
             <div className={styles.joinBlock} id="join">
-              <p className={styles.joinLabel}>Get the Friday link and schedule</p>
+              <p className={styles.joinLabel}>Get the link and schedule</p>
               <JoinIncubator />
             </div>
           </div>
@@ -61,27 +61,9 @@ export default function FridaysPage() {
             <p className={`mono ${styles.kicker}`}>Bring something to the room</p>
             <h2 id="propose-title">Have something we can work through with you?</h2>
             <p>
-              Bring an idea, demonstration, collaborator request, or problem.
-              Tell us what you want from the group and choose a Friday if you
-              have one in mind. No polished deck required.
+              Tell us what you want from the group. Choose a date if you have one
+              in mind. No polished deck required.
             </p>
-
-            <div className={styles.nextSteps}>
-              <p className={`mono ${styles.kicker}`}>After you send it</p>
-              <ol>
-                <li>
-                  <span className="mono">01</span>
-                  <p>
-                    We review what you sent. If you chose a Friday, we hold it
-                    for seven days.
-                  </p>
-                </li>
-                <li>
-                  <span className="mono">02</span>
-                  <p>We follow up by email about the date, fit, and format.</p>
-                </li>
-              </ol>
-            </div>
           </div>
 
           <PitchForm />

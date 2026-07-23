@@ -114,7 +114,7 @@ export default function PitchForm() {
         setState({
           kind: "error",
           message:
-            payload.error ?? "That Friday is no longer available. Choose another date.",
+            payload.error ?? "That date is no longer available. Choose another.",
         });
         setPreferredFriday("");
         setAlternateFriday("");
@@ -258,12 +258,11 @@ export default function PitchForm() {
           </div>
           <fieldset className={styles.booking}>
             <legend className={`eyebrow ${styles.bookingLegend}`}>
-              Choose a Friday <span>(optional)</span>
+              Choose a date <span>(optional)</span>
             </legend>
             <p className={styles.bookingCopy}>
-              Choose an open Friday. After you select it, you can add an
-              alternate. We&apos;ll hold your preferred date for seven days while
-              we review the proposal.
+              Choose an open date and add an alternate if you want one. We&apos;ll
+              hold your preferred date for seven days while we review.
             </p>
             <FridayCalendarPicker
               slots={slots}
@@ -277,7 +276,7 @@ export default function PitchForm() {
             <div className={styles.bookingFooter}>
               <span>No date in mind? Leave the calendar blank.</span>
               <Link className={styles.calendarLink} href="/fridays#schedule">
-                See the full Friday schedule <span aria-hidden="true">-&gt;</span>
+                See the full schedule <span aria-hidden="true">-&gt;</span>
               </Link>
             </div>
           </fieldset>
@@ -310,7 +309,7 @@ export default function PitchForm() {
                   ? "Submitting..."
                   : (
                       <>
-                        Propose a Friday <span className="arrow">-&gt;</span>
+                        Send proposal <span className="arrow">-&gt;</span>
                       </>
                     )}
             </button>

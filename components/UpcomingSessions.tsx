@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { content } from "@/content/site";
 import {
   KIND_LABEL,
   meetingsForDate,
@@ -16,31 +14,26 @@ const HORIZON = 16;
 
 function fmtDate(iso: string) {
   const date = bookingDateFromIso(iso);
-  const weekday = date.toLocaleDateString("en-US", {
-    timeZone: "UTC",
-    weekday: "short",
-  });
-  const md = date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("en-US", {
     timeZone: "UTC",
     month: "short",
     day: "numeric",
   });
-  return { weekday, md };
 }
 
 function EmptySlot({ slot }: { slot: FridaySlot }) {
   const labels = {
-    available: { chip: "Open", title: "Open Friday", className: "kind-open" },
+    available: { chip: "Open to proposals", title: null, className: "kind-open" },
     reserved: {
-      chip: "Incubator",
+      chip: "Reserved",
       title: "Incubator-led session",
       className: "kind-reserved",
     },
     held: { chip: "Held", title: "Proposal under review", className: "kind-held" },
-    booked: { chip: "Scheduled", title: "Friday scheduled", className: "kind-booked" },
+    booked: { chip: "Scheduled", title: "Details coming soon", className: "kind-booked" },
     unavailable: {
       chip: "No meeting",
-      title: "No meeting this Friday",
+      title: null,
       className: "kind-unavailable",
     },
   } as const;
@@ -50,20 +43,8 @@ function EmptySlot({ slot }: { slot: FridaySlot }) {
     <div className="upcoming-row">
       <div className="row-head">
         <span className={`chip kind ${label.className}`}>{label.chip}</span>
-        <span className="row-title">{label.title}</span>
+        {label.title && <span className="row-title">{label.title}</span>}
       </div>
-      {slot.state === "reserved" && (
-        <div className="row-blurb">
-          The first Friday of each month stays open for an Incubator-led session.
-        </div>
-      )}
-      {slot.state === "available" && (
-        <div className="row-meta">
-          <Link className="row-open-cta" href="/fridays#propose">
-            Propose a Friday <span aria-hidden="true">-&gt;</span>
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
@@ -73,16 +54,10 @@ export default async function UpcomingSessions() {
 
   return (
     <section className="section container" id="schedule">
-      <div className="section-label">
-        <span>Upcoming Fridays</span>
-      </div>
       <div className="section-head">
         <h2 className="h1" style={{ maxWidth: "20ch" }}>
-          Upcoming Fridays.
+          Upcoming sessions.
         </h2>
-        <span className="small">
-          Fridays at noon ET on {content.session.venue}
-        </span>
       </div>
 
       <div className="upcoming">
@@ -91,7 +66,7 @@ export default async function UpcomingSessions() {
           const meetings = meetingsForDate(iso);
           const isCancelledDay =
             meetings.length > 0 && meetings.every((m) => m.kind === "cancelled");
-          const { weekday, md } = fmtDate(iso);
+          const dateLabel = fmtDate(iso);
 
           return (
             <div
@@ -99,8 +74,7 @@ export default async function UpcomingSessions() {
               className={`upcoming-day${isCancelledDay ? " is-cancelled" : ""}`}
             >
               <div className="upcoming-date">
-                <span className="weekday">{weekday}</span>
-                <span>{md}</span>
+                <span>{dateLabel}</span>
               </div>
 
               <div className="upcoming-rows">

@@ -51,8 +51,8 @@ export default function JoinIncubator() {
       <div className="join-incubator-success" role="status">
         <span aria-hidden="true">&#10003;</span>
         <div>
-          <strong>See you Friday.</strong>
-          <p>We&apos;ll send you the Friday details and ways to get involved.</p>
+          <strong>You&apos;re in.</strong>
+          <p>We&apos;ll send you the link, schedule, and ways to get involved.</p>
         </div>
       </div>
     );
