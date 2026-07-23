@@ -127,46 +127,6 @@
   line-height: 1.5;
 }
 
-.jumpNav {
-  border-bottom: 1px solid #252525;
-  background: #0d0d0d;
-}
-
-.jumpNavInner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  min-height: 62px;
-}
-
-.jumpLabel {
-  color: rgba(255, 255, 255, 0.38);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.jumpNavInner > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(18px, 3vw, 34px);
-}
-
-.jumpNav a {
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-}
-
-.jumpNav a:hover,
-.jumpNav a:focus-visible {
-  border-bottom-color: #82b3ff;
-  color: #ffffff;
-}
-
 .proposeIntro h2 {
   margin: 0;
   color: #ffffff;
@@ -293,16 +253,6 @@
   .joinBlock {
     grid-row: 5;
     margin-top: 0;
-  }
-}
-
-@media (max-width: 560px) {
-  .jumpNavInner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 16px;
-    padding-bottom: 16px;
   }
 }
 

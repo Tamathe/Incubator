@@ -52,17 +52,6 @@ export default function FridaysPage() {
           </figure>
         </header>
 
-        <nav className={styles.jumpNav} aria-label="Fridays page">
-          <div className={`container ${styles.jumpNavInner}`}>
-            <span className={styles.jumpLabel}>On this page</span>
-            <div>
-              <a href="#join">Join</a>
-              <a href="#propose">Propose something</a>
-              <a href="#schedule">Schedule</a>
-            </div>
-          </div>
-        </nav>
-
         <section
           className={`container ${styles.proposeSection}`}
           id="propose"
