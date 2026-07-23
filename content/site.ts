@@ -655,5 +655,37 @@ export const content: SiteContent = {
       blurb:
         "How Andrew organizes a research effort in Claude Projects and how Tama uses Codex for knowledge work.",
     },
+    {
+      date: "2026-08-14",
+      kind: "presentation",
+      title: "Practical AI: Make AI sound like you",
+      presenters: "Tama Thé",
+      blurb:
+        "Build a personal voice guide that helps AI write more like you.",
+    },
+    {
+      date: "2026-08-21",
+      kind: "presentation",
+      title: "Practical AI: The context is the prompt",
+      presenters: "Tama Thé",
+      blurb:
+        "Learn what context to give AI so it can produce useful work without relying on a perfect prompt.",
+    },
+    {
+      date: "2026-08-28",
+      kind: "presentation",
+      title: "Practical AI: Build an AI project that remembers the work",
+      presenters: "Tama Thé",
+      blurb:
+        "Organize instructions, source files, and examples so an AI project can carry context across ongoing work.",
+    },
+    {
+      date: "2026-09-11",
+      kind: "presentation",
+      title: "Practical AI: AI as editor, not just author",
+      presenters: "Tama Thé",
+      blurb:
+        "Use AI to find weaknesses, missing evidence, and unclear logic before asking it to rewrite.",
+    },
   ],
 };

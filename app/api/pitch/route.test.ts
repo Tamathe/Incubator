@@ -56,17 +56,17 @@ describe("POST /api/pitch", () => {
     const res = await post(
       {
         ...valid,
-        preferredFriday: "2026-08-14",
-        alternateFriday: "2026-08-21",
+        preferredFriday: "2026-09-18",
+        alternateFriday: "2026-09-25",
       },
       { "x-forwarded-for": "3.3.3.5" },
     );
     expect(res.status).toBe(204);
     expect(pitchCreateMock.mock.calls[0][0].data).toMatchObject({
       bookingStatus: "requested",
-      preferredFriday: new Date("2026-08-14T00:00:00.000Z"),
-      alternateFriday: new Date("2026-08-21T00:00:00.000Z"),
-      scheduledFriday: new Date("2026-08-14T00:00:00.000Z"),
+      preferredFriday: new Date("2026-09-18T00:00:00.000Z"),
+      alternateFriday: new Date("2026-09-25T00:00:00.000Z"),
+      scheduledFriday: new Date("2026-09-18T00:00:00.000Z"),
       bookingHoldUntil: new Date("2026-07-28T14:00:00.000Z"),
     });
   });
@@ -83,7 +83,7 @@ describe("POST /api/pitch", () => {
   it("returns 409 when another request takes the slot first", async () => {
     pitchCreateMock.mockRejectedValueOnce({ code: "P2002" });
     const res = await post(
-      { ...valid, preferredFriday: "2026-08-14" },
+      { ...valid, preferredFriday: "2026-09-18" },
       { "x-forwarded-for": "3.3.3.7" },
     );
     expect(res.status).toBe(409);
