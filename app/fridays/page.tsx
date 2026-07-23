@@ -30,10 +30,9 @@ export default function FridaysPage() {
             <h1>Build something with us.</h1>
 
             <p className={styles.heroLead}>
-              The AI Incubator is a weekly working session for UK students who
-              want to learn AI by trying it on real problems. Bring an idea,
-              help someone else, or just listen. Faculty, staff, researchers,
-              and community partners are welcome too.
+              The AI Incubator is a weekly working session for UK students,
+              faculty, and staff who want to learn AI by trying it on real
+              problems. Bring an idea, brainstorm with us, or just listen.
             </p>
 
             <div className={styles.joinBlock} id="join">
