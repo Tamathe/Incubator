@@ -57,7 +57,7 @@ describe("POST /api/pitch", () => {
       {
         ...valid,
         preferredFriday: "2026-09-18",
-        alternateFriday: "2026-09-25",
+        alternateFriday: "2026-10-09",
       },
       { "x-forwarded-for": "3.3.3.5" },
     );
@@ -65,7 +65,7 @@ describe("POST /api/pitch", () => {
     expect(pitchCreateMock.mock.calls[0][0].data).toMatchObject({
       bookingStatus: "requested",
       preferredFriday: new Date("2026-09-18T00:00:00.000Z"),
-      alternateFriday: new Date("2026-09-25T00:00:00.000Z"),
+      alternateFriday: new Date("2026-10-09T00:00:00.000Z"),
       scheduledFriday: new Date("2026-09-18T00:00:00.000Z"),
       bookingHoldUntil: new Date("2026-07-28T14:00:00.000Z"),
     });
