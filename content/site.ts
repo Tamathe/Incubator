@@ -653,7 +653,7 @@ export const content: SiteContent = {
       title: "AI for knowledge work - Claude Projects and Codex",
       presenters: "Andrew Peng / Tama Thé",
       blurb:
-        "How Andrew organizes a research effort in Claude Projects and how Tama uses Codex for knowledge work.",
+        "Andrew will show how he sets up a research project in Claude Projects. Tama will show how he uses Codex to plan and manage knowledge work.",
     },
     {
       date: "2026-08-14",
@@ -661,15 +661,15 @@ export const content: SiteContent = {
       title: "Practical AI: Make AI sound like you",
       presenters: "Tama Thé",
       blurb:
-        "Build a personal voice guide that helps AI write more like you.",
+        "Create a voice.md file from examples of your own writing, then use it to make AI drafts sound like you.",
     },
     {
       date: "2026-08-21",
       kind: "presentation",
-      title: "Practical AI: The context is the prompt",
+      title: "Practical AI: Give AI the context it needs",
       presenters: "Tama Thé",
       blurb:
-        "Learn what context to give AI so it can produce useful work without relying on a perfect prompt.",
+        "Give AI the audience, goal, source material, and constraints it needs to do useful work.",
     },
     {
       date: "2026-08-28",
@@ -677,15 +677,15 @@ export const content: SiteContent = {
       title: "Practical AI: Build an AI project that remembers the work",
       presenters: "Tama Thé",
       blurb:
-        "Organize instructions, source files, and examples so an AI project can carry context across ongoing work.",
+        "Set up instructions, source files, and examples so AI can pick up the same project without starting over.",
     },
     {
       date: "2026-09-11",
       kind: "presentation",
-      title: "Practical AI: AI as editor, not just author",
+      title: "Practical AI: Use AI to critique your work",
       presenters: "Tama Thé",
       blurb:
-        "Use AI to find weaknesses, missing evidence, and unclear logic before asking it to rewrite.",
+        "Use AI to find weak logic, missing evidence, unclear writing, and unsupported claims before you revise.",
     },
   ],
 };
