@@ -62,7 +62,7 @@ export default function FridaysPage() {
         >
           <div className={styles.proposeIntro}>
             <h2 id="propose-title">
-              Have an idea, a project, a prototype, or a problem.
+              Have an idea, a project, a prototype, or a problem?
             </h2>
             <p>Bring it to the group. Choose a date. Bring what you have.</p>
           </div>
