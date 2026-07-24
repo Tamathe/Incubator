@@ -658,7 +658,7 @@ export const content: SiteContent = {
     {
       date: "2026-08-14",
       kind: "presentation",
-      title: "Practical AI: Make AI sound more like you",
+      title: "AI for Knowledge Work: Make AI sound more like you",
       presenters: "Tama Thé",
       blurb:
         "We’ll turn a few examples of your own writing into a simple voice guide, then test it on an AI draft.",
@@ -666,7 +666,7 @@ export const content: SiteContent = {
     {
       date: "2026-08-28",
       kind: "presentation",
-      title: "Practical AI: Give AI the context it needs",
+      title: "AI for Knowledge Work: Give AI the context it needs",
       presenters: "Tama Thé",
       blurb:
         "A useful result starts with context. We’ll show how the audience, goal, source material, and constraints change what AI gives you back.",
@@ -674,7 +674,7 @@ export const content: SiteContent = {
     {
       date: "2026-09-11",
       kind: "presentation",
-      title: "Practical AI: Build a project you can come back to",
+      title: "AI for Knowledge Work: Build a project you can come back to",
       presenters: "Tama Thé",
       blurb:
         "We’ll organize instructions, source files, and examples so AI can pick up where you left off instead of making you explain the project again.",
@@ -682,7 +682,7 @@ export const content: SiteContent = {
     {
       date: "2026-09-25",
       kind: "presentation",
-      title: "Practical AI: Find the weak spots before you revise",
+      title: "AI for Knowledge Work: Find the weak spots before you revise",
       presenters: "Tama Thé",
       blurb:
         "Think of AI as a skeptical reader: ask it to question the logic, spot missing evidence, and flag unclear or unsupported claims.",
