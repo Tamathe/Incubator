@@ -18,11 +18,23 @@ export default function ForbesFeature() {
           <h2 id="forbes-feature-title">
             “You Can’t Outsource Understanding”
           </h2>
-          <p>
-            Forbes profiles the AI Incubator’s approach to learning AI: start
-            with a real problem, build something useful, and keep judgment with
-            the person doing the work.
-          </p>
+          <blockquote cite={FORBES_ARTICLE_URL}>
+            <p>
+              “The university’s AI incubator … brings together people from
+              medicine, engineering, law, agriculture, physical therapy and
+              other fields to build projects that no one discipline could
+              develop as effectively on its own.
+            </p>
+            <p>
+              That work is closely tied to Kentucky’s public mission. In rural
+              communities hours from medical specialists, or cut off by
+              flooding, remote clinical support and drone delivery are not
+              demonstrations built for prestige but responses to conditions
+              people already face. For a public university whose graduates
+              often remain in Kentucky, this is as much workforce development
+              as experimentation.”
+            </p>
+          </blockquote>
         </div>
 
         <a

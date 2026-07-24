@@ -5016,6 +5016,22 @@ a.studio-student-work-card:hover .studio-student-work-watch {
   font-size: 16px;
   line-height: 1.55;
 }
+.studio-forbes-feature-copy blockquote {
+  max-width: 72ch;
+  margin: 24px 0 0;
+  padding-left: clamp(18px, 2vw, 28px);
+  border-left: 2px solid rgba(255, 255, 255, 0.46);
+}
+.studio-forbes-feature-copy blockquote p {
+  max-width: none;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.58;
+}
+.studio-forbes-feature-copy blockquote p + p {
+  margin-top: 14px;
+}
 .studio-forbes-feature-link {
   justify-self: end;
   white-space: nowrap;
