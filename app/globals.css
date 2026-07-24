@@ -4296,6 +4296,16 @@ footer {
   font-weight: 450;
   color: rgba(255, 255, 255, 0.78);
 }
+.studio-hero-join {
+  max-width: 660px;
+  margin-top: 30px;
+  scroll-margin-top: 88px;
+}
+.studio-hero-join > p {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
 .studio-hero-lead {
   max-width: 610px;
   font-size: 18px;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import CommercialPlayer from "@/components/CommercialPlayer";
 import Footer from "@/components/Footer";
 import ForbesFeature from "@/components/ForbesFeature";
+import JoinIncubator from "@/components/JoinIncubator";
 import Logo from "@/components/Logo";
 import Nav from "@/components/Nav";
 import StoryChapter from "@/components/StoryChapter";
@@ -115,6 +116,11 @@ export default function HomePage() {
                 The AI Incubator is a group of students, faculty, and staff who
                 meet once a week to solve problems with AI.
               </p>
+
+              <div className="studio-hero-join" id="join">
+                <p>Get the Friday link and schedule</p>
+                <JoinIncubator />
+              </div>
             </div>
           </div>
         </header>
