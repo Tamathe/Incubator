@@ -56,7 +56,7 @@ export default async function UpcomingSessions() {
     <section className="section container" id="schedule">
       <div className="section-head">
         <h2 className="h1" style={{ maxWidth: "20ch" }}>
-          Upcoming sessions.
+          Coming up.
         </h2>
       </div>
 
