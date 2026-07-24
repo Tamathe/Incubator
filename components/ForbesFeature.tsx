@@ -34,6 +34,7 @@ export default function ForbesFeature() {
               often remain in Kentucky, this is as much workforce development
               as experimentation.”
             </p>
+            <footer>Forbes · July 2026</footer>
           </blockquote>
         </div>
 
