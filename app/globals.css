@@ -219,6 +219,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-color: var(--accent);
 }
 .btn.primary:hover { filter: brightness(1.08); border-color: var(--accent); }
+.nav-links .btn.primary:hover,
+.nav-links .btn.primary:focus-visible {
+  color: var(--accent-ink);
+}
+.nav-links .btn.primary:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
 .btn.ghost { background: transparent; border-color: transparent; }
 .btn.ghost:hover { background: var(--surface-2); border-color: transparent; transform: none; }
 .btn .arrow {
