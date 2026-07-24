@@ -61,12 +61,10 @@ export default function FridaysPage() {
           aria-labelledby="propose-title"
         >
           <div className={styles.proposeIntro}>
-            <p className={`mono ${styles.kicker}`}>Bring something to the room</p>
-            <h2 id="propose-title">Have something we can work through with you?</h2>
-            <p>
-              Tell us what you want from the group. Choose a date if you have one
-              in mind. No polished deck required.
-            </p>
+            <h2 id="propose-title">
+              Have an idea, a project, a prototype, or a problem.
+            </h2>
+            <p>Bring it to the group. Choose a date. Bring what you have.</p>
           </div>
 
           <PitchForm />
