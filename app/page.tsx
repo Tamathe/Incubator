@@ -104,11 +104,18 @@ export default function HomePage() {
           </div>
 
           <div className="studio-hero-content">
-            <Logo
-              alt="AI Incubator at the University of Kentucky"
-              className="studio-hero-logo"
-              src="/logo-incubator.png"
-            />
+            <div className="studio-hero-brand">
+              <Logo
+                alt="AI Incubator at the University of Kentucky"
+                className="studio-hero-logo"
+                src="/logo-incubator.png"
+              />
+
+              <div className="studio-hero-join" id="join">
+                <p>Get the Friday link and schedule</p>
+                <JoinIncubator />
+              </div>
+            </div>
 
             <div className="studio-hero-message">
               <h1>Learn AI by working on something real.</h1>
@@ -116,11 +123,6 @@ export default function HomePage() {
                 The AI Incubator is a group of students, faculty, and staff who
                 meet once a week to solve problems with AI.
               </p>
-
-              <div className="studio-hero-join" id="join">
-                <p>Get the Friday link and schedule</p>
-                <JoinIncubator />
-              </div>
             </div>
           </div>
         </header>

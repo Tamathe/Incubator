@@ -4274,9 +4274,12 @@ footer {
   padding-bottom: 60px;
   background: #050505;
 }
-.studio-hero-logo {
+.studio-hero-brand {
   grid-area: logo;
   align-self: center;
+  min-width: 0;
+}
+.studio-hero-logo {
   margin: 0;
 }
 .studio-hero-message {
