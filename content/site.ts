@@ -666,26 +666,24 @@ export const content: SiteContent = {
     {
       date: "2026-08-28",
       kind: "presentation",
+      title: "AI, practical skills: how to build a website.",
+      presenters: "Tama Thé",
+    },
+    {
+      date: "2026-09-11",
+      kind: "presentation",
       title: "AI for Knowledge Work: Give AI the context it needs",
       presenters: "Tama Thé",
       blurb:
         "A useful result starts with context. We’ll show how the audience, goal, source material, and constraints change what AI gives you back.",
     },
     {
-      date: "2026-09-11",
+      date: "2026-09-25",
       kind: "presentation",
-      title: "AI for Knowledge Work: Build a project you can come back to",
+      title: "Building a project that remembers what’s going on.",
       presenters: "Tama Thé",
       blurb:
         "We’ll organize instructions, source files, and examples so AI can pick up where you left off instead of making you explain the project again.",
-    },
-    {
-      date: "2026-09-25",
-      kind: "presentation",
-      title: "AI for Knowledge Work: Find the weak spots before you revise",
-      presenters: "Tama Thé",
-      blurb:
-        "Think of AI as a skeptical reader: ask it to question the logic, spot missing evidence, and flag unclear or unsupported claims.",
     },
   ],
 };
