@@ -22,9 +22,12 @@ export default function FridaysPage() {
       <main className={`community-page ${styles.page}`}>
         <header className={`container ${styles.hero}`}>
           <div className={styles.heroCopy}>
-            <p className={`mono ${styles.kicker}`}>
-              Fridays <span aria-hidden="true">·</span> Noon ET{" "}
-              <span aria-hidden="true">·</span> Microsoft Teams
+            <p className={`mono ${styles.heroSchedule}`}>
+              Fridays
+              <span aria-hidden="true">·</span>
+              Noon ET
+              <span aria-hidden="true">·</span>
+              Microsoft Teams
             </p>
 
             <h1>Build something with us.</h1>
