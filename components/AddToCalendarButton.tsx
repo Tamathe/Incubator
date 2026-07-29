@@ -10,9 +10,16 @@ import {
 interface Props {
   meeting: MeetingSession;
   indexOnDate: number;
+  className?: string;
+  label?: string;
 }
 
-export default function AddToCalendarButton({ meeting, indexOnDate }: Props) {
+export default function AddToCalendarButton({
+  meeting,
+  indexOnDate,
+  className = "btn ghost sm",
+  label = "Add to calendar",
+}: Props) {
   function handleClick() {
     const event = meetingToIcsEvent(meeting, indexOnDate);
     const ics = buildIcsEvent(event);
@@ -23,8 +30,8 @@ export default function AddToCalendarButton({ meeting, indexOnDate }: Props) {
   }
 
   return (
-    <button type="button" className="btn ghost sm" onClick={handleClick}>
-      Add to calendar <span className="arrow">→</span>
+    <button type="button" className={className} onClick={handleClick}>
+      {label} <span className="arrow">→</span>
     </button>
   );
 }

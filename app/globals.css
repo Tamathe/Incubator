@@ -2339,6 +2339,17 @@ html[data-theme="dark"] .chip.kind-demo {
   font-size: 17px;
   color: var(--ink);
 }
+.upcoming-row .row-title-link {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.15s var(--ease), text-decoration-color 0.15s var(--ease);
+}
+.upcoming-row .row-title-link:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
 .upcoming-row .row-blurb {
   font-size: 14px;
   color: var(--ink-2);
@@ -2356,6 +2367,12 @@ html[data-theme="dark"] .chip.kind-demo {
 .upcoming-row .row-presenters {
   font-family: var(--mono);
 }
+.upcoming-row .row-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
 .upcoming-actions {
   display: flex;
   justify-content: flex-end;
@@ -2371,6 +2388,11 @@ html[data-theme="dark"] .chip.kind-demo {
   .upcoming-row .row-meta {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .upcoming-row .row-actions {
+    flex-wrap: wrap;
+    margin-left: -14px;
   }
 }
 

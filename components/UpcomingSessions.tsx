@@ -2,6 +2,7 @@ import {
   KIND_LABEL,
   meetingsForDate,
 } from "@/lib/calendar";
+import Link from "next/link";
 import {
   bookingDateFromIso,
   loadFridaySlots,
@@ -87,7 +88,13 @@ export default async function UpcomingSessions() {
                         <span className={`chip kind kind-${m.kind}`}>
                           {KIND_LABEL[m.kind]}
                         </span>
-                        <span className="row-title">{m.title}</span>
+                        {m.pageUrl ? (
+                          <Link className="row-title row-title-link" href={m.pageUrl}>
+                            {m.title}
+                          </Link>
+                        ) : (
+                          <span className="row-title">{m.title}</span>
+                        )}
                       </div>
                       {m.blurb && <div className="row-blurb">{m.blurb}</div>}
                       <div className="row-meta">
@@ -95,7 +102,14 @@ export default async function UpcomingSessions() {
                           {m.presenters ?? ""}
                         </span>
                         {m.kind !== "cancelled" && (
-                          <AddToCalendarButton meeting={m} indexOnDate={i} />
+                          <div className="row-actions">
+                            {m.pageUrl && (
+                              <Link className="btn ghost sm" href={m.pageUrl}>
+                                Session details <span className="arrow">-&gt;</span>
+                              </Link>
+                            )}
+                            <AddToCalendarButton meeting={m} indexOnDate={i} />
+                          </div>
                         )}
                       </div>
                     </div>
