@@ -1761,7 +1761,7 @@ git commit -m "perf: self-host Geist via next/font, drop render-blocking @import
 
 ## Task 16: Right-size the logo, real favicon, compressed posters
 
-The superseded `public/logo-incubator.png` was 1.1 MB at 1512×654 and was shipped raw in the Nav on every page **and** used as the favicon. The approved replacement is `public/ai-at-uk-incubator-logo.png`. Six story-poster JPEGs (~1.15 MB total) load eagerly on the homepage.
+The superseded logo was 1.1 MB at 1512×654 and was shipped raw in the Nav on every page **and** used as the favicon. The approved replacement is `public/ai-at-uk-incubator-logo.png`. Six story-poster JPEGs (~1.15 MB total) load eagerly on the homepage.
 
 **Files:**
 - Create: `tools/optimize-assets.mjs`
