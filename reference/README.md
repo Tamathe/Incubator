@@ -202,7 +202,7 @@ Documented inline in `styles.css` with section comments. Key components: `.nav` 
 
 ## Assets
 
-- `assets/logo.png` — the AI Incubator logo (varsity lettering + green @ glyph). The `@` is treated as a meaningful identity element ("you, here, now"); preserve its prominence in any future logo work.
+- `assets/ai-at-uk-incubator-logo.png` — the approved AI@UK Incubator logo. Preserve the complete `INCUBATOR` lettering and the green `@` glyph.
 - **No imagery beyond the logo.** This is intentional. Avoid stock photos, AI-generated illustrations, robot iconography, or generic "futurism" graphics. The dot-grid animated bg is the only ornament.
 
 ## Loose ends / what's not done
@@ -227,7 +227,7 @@ site/
   styles.css       — all styling, both themes
   site.js          — countdown, dot-grid renderer, JSON loader/renderer, tweaks panel
 assets/
-  logo.png         — AI Incubator logo
+  ai-at-uk-incubator-logo.png — approved AI@UK Incubator logo
 ```
 
 ## Content (current, real)

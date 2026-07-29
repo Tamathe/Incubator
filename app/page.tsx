@@ -108,7 +108,7 @@ export default function HomePage() {
               <Logo
                 alt="AI Incubator at the University of Kentucky"
                 className="studio-hero-logo"
-                src="/logo-incubator.png"
+                src="/ai-at-uk-incubator-logo.png"
               />
 
               <div className="studio-hero-join" id="join">

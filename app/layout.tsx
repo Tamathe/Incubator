@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark" data-accent="blue" data-density="default">
       <head>
-        <link rel="icon" type="image/png" href="/logo-incubator.png" />
+        <link rel="icon" type="image/png" href="/ai-at-uk-incubator-logo.png" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body>{children}</body>

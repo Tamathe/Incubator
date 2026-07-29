@@ -399,7 +399,7 @@ export default function Footer() {
               style={{ marginBottom: 14 }}
               aria-label="AI Incubator at the University of Kentucky home"
             >
-              <Logo alt="" className="nav-logo" src="/logo-incubator.png" />
+              <Logo alt="" className="nav-logo" src="/ai-at-uk-incubator-logo.png" />
             </Link>
           </div>
           <div>
@@ -1761,7 +1761,7 @@ git commit -m "perf: self-host Geist via next/font, drop render-blocking @import
 
 ## Task 16: Right-size the logo, real favicon, compressed posters
 
-`public/logo-incubator.png` is 1.1 MB at 1512×654, shipped raw in the Nav on every page **and** used as the favicon. Six story-poster JPEGs (~1.15 MB total) load eagerly on the homepage.
+The superseded `public/logo-incubator.png` was 1.1 MB at 1512×654 and was shipped raw in the Nav on every page **and** used as the favicon. The approved replacement is `public/ai-at-uk-incubator-logo.png`. Six story-poster JPEGs (~1.15 MB total) load eagerly on the homepage.
 
 **Files:**
 - Create: `tools/optimize-assets.mjs`
@@ -1794,7 +1794,7 @@ const posters = [
 ];
 
 for (const { out, width } of logoJobs) {
-  await sharp("public/logo-incubator.png")
+  await sharp("public/ai-at-uk-incubator-logo.png")
     .resize({ width })
     .png({ compressionLevel: 9 })
     .toFile(out);
@@ -1807,7 +1807,7 @@ for (const src of posters) {
   console.log("wrote", out);
 }
 
-await sharp("public/logo-mark.png")
+await sharp("public/ai-at-uk-incubator-logo.png")
   .resize({
     width: 512,
     height: 512,
@@ -1826,9 +1826,9 @@ Expected: nine "wrote …" lines. Check sizes: `ls -la public/logo-incubator-sm.
 
 - [ ] **Step 3: Point the Nav and Footer at the small logo, the hero at the medium one**
 
-- `components/Nav.tsx`: `src="/logo-incubator.png"` → `src="/logo-incubator-sm.png"`.
-- `components/Footer.tsx`: `src="/logo-incubator.png"` → `src="/logo-incubator-sm.png"`.
-- `app/page.tsx` hero: `src="/logo-incubator.png"` → `src="/logo-incubator-md.png"`.
+- `components/Nav.tsx`: `src="/ai-at-uk-incubator-logo.png"` → `src="/logo-incubator-sm.png"`.
+- `components/Footer.tsx`: `src="/ai-at-uk-incubator-logo.png"` → `src="/logo-incubator-sm.png"`.
+- `app/page.tsx` hero: `src="/ai-at-uk-incubator-logo.png"` → `src="/logo-incubator-md.png"`.
 
 - [ ] **Step 4: Swap the six homepage poster paths to .webp**
 
@@ -1843,7 +1843,7 @@ Do **not** touch `content/site.ts` image paths or `/media/incubator-commercial-p
 In `app/layout.tsx`, delete the manual link:
 
 ```tsx
-        <link rel="icon" type="image/png" href="/logo-incubator.png" />
+        <link rel="icon" type="image/png" href="/ai-at-uk-incubator-logo.png" />
 ```
 
 (`app/icon.png` is picked up automatically by Next.)
@@ -1853,7 +1853,7 @@ In `app/layout.tsx`, delete the manual link:
 ```bash
 npm run build
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/icon.png
-curl -s http://localhost:3000/ | grep -c 'logo-incubator.png"' || true
+curl -s http://localhost:3000/ | grep -c 'ai-at-uk-incubator-logo.png"' || true
 curl -s http://localhost:3000/ | grep -o "02-student-demo.webp" | head -1
 ```
 

@@ -1031,7 +1031,7 @@ export const alt =
 
 export default async function OpengraphImage() {
   const logo = await readFile(
-    join(process.cwd(), "public", "logo-mark-dark.png")
+    join(process.cwd(), "public", "ai-at-uk-incubator-logo.png")
   );
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   return new ImageResponse(
@@ -1163,7 +1163,7 @@ export const metadata: Metadata = {
 Delete the manual favicon line from `<head>`:
 
 ```tsx
-        <link rel="icon" type="image/png" href="/logo-mark.png" />
+        <link rel="icon" type="image/png" href="/ai-at-uk-incubator-logo.png" />
 ```
 
 (The file-convention `app/icon.tsx` replaces it.)
