@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Copilot Cowork for knowledge work</title>
+    <title>Copilot Cowork for Knowledge Work</title>
     <style>
       * {
         box-sizing: border-box;
@@ -20,14 +20,14 @@
 
       body {
         color: #f7f8fb;
-        font-family: Impact, "Arial Narrow", Arial, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
       }
 
       main {
         position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 350px;
-        gap: 58px;
+        grid-template-columns: minmax(0, 1fr) 385px;
+        gap: 48px;
         width: 100%;
         height: 100%;
         padding: 50px 58px;
@@ -62,7 +62,8 @@
       h1 {
         max-width: 750px;
         margin: 30px 0 0;
-        font-size: 84px;
+        font-family: Impact, "Arial Narrow", Arial, sans-serif;
+        font-size: 78px;
         font-weight: 400;
         line-height: 0.93;
         letter-spacing: 0.006em;
@@ -84,9 +85,9 @@
         align-items: center;
         margin: 28px 0 0;
         color: #c9d8ff;
-        font-size: 21px;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
+        font-size: 23px;
+        font-weight: 700;
+        letter-spacing: -0.015em;
       }
 
       .meta span + span::before {
@@ -99,9 +100,7 @@
       }
 
       .right {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        gap: 18px;
+        display: flex;
         align-self: center;
       }
 
@@ -109,9 +108,9 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        min-height: 218px;
-        padding: 28px;
+        justify-content: center;
+        min-height: 430px;
+        padding: 34px;
         border: 1px solid #344054;
         background: rgba(15, 17, 22, 0.95);
       }
@@ -126,57 +125,57 @@
         content: "";
       }
 
-      .presenter,
-      .detail {
-        margin: 0;
+      .card-label {
+        margin: 0 0 28px;
         color: #9abaff;
-        font-size: 16px;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: 700;
       }
 
-      .card h2 {
-        max-width: 8ch;
+      .card-copy {
         margin: 0;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 0.98;
-        text-transform: uppercase;
+        color: #e0e4ec;
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 1.42;
       }
 
-      .detail {
-        color: #9ca6b8;
-        font-size: 14px;
+      .site {
+        margin: 30px 0 0;
+        padding-top: 22px;
+        border-top: 1px solid #344054;
+        color: #9abaff;
+        font-size: 22px;
+        font-weight: 700;
       }
     </style>
   </head>
   <body>
-    <main role="img" aria-label="Copilot Cowork for knowledge work with Andrew Peng and Tama Thé">
+    <main role="img" aria-label="Copilot Cowork for Knowledge Work with Andrew Peng and Tama Thé on July 31 from noon to 12:45 p.m. Eastern">
       <section class="left">
         <img class="logo" src="../../public/ai-at-uk-incubator-logo.png" alt="AI at UK Incubator" />
         <div>
           <h1>
             <span>Copilot Cowork</span>
-            <span><em>for</em> Knowledge Work</span>
+            <span>for <em>Knowledge Work</em></span>
           </h1>
           <div class="meta">
             <span>July 31</span>
-            <span>Noon ET</span>
+            <span>Noon to 12:45 p.m. Eastern</span>
             <span>Microsoft Teams</span>
           </div>
         </div>
       </section>
 
-      <section class="right" aria-label="Presentations">
+      <section class="right" aria-label="Session description">
         <article class="card">
-          <p class="presenter">Andrew Peng</p>
-          <h2>Research project</h2>
-          <p class="detail">Instructions · Sources · Cowork</p>
-        </article>
-        <article class="card">
-          <p class="presenter">Tama Thé</p>
-          <h2>Ongoing project</h2>
-          <p class="detail">Files · Next step · Drafts</p>
+          <p class="card-label">This Friday</p>
+          <p class="card-copy">
+            Andrew Peng and Tama Thé will introduce Copilot Cowork and similar
+            tools for knowledge work. They’ll show how to use context,
+            instructions, and source material to get better results.
+          </p>
+          <p class="site">ukyincubator.com</p>
         </article>
       </section>
     </main>

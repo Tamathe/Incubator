@@ -151,11 +151,14 @@ export function buildIcsCalendar(events: IcsEvent[]): string {
 
 // ─── Domain mapping ───────────────────────────────────────────────────────
 
-/** Parse an ISO date string into local-time start (noon) and end (1pm) Dates. */
-function fridayNoonRange(isoDate: string): { start: Date; end: Date } {
+/** Parse an ISO date string into a local noon start and a configurable end. */
+function fridayNoonRange(
+  isoDate: string,
+  durationMinutes = 60,
+): { start: Date; end: Date } {
   const [y, m, d] = isoDate.split("-").map(Number);
   const start = new Date(y, m - 1, d, 12, 0, 0, 0);
-  const end = new Date(y, m - 1, d, 13, 0, 0, 0);
+  const end = new Date(start.getTime() + durationMinutes * 60_000);
   return { start, end };
 }
 
@@ -169,7 +172,7 @@ export const KIND_LABEL: Record<MeetingSession["kind"], string> = {
 
 /** Map a published MeetingSession → IcsEvent. */
 export function meetingToIcsEvent(m: MeetingSession, indexOnDate: number): IcsEvent {
-  const { start, end } = fridayNoonRange(m.date);
+  const { start, end } = fridayNoonRange(m.date, m.durationMinutes);
   const descParts: string[] = [];
   if (m.blurb) descParts.push(m.blurb);
   if (m.presenters) descParts.push(`Presenters: ${m.presenters}`);

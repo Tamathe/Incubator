@@ -51,8 +51,8 @@ export function generateMetadata(): Metadata {
   const session = getSession();
   const isRecorded = Boolean(session.recordingUrl);
   const description = isRecorded
-    ? "Watch Andrew Peng and Tama Thé demonstrate two ways to keep AI work grounded in project context."
-    : "Join Andrew Peng and Tama Thé on July 31 for two practical walkthroughs of AI-supported research, planning, and ongoing knowledge work.";
+    ? "Watch Andrew Peng and Tama Thé introduce Copilot Cowork and similar tools for knowledge work."
+    : "Join Andrew Peng and Tama Thé on July 31 for an introduction to Copilot Cowork and similar tools for knowledge work.";
 
   return {
     title: `${session.title} · AI Incubator`,
@@ -68,7 +68,7 @@ export function generateMetadata(): Metadata {
           url: "/media/sessions/copilot-cowork-knowledge-work-og.png",
           width: 1200,
           height: 630,
-          alt: "Copilot Cowork for knowledge work, an AI Incubator learning session",
+          alt: "Copilot Cowork for Knowledge Work, an AI Incubator learning session",
         },
       ],
     },
@@ -80,25 +80,6 @@ export function generateMetadata(): Metadata {
     },
   };
 }
-
-const workflowCards = [
-  {
-    number: "01",
-    tool: "Research project",
-    presenter: "Andrew Peng",
-    title: "Keep a research effort organized.",
-    body:
-      "Andrew will show how he gives a real research effort standing instructions and source material, then keeps the work coherent over time.",
-  },
-  {
-    number: "02",
-    tool: "Ongoing project",
-    presenter: "Tama Thé",
-    title: "Move ongoing work forward.",
-    body:
-      "Tama will show how he starts from project files, organizes the next steps, drafts from source material, and manages work that continues across sessions.",
-  },
-] as const;
 
 export default function CopilotCoworkKnowledgeWorkPage() {
   const session = getSession();
@@ -120,15 +101,14 @@ export default function CopilotCoworkKnowledgeWorkPage() {
             </div>
 
             <h1>
-              Copilot Cowork <span>for</span> knowledge work.
+              Copilot Cowork for <span>Knowledge Work.</span>
             </h1>
 
             <p className={styles.lead}>
-              Two practical walkthroughs of how AI can support a real project
-              after the first prompt. Andrew Peng will open a research effort
-              with standing instructions and source material. Tama Thé will
-              show how he uses project files to plan and manage work that
-              continues over time.
+              Andrew Peng and Tama Thé will introduce Copilot Cowork and
+              similar tools for knowledge work. They’ll show how to use
+              context, instructions, and source material to get better results.
+              Later sessions will build on these basics.
             </p>
 
             <div className={styles.heroActions}>
@@ -167,14 +147,14 @@ export default function CopilotCoworkKnowledgeWorkPage() {
             </div>
 
             <div className={styles.toolPair} aria-hidden="true">
-              <div className={styles.toolMark}>01</div>
+              <div className={styles.toolMark}>AI</div>
               <div className={styles.connector}>
                 <span />
-                <span>project context</span>
+                <span>knowledge work</span>
                 <span />
               </div>
               <div className={`${styles.toolMark} ${styles.toolMarkBlue}`}>
-                02
+                01
               </div>
             </div>
 
@@ -185,7 +165,7 @@ export default function CopilotCoworkKnowledgeWorkPage() {
               </div>
               <div>
                 <dt>Time</dt>
-                <dd>Noon to 12:30 p.m. ET</dd>
+                <dd>Noon to 12:45 p.m. Eastern</dd>
               </div>
               <div>
                 <dt>Where</dt>
@@ -244,36 +224,24 @@ export default function CopilotCoworkKnowledgeWorkPage() {
         >
           <div className={styles.sectionIntro}>
             <p className="mono">{isRecorded ? "In this session" : "What we’ll cover"}</p>
-            <h2 id="coverage-title">The work behind the chat window.</h2>
-            <p>
-              Most AI demonstrations end with a good answer. This one starts
-              with the harder question: how do you give an AI tool enough
-              context to help with a project that lasts for weeks or months?
-            </p>
+            <h2 id="coverage-title">Start with the basics.</h2>
           </div>
 
-          <div className={styles.workflowGrid}>
-            {workflowCards.map((card) => (
-              <article className={styles.workflowCard} key={card.tool}>
-                <div className={styles.workflowMeta}>
-                  <span>{card.number}</span>
-                  <span>{card.presenter}</span>
-                </div>
-                <p className={styles.toolName}>{card.tool}</p>
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
-              </article>
-            ))}
+          <div className={styles.sessionSummary}>
+            <p>
+              Andrew and Tama will show how context, instructions, and source
+              material help these systems support real work over time. This
+              session sets up the rest of the AI for Knowledge Work series.
+            </p>
           </div>
         </section>
 
         <section className={styles.distinction}>
           <div className={`container ${styles.distinctionInner}`}>
-            <p className={`mono ${styles.distinctionLabel}`}>The working distinction</p>
+            <p className={`mono ${styles.distinctionLabel}`}>Coming next</p>
             <p className={styles.distinctionStatement}>
-              One workflow keeps standing context around an effort. The other
-              begins with the project workspace. We’ll show where each fits and
-              how both can support ordinary knowledge work.
+              Later sessions will apply these basics to writing, websites,
+              context, and projects that continue across sessions.
             </p>
           </div>
         </section>
@@ -305,7 +273,7 @@ export default function CopilotCoworkKnowledgeWorkPage() {
           {!isRecorded && (
             <div className={styles.bottomCta}>
               <div>
-                <p className="mono">Friday, July 31 · Noon ET</p>
+                <p className="mono">Friday, July 31 · Noon to 12:45 p.m. Eastern</p>
                 <h2>Bring one project you keep having to explain.</h2>
               </div>
               <div className={styles.bottomActions}>

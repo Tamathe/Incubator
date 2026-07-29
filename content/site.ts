@@ -187,6 +187,8 @@ export interface MeetingSession {
   /** ISO Friday date, e.g. "2026-05-29". */
   date: string;
   kind: SessionKind;
+  /** Optional session length. Published Fridays default to 60 minutes. */
+  durationMinutes?: number;
   /** Short headline. */
   title: string;
   /** 1-2 sentence summary. */
@@ -229,9 +231,9 @@ export const content: SiteContent = {
     venue: "Microsoft Teams",
     teamsUrl: "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzZhMTNiNjYtODcwNy00MjBhLTg3MmQtNmZhNDU4MGVlMjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222b30530b-69b6-4457-b818-481cb53d42ae%22%2c%22Oid%22%3a%22e5e67874-0b35-4528-b862-6b2d1a6b1fc2%22%7d",
     agenda: [
-      "Copilot Cowork for knowledge work - Andrew Peng on research projects",
-      "Copilot Cowork for knowledge work - Tama Thé on ongoing projects",
-      "Record the session for the website",
+      "Copilot Cowork and similar tools for knowledge work",
+      "Using context, instructions, and source material effectively",
+      "A foundation for the AI for Knowledge Work series",
     ],
   },
   projects: [
@@ -654,10 +656,11 @@ export const content: SiteContent = {
     {
       date: "2026-07-31",
       kind: "presentation",
-      title: "Copilot Cowork for knowledge work",
+      durationMinutes: 45,
+      title: "Copilot Cowork for Knowledge Work",
       presenters: "Andrew Peng and Tama Thé",
       blurb:
-        "Andrew will show how he organizes a research project around standing instructions and source material. Tama will show how he uses project files to plan and manage ongoing work.",
+        "Andrew Peng and Tama Thé will introduce Copilot Cowork and similar tools for knowledge work. They’ll show how to use context, instructions, and source material to get better results.",
       pageUrl: "/sessions/copilot-cowork-knowledge-work",
     },
     {

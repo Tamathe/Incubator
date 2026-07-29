@@ -1,14 +1,14 @@
 # AI Incubator email, July 31, 2026
 
-**Subject:** This Friday: Copilot Cowork for knowledge work
+**Subject:** This Friday: Copilot Cowork for Knowledge Work
 
 Hello everyone,
 
-This Friday, the AI Incubator is starting a series on using AI for research, writing, planning, and work that carries across weeks or months.
+This Friday, the AI Incubator is starting AI for Knowledge Work, a series on using AI more effectively for research, writing, planning, and other work that continues over time.
 
-Join us Friday, July 31, from noon to 12:30 p.m. ET on Microsoft Teams for **Copilot Cowork for knowledge work**.
+Join us Friday, July 31, from noon to 12:45 p.m. Eastern on Microsoft Teams for **Copilot Cowork for Knowledge Work**.
 
-Andrew Peng will show how he organizes a research project around a standing set of instructions and source material. I’ll show how I open an ongoing project from its files, choose the next step, draft from source material, and return to the work later.
+Andrew Peng and Tama Thé will introduce Copilot Cowork and similar tools for knowledge work. They’ll show how to use context, instructions, and source material to get better results. Later sessions will build on these basics.
 
 No preparation or technical background is required. The session is open to UK students, faculty, and staff. We plan to record it.
 
@@ -16,14 +16,20 @@ No preparation or technical background is required. The session is open to UK st
 
 **[Sign up and see the full Friday schedule](https://ukyincubator.com/fridays#join)**
 
-## Coming up
+## Upcoming AI Incubator sessions
 
 - **August 14:** Make AI sound more like you
 - **August 28:** Build a website with AI
 - **September 11:** Give AI the context it needs
 - **September 25:** Build a project that remembers what’s going on
 
-We want students and faculty to lead sessions, too. Bring something you know or something you want to learn. You can also bring a project you’re working on or a problem you want the group to help solve. It does not need to be a polished presentation. Choose an open Friday and tell us what you want from the room.
+## About the AI Incubator
+
+The AI Incubator brings together UK students, faculty, and staff from across campus to learn AI by working on real problems. We meet Fridays at noon on Microsoft Teams. Bring a project, ask a question, or just listen.
+
+You can also propose a Friday around something you know, something you want to learn, a project you’re working on, or a problem you want the group to help solve.
+
+**[Learn more at ukyincubator.com](https://ukyincubator.com)**
 
 **[Propose a Friday session](https://ukyincubator.com/fridays#propose)**
 
@@ -35,4 +41,4 @@ Tama
 
 ## Graphic alt text
 
-AI Incubator invitation for Copilot Cowork for knowledge work on Friday, July 31, from noon to 12:30 p.m. Eastern on Microsoft Teams. Andrew Peng will show how he organizes a research project around standing instructions and source material. Tama Thé will show how he uses project files to plan and manage ongoing work. Open to UK students, faculty, and staff. No preparation or technical background required. Sign up, see the schedule, or propose a session at ukyincubator.com/fridays.
+AI Incubator invitation for Copilot Cowork for Knowledge Work on Friday, July 31, from noon to 12:45 p.m. Eastern on Microsoft Teams. Andrew Peng and Tama Thé will introduce Copilot Cowork and similar tools, then show how context, instructions, and source material improve the results. Open to UK students, faculty, and staff. Learn more at ukyincubator.com.

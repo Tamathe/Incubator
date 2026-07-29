@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Copilot Cowork for knowledge work</title>
+    <title>Copilot Cowork for Knowledge Work</title>
     <style>
       :root {
         --black: #08090b;
@@ -14,7 +14,6 @@
         --line: #293140;
         --blue: #5b8cff;
         --blue-light: #9abaff;
-        --green: #a8e063;
       }
 
       * {
@@ -62,24 +61,18 @@
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-rows: 128px 430px 250px 264px 220px;
-        gap: 32px;
+        grid-template-rows: 120px 360px 250px 270px 265px;
+        gap: 24px;
         height: 100%;
         padding: 54px 72px 48px;
       }
 
       .mono,
       .session-meta,
-      .presenter,
-      .card-detail,
       .date,
-      .open-dates,
-      .site,
-      .audience {
-        font-family: Impact, "Arial Narrow", Arial, sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
+      .site {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
       }
 
       .brand-row {
@@ -97,7 +90,7 @@
         align-self: flex-start;
         margin-top: 14px;
         color: var(--blue-light);
-        font-size: 15px;
+        font-size: 24px;
       }
 
       .hero {
@@ -115,7 +108,7 @@
         text-transform: uppercase;
       }
 
-      h1 .plus {
+      h1 .knowledge-work {
         color: var(--blue);
       }
 
@@ -133,10 +126,11 @@
 
       .session-meta {
         display: flex;
-        gap: 28px;
+        gap: 30px;
         align-items: center;
-        margin-top: 38px;
-        font-size: 20px;
+        margin-top: 42px;
+        font-size: 29px;
+        letter-spacing: -0.02em;
       }
 
       .session-meta span {
@@ -152,23 +146,18 @@
         content: "";
       }
 
-      .presentations {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-      }
-
-      .presentation {
+      .session-overview {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 31px 34px 29px;
+        display: grid;
+        grid-template-columns: 0.58fr 1.42fr;
+        gap: 45px;
+        align-items: center;
+        padding: 34px 40px;
         border: 1px solid var(--line);
         background: rgba(15, 17, 22, 0.94);
       }
 
-      .presentation::before {
+      .session-overview::before {
         position: absolute;
         top: -1px;
         left: -1px;
@@ -178,25 +167,20 @@
         content: "";
       }
 
-      .presenter {
+      .session-overview h2 {
         margin: 0;
         color: var(--blue-light);
-        font-size: 14px;
-      }
-
-      .presentation h2 {
-        max-width: 12ch;
-        margin: 0;
-        font-size: 41px;
-        line-height: 1.02;
+        font-size: 46px;
+        line-height: 1;
         letter-spacing: -0.03em;
       }
 
-      .card-detail {
+      .overview-copy {
         margin: 0;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.45;
+        color: #d8dce5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 25px;
+        line-height: 1.4;
       }
 
       .calendar {
@@ -210,7 +194,9 @@
       .calendar-label {
         margin: 0;
         color: var(--blue-light);
-        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
       }
 
       .calendar-grid {
@@ -221,7 +207,7 @@
 
       .calendar-item {
         display: grid;
-        grid-template-columns: 92px 1fr;
+        grid-template-columns: 108px 1fr;
         min-height: 86px;
         border: 1px solid var(--line);
         background: rgba(19, 23, 34, 0.86);
@@ -232,7 +218,7 @@
         place-items: center;
         border-right: 1px solid var(--line);
         color: var(--blue-light);
-        font-size: 16px;
+        font-size: 24px;
         line-height: 1.2;
         text-align: center;
       }
@@ -242,17 +228,17 @@
         align-items: center;
         margin: 0;
         padding: 14px 18px;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
         line-height: 1.17;
       }
 
       .action {
         display: grid;
-        grid-template-columns: 1.12fr 0.88fr;
-        border: 1px solid rgba(168, 224, 99, 0.42);
+        grid-template-columns: 1.58fr 0.72fr;
+        border: 1px solid rgba(91, 140, 255, 0.52);
         background:
-          linear-gradient(90deg, rgba(30, 43, 25, 0.92) 0 56%, rgba(13, 36, 87, 0.8) 56% 100%);
+          linear-gradient(90deg, rgba(15, 25, 48, 0.95) 0 68.7%, rgba(13, 36, 87, 0.9) 68.7% 100%);
       }
 
       .action-copy,
@@ -260,12 +246,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 30px 36px;
+        padding: 26px 32px;
       }
 
       .action h2 {
         margin: 0 0 13px;
-        font-size: 34px;
+        font-size: 36px;
+        font-weight: 700;
         line-height: 1;
       }
 
@@ -273,27 +260,17 @@
         margin: 0;
       }
 
-      .topics {
-        color: #cbd5bf;
-        font-size: 18px;
+      .about-copy {
+        max-width: 660px;
+        color: #d8deea;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
         line-height: 1.4;
-      }
-
-      .open-dates {
-        margin-top: 22px !important;
-        color: var(--green);
-        font-size: 14px;
       }
 
       .action-link {
         align-items: flex-start;
-        border-left: 1px solid rgba(168, 224, 99, 0.25);
-      }
-
-      .audience {
-        color: #c8d1e2;
-        font-size: 13px;
-        line-height: 1.55;
+        border-left: 1px solid rgba(91, 140, 255, 0.32);
       }
 
       .site {
@@ -302,23 +279,21 @@
         border: 2px solid var(--blue);
         background: #0d2457;
         color: #ffffff;
-        font-size: 16px;
+        font-size: 25px;
         white-space: nowrap;
       }
 
       .share {
-        margin: 12px 0 0;
-        color: #788296;
-        font-family: Impact, "Arial Narrow", Arial, sans-serif;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        margin: 0 0 16px;
+        color: #c8d1e2;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 22px;
+        font-weight: 700;
       }
     </style>
   </head>
   <body>
-    <main class="canvas" role="img" aria-label="AI at UK Incubator invitation for Copilot Cowork for knowledge work">
+    <main class="canvas" role="img" aria-label="AI at UK Incubator invitation for Copilot Cowork for Knowledge Work on July 31 from noon to 12:45 p.m. Eastern on Microsoft Teams">
       <div class="content">
         <header class="brand-row">
           <img
@@ -326,69 +301,68 @@
             src="../../public/ai-at-uk-incubator-logo.png"
             alt="AI at UK Incubator"
           />
-          <div class="series mono">AI for Knowledge Work / 01</div>
+          <div class="series mono">AI for Knowledge Work · Session 1</div>
         </header>
 
         <section class="hero">
           <h1>
             <span class="title-line">Copilot Cowork</span>
-            <span class="title-line"><span class="plus">for</span> Knowledge Work</span>
+            <span class="title-line">for <span class="knowledge-work">Knowledge Work</span></span>
           </h1>
           <div class="session-meta">
-            <span>Jul 31</span>
-            <span>Noon to 12:30 ET</span>
+            <span>Friday, July 31</span>
+            <span>Noon to 12:45 p.m. Eastern</span>
             <span>Microsoft Teams</span>
           </div>
         </section>
 
-        <section class="presentations" aria-label="Presentations">
-          <article class="presentation">
-            <p class="presenter">Andrew Peng</p>
-            <h2>Research project</h2>
-            <p class="card-detail">Instructions · Sources · Cowork</p>
-          </article>
-          <article class="presentation">
-            <p class="presenter">Tama Thé</p>
-            <h2>Ongoing project</h2>
-            <p class="card-detail">Files · Next step · Drafts</p>
-          </article>
+        <section class="session-overview" aria-label="Session description">
+          <h2>This Friday</h2>
+          <p class="overview-copy">
+            Andrew Peng and Tama Thé will introduce Copilot Cowork and similar
+            tools for knowledge work. They’ll show how to use context,
+            instructions, and source material to get better results. Later
+            sessions will build on these basics.
+          </p>
         </section>
 
         <section class="calendar" aria-label="Upcoming sessions">
-          <p class="calendar-label mono">Coming up</p>
+          <p class="calendar-label">Upcoming AI Incubator sessions</p>
           <div class="calendar-grid">
             <article class="calendar-item">
-              <div class="date">AUG<br />14</div>
-              <p class="calendar-title">Make AI sound like you</p>
+              <div class="date">Aug 14</div>
+              <p class="calendar-title">Make AI sound more like you</p>
             </article>
             <article class="calendar-item">
-              <div class="date">AUG<br />28</div>
-              <p class="calendar-title">Build a website</p>
+              <div class="date">Aug 28</div>
+              <p class="calendar-title">Build a website with AI</p>
             </article>
             <article class="calendar-item">
-              <div class="date">SEP<br />11</div>
-              <p class="calendar-title">Give AI context</p>
+              <div class="date">Sep 11</div>
+              <p class="calendar-title">Give AI the context it needs</p>
             </article>
             <article class="calendar-item">
-              <div class="date">SEP<br />25</div>
-              <p class="calendar-title">Build project memory</p>
+              <div class="date">Sep 25</div>
+              <p class="calendar-title">
+                Build a project that remembers what’s going on
+              </p>
             </article>
           </div>
         </section>
 
         <section class="action">
           <div class="action-copy">
-            <h2>Lead a Friday.</h2>
-            <p class="topics">Tool · Project · Question · Problem</p>
-            <p class="open-dates">Open: Aug 21 · Sep 18</p>
+            <h2>About the AI Incubator</h2>
+            <p class="about-copy">
+              The AI Incubator brings together UK students, faculty, and staff
+              from across campus to learn AI by working on real problems. We
+              meet Fridays at noon on Microsoft Teams. Bring a project, ask a
+              question, or just listen.
+            </p>
           </div>
           <div class="action-link">
-            <p class="audience">
-              UK students · faculty · staff<br />
-              No preparation required
-            </p>
-            <div class="site">UKYINCUBATOR.COM/FRIDAYS</div>
-            <p class="share">Sign up · Schedule · Propose · Share</p>
+            <p class="share">Learn more and join us</p>
+            <div class="site">ukyincubator.com</div>
           </div>
         </section>
       </div>
