@@ -1,5 +1,8 @@
 import { content, type MeetingSession } from "@/content/site";
+import type { FridaySlot } from "@/lib/friday-booking";
 import { nextSession } from "@/lib/session";
+
+export const FRIDAY_CALENDAR_HORIZON = 12;
 
 /**
  * Returns the next `n` Friday Date objects starting from the next upcoming
@@ -216,6 +219,48 @@ export function scheduledFridayToIcsEvent(
     description: `${description}\nTeams: ${content.session.teamsUrl}`,
     location: content.session.venue,
   };
+}
+
+/**
+ * Build the multi-Friday calendar bundle used by the Fridays page and the
+ * public calendar download endpoint.
+ */
+export function fridaySlotsToIcsEvents(
+  slots: FridaySlot[],
+  horizon = FRIDAY_CALENDAR_HORIZON,
+): IcsEvent[] {
+  const events: IcsEvent[] = [];
+
+  for (const slot of slots.slice(0, horizon)) {
+    const meetings = meetingsForDate(slot.date);
+    if (meetings.length > 0) {
+      meetings.forEach((meeting, index) => {
+        if (meeting.kind !== "cancelled") {
+          events.push(meetingToIcsEvent(meeting, index));
+        }
+      });
+    } else if (slot.state === "available") {
+      events.push(openFridayToIcsEvent(new Date(`${slot.date}T12:00:00`)));
+    } else if (slot.state === "reserved") {
+      events.push(
+        scheduledFridayToIcsEvent(
+          slot.date,
+          "AI Incubator \u2014 reserved Friday",
+          "The first Friday of the month is reserved for the Incubator's own session.",
+        ),
+      );
+    } else if (slot.state === "booked") {
+      events.push(
+        scheduledFridayToIcsEvent(
+          slot.date,
+          "AI Incubator \u2014 Friday session",
+          "This Friday has a confirmed session. Details will be published after review.",
+        ),
+      );
+    }
+  }
+
+  return events;
 }
 
 // ─── Browser download ─────────────────────────────────────────────────────
