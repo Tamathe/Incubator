@@ -5054,10 +5054,12 @@ a.studio-student-work-card:hover .studio-student-work-watch {
 .studio-forbes-feature-copy blockquote p + p {
   margin-top: 14px;
 }
-.studio-forbes-feature-copy blockquote footer {
+.studio-forbes-feature-copy blockquote cite {
+  display: block;
   margin-top: 18px;
   color: rgba(255, 255, 255, 0.68);
   font: 600 11px/1.4 var(--mono);
+  font-style: normal;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
